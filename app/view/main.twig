@@ -1,0 +1,14 @@
+{% extends "layout/master.twig" %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
+    <h1>Index</h1>
+    <p class="important">
+        {% for products in data %}
+            {{ products.nombre|e }}
+            <br />
+        {% endfor %}
+
+        {{ nombre }}
+    </p>
+{% endblock %}

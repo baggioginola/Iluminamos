@@ -12,6 +12,7 @@ define('PROJECT', 'Github/iluminamos/');
 define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT);
 
 define('FRAMEWORK', __ROOT__ . '/core/framework/');
+define('CLASSES', __ROOT__ . '/core/classes/');
 
 define('__CONTROLLER__', __ROOT__ . '/app/controller/');
 define('__MODEL__', __ROOT__ . '/app/model/');
@@ -21,3 +22,10 @@ define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 
 define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js');
+
+#Database
+define('DBHOST', 'localhost');
+define('DBNAME', 'ilumina_3');
+define('DBUSER', 'root');
+define('DBPASS', '');
+
