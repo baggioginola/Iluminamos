@@ -1,0 +1,40 @@
+
+@page {
+    size: a4 portrait;/* es el valor por defecto */
+    margin: 20mm;
+}
+
+body { width: 100%; max-width: none;  margin: 0 auto; }
+
+
+
+
+/* header menu */
+#header { width: 170mm;  max-width: none; padding-top: 0; margin: 0 auto; }
+
+/* hide elements */
+#info, #lenguageDetail, .modal, .wide-content, .footer { display: none !important; }
+
+#header { display: block; }
+
+/* collapsed wishlist */
+#wishlistDetail.collapsed { display: block; width: 100%;  max-width: none; }
+#wishlistDetail .container { width: 100%; width: 100%;  max-width: none; }
+
+#wishlistDetail { background: #FFF; height: auto; padding: 0; border-bottom: 9px solid #b6b6b5; padding-top: 40px; padding-bottom: 0px;  margin: 0 auto; }
+#wishlistDetail h2 { color: #5a5e5c; font-size: 32px; font-weight: 400; text-align: center; text-transform: uppercase; margin: 0; padding-bottom: 20px; background: #ababab; }
+#wishlistDetail table.wishlistTable { width: 100%; margin: 0 auto; margin-bottom: 10px; }
+#wishlistDetail table.wishlistTable thead { display: none !important; }
+#wishlistDetail table.wishlistTable tbody tr { height: 36px; }
+#wishlistDetail table.wishlistTable tbody tr td.product-name,
+#wishlistDetail table.wishlistTable tbody tr td.product-ref,
+#wishlistDetail table.wishlistTable tbody tr td.product-remove { color: #9fa0a1; font-size: 15px; font-weight: 400; }
+#wishlistDetail table.wishlistTable tbody tr td.product-family 	{ width: 25%; font-size: 15px; font-weight: 400; text-transform: uppercase; }
+#wishlistDetail table.wishlistTable tbody tr td.product-name 		{ width: 45%; color: #9fa0a1; font-size: 15px; font-weight: 400; }
+#wishlistDetail table.wishlistTable tbody tr td.product-ref 		{ width: 30%; color: #9fa0a1; font-size: 15px; font-weight: 400; }
+#wishlistDetail table.wishlistTable tbody tr td.product-remove 	{ width: 0%; display: none; }
+
+
+#wishlistDetail ul.wishlistButtons { display: none !important;  }
+.navbar-toggle { display: none !important; }
+
