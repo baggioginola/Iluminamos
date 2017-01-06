@@ -16363,3 +16363,356 @@ input[type=submit][disabled] {
     background-position: 0 bottom;
 
 }
+
+
+.nav-area .nav-bottom li {
+    float: left;
+    list-style-type: none;
+    height: 39px;
+}
+
+
+/************** Sub Menu Start *************************************/
+.dd-area {
+    width: 100%;
+    height: 170px;
+    /*background: #f0f0f0;*/
+    background: #ffffff;
+    text-align: left;
+    padding: 0px;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+}
+
+.dd-inner {
+    width: 100%;
+    float: left;
+    margin: 0px 0 10px;
+}
+
+.dd-inner .left-area {
+    width: 998px;
+    float: left;
+}
+
+.dd-inner .right-area {
+    width: 276px;
+    float: left;
+    margin-left: 52px;
+}
+
+.dd-inner .right-area a:hover {
+    color: #f5a23f;
+}
+
+.dd-inner .left-area li {
+    float: left;
+    list-style-type: none;
+    margin-right: 0px;
+    margin-bottom: 3px;
+    margin-top: 5px;
+    width: 159px;
+    height: 155px;
+}
+
+.dd-inner .left-area li a {
+    margin: 0;
+    padding: 0;
+    display: inherit;
+    font-family: "SourceSansPro-Light";
+    font-size: 13px;
+    color: #676465;
+    text-transform: capitalize;
+    line-height: 20px;
+    text-align: center;
+}
+
+.dd-inner .left-area li a img {
+    display: block;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.dd-inner .left-area li.no-margin {
+    margin-right: 0;
+}
+
+.dd-inner .left-area .below { /*float:right; list-style-type:none; margin-right:0px; margin-bottom:5px; margin-top:5px;*/
+    background: #f5a23f;
+    float: left;
+}
+
+.dd-inner .left-area .browse-link {
+    font-family: "SourceSansPro-Light";
+    font-weight: bolder;
+    font-size: 13px;
+    color: #fff;
+    float: right;
+    margin: 0;
+    padding: 1px 12px;
+}
+
+.dd-inner .left-area .browse-link:hover {
+    color: #fff;
+}
+
+.dd-inner .right-area span {
+    font-family: "SourceSansPro-Light";
+    font-size: 13px;
+    margin-top: 10px;
+    float: left;
+    width: 100%;
+    color: #676465;
+    line-height: 20px;
+    display: block;
+}
+
+.dd-inner .right-area li {
+    float: left;
+    list-style-type: none;
+    margin-right: 12px;
+    width: 132px;
+    background-color: #ffffff;
+    height: 254px;
+    border: 1px solid transparent;
+    border-top-color: #F0F0F0;
+    box-sizing: border-box;
+}
+
+.dd-inner .right-area li span {
+    margin: 0;
+    margin-top: 7px;
+    padding: 0;
+    display: block;
+    text-align: center;
+    font-family: "SourceSansPro-Light";
+    font-size: 13px;
+    color: #676465;
+    text-transform: capitalize;
+}
+
+.dd-inner .right-area li a {
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+    line-height: normal;
+}
+
+.dd-inner .right-area li a img {
+    display: block;
+    width: 100%;
+}
+
+.dd-inner .right-area li.no-margin {
+    margin-right: 0;
+}
+
+.dd-inner .right-area li:hover {
+    background-color: #ffffff;
+}
+
+.dd-inner .dd-resource-area {
+    float: left;
+    width: 100%;
+}
+
+.dd-inner .dd-resource-area ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.dd-inner .dd-resource-area li {
+    float: left;
+    padding: 0;
+    width: 23.5%;
+    margin: 0 2% 2% 0;
+    background: #FFF;
+    height: 94px;
+    box-sizing: border-box;
+}
+
+.dd-inner .dd-resource-area li div {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.dd-inner .dd-resource-area li:hover {
+    background: #FFF;
+}
+
+.dd-inner .dd-resource-area li.no-margin {
+    margin-right: 0;
+}
+
+.dd-inner .dd-resource-area li a {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: "SourceSansPro-Light";
+    font-size: 16px;
+    color: #4e4d4d;
+    line-height: 20px;
+}
+
+.dd-inner .dd-resource-area li a:hover {
+    color: #f5a23f;
+}
+.wrapper {
+    display: block;
+    width: 998px;
+    min-height: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+/************** Sub Menu End *************************************/
+
+/***** Header Start *****/
+.nav-area {
+    float: right;
+    width: 735px;
+    height: 50px;
+}
+
+.nav-area .nav-top {
+    float: right;
+    text-align: right;
+    margin-top: 12px;
+    font-family: "SourceSansPro-Regular";
+    font-size: 11px;
+    position: relative;
+    z-index: 8;
+}
+
+.nav-area .nav-top a {
+    color: #4e4d4d;
+    font-family: "SourceSansPro-Regular";
+    font-size: 11px;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.nav-area .nav-top a:hover {
+    color: #f5a23f;
+}
+
+/*.nav-area .nav-top a:last-child{margin-right:20px;}*/
+
+.nav-area .nav-top a#my-account-link {
+    display: inline-block;
+    margin: 0;
+    padding: 0 8px;
+    margin-right: 12px;
+}
+
+.nav-area .nav-top a#my-account-link:hover {
+    background: #f6f6f6;
+}
+
+.nav-area .nav-top img {
+    vertical-align: middle;
+}
+
+.nav-area .nav-top #my-account-popup-outer {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-area .nav-top #my-account-popup {
+    display: none;
+    right: -11px;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 999999;
+    background: #f6f6f6;
+    box-sizing: border-box;
+}
+
+.nav-area .nav-top #my-account-popup li:first-child {
+    margin-top: 10px;
+}
+
+.nav-area .nav-top #my-account-popup li {
+    list-style-type: none;
+    text-align: left;
+    height: 23px;
+    line-height: 23px;
+    float: left;
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.nav-area .nav-top #my-account-popup li a {
+    margin: 0;
+}
+
+.nav-area .nav-top #my-account-popup li a:hover {
+    color: #f5a23f;
+}
+
+.nav-area .nav-top .design-corner-special-link {
+    display: none;
+}
+
+.nav-area .nav-top .design-corner-special-link a {
+    font-family: "SourceSansPro-Semibold";
+    color: #f5a23f;
+}
+
+.nav-area .nav-bottom {
+    float: right;
+    margin-top: 15px;
+}
+
+
+
+.nav-area .nav-bottom li a {
+    text-transform: uppercase;
+    font-style: normal;
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    line-height: 39px;
+}
+
+.nav-area .nav-bottom li a:hover {
+    color: #2faf9d;
+}
+
+.nav-area .nav-bottom li.active > a {
+    color: #2faf9d;
+    font-family: "SourceSansPro-Semibold";
+}
+.nav-area .nav-bottom li:hover > a, .nav-area .nav-bottom li:hover > a span {
+    color: #2faf9d;
+}
+
+.nav-area .nav-bottom .left-area li:hover > a > img {
+    border: 1px solid #CCC;
+    box-sizing: border-box;
+}
+
+.nav-area .nav-bottom .right-area li:hover {
+    border: 1px solid #CCC;
+}
+
+.extra-position {
+    position: relative;
+    z-index: 8;
+}
+
+.mobile-wide-menu {
+    display: none;
+}
+
+/************** Header End *************************************/
