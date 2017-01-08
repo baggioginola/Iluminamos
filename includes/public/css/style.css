@@ -6,7 +6,7 @@ body, html {
 }
 
 body {
-    min-width: 640px;
+    /*min-width: 640px;*/
     width: auto !important;
     width: 640px
 }
@@ -2574,6 +2574,8 @@ h4.modal-title {
     height: 100%
 }
 
+
+/*
 @media (min-width: 0px) and (max-width: 767px) {
     .carousel {
         margin-bottom: 35px;
@@ -2611,6 +2613,7 @@ h4.modal-title {
         padding-top: 0;
         padding-bottom: 0
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2749,6 +2752,9 @@ h4.modal-title {
         margin: 0
     }
 }
+*/
+
+
 
 .carousel .bg-carousel {
     background: #000;
@@ -2765,6 +2771,8 @@ h4.modal-title {
     border-bottom: 0
 }
 
+
+/*
 .carousel .carousel-indicators {
     display: none
 }
@@ -2784,6 +2792,7 @@ h4.modal-title {
     font-size: 1px;
     letter-spacing: -1px
 }
+
 
 .carousel .carousel-indicators li {
     display: inline-block;
@@ -2808,6 +2817,7 @@ h4.modal-title {
 .carousel .carousel-indicators li.active {
     background: #d8b622
 }
+*/
 
 .carousel .carousel-indicators-bottom {
     display: block;
@@ -2850,6 +2860,8 @@ h4.modal-title {
     -o-background-size: cover
 }
 
+
+/*
 @media (min-width: 0px) and (max-width: 767px) {
     .carousel .carousel-control {
         width: 56px;
@@ -2900,6 +2912,7 @@ h4.modal-title {
     }
 }
 
+*/
 .carousel .carousel-control .arrowLeft, .carousel .carousel-control .arrowRight {
     display: block;
     height: 54px;
@@ -3008,6 +3021,7 @@ h4.modal-title {
         display: none
     }
 }
+
 
 @media (min-width: 992px) and (max-width: 1199px) {
     #home .arrowsDown {
@@ -16698,8 +16712,9 @@ input[type=submit][disabled] {
 }
 
 .nav-area .nav-bottom .left-area li:hover > a > img {
-    border: 1px solid #CCC;
+    /*border: 1px solid #CCC;
     box-sizing: border-box;
+    */
 }
 
 .nav-area .nav-bottom .right-area li:hover {
@@ -16716,3 +16731,8 @@ input[type=submit][disabled] {
 }
 
 /************** Header End *************************************/
+.fill{
+    height:100%;
+    width:100%;
+    background-position: center;
+}
