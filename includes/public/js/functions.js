@@ -399,15 +399,15 @@ jQuery(document).ready(function(){
 
 
     // open secondary menu on hover
-    jQuery('.localSitesButton a.navbar-toggle, .languageButton a.navbar-toggle, .searchButton a.navbar-toggle').on('mouseover', function(){
+    /*jQuery('.localSitesButton a.navbar-toggle, .languageButton').on('mouseover', function(){
         var thisdiv = jQuery(this).attr("data-target");
         if ( !jQuery(thisdiv).hasClass('in') ) {
             jQuery(this).trigger('click');
         }
     }).on('mouseout', function(){
-        //jQuery(this).trigger('click').blur();
-    });
 
+    });
+*/
     // close secondary menus on hover out
     jQuery("#header").hover(
         function(){

@@ -90,32 +90,32 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li><a href='/category/indoor-lighting/chandeliers'
+                                                    <li><a href=''
                                                            style="font-size:11px;">Chandelier<img
-                                                                    src='includes/public/img/productos/Indoor-Chandelier.jpg'
-                                                                    alt='Chandelier'/></a></li>
-                                                    <li><a href='/category/indoor-lighting/pendants'
+                                                                    src='includes/public/img/productos/7.jpg'
+                                                                    alt='' style="width:116px;"/></a></li>
+                                                    <li><a href=''
                                                            style="font-size:11px;">Pendant<img
-                                                                    src='includes/public/img/productos/Indoor-Pendant.jpg'
-                                                                    alt='Pendant'/></a></li>
-                                                    <li><a href='/category/indoor-lighting/flush-mounts'
+                                                                    src='includes/public/img/productos/8.jpg'
+                                                                    alt='' style="width:116px;"/></a></li>
+                                                    <li><a href=''
                                                            style="font-size:11px;">Flush Mount<img
-                                                                    src='includes/public/img/productos/Indoor-Flash-Mount.jpg'
-                                                                    alt='Flush Mount'/></a></li>
+                                                                    src='includes/public/img/productos/9.jpg'
+                                                                    alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li>
-                                                        <a href='/category/indoor-lighting/indoor-wall-lighting-lanterns'
+                                                        <a href=''
                                                            style="font-size:11px;">Wall<img
-                                                                    src='includes/public/img/productos/Indoor-Wall.jpg'
-                                                                    alt='Wall'/></a></li>
-                                                    <li><a href='/indoor-energy-efficient' style="font-size:11px;">Energy
+                                                                    src='includes/public/img/productos/10.jpg'
+                                                                    alt='Wall' style="width:116px;"/></a></li>
+                                                    <li><a href='' style="font-size:11px;">Energy
                                                             Efficient<img
-                                                                    src='includes/public/img/productos/EnergyEfficient.jpg'
-                                                                    alt='Energy Efficient'/></a></li>
+                                                                    src='includes/public/img/productos/11.jpg'
+                                                                    alt='Energy Efficient' style="width:116px;"/></a></li>
                                                     <li class='no-margin'><a
-                                                                href='/category/indoor-lighting/floor-desk-table-lamps'
+                                                                href=''
                                                                 style="font-size:11px;">Lamp<img
-                                                                    src='includes/public/img/productos/Indoor-Lamp.jpg'
-                                                                    alt='Lamp'/></a></li>
+                                                                    src='includes/public/img/productos/2.jpg'
+                                                                    alt='Lamp' style="width:116px;"/></a></li>
 
                                                 </ul>
                                             </div>
@@ -626,932 +626,6 @@
 
     </div>    <!-- /.container-fluid search-block-v2-->
 
-
-    <script>
-        jQuery(document).ready(function () {
-
-            var windowHeight = jQuery(window).height();
-            jQuery('#search-block-v2 #a-s-results-mobile').attr('data-height', windowHeight);
-
-            jQuery('#search-block-v2').on('shown.bs.collapse', function () {
-                var windowHeight = jQuery(window).height();
-                if (jQuery(window).width() < 992) {
-                    jQuery('#a-s-results-mobile').addClass('in');
-                    var pos = jQuery('#search-block-v2 #a-s-results-mobile').offset();
-                    var divResultsPosition = pos.top;
-                    var newHeight = (windowHeight - divResultsPosition) + 'px';
-                    jQuery('#search-block-v2 #a-s-results-mobile').height(newHeight);
-                }
-            });
-
-            jQuery("input#simple-search-mobile").autocomplete({
-                minLength: 3,
-                appendTo: "#mobile-results-list",
-                position: {my: "right top", at: "right bottom", of: "#mobile-results-list", collision: "none"},
-                source: function (request, response) {
-                    jQuery.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                    console.time('jQuery.getJSON');
-                    jQuery.getJSON('/ledsc4/en/searchSection/0.html', {
-                        term: encodeURI(JSON.stringify(request.term)),
-                        language: '/ledsc4/en',
-                        pathproducts: '/en',
-                        search: 'both'
-                    }, function (data) {
-                        response(data);
-
-                        if (data.length > 0) {
-                            jQuery('#a-s-results-mobile #content-results').text('');
-                            jQuery('#a-s-results-mobile #content-results-products').text('');
-                            jQuery('#a-s-results-mobile #content-results-projects').text('');
-                            jQuery('#a-s-results-mobile #content-results-others').text('');
-
-                            jQuery('#mobile-text-results-all').text('');
-                            jQuery('#mobile-text-results-products').text('');
-                            jQuery('#mobile-text-results-projects').text('');
-                            jQuery('#mobile-text-results-others').text('');
-
-                            var totalProducts = 0;
-                            var totalProjects = 0;
-                            var totalOthers = 0;
-                            var itemsPage = 3;
-                            var counter = 0;
-                            var counterProductsPage = 0;
-                            var counterProjectsPage = 0;
-                            var counterOthersPage = 0;
-
-                            jQuery('#a-s-results-mobile #content-results').prepend('<div class="search-page active">');
-
-                            for (f = 0; f < data.length; f++) {
-
-                                var urltarget = data[f].uuid;
-                                var label = data[f].label;
-                                if (label.length > 50) {
-                                    var label = (label.substring(0, 50)) + '...';
-                                }
-                                var sourceHtml = '';
-
-                                if (urltarget.indexOf('/en') === 0) {
-                                    // is product
-                                    totalProducts = totalProducts + 1;
-                                    counterProductsPage = counterProductsPage + 1;
-
-                                    urltarget = "/ledsc4/en/products/productDetail.html?productUrl=" + urltarget;
-                                    var reference = label.substring(0, label.indexOf(' - ')).toUpperCase();
-                                    var subtitle = label.substring(label.indexOf(' - ') + 3, label.length);
-
-                                    sourceHtml = '<div class="media col-xs-12 col-sm-12 type-product product-item">';
-                                    sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"><img src="/docroot/products/images-small/' + reference + '.jpg" alt="' + label + '"></a>';
-                                    sourceHtml = sourceHtml + '<div class="media-body">';
-                                    sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                    sourceHtml = sourceHtml + '<h4 class="media-heading">' + reference + '</h4>';
-                                    sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                    sourceHtml = sourceHtml + '</a></div></div>';
-
-                                    if (counterProductsPage == 1) {
-                                        if (totalProducts == 1) {
-                                            jQuery('#a-s-results-mobile #content-results-products').prepend('<div class="search-page active">');
-                                        } else {
-                                            jQuery('#a-s-results-mobile #content-results-products').append('<div class="search-page">');
-                                        }
-                                    }
-
-                                    jQuery('#a-s-results-mobile #content-results-products .search-page:last-child').append(sourceHtml);
-
-                                    if (counterProductsPage == itemsPage) {
-                                        jQuery('#a-s-results-mobile #content-results-products').append('</div>');
-                                        counterProductsPage = 0;
-                                    }
-
-                                } else {
-                                    // is website
-                                    urltarget = "" + urltarget;
-                                    if (urltarget.indexOf('/en/projects') > -1) {
-                                        // is projects
-                                        totalProjects = totalProjects + 1;
-                                        counterProjectsPage = counterProjectsPage + 1;
-
-                                        var subtitle = 'project website';
-
-                                        sourceHtml = '<div class="media col-xs-12 col-sm-12">';
-                                        sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"></a>';
-                                        sourceHtml = sourceHtml + '<div class="media-body">';
-                                        sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                        sourceHtml = sourceHtml + '<h4 class="media-heading">' + label + '</h4>';
-                                        sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                        sourceHtml = sourceHtml + '</a></div></div>';
-
-                                        if (counterProjectsPage == 1) {
-                                            if (totalProjects == 1) {
-                                                jQuery('#a-s-results-mobile #content-results-projects').prepend('<div class="search-page active">');
-                                            } else {
-                                                jQuery('#a-s-results-mobile #content-results-projects').append('<div class="search-page">');
-                                            }
-                                        }
-
-                                        jQuery('#a-s-results-mobile #content-results-projects .search-page:last-child').append(sourceHtml);
-
-                                        if (counterProjectsPage == itemsPage) {
-                                            jQuery('#a-s-results-mobile #content-results-projects').append('</div>');
-                                            counterProjectsPage = 0;
-                                        }
-
-                                    } else {
-                                        // is other website
-                                        totalOthers = totalOthers + 1;
-                                        counterOthersPage = counterOthersPage + 1;
-
-                                        var subtitle = 'website';
-
-                                        sourceHtml = '<div class="media col-xs-12 col-sm-12">';
-                                        sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"></a>';
-                                        sourceHtml = sourceHtml + '<div class="media-body">';
-                                        sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                        sourceHtml = sourceHtml + '<h4 class="media-heading">' + label + '</h4>';
-                                        sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                        sourceHtml = sourceHtml + '</a></div></div>';
-
-                                        if (counterOthersPage == 1) {
-                                            if (totalOthers == 1) {
-                                                jQuery('#a-s-results-mobile #content-results-others').prepend('<div class="search-page active">');
-                                            } else {
-                                                jQuery('#a-s-results-mobile #content-results-others').append('<div class="search-page">');
-                                            }
-                                        }
-
-                                        jQuery('#a-s-results-mobile #content-results-others .search-page:last-child').append(sourceHtml);
-
-                                        if (counterOthersPage == itemsPage) {
-                                            jQuery('#a-s-results-mobile #content-results-others').append('</div>');
-                                            counterOthersPage = 0;
-                                        }
-                                    }
-
-                                }
-
-                                jQuery('#a-s-results-mobile #content-results .search-page:last-child').append(sourceHtml);
-                                counter = counter + 1;
-                                if (counter == itemsPage) {
-                                    jQuery('#a-s-results-mobile #content-results').append('</div>');
-                                    if (f < data.length - 1) {
-                                        jQuery('#a-s-results-mobile #content-results').append('<div class="search-page">');
-                                    }
-                                    counter = 0;
-                                }
-                            }
-
-                            if (counter > 0) {
-                                jQuery('#a-s-results-mobile #content-results').append('</div>');
-                            }
-
-                            if (counterProductsPage != 0) {
-                                jQuery('#a-s-results-mobile #content-results-products').append('</div>');
-                            }
-
-                            if (counterProjectsPage != 0) {
-                                jQuery('#a-s-results-mobile #content-results-projects').append('</div>');
-                            }
-
-                            if (counterOthersPage != 0) {
-                                jQuery('#a-s-results-mobile #content-results-others').append('</div>');
-                            }
-
-                            if (data.length > 0) {
-                                jQuery('#mobile-text-results-all').text('all (' + data.length + ')');
-                                jQuery('#mobile-text-results-products').text('products (' + totalProducts + ')');
-                                jQuery('#mobile-text-results-projects').text('projects (' + totalProjects + ')');
-                                jQuery('#mobile-text-results-others').text('others (' + totalOthers + ')');
-                                jQuery('#a-s-results-mobile').addClass('in');
-                            }
-
-                            // select first type results
-                            jQuery('.mobile-container-search-block a.select-type-results:first').click();
-
-                            // calculate pages
-                            var totalPagesAll = jQuery('#content-results .search-page').size();
-                            var totalPagesProducts = jQuery('#content-results-products .search-page').size();
-                            var totalPagesProjects = jQuery('#content-results-projects .search-page').size();
-                            var totalPagesOthers = jQuery('#content-results-others .search-page').size();
-
-
-                            // create pagination all results
-                            jQuery('#pagination-all').off();
-                            jQuery('#pagination-all').empty();
-                            jQuery('#pagination-all').bootpag({
-                                total: totalPagesAll,		// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 3,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                                var newPage = num - 1;
-                                jQuery('#content-results .search-page').removeClass('active');
-                                jQuery('#content-results .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#pagination-all li').removeClass('active');
-                                jQuery('#pagination-all li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#pagination-all li.prev').removeClass('active');
-                                jQuery('#pagination-all li.next').removeClass('active');
-                            });
-
-                            jQuery('#pagination-all ul.pagination li[data-lp=1]:last').addClass('active');
-
-
-                            // create pagination products results
-                            jQuery('#pagination-products').off();
-                            jQuery('#pagination-products').empty();
-                            jQuery('#pagination-products').bootpag({
-                                total: totalPagesProducts,		// total pages
-                                page: 1,							// page to show on start
-                                leaps: false,					// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 3,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-
-                                var newPage = num - 1;
-                                jQuery('#content-results-products .search-page').removeClass('active');
-                                jQuery('#content-results-products .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#pagination-products li').removeClass('active');
-                                jQuery('#pagination-products li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#pagination-products li.prev').removeClass('active');
-                                jQuery('#pagination-products li.next').removeClass('active');
-                            });
-
-                            jQuery('#pagination-products ul.pagination li[data-lp=1]:last').addClass('active');
-
-
-                            // create pagination projects results
-                            jQuery('#pagination-projects').off();
-                            jQuery('#pagination-projects').empty();
-                            jQuery('#pagination-projects').bootpag({
-                                total: totalPagesProjects,	// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 3,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-
-                                var newPage = num - 1;
-                                jQuery('#content-results-projects .search-page').removeClass('active');
-                                jQuery('#content-results-projects .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#pagination-projects li').removeClass('active');
-                                jQuery('#pagination-projects li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#pagination-projects li.prev').removeClass('active');
-                                jQuery('#pagination-projects li.next').removeClass('active');
-                            });
-
-                            jQuery('#pagination-projects ul.pagination li[data-lp=1]:last').addClass('active');
-
-
-                            // create pagination others results
-                            jQuery('#pagination-others').off();
-                            jQuery('#pagination-others').empty();
-                            jQuery('#pagination-others').bootpag({
-                                total: totalPagesOthers,		// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 3,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-
-                                var newPage = num - 1;
-                                jQuery('#content-results-others .search-page').removeClass('active');
-                                jQuery('#content-results-others .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#pagination-others li').removeClass('active');
-                                jQuery('#pagination-others li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#pagination-others li.prev').removeClass('active');
-                                jQuery('#pagination-others li.next').removeClass('active');
-                            });
-
-                            jQuery('#pagination-others ul.pagination li[data-lp=1]:last').addClass('active');
-
-
-                        }	// end has results
-                    });
-                    console.timeEnd('jQuery.getJSON');
-                },
-                select: function (event, ui) {
-                    var page = ui.item.uuid;
-                    if (page.indexOf('/en') === 0) {
-                        // is product
-                        page = "/ledsc4/en/products/productDetail.html?productUrl=" + page;
-                    } else {
-                        // is website
-                        page = "" + ui.item.uuid;
-                    }
-                    jQuery(location).attr("href", page);
-                    //window.open(page);
-                    /*
-                     jQuery.get('/ledsc4/en/searchSection/0.html', { uuid: ui.item.uuid}, function(data) {
-                     jQuery('#ajaxautocomplete').html(data);
-                     }); */
-                    return false;
-                },
-                messages: {
-                    noResults: function () {
-                        jQuery('#mobile-text-results').text('No results found, please try again (minimum 4 characters)');
-                        jQuery('#a-s-results-mobile #content-results').text('');
-                        jQuery('#a-s-results-mobile #content-results-products').text('');
-                        jQuery('#a-s-results-mobile #content-results-projects').text('');
-                        jQuery('#a-s-results-mobile #content-results-others').text('');
-
-                        jQuery('#mobile-text-results-all').text('');
-                        jQuery('#mobile-text-results-products').text('');
-                        jQuery('#mobile-text-results-projects').text('');
-                        jQuery('#mobile-text-results-others').text('');
-
-                    },
-                    results: function () {
-                        var results = jQuery('#ui-id-1 li').size();
-                        jQuery('#simple-search-block .ui-helper-hidden-accessible').text(results + ' results found');
-                        jQuery('#mobile-text-results').text(results + ' results found');
-                        jQuery('#mobile-text-results-all').text('all (' + results + ')');
-                    }
-                }
-
-            });
-
-            // simple search mobile
-            jQuery("input#simple-search-mobile").autocomplete({
-                // when init search
-                search: function (event, ui) {
-                    jQuery('#simple-search-block .ui-helper-hidden-accessible').text('Searching .... please wait');
-                    jQuery('#mobile-text-results').text('Searching .... please wait');
-                }
-            });
-
-            jQuery("input#simple-search-mobile").autocomplete({
-                // when de results list is closed
-                close: function (event, ui) {
-                    jQuery('#simple-search-block .ui-helper-hidden-accessible').text('Indicate your new search (minimum 4 characters)');
-                    jQuery('#mobile-text-results').text('Indicate your new search (minimum 4 characters)');
-                }
-            });
-
-
-            // mobile click clear input button
-            jQuery('#reset-input-button').on('click', function (event) {
-                event.preventDefault();
-
-                jQuery('#simple-search-mobile').attr('placeholder', 'enter word to search ...').val('').focus().blur();
-                jQuery('#a-s-results-mobile').removeClass('in');
-
-                jQuery('#a-s-results-mobile #content-results').text('');
-                jQuery('#a-s-results-mobile #content-results-products').text('');
-                jQuery('#a-s-results-mobile #content-results-projects').text('');
-                jQuery('#a-s-results-mobile #content-results-others').text('');
-
-                jQuery('#mobile-text-results').text('Indicate your new search (minimum 4 characters)');
-                jQuery('#mobile-text-results-all').text('');
-                jQuery('#mobile-text-results-products').text('');
-                jQuery('#mobile-text-results-projects').text('');
-                jQuery('#mobile-text-results-others').text('');
-                return false
-            });
-
-
-            jQuery("input#simplesearch").autocomplete({
-                minLength: 3,
-                appendTo: "#mobile-results-list",
-                position: {my: "right top", at: "right bottom", of: "#mobile-results-list", collision: "none"},
-                source: function (request, response) {
-                    jQuery.ajaxSetup({scriptCharset: "utf-8", contentType: "application/json; charset=utf-8"});
-
-                    console.time('jQuery.getJSON');
-                    jQuery.getJSON('/ledsc4/en/searchSection/0.html', {
-                        term: encodeURI(JSON.stringify(request.term)),
-                        language: '/ledsc4/en',
-                        pathproducts: '/en',
-                        search: 'both'
-                    }, function (data) {
-                        response(data);
-
-                        if (data.length > 0) {
-
-                            jQuery('#desktop-text-results').attr('data-total', data.length);
-                            jQuery('#desktop-text-results').attr('data-word', request.term);
-
-                            jQuery('#a-s-results-desktop #desktop-content-results').text('');
-                            jQuery('#a-s-results-desktop #desktop-content-results-products').text('');
-                            jQuery('#a-s-results-desktop #desktop-content-results-projects').text('');
-                            jQuery('#a-s-results-desktop #desktop-content-results-others').text('');
-
-                            jQuery('#desktop-text-results-all').text('');
-                            jQuery('#desktop-text-results-products').text('');
-                            jQuery('#desktop-text-results-projects').text('');
-                            jQuery('#desktop-text-results-others').text('');
-
-                            var totalProducts = 0;
-                            var totalProjects = 0;
-                            var totalOthers = 0;
-                            var itemsPage = 6;
-                            var counter = 0;
-                            var counterProductsPage = 0;
-                            var counterProjectsPage = 0;
-                            var counterOthersPage = 0;
-
-                            jQuery('#a-s-results-desktop #desktop-content-results').prepend('<div class="search-page active">');
-
-                            for (f = 0; f < data.length; f++) {
-
-                                var urltarget = data[f].uuid;
-                                var label = data[f].label;
-                                var sourceHtml = '';
-
-                                if (urltarget.indexOf('/en') === 0) {
-                                    // is product
-                                    totalProducts = totalProducts + 1;
-                                    counterProductsPage = counterProductsPage + 1;
-
-                                    urltarget = "/ledsc4/en/products/productDetail.html?productUrl=" + urltarget;
-                                    var reference = label.substring(0, label.indexOf(' - ')).toUpperCase();
-                                    var subtitle = label.substring(label.indexOf(' - ') + 3, label.length);
-
-                                    sourceHtml = '<div class="media col-xs-6 col-sm-6 tab-results-search">';
-                                    sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"><img src="/docroot/products/images-small/' + reference + '.jpg" alt="' + label + '"></a>';
-                                    sourceHtml = sourceHtml + '<div class="media-body">';
-                                    sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                    sourceHtml = sourceHtml + '<h4 class="media-heading">' + reference + '</h4>';
-                                    sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                    sourceHtml = sourceHtml + '</a></div></div>';
-
-                                    if (counterProductsPage == 1) {
-                                        if (totalProducts == 1) {
-                                            jQuery('#a-s-results-desktop #desktop-content-results-products').prepend('<div class="search-page active">');
-                                        } else {
-                                            jQuery('#a-s-results-desktop #desktop-content-results-products').append('<div class="search-page">');
-                                        }
-                                    }
-
-                                    jQuery('#a-s-results-desktop #desktop-content-results-products .search-page:last-child').append(sourceHtml);
-
-                                    if (counterProductsPage == itemsPage) {
-                                        jQuery('#a-s-results-desktop #desktop-content-results-products').append('</div>');
-                                        counterProductsPage = 0;
-                                    }
-
-                                } else {
-                                    // is website
-                                    urltarget = "" + urltarget;
-                                    if (urltarget.indexOf('/en/projects') > -1) {
-                                        // is projects
-                                        totalProjects = totalProjects + 1;
-                                        counterProjectsPage = counterProjectsPage + 1;
-
-                                        var subtitle = 'project website';
-
-                                        sourceHtml = '<div class="media col-xs-6 col-sm-6 tab-results-search">';
-                                        sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"></a>';
-                                        sourceHtml = sourceHtml + '<div class="media-body">';
-                                        sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                        sourceHtml = sourceHtml + '<h4 class="media-heading">' + label + '</h4>';
-                                        sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                        sourceHtml = sourceHtml + '</a></div></div>';
-
-                                        if (counterProjectsPage == 1) {
-                                            if (totalProjects == 1) {
-                                                jQuery('#a-s-results-desktop #desktop-content-results-projects').prepend('<div class="search-page active">');
-                                            } else {
-                                                jQuery('#a-s-results-desktop #desktop-content-results-projects').append('<div class="search-page">');
-                                            }
-                                        }
-
-                                        jQuery('#a-s-results-desktop #desktop-content-results-projects .search-page:last-child').append(sourceHtml);
-
-                                        if (counterProjectsPage == itemsPage) {
-                                            jQuery('#a-s-results-desktop #desktop-content-results-projects').append('</div>');
-                                            counterProjectsPage = 0;
-                                        }
-
-                                    } else {
-                                        // is other website
-                                        totalOthers = totalOthers + 1;
-                                        counterOthersPage = counterOthersPage + 1;
-
-                                        var subtitle = 'website';
-
-                                        sourceHtml = '<div class="media col-xs-6 col-sm-6 tab-results-search">';
-                                        sourceHtml = sourceHtml + '<a class="media-left media-middle" href="' + urltarget + '" target="_blank"></a>';
-                                        sourceHtml = sourceHtml + '<div class="media-body">';
-                                        sourceHtml = sourceHtml + '<a href="' + urltarget + '" target="_blank">';
-                                        sourceHtml = sourceHtml + '<h4 class="media-heading">' + label + '</h4>';
-                                        sourceHtml = sourceHtml + '<p>' + subtitle + '</p>';
-                                        sourceHtml = sourceHtml + '</a></div></div>';
-
-                                        if (counterOthersPage == 1) {
-                                            if (totalOthers == 1) {
-                                                jQuery('#a-s-results-desktop #desktop-content-results-others').prepend('<div class="search-page active">');
-                                            } else {
-                                                jQuery('#a-s-results-desktop #desktop-content-results-others').append('<div class="search-page">');
-                                            }
-                                        }
-
-                                        jQuery('#a-s-results-desktop #desktop-content-results-others .search-page:last-child').append(sourceHtml);
-
-                                        if (counterOthersPage == itemsPage) {
-                                            jQuery('#a-s-results-desktop #desktop-content-results-others').append('</div>');
-                                            counterOthersPage = 0;
-                                        }
-                                    }
-
-                                }
-
-                                jQuery('#a-s-results-desktop #desktop-content-results .search-page:last-child').append(sourceHtml);
-                                counter = counter + 1;
-                                if (counter == itemsPage) {
-                                    jQuery('#a-s-results-desktop #desktop-content-results').append('</div>');
-                                    if (f < data.length - 1) {
-                                        jQuery('#a-s-results-desktop #desktop-content-results').append('<div class="search-page">');
-                                    }
-                                    counter = 0;
-                                }
-                            }	// end for
-
-                            if (counter > 0) {
-                                jQuery('#a-s-results-desktop #desktop-content-results').append('</div>');
-                            }
-
-                            if (counterProductsPage != 0) {
-                                jQuery('#a-s-results-desktop #desktop-content-results-products').append('</div>');
-                            }
-
-                            if (counterProjectsPage != 0) {
-                                jQuery('#a-s-results-desktop #desktop-content-results-projects').append('</div>');
-                            }
-
-                            if (counterOthersPage != 0) {
-                                jQuery('#a-s-results-desktop #desktop-content-results-others').append('</div>');
-                            }
-
-                            if (data.length > 0) {
-                                jQuery('#desktop-text-results-all').text('all (' + data.length + ')');
-                                jQuery('#desktop-text-results-products').text('products (' + totalProducts + ')');
-                                jQuery('#desktop-text-results-projects').text('projects (' + totalProjects + ')');
-                                jQuery('#desktop-text-results-others').text('others (' + totalOthers + ')');
-                                jQuery('#a-s-results-desktop').addClass('in');
-                            }
-
-                            jQuery('.desktop-container-search-block a.select-type-results:first').click();
-
-                            // calculate pages
-                            var totalPagesAll = jQuery('#desktop-content-results .search-page').size();
-                            var totalPagesProducts = jQuery('#desktop-content-results-products .search-page').size();
-                            var totalPagesProjects = jQuery('#desktop-content-results-projects .search-page').size();
-                            var totalPagesOthers = jQuery('#desktop-content-results-others .search-page').size();
-
-                            // calculate position
-                            var windowHeight = jQuery(window).height();
-                            var pos = jQuery('#search-block-v2 #a-s-results-desktop').offset();
-                            var divResultsPosition = pos.top;
-                            var newHeight = (windowHeight - divResultsPosition) + 'px';
-                            jQuery('#search-block-v2 #a-s-results-desktop').height(newHeight);
-
-
-                            // create pagination all results
-                            jQuery('#desktop-pagination-all').off();
-                            jQuery('#desktop-pagination-all').empty();
-                            jQuery('#desktop-pagination-all').bootpag({
-                                total: totalPagesAll,	// total pages
-                                page: 1,					// page to show on start
-                                leaps: false,			// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 5,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                                var newPage = num - 1;
-                                jQuery('#desktop-content-results .search-page').removeClass('active');
-                                jQuery('#desktop-content-results .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#desktop-pagination-all li').removeClass('active');
-                                jQuery('#desktop-pagination-all li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#desktop-pagination-all li.prev').removeClass('active');
-                                jQuery('#desktop-pagination-all li.next').removeClass('active');
-                            });
-
-                            jQuery('#desktop-pagination-all ul.pagination li[data-lp=1]:last').addClass('active');
-
-                            // create pagination products results
-                            jQuery('#desktop-pagination-products').off();
-                            jQuery('#desktop-pagination-products').empty();
-                            jQuery('#desktop-pagination-products').bootpag({
-                                total: totalPagesProducts,	// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 5,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                                var newPage = num - 1;
-                                jQuery('#desktop-content-results-products .search-page').removeClass('active');
-                                jQuery('#desktop-content-results-products .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#desktop-pagination-products li').removeClass('active');
-                                jQuery('#desktop-pagination-products li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#desktop-pagination-products li.prev').removeClass('active');
-                                jQuery('#desktop-pagination-products li.next').removeClass('active');
-                            });
-
-                            jQuery('#desktop-pagination-products ul.pagination li[data-lp=1]:last').addClass('active');
-
-                            // create pagination projects results
-                            jQuery('#desktop-pagination-projects').off();
-                            jQuery('#desktop-pagination-projects').empty();
-                            jQuery('#desktop-pagination-projects').bootpag({
-                                total: totalPagesProjects,	// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 5,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                                var newPage = num - 1;
-                                jQuery('#desktop-content-results-projects .search-page').removeClass('active');
-                                jQuery('#desktop-content-results-projects .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#desktop-pagination-projects li').removeClass('active');
-                                jQuery('#desktop-pagination-projects li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#desktop-pagination-projects li.prev').removeClass('active');
-                                jQuery('#desktop-pagination-projects li.next').removeClass('active');
-                            });
-
-                            jQuery('#desktop-pagination-projects ul.pagination li[data-lp=1]:last').addClass('active');
-
-                            // create pagination others results
-                            jQuery('#desktop-pagination-others').off();
-                            jQuery('#desktop-pagination-others').empty();
-                            jQuery('#desktop-pagination-others').bootpag({
-                                total: totalPagesOthers,		// total pages
-                                page: 1,						// page to show on start
-                                leaps: false,				// next/prev buttons move over one page or maximum visible pages
-                                maxVisible: 5,
-                                activeClass: 'active',
-                            }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                                var newPage = num - 1;
-                                jQuery('#desktop-content-results-others .search-page').removeClass('active');
-                                jQuery('#desktop-content-results-others .search-page:eq(' + newPage + ')').addClass('active');
-                                // update item pagination
-                                jQuery('#desktop-pagination-others li').removeClass('active');
-                                jQuery('#desktop-pagination-others li[data-lp=' + num + ']').addClass('active');
-                                jQuery('#desktop-pagination-others li.prev').removeClass('active');
-                                jQuery('#desktop-pagination-others li.next').removeClass('active');
-                            });
-
-                            jQuery('#desktop-pagination-others ul.pagination li[data-lp=1]:last').addClass('active');
-
-                        }	// end has results
-
-                    });
-                    console.timeEnd('jQuery.getJSON');
-                },
-                select: function (event, ui) {
-                    var page = ui.item.uuid;
-                    if (page.indexOf('/en') === 0) {
-                        // is product
-                        page = "/ledsc4/en/products/productDetail.html?productUrl=" + page;
-                    } else {
-                        // is website
-                        page = "" + ui.item.uuid;
-                    }
-                    jQuery(location).attr("href", page);
-                    //window.open(page);
-                    /*
-                     jQuery.get('/ledsc4/en/searchSection/0.html', { uuid: ui.item.uuid}, function(data) {
-                     jQuery('#ajaxautocomplete').html(data);
-                     }); */
-                    return false;
-                },
-                messages: {
-                    noResults: function () {
-                        jQuery('#desktop-text-results').text('No results found, please try again (minimum 4 characters)');
-                        jQuery('#a-s-results-desktop #desktop-content-results').text('');
-                        jQuery('#a-s-results-desktop #desktop-content-results-products').text('');
-                        jQuery('#a-s-results-desktop #desktop-content-results-projects').text('');
-                        jQuery('#a-s-results-desktop #desktop-content-results-others').text('');
-
-                        jQuery('#desktop-text-results-all').text('');
-                        jQuery('#desktop-text-results-products').text('');
-                        jQuery('#desktop-text-results-projects').text('');
-                        jQuery('#desktop-text-results-others').text('');
-                    },
-                    results: function (count) {
-                        var results = count;
-                        var wordToSearch = jQuery('#desktop-text-results').attr('data-word');
-                        jQuery('#simple-search-block .ui-helper-hidden-accessible').text(results + ' results found');
-                        jQuery('#desktop-text-results').text(results + ' results found');
-                        jQuery('#desktop-text-results-all').text('all (' + results + ')');
-                    }
-                }
-
-            });
-
-            // simple search
-            jQuery("input#simplesearch").autocomplete({
-                // when init search
-                search: function (event, ui) {
-                    jQuery('#simple-search-block .ui-helper-hidden-accessible').text('Searching .... please wait');
-                    jQuery('#desktop-text-results').text('Searching .... please wait');
-                }
-            });
-
-
-            jQuery("input#simplesearch").autocomplete({
-                // when de results list is closed
-                close: function (event, ui) {
-                    jQuery('#simple-search-block .ui-helper-hidden-accessible').text('Indicate your new search (minimum 4 characters)');
-                    jQuery('#desktop-text-results').text('Indicate your new search (minimum 4 characters)');
-                }
-            });
-
-
-            // advanced search reference
-
-            jQuery('#advanced-search-block').on('shown.bs.collapse', function () {
-                var windowHeight = jQuery(window).height();
-                if (jQuery(window).width() > 991) {
-                    jQuery('#a-s-results-desktop').removeClass('in');
-                    jQuery('#a-s-results').addClass('in');
-                    var pos = jQuery('#a-s-results').offset();
-                    var divResultsPosition = pos.top;
-                    var newHeight = (windowHeight - divResultsPosition) + 'px';
-                    jQuery('#a-s-results').height(newHeight);
-                }
-            });
-
-            jQuery("input#reference").autocomplete({
-                // when init search
-                search: function (event, ui) {
-                    jQuery('#advanced-search-block .ui-helper-hidden-accessible').text('Searching .... please wait');
-                    jQuery('#desktop-text-results').text('Searching .... please wait');
-                }
-            });
-
-            jQuery("input#reference").autocomplete({
-                // when de results list is closed
-                close: function (event, ui) {
-                    jQuery('#advanced-search-block .ui-helper-hidden-accessible').text('Indicate your new search (minimum 4 characters)');
-                    jQuery('#desktop-text-results').text('Indicate your new search (minimum 4 characters)');
-                }
-            });
-
-            jQuery("input#reference").autocomplete({
-                minLength: 3,
-                appendTo: "#mobile-results-list",
-                position: {my: "right top", at: "right bottom", collision: "none"},
-                source: function (request, response) {
-                    var filtervalues = updateFilterAdvancedSearch();
-                    console.log('filters = ' + filtervalues);
-                    jQuery.getJSON('/ledsc4/en/searchSection/0.html', {
-                        term: request.term,
-                        pathproducts: '/en',
-                        search: 'product',
-                        filters: filtervalues
-                    }, function (data) {
-                        response(data);
-                    });
-                },
-                select: function (event, ui) {
-                    var page = ui.item.uuid;
-                    if (page.indexOf('/en') === 0) {
-                        // is product
-                        page = "/ledsc4/en/products/productDetail.html?productUrl=" + page;
-                    }
-
-                    jQuery(location).attr("href", page);
-
-                    return false;
-                },
-                messages: {
-                    noResults: 'No results found, please try again (minimum 4 characters)',
-                    results: function () {
-                        var results = jQuery('#ui-id-2 li').size();
-                        jQuery('#advanced-search-block .ui-helper-hidden-accessible').text(results + ' results found');
-                        jQuery('#desktop-text-results').text(results + ' results found');
-                    }
-                }
-            });
-
-            jQuery('#series').on('change', function () {
-                console.log(this.value); // or $(this).val()
-                var filtervalues = updateFilterAdvancedSearch();
-                jQuery.get('/ledsc4/en/searchSection/0.html', {
-                        actionParam: 'getproductsserie',
-                        serie: this.value,
-                        filters: filtervalues
-                    },
-                    function (data, status) {
-                        jQuery('#a-s-results .container .row .media-results').text('');
-                        jQuery('#a-s-results .container .row .media-results').append(data);
-                        jQuery('#a-s-results').addClass('in');
-
-                        var desktopAdvancedTotalPagesAll = jQuery('#a-s-results .media-results .search-page').size();
-
-                        jQuery('#a-s-pagination-all').off();
-                        jQuery('#a-s-pagination-all').empty();
-                        // desktop create pagination all results
-                        jQuery('#a-s-pagination-all').bootpag({
-                            total: desktopAdvancedTotalPagesAll,		// total pages
-                            page: 1,									// page to show on start
-                            leaps: false,								// next/prev buttons move over one page or maximum visible pages
-                            first: 'prime',
-                            last: 'ultima',
-                            maxVisible: 5,
-                            activeClass: 'active',
-                            lastClass: 'last',
-                            firstClass: 'first'
-                        }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                            var newPage = num - 1;
-                            jQuery('#a-s-results .media-results .search-page').removeClass('active');
-                            jQuery('#a-s-results .media-results .search-page:eq(' + newPage + ')').addClass('active');
-                            // update item pagination
-                            jQuery('#a-s-pagination-all li').removeClass('active');
-                            jQuery('#a-s-pagination-all li[data-lp=' + num + ']').addClass('active');
-                            jQuery('#a-s-pagination-all li.prev').removeClass('active');
-                            jQuery('#a-s-pagination-all li.next').removeClass('active');
-                        });
-
-                        jQuery('#a-s-pagination-all ul.pagination li[data-lp=1]:last').addClass('active');
-
-                        // update results message
-                        var results = jQuery('#a-s-results .container .row .media-results .media').size();
-                        jQuery('#desktop-text-results').text(results + ' results found');
-
-                    }
-                );
-            });
-
-            jQuery('#advanced-search-block li.options-list a').on('click', function (event) {
-                event.preventDefault();
-                var idParent = jQuery(this).parent('li').parent('ul').parent('.col-md-12').parent('.row').parent('.container').parent().attr('id');
-                jQuery('#' + idParent + ' li.options-list').removeClass('active');
-                jQuery(this).parent('li').addClass('active');
-
-                var filtervalues = updateFilterAdvancedSearch();
-                jQuery.get('/ledsc4/en/searchSection/0.html', {
-                        actionParam: 'getproductsserie',
-                        serie: this.value,
-                        filters: filtervalues
-                    },
-                    function (data, status) {
-                        jQuery('#a-s-results .container .row .media-results').text('');
-                        jQuery('#a-s-results .container .row .media-results').append(data);
-                        jQuery('#a-s-results').addClass('in');
-
-                        // desktop advanced calculate pages
-                        var desktopAdvancedTotalPagesAll = jQuery('#a-s-results .media-results .search-page').size();
-
-                        jQuery('#a-s-pagination-all').off();
-                        jQuery('#a-s-pagination-all').empty();
-                        // desktop create pagination all results
-                        jQuery('#a-s-pagination-all').bootpag({
-                            total: desktopAdvancedTotalPagesAll,		// total pages
-                            page: 1,									// page to show on start
-                            leaps: false,								// next/prev buttons move over one page or maximum visible pages
-                            first: 'prime',
-                            last: 'ulti',
-                            maxVisible: 5,
-                            activeClass: 'active',
-                            lastClass: 'last',
-                            firstClass: 'first'
-                        }).on('page', function (event, num) { // event: on page click, num: page number clicked
-                            var newPage = num - 1;
-                            jQuery('#a-s-results .media-results .search-page').removeClass('active');
-                            jQuery('#a-s-results .media-results .search-page:eq(' + newPage + ')').addClass('active');
-                            // update item pagination
-                            jQuery('#a-s-pagination-all li').removeClass('active');
-                            jQuery('#a-s-pagination-all li[data-lp=' + num + ']').addClass('active');
-                            jQuery('#a-s-pagination-all li.prev').removeClass('active');
-                            jQuery('#a-s-pagination-all li.next').removeClass('active');
-                        });
-
-                        jQuery('#a-s-pagination-all ul.pagination li[data-lp=1]:last').addClass('active');
-
-                        // update results message
-                        var results = jQuery('#a-s-results .container .row .media-results .media').size();
-                        jQuery('#desktop-text-results').text(results + ' results found');
-                    }
-                );
-
-                return false
-            });
-
-            function updateFilterAdvancedSearch() {
-                var filters = "";
-                var seriesValue = jQuery('select[name=series]').val();
-                filters = filters + "/series::" + seriesValue + "/-";
-                jQuery('#advanced-search-block .advanced-search-selector').each(function (index) {
-                    //var filtername = jQuery(this).text();
-                    var filtername = jQuery(this).attr('filtername');
-                    var targetSelector = jQuery(this).attr('data-target');
-                    var filtervalue = jQuery(targetSelector + ' li.options-list.active a').attr('ref');
-                    filters = filters + "/" + filtername + "::" + filtervalue + "/-";
-                });
-                return filters;
-            }
-
-        });
-    </script>
-
-
 </div>    <!-- /header -->
 
 
@@ -1599,21 +673,24 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background: transparent url('includes/public/img/banner/1.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
+                <div class="fill"
+                     style="background: transparent url('includes/public/img/banner/1.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
                 <div class="carousel-caption">
                     <h2>Caption 1</h2>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background: transparent url('includes/public/img/banner/2.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
+                <div class="fill"
+                     style="background: transparent url('includes/public/img/banner/2.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
                 <div class="carousel-caption">
                     <h2>Caption 2</h2>
                 </div>
             </div>
             <div class="item">
                 <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background: transparent url('includes/public/img/banner/3.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
+                <div class="fill"
+                     style="background: transparent url('includes/public/img/banner/3.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
                 <div class="carousel-caption">
                     <h2>Caption 3</h2>
                 </div>
@@ -1632,747 +709,271 @@
 
     </div>
 
-    <!-- section highlights -->
     <div id="section_2" class="container highlights-new">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <h2 class="highlightsTitle">Highlights</h2>
-
+                <h2 class="highlightsTitle">Destacados</h2>
 
                 <div class="row">
-
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
 
                         <!-- descktop content -->
                         <div class="item-highlights-new">
-                            <a href="/ledsc4/en/leds-c4/news/news-detail-30.html">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
                                 <div class="content-image">
                                     <img class="img-responsive center-block"
-                                         src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
-                                         alt="Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I hotel"
-                                         title="Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I hotel"/>
+                                         src="includes/public/img/productos/1.jpg"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
                                 </div>
-                                <div class="content-title">
-                                    <h3>Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I
-                                        hotel</h3>
-                                </div>
+
+
                             </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Tnm Dona</a>
+                            </span>
+
+
                         </div>
 
                         <!-- mobile content -->
                         <div class="hl-item_block active">
 
                             <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
-                                 alt="Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I hotel"
-                                 title="Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I hotel"/>
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
                             <div class="hl_item_text">
                                 <div class="ht_item_title">
-                                    <h3>Participation of LEDS-C4 in the renovation of FAIRMONT REY JUAN CARLOS I
-                                        hotel</h3>
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
 
                                 </div>
-                                <p class="readMore"><a href="/ledsc4/en/leds-c4/news/news-detail-30.html">Read More</a>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
                                 </p>
                             </div>    <!-- hl_item_text -->
                         </div>    <!-- /hl-item_block  -->
 
-                    </div>    <!-- /col item news-events -->
-
+                    </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
 
                         <!-- descktop content -->
                         <div class="item-highlights-new">
-                            <a href="/ledsc4/en/leds-c4/news/news-detail-23.html">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
                                 <div class="content-image">
                                     <img class="img-responsive center-block"
-                                         src="/dam/ledsc4/ledsc4/news/fotos-ok/THANK_YOU_LIGHT_16_3.jpg"
-                                         alt="THANK YOU EVERYONE FOR MAKING IT POSSIBLE!"
-                                         title="THANK YOU EVERYONE FOR MAKING IT POSSIBLE!"/>
+                                         src="includes/public/img/productos/2.jpg"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
                                 </div>
-                                <div class="content-title">
-                                    <h3>Join there the aftermovie of our #INVISIBLEDAY</h3>
-                                </div>
+
+
                             </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Ttt 2</a>
+                            </span>
+
                         </div>
 
                         <!-- mobile content -->
-                        <div class="hl-item_block">
+                        <div class="hl-item_block active">
 
-                            <img class="img-responsive center-block"
-                                 src="/dam/ledsc4/ledsc4/news/fotos-ok/THANK_YOU_LIGHT_16_3.jpg"
-                                 alt="THANK YOU EVERYONE FOR MAKING IT POSSIBLE!"
-                                 title="THANK YOU EVERYONE FOR MAKING IT POSSIBLE!"/>
+                            <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
                             <div class="hl_item_text">
                                 <div class="ht_item_title">
-                                    <h3>Join there the aftermovie of our #INVISIBLEDAY</h3>
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
 
                                 </div>
-                                <p class="readMore"><a href="/ledsc4/en/leds-c4/news/news-detail-23.html">Read More</a>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
                                 </p>
                             </div>    <!-- hl_item_text -->
                         </div>    <!-- /hl-item_block  -->
 
-                    </div>    <!-- /col item news-events -->
-
+                    </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
 
                         <!-- descktop content -->
                         <div class="item-highlights-new">
-                            <a href="/ledsc4/en/leds-c4/news/news-detail-20.html">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
                                 <div class="content-image">
                                     <img class="img-responsive center-block"
-                                         src="/dam/ledsc4/ledsc4/news/fotos-ok/invisible_german_design.jpg"
-                                         alt="LEDS-C4 distinguished with the “German Design Award 2016”"
-                                         title="LEDS-C4 distinguished with the “German Design Award 2016”"/>
+                                         src="includes/public/img/productos/3.jpg"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
                                 </div>
-                                <div class="content-title">
-                                    <h3>LEDS-C4 distinguished with the “German Design Award 2016”</h3>
-                                </div>
+
+
                             </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
+                            </span>
+
+
                         </div>
 
                         <!-- mobile content -->
-                        <div class="hl-item_block">
+                        <div class="hl-item_block active">
 
-                            <img class="img-responsive center-block"
-                                 src="/dam/ledsc4/ledsc4/news/fotos-ok/invisible_german_design.jpg"
-                                 alt="LEDS-C4 distinguished with the “German Design Award 2016”"
-                                 title="LEDS-C4 distinguished with the “German Design Award 2016”"/>
+                            <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
                             <div class="hl_item_text">
                                 <div class="ht_item_title">
-                                    <h3>LEDS-C4 distinguished with the “German Design Award 2016”</h3>
-                                    <p>- Over 1,000 Guests Gather at the Prize-Giving Ceremony.<br/>
-                                        - INVISIBLE from GROK by LEDS-C4, Awarded in the Excellent Product Design
-                                        Category.<br/>
-                                        - The &ldquo;German Design Award Personality 2016&rdquo; is for Mr. Konstantin
-                                        Grcic.</p>
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
 
                                 </div>
-                                <p class="readMore"><a href="/ledsc4/en/leds-c4/news/news-detail-20.html">Read More</a>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
                                 </p>
                             </div>    <!-- hl_item_text -->
                         </div>    <!-- /hl-item_block  -->
 
-                    </div>    <!-- /col item news-events -->
+                    </div>
 
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
+
+                        <!-- descktop content -->
+                        <div class="item-highlights-new">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
+                                <div class="content-image">
+                                    <img class="img-responsive center-block"
+                                         src="includes/public/img/productos/4.jpg"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
+                                </div>
+
+
+                            </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
+                            </span>
+
+
+                        </div>
+
+                        <!-- mobile content -->
+                        <div class="hl-item_block active">
+
+                            <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
+                            <div class="hl_item_text">
+                                <div class="ht_item_title">
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
+
+                                </div>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
+                                </p>
+                            </div>    <!-- hl_item_text -->
+                        </div>    <!-- /hl-item_block  -->
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
+
+                        <!-- descktop content -->
+                        <div class="item-highlights-new">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
+                                <div class="content-image">
+                                    <img class="img-responsive center-block"
+                                         src="includes/public/img/productos/5.jpg"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
+                                </div>
+
+
+                            </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
+                            </span>
+
+
+                        </div>
+
+                        <!-- mobile content -->
+                        <div class="hl-item_block active">
+
+                            <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
+                            <div class="hl_item_text">
+                                <div class="ht_item_title">
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
+
+                                </div>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
+                                </p>
+                            </div>    <!-- hl_item_text -->
+                        </div>    <!-- /hl-item_block  -->
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
+
+                        <!-- descktop content -->
+                        <div class="item-highlights-new">
+                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
+                                <div class="content-image">
+                                    <img class="img-responsive center-block"
+                                         src="includes/public/img/productos/6.png"
+                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                         style="height: 225px;">
+                                </div>
+
+
+                            </a>
+                            <span class="product-name">
+									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
+                            </span>
+
+
+                        </div>
+
+                        <!-- mobile content -->
+                        <div class="hl-item_block active">
+
+                            <img class="img-responsive center-block" src="/dam/ledsc4/newsletters/2016-06/jc_home.jpg"
+                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
+                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I">
+                            <div class="hl_item_text">
+                                <div class="ht_item_title">
+                                    <h3>LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I</h3>
+
+                                </div>
+                                <p class="readMore"><a href="/ledsc4/es/leds-c4/news/news-detail-29.html">Leer más</a>
+                                </p>
+                            </div>    <!-- hl_item_text -->
+                        </div>    <!-- /hl-item_block  -->
+
+                    </div>
 
                 </div>    <!-- /row -->
 
                 <div class="hl_control_mobile">
                     <ol class="hl-indicators">
-                        <li hl-data-target='#section_2' hl-data-slide-to='0' class='active'></li>
-                        <li hl-data-target='#section_2' hl-data-slide-to='1'></li>
-                        <li hl-data-target='#section_2' hl-data-slide-to='2'></li>
+                        <li hl-data-target="#section_2" hl-data-slide-to="0" class="active"></li>
+                        <li hl-data-target="#section_2" hl-data-slide-to="1"></li>
+                        <li hl-data-target="#section_2" hl-data-slide-to="2"></li>
                     </ol>
                 </div>    <!-- /hl_control_mobile -->
 
 
             </div>    <!-- /col -->
         </div>    <!-- /row -->
-    </div>    <!-- /.container highlights-new -->
-
-
-    <!-- section photo and text bar -->
-    <div id="section_3" class="separatorPhoto"
-         style="@media (min-width: 992px) { height: 305px;}; background: url(/dam/ledsc4/home/pharall/paralax.jpg) no-repeat fixed center top; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: fixed;">
-
-
-        <div class="container blockTextRightBottom">
-            <div class="row">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-8 col-lg-4 col-lg-offset-8">
-
-
-                            <h3>over 3.500 lighting solutions</h3>
-                        </div>
-
-                    </div>    <!-- /row -->
-                </div>    <!-- /container -->
-            </div>    <!-- /row -->
-        </div>    <!-- /container-fluid -->
-    </div>    <!-- /section -->
-
-    <!-- section products -->
-    <div id="section_4" class="container products">
-        <div class="row">
-
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="product_item center-block"
-                     style="background: url('/dam/ledsc4/home/family-products/products_family_Technical.jpg') no-repeat center top;">
-
-                    <div class="product_item_bg" style="background: #94a1b6;"><!-- bg opacity --></div>
-
-                    <div class="product_item_bgNoTrans">
-
-                        <div class="product_item_title">
-                            <a href="/ledsc4/en/products.html?type=/technical"><h3>technical</h3></a>
-
-                            <!-- button menu -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target="#productMenu_1">
-                                <span class="mobile-only">Menu</span>
-                            </button>
-                        </div>
-
-
-                        <div class="product_menu collapse" id="productMenu_1">
-
-                            <div class="product_item_bg" style="background: #94a1b6;"><!-- bg opacity --></div>
-
-                            <div class="product_item_families">
-                                <ul>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/lineal-systems">lineal
-                                            systems</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/spotlight-led">spotlight
-                                            led</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/downlights">downlights</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/accessory">accessory</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/tracks">tracks</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/ceiling-fixture">ceiling
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/ledstrips">ledstrips</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/downlights">downlights</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/recessed">recessed</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/suspended">suspended</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/signal">signal</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/surface">surface</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/spotlight">spotlight</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/technical/spotlights">spotlights</a>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="product_item_share">
-
-
-                                <p class="readMore">
-                                    <a href="/ledsc4/en/products.html?family=technical">Watch technical Products</a>
-                                </p>
-
-                                <div class="shareProductsLinks">
-                                    <p class="shareTitle">Share</p>
-                                    <p class="shareList">
-
-                                        <a href="#"
-                                           onclick="postToFeed('http://leds-c4.com/ledsc4/en/products.html/?family=technical', 'http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Technical.jpg', 'Leds-C4', 'Watch Technical Products', '' ); return false;">FACEBOOK</a>
-                                        &nbsp;/&nbsp; <a href="#"
-                                                         onclick="popup_share('https://twitter.com/share?text=Watch Technical Products&url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dtechnical',550,450)">TWITTER</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="https://plus.google.com/share?url=http://leds-c4.com/ledsc4/en/products.html/?family=technical"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">GOOGLE+</a>
-                                    </p>
-                                    <p class="shareList">
-
-                                        <a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dtechnical&media=http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Technical.jpg&description='Watch Technical Products"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Pinterest</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="javascript:void(window.open('http://www.linkedin.com/shareArticle?url='+encodeURIComponent(location),'','width=600,height=400,left=50,top=50'));">Linkedin</a>
-
-                                    </p>    <!-- /shareList -->
-                                </div>
-                            </div>
-
-                        </div>    <!-- /product_menu -->
-
-                    </div>    <!-- /product_item_bgNoTrans -->
-
-                </div>    <!-- /item -->
-
-            </div>    <!-- /col  -->
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="product_item center-block"
-                     style="background: url('/dam/ledsc4/home/family-products/products_family_Decorative.jpg') no-repeat center top;">
-
-                    <div class="product_item_bg" style="background: #a395a4;"><!-- bg opacity --></div>
-
-                    <div class="product_item_bgNoTrans">
-
-                        <div class="product_item_title">
-                            <a href="/ledsc4/en/products.html?type=/decorative"><h3>decorative</h3></a>
-
-                            <!-- button menu -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target="#productMenu_2">
-                                <span class="mobile-only">Menu</span>
-                            </button>
-                        </div>
-
-
-                        <div class="product_menu collapse" id="productMenu_2">
-
-                            <div class="product_item_bg" style="background: #a395a4;"><!-- bg opacity --></div>
-
-                            <div class="product_item_families">
-                                <ul>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/ceiling">ceiling</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/pendant">pendant</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/wall-fixture">wall
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/bath">bath</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/collection">collection</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/ceiling-fixture">ceiling
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/ceiling-fans">ceiling
-                                            fans</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/floor-lamp">floor lamp</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/table-lamp">table lamp</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/accessory">accessory</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/downlights">downlights</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/decorative/mirror">mirror</a></li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="product_item_share">
-
-
-                                <p class="readMore">
-                                    <a href="/ledsc4/en/products.html?family=decorative">Watch decorative Products</a>
-                                </p>
-
-                                <div class="shareProductsLinks">
-                                    <p class="shareTitle">Share</p>
-                                    <p class="shareList">
-
-                                        <a href="#"
-                                           onclick="postToFeed('http://leds-c4.com/ledsc4/en/products.html/?family=decorative', 'http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Decorative.jpg', 'Leds-C4', 'Watch Decorative Products', '' ); return false;">FACEBOOK</a>
-                                        &nbsp;/&nbsp; <a href="#"
-                                                         onclick="popup_share('https://twitter.com/share?text=Watch Decorative Products&url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Ddecorative',550,450)">TWITTER</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="https://plus.google.com/share?url=http://leds-c4.com/ledsc4/en/products.html/?family=decorative"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">GOOGLE+</a>
-                                    </p>
-                                    <p class="shareList">
-
-                                        <a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Ddecorative&media=http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Decorative.jpg&description='Watch Decorative Products"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Pinterest</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="javascript:void(window.open('http://www.linkedin.com/shareArticle?url='+encodeURIComponent(location),'','width=600,height=400,left=50,top=50'));">Linkedin</a>
-
-                                    </p>    <!-- /shareList -->
-                                </div>
-                            </div>
-
-                        </div>    <!-- /product_menu -->
-
-                    </div>    <!-- /product_item_bgNoTrans -->
-
-                </div>    <!-- /item -->
-
-            </div>    <!-- /col  -->
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="product_item center-block"
-                     style="background: url('/dam/ledsc4/home/family-products/products_family_Outdoor.jpg') no-repeat center top;">
-
-                    <div class="product_item_bg" style="background: #aeab6e;"><!-- bg opacity --></div>
-
-                    <div class="product_item_bgNoTrans">
-
-                        <div class="product_item_title">
-                            <a href="/ledsc4/en/products.html?type=/outdoor"><h3>outdoor</h3></a>
-
-                            <!-- button menu -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target="#productMenu_3">
-                                <span class="mobile-only">Menu</span>
-                            </button>
-                        </div>
-
-
-                        <div class="product_menu collapse" id="productMenu_3">
-
-                            <div class="product_item_bg" style="background: #aeab6e;"><!-- bg opacity --></div>
-
-                            <div class="product_item_families">
-                                <ul>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/wholly-lit-wall-effect">wholly
-                                            lit wall effect</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/floor-recessed">floor
-                                            recessed</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/chillout">chillout</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/wall-fixture">wall fixture</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/urban-street-lighting">urban
-                                            street lighting</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/recessed">recessed</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/spotlight">spotlight</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/spotlight-led">spotlight led</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/ceiling-fixture">ceiling
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/head">head</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/waterproof">waterproof</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/wall-recessed">wall recessed</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/spotlights">spotlights</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/bollards">bollards</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/column">column</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/wall">wall</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/accessory">accessory</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/ceiling-recessed">ceiling-recessed</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/lantern">lantern</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/suspended">suspended</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/pendant">pendant</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/table-lamp">table lamp</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/outdoor/residential-lamposts">residential
-                                            lamposts</a></li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="product_item_share">
-
-
-                                <p class="readMore">
-                                    <a href="/ledsc4/en/products.html?family=outdoor">Watch outdoor Products</a>
-                                </p>
-
-                                <div class="shareProductsLinks">
-                                    <p class="shareTitle">Share</p>
-                                    <p class="shareList">
-
-                                        <a href="#"
-                                           onclick="postToFeed('http://leds-c4.com/ledsc4/en/products.html/?family=outdoor', 'http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Outdoor.jpg', 'Leds-C4', 'Watch Outdoor Products', '' ); return false;">FACEBOOK</a>
-                                        &nbsp;/&nbsp; <a href="#"
-                                                         onclick="popup_share('https://twitter.com/share?text=Watch Outdoor Products&url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Doutdoor',550,450)">TWITTER</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="https://plus.google.com/share?url=http://leds-c4.com/ledsc4/en/products.html/?family=outdoor"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">GOOGLE+</a>
-                                    </p>
-                                    <p class="shareList">
-
-                                        <a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Doutdoor&media=http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Outdoor.jpg&description='Watch Outdoor Products"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Pinterest</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="javascript:void(window.open('http://www.linkedin.com/shareArticle?url='+encodeURIComponent(location),'','width=600,height=400,left=50,top=50'));">Linkedin</a>
-
-                                    </p>    <!-- /shareList -->
-                                </div>
-                            </div>
-
-                        </div>    <!-- /product_menu -->
-
-                    </div>    <!-- /product_item_bgNoTrans -->
-
-                </div>    <!-- /item -->
-
-            </div>    <!-- /col  -->
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="product_item center-block"
-                     style="background: url('/dam/ledsc4/home/family-products/products_family_Grok.jpg') no-repeat center top;">
-
-                    <div class="product_item_bg" style="background: #cd4c80;"><!-- bg opacity --></div>
-
-                    <div class="product_item_bgNoTrans">
-
-                        <div class="product_item_title">
-                            <a href="/ledsc4/en/products.html?type=/grok"><h3>grok</h3></a>
-
-                            <!-- button menu -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target="#productMenu_4">
-                                <span class="mobile-only">Menu</span>
-                            </button>
-                        </div>
-
-
-                        <div class="product_menu collapse" id="productMenu_4">
-
-                            <div class="product_item_bg" style="background: #cd4c80;"><!-- bg opacity --></div>
-
-                            <div class="product_item_families">
-                                <ul>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/table-lamp">table lamp</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/pendant">pendant</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/accessory">accessory</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/ceiling-fixture">ceiling
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/floor-lamp">floor lamp</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/wall-fixture">wall fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/grok/collection">collection</a></li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="product_item_share">
-
-
-                                <p class="readMore">
-                                    <a href="/ledsc4/en/products.html?family=grok">Watch grok Products</a>
-                                </p>
-
-                                <div class="shareProductsLinks">
-                                    <p class="shareTitle">Share</p>
-                                    <p class="shareList">
-
-                                        <a href="#"
-                                           onclick="postToFeed('http://leds-c4.com/ledsc4/en/products.html/?family=grok', 'http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Grok.jpg', 'Leds-C4', 'Watch Grok Products', '' ); return false;">FACEBOOK</a>
-                                        &nbsp;/&nbsp; <a href="#"
-                                                         onclick="popup_share('https://twitter.com/share?text=Watch Grok Products&url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dgrok',550,450)">TWITTER</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="https://plus.google.com/share?url=http://leds-c4.com/ledsc4/en/products.html/?family=grok"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">GOOGLE+</a>
-                                    </p>
-                                    <p class="shareList">
-
-                                        <a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dgrok&media=http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Grok.jpg&description='Watch Grok Products"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Pinterest</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="javascript:void(window.open('http://www.linkedin.com/shareArticle?url='+encodeURIComponent(location),'','width=600,height=400,left=50,top=50'));">Linkedin</a>
-
-                                    </p>    <!-- /shareList -->
-                                </div>
-                            </div>
-
-                        </div>    <!-- /product_menu -->
-
-                    </div>    <!-- /product_item_bgNoTrans -->
-
-                </div>    <!-- /item -->
-
-            </div>    <!-- /col  -->
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-
-                <div class="product_item center-block"
-                     style="background: url('/dam/ledsc4/home/family-products/products_family_Alabaster.jpg') no-repeat center top;">
-
-                    <div class="product_item_bg" style="background: #c4c4c0;"><!-- bg opacity --></div>
-
-                    <div class="product_item_bgNoTrans">
-
-                        <div class="product_item_title">
-                            <a href="/ledsc4/en/products.html?type=/alabaster"><h3>alabaster</h3></a>
-
-                            <!-- button menu -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target="#productMenu_5">
-                                <span class="mobile-only">Menu</span>
-                            </button>
-                        </div>
-
-
-                        <div class="product_menu collapse" id="productMenu_5">
-
-                            <div class="product_item_bg" style="background: #c4c4c0;"><!-- bg opacity --></div>
-
-                            <div class="product_item_families">
-                                <ul>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/alabaster/ceiling-fixture">ceiling
-                                            fixture</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/alabaster/floor-lamp">floor lamp</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/alabaster/pendant">pendant</a></li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/alabaster/wall-fixture">wall fixture</a>
-                                    </li>
-
-
-                                    <li><a href="/ledsc4/en/products.html?type=/alabaster/table-lamp">table lamp</a>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="product_item_share">
-
-
-                                <p class="readMore">
-                                    <a href="/ledsc4/en/products.html?family=alabaster">Watch alabaster Products</a>
-                                </p>
-
-                                <div class="shareProductsLinks">
-                                    <p class="shareTitle">Share</p>
-                                    <p class="shareList">
-
-                                        <a href="#"
-                                           onclick="postToFeed('http://leds-c4.com/ledsc4/en/products.html/?family=alabaster', 'http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Alabaster.jpg', 'Leds-C4', 'Watch Alabaster Products', '' ); return false;">FACEBOOK</a>
-                                        &nbsp;/&nbsp; <a href="#"
-                                                         onclick="popup_share('https://twitter.com/share?text=Watch Alabaster Products&url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dalabaster',550,450)">TWITTER</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="https://plus.google.com/share?url=http://leds-c4.com/ledsc4/en/products.html/?family=alabaster"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">GOOGLE+</a>
-                                    </p>
-                                    <p class="shareList">
-
-                                        <a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fleds-c4.com%2Fledsc4%2Fen%2Fproducts.html%2F%3Ffamily%3Dalabaster&media=http://leds-c4.com/dam/ledsc4/home/family-products/products_family_Alabaster.jpg&description='Watch Alabaster Products"
-                                           onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Pinterest</a>
-                                        &nbsp;/&nbsp;
-                                        <a href="javascript:void(window.open('http://www.linkedin.com/shareArticle?url='+encodeURIComponent(location),'','width=600,height=400,left=50,top=50'));">Linkedin</a>
-
-                                    </p>    <!-- /shareList -->
-                                </div>
-                            </div>
-
-                        </div>    <!-- /product_menu -->
-
-                    </div>    <!-- /product_item_bgNoTrans -->
-
-                </div>    <!-- /item -->
-
-            </div>    <!-- /col  -->
-        </div>    <!-- /row -->
-    </div>    <!-- /.container -->
+    </div>
 
 </div>    <!-- /.container-fluid page -->
 <!-- sticky footer -->
 <div class="footer">
-    <div class="container buttonUp">
-        <div class="row">
-            <div class="col-md-2 col-md-offset-10">
-                <div class="box-arrow-up center-block">
-                    <a class="button-arrow-up" href="#section_1"><span class="text-muted">Back To Top</span></a>
-                </div>
-            </div>
-        </div>    <!-- /.row -->
-    </div>    <!-- /.buttonUp -->
-
     <div class="container-fluid contentFooter">
         <div class="container">
 
@@ -2402,73 +1003,6 @@
                     </ul>
                 </div>
             </div>    <!-- /.row -->
-
-            <!-- highlights menu -->
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center highlights-footer">
-                    <a href="/ledsc4/en/leds-c4/newsletter.html">RECEIVE OUR NEWSLETTER</a>
-                </div>
-            </div>    <!-- /.row -->
-
-            <!-- footer share -->
-            <div class="row">
-                <div class="col-md-12 share-footer">
-                    <p class="text-center">join us on</p>
-                    <ul class="nav nav-pills nav-share">
-
-                        <li class="compShare">
-                            <a href="https://www.facebook.com/pages/LEDS-C4/288457887908776" target="_blank">
-                                <img alt="Facebook" title="Facebook"
-                                     src="/dam/ledsc4/social-media/facebook/facebook-LedsC4.png"/>
-                                <span>Facebook</span>
-                            </a>
-                        </li>
-
-                        <li class="compShare">
-                            <a href="https://twitter.com/ledsc4" target="_blank">
-                                <img alt="Twitter" title="Twitter"
-                                     src="/dam/ledsc4/social-media/twitter/twitter-LedsC4.png"/>
-                                <span>Twitter</span>
-                            </a>
-                        </li>
-
-                        <li class="compShare">
-                            <a href="http://www.linkedin.com/company/leds-c4" target="_blank">
-                                <img alt="Linkedin" title="Linkedin"
-                                     src="/dam/ledsc4/social-media/linkedin/linkedin-LedsC4.png"/>
-                                <span>Linkedin</span>
-                            </a>
-                        </li>
-
-                        <li class="compShare">
-                            <a href="https://es.pinterest.com/ledsc4/pins/" target="_blank">
-                                <img alt="Pinterest" title="Pinterest"
-                                     src="/dam/ledsc4/social-media/pinterest/pinterest-LedsC4.png"/>
-                                <span>Pinterest</span>
-                            </a>
-                        </li>
-
-                        <li class="compShare">
-                            <a href="https://instagram.com/leds_c4" target="_blank">
-                                <img alt="Instagram" title="Instagram"
-                                     src="/dam/ledsc4/social-media/instagram/instagram-LedsC4.png"/>
-                                <span>Instagram</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>    <!-- /.row -->
-
-            <!-- footer copyright and credits -->
-            <div class="row">
-                <div class="col-md-12 credits-footer" itemscope itemtype="https://schema.org/WPFooter">
-                    <p class="text-center copyright">LEDS-C4, GROK and LA CREU are LEDS-C4, S.A registered brands 2015 ©
-                        LEDS-C4. All rights reserved</p>
-                    <p class="text-center credits">designed &amp; developed by La Pera Limonera</p>
-                </div>
-            </div>    <!-- /.row -->
-
         </div>    <!-- /.container -->
     </div>    <!-- /.contentFooter -->
 </div>    <!-- /.footer -->

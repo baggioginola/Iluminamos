@@ -2768,7 +2768,8 @@ h4.modal-title {
 }
 
 .carousel {
-    border-bottom: 0
+    border-bottom: 0;
+    margin-bottom: 70px;
 }
 
 
@@ -3379,7 +3380,7 @@ h4.modal-title {
 @media (min-width: 1200px) {
     .highlights-new {
         background: 0 0;
-        margin-bottom: 84px
+        margin-bottom: 50px
     }
 
     .highlights-new h2.highlightsTitle {
@@ -3399,7 +3400,7 @@ h4.modal-title {
         display: block;
         width: auto;
         height: auto;
-        margin-bottom: 35px
+        margin-bottom: 70px
     }
 
     .highlights-new .item-highlights-new a .content-image {
@@ -5277,10 +5278,10 @@ h4.modal-title {
 }
 
 .footer .contentFooter {
-    background-color: #5a5e5c;
+    background-color: #000;
     height: auto;
-    padding-top: 26px;
-    padding-bottom: 26px
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
@@ -5342,13 +5343,13 @@ h4.modal-title {
 
 @media (min-width: 1200px) {
     .footer .contentFooter .menu-footer {
-        padding-bottom: 20px
+        padding-bottom: 0px
     }
 
     .footer .contentFooter .menu-footer ul li a {
         text-decoration: none;
         color: #FFF;
-        font-size: 17px;
+        font-size: 12px;
         font-weight: 400;
         text-transform: uppercase
     }
@@ -16705,7 +16706,6 @@ input[type=submit][disabled] {
 
 .nav-area .nav-bottom li.active > a {
     color: #2faf9d;
-    font-family: "SourceSansPro-Semibold";
 }
 .nav-area .nav-bottom li:hover > a, .nav-area .nav-bottom li:hover > a span {
     color: #2faf9d;
@@ -16735,4 +16735,25 @@ input[type=submit][disabled] {
     height:100%;
     width:100%;
     background-position: center;
+}
+
+span.product-name {
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 5px;
+}
+
+span.product-name a{
+    display: block;
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+    line-height: 18px;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+span.product-name a:hover{
+    color:#2faf9d;
 }
