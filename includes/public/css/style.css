@@ -3204,7 +3204,7 @@ h4.modal-title {
     }
 
     .highlights-new .item-highlights-new {
-        display: none;
+        display: block;
         width: auto;
         height: auto;
         margin-bottom: 35px
@@ -3274,7 +3274,7 @@ h4.modal-title {
     }
 
     .highlights-new h2.highlightsTitle {
-        display: none;
+        display: block;
         color: #5a5e5c;
         font-size: 47px;
         font-weight: 300;
@@ -3329,7 +3329,7 @@ h4.modal-title {
     }
 
     .highlights-new h2.highlightsTitle {
-        display: none;
+        display: block;
         color: #5a5e5c;
         font-size: 47px;
         font-weight: 300;
@@ -3350,7 +3350,7 @@ h4.modal-title {
 
     .highlights-new .item-highlights-new a .content-image {
         width: 293px;
-        height: 183px
+        height: 227px
     }
 
     .highlights-new .item-highlights-new a .content-title {
@@ -3384,7 +3384,7 @@ h4.modal-title {
     }
 
     .highlights-new h2.highlightsTitle {
-        display: none;
+        display: block;
         color: #5a5e5c;
         font-size: 47px;
         font-weight: 300;
@@ -5223,13 +5223,13 @@ h4.modal-title {
 
 @media (min-width: 0px) and (max-width: 767px) {
     .footer {
-        display: none
+        display: block;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .footer {
-        display: none
+        display: block;
     }
 }
 
