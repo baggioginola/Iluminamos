@@ -21,7 +21,8 @@ define('__VIEW__', __ROOT__ . '/app/view/');
 define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 
 define('CSS', DOMAIN . 'includes/public/css/');
-define('JS', DOMAIN . 'includes/public/js');
+define('JS', DOMAIN . 'includes/public/js/');
+define('IMG', DOMAIN . 'includes/public/img/');
 
 #Database
 define('DBHOST', 'localhost');

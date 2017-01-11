@@ -1,60 +1,44 @@
 <!DOCTYPE html>
-<html xml:lang="en" lang="en" class="no-js">
+<html>
 <head>
+    {% block head %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{% block title %}{% endblock %} - Iluminamos</title>
+        <link rel="stylesheet" type="text/css" href="{{ public.CSS }}bootstrap.css" media="all">
+        <link rel="stylesheet" type="text/css" href="{{ public.CSS }}style.css" media="all">
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Iluminamos</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="includes/public/css/bootstrap.css" media="all">
+        <script src="{{ public.JS }}bootstrap.min.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css" href="includes/public/css/animate.css" media="all">
-    <link rel="stylesheet" type="text/css" href="includes/public/css/jquery.mCustomScrollbar.css" media="all">
-    <link rel="stylesheet" type="text/css" href="includes/public/css/style.css" media="all">
-    <link rel="stylesheet" type="text/css" href="includes/public/css/printWishlist.css" media="print">
+        <script src="{{ public.JS }}custom/menu.js" type="text/javascript"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <script src="includes/public/js/bootstrap.min.js" type="text/javascript"></script>
-
-    <script src="includes/public/js/jquery.bootpag.min.js" type="text/javascript"></script>
-
-
-    <script src="includes/public/js/jquery.mCustomScrollbar.js" type="text/javascript"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.0.6/jquery.mousewheel.min.js"
-            type="text/javascript"></script>
-
-    <script src="includes/public/js/functions.js" type="text/javascript"></script>
-    <script src="includes/public/js/custom/menu.js" type="text/javascript"></script>
-
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <script src="includes/public/js/custom/camera.js" type="text/javascript"></script>
-
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    {% endblock %}
 </head>
-
 <body id="home" class="col-subcol">
-<!-- Fixed navbar -->
+{{ JS }}
 <div id="header" class="navbar navbar-default navbar-fixed-top new-header-mobile" role="navigation">
 
     <div class="container logoMenuBlock" itemscope itemtype="https://schema.org/Organization">
         <meta itemprop="name" content="Iluminamos"/>
         <div class="navbar-header">
-            <!-- logo brand -->
+
             <a class="navbar-brand" href="/" itemprop="url">
                 <img itemprop="logo" alt="Iluminamos" title="Iluminamos"
-                     src="includes/public/img/logo.png" width="245px"/>
+                     src="{{ public.IMG }}logo.png" width="245px"/>
                 <span>Iluminamos</span>
             </a>
 
-            <!-- button menu -->
+
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
 
-            <!-- mobile search -->
+
             <a href="#" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search-block-v2">
                 <div class="icon-40x40-search-mobile-black"><span>Search</span></div>
             </a>
@@ -92,29 +76,30 @@
                                                 <ul>
                                                     <li><a href=''
                                                            style="font-size:11px;">Chandelier<img
-                                                                    src='includes/public/img/productos/7.jpg'
+                                                                    src='{{ public.IMG }}productos/7.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
                                                     <li><a href=''
                                                            style="font-size:11px;">Pendant<img
-                                                                    src='includes/public/img/productos/8.jpg'
+                                                                    src='{{ public.IMG }}productos/8.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
                                                     <li><a href=''
                                                            style="font-size:11px;">Flush Mount<img
-                                                                    src='includes/public/img/productos/9.jpg'
+                                                                    src='{{ public.IMG }}productos/9.jpg'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li>
                                                         <a href=''
                                                            style="font-size:11px;">Wall<img
-                                                                    src='includes/public/img/productos/10.jpg'
+                                                                    src='{{ public.IMG }}productos/10.jpg'
                                                                     alt='Wall' style="width:116px;"/></a></li>
                                                     <li><a href='' style="font-size:11px;">Energy
                                                             Efficient<img
-                                                                    src='includes/public/img/productos/11.jpg'
-                                                                    alt='Energy Efficient' style="width:116px;"/></a></li>
+                                                                    src='{{ public.IMG }}productos/11.jpg'
+                                                                    alt='Energy Efficient' style="width:116px;"/></a>
+                                                    </li>
                                                     <li class='no-margin'><a
                                                                 href=''
                                                                 style="font-size:11px;">Lamp<img
-                                                                    src='includes/public/img/productos/2.jpg'
+                                                                    src='{{ public.IMG }}productos/2.jpg'
                                                                     alt='Lamp' style="width:116px;"/></a></li>
 
                                                 </ul>
@@ -125,90 +110,12 @@
                             </div>
                         </li>
                         <li id="limenu_2" style="width:155px;">
-                            <a href="javascript:void(0);">PROYECTOS</a>
-                            <!-- <a href="/outdoor-lighting/collections">OUTDOOR LIGHTING</a> -->
-                            <div class="dd-area" id="dd-area2" style="display:none;">
-                                <div class="wrapper">
-                                    <div class="dd-inner">
-                                        <div class="left-area">
-                                            <div id="ctl00_Main_ucHeaderContent_DesktopOutdoorCategorySubMenu"
-                                                 style="float: left; width:100%;">
-                                                <ul>
-                                                    <li><a href='/category/outdoor-lighting/outdoor-wall-mount'>Wall
-                                                            Mount<img
-                                                                    src='includes/public/img/productos///Outdoor-Wall-Mount.jpg'
-                                                                    alt='Wall Mount'/></a></li>
-                                                    <li><a href='/category/outdoor-lighting/outdoor-pathway-light'>Pathway
-                                                            Light<img
-                                                                    src='includes/public/img/productos///Outdoor-Pathway-light.jpg'
-                                                                    alt='Pathway Light'/></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="below"><a href="/outdoor-lighting/collections"
-                                                                  class="browse-link">Browse All Collections</a></div>
-                                        </div>
-                                        <div class="right-area">
-                                            <span>Featured Collections</span>
-                                            <div id="ctl00_Main_ucHeaderContent_DesktopOutdoorCategoryCollection">
-                                                <ul>
-                                                    <li>
-                                                        <a href='http://www.et2online.com/indoor-lighting/collection/alumilux al'><img
-                                                                    src='/Upload/menu_collection/FeaturedOutdoor_Alumilux AL.jpg'
-                                                                    alt='Alumilux Collection'/><span>Alumilux Collection</span></a>
-                                                    </li>
-                                                    <li class='no-margin'><a
-                                                                href='http://www.et2online.com/outdoor-lighting/collection/inca'><img
-                                                                    src='/Upload/menu_collection/E21333-61BZ.jpg'
-                                                                    alt='Inca Collection'/><span>Inca<br/>Collection</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="#">PROYECTOS</a>
                         </li>
-                        <li style="width:70px;"><a href="/trade">TRADE</a></li>
+                        <li style="width:70px;"><a href="#">TRADE</a></li>
                         <li id="limenu_4" style="width:170px;">
-                            <!--<a href="/resources-and-tools">RESOURCES &amp; TOOLS</a> -->
-                            <a href="javascript:void(0);">RESOURCES &amp; TOOLS</a>
-                            <div class="dd-area" id="dd-area4" style="display:none; height:300px;">
-                                <div class="wrapper">
-                                    <div class="dd-inner">
-                                        <div class="dd-resource-area">
-                                            <ul>
-                                                <li>
-                                                    <div><a href="/resources-and-tools">BUYER'S GUIDES <br/>&
-                                                            CONFIGURATORS</a></div>
-                                                </li>
-                                                <li>
-                                                    <div><a href="/catalog-request">CATALOG</a></div>
-                                                </li>
-                                                <li>
-                                                    <div><a href="/bulb-reference">BULB REFERENCE</a></div>
-                                                </li>
-                                                <li class="no-margin">
-                                                    <div><a href="/glossary">LIGHTING GLOSSARY</a></div>
-                                                </li>
-                                            </ul>
-                                            <ul>
-                                                <li>
-                                                    <div><a href="/order-part">REPLACEMENT PARTS</a></div>
-                                                </li>
-                                                <li>
-                                                    <div><a href="/image-gallery">IMAGE GALLERY</a></div>
-                                                </li>
-                                                <li>
-                                                    <div><a href="/finish-samples">FINISH SAMPLES</a></div>
-                                                </li>
-                                                <li class="no-margin">
-                                                    <div><a href="/dallas-showroom">DALLAS SHOWROOM</a></div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <a href="#">RESOURCES &amp; TOOLS</a>
                         </li>
                         <li style="width:109px;"><a href="/contact-us">CONTACT US</a></li>
                     </ul>
@@ -216,666 +123,17 @@
             </div>
 
 
-        </div>    <!--/.nav-collapse -->
-    </div>    <!-- /.container -->
-
-
-    <!-- search v2 -->
-    <div id="search-block-v2" class="container-fluid collapsed collapse" pathsiteroot="/ledsc4/en">
-
-
-        <!-- descktop simple-search input-->
-        <div class="container container-search-block desktop-container-search-block">
-            <div class="row">
-                <div class="col-xs-6 ui-result">
-                    <span id="desktop-text-results" role="status" aria-live="polite"
-                          class="ui-helper-hidden-accessible"></span>
-                </div>
-                <div class="col-xs-3">
-                    <input type="text" maxlength="20" value="" id="simplesearch" name="simplesearch"
-                           placeholder="enter word to search ...">
-                    <p class="text-center">(minimum 3 characters)</p>
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <!-- advanced search button field -->
-                    <div id="close-search-button-desktop" class="search-close-button" data-toggle="collapse"
-                         data-target="#search-block-v2">
-                        <span>close</span>
-                    </div>
-                    <button id="advanced-search-button" type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#advanced-search-block">
-                        <span class="advanced">Advanced Search</span>
-                        <span class="simple">Simple Search</span>
-                    </button>
-                </div>
-            </div>    <!-- /.row -->
-        </div>    <!-- /.container-search-block -->
-
-        <!-- descktop simple-search info results -->
-        <div class="container-fluid container-info-results desktop-container-search-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-lg-3">
-                        <a id="desktop-text-results-all" class="text-instructions select-type-results active"
-                           href="desktop-content-results" data-pagination="#desktop-pagination-all"></a>
-                    </div>
-                    <div class="col-md-3 col-lg-3">
-                        <a id="desktop-text-results-products" class="text-instructions select-type-results"
-                           href="desktop-content-results-products" data-pagination="#desktop-pagination-products"></a>
-                    </div>
-                    <div class="col-md-3 col-lg-3">
-                        <a id="desktop-text-results-projects" class="text-instructions select-type-results"
-                           href="desktop-content-results-projects" data-pagination="#desktop-pagination-projects"></a>
-                    </div>
-                    <div class="col-md-3 col-lg-3">
-                        <a id="desktop-text-results-others" class="text-instructions select-type-results"
-                           href="desktop-content-results-others" data-pagination="#desktop-pagination-others"></a>
-                    </div>
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-        </div>    <!-- /.container-results-mobile -->
-
-
-        <!-- desktop simple search results -->
-        <div id="a-s-results-desktop" class="container-fluid collapsed collapse in"> <!-- fix to in manual activation-->
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results" id="desktop-content-results">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results"
-                         id="desktop-content-results-products">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results"
-                         id="desktop-content-results-projects">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results"
-                         id="desktop-content-results-others">
-                    </div>    <!-- /.col -->
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-
-            <div class="container-fluid bottom-pagination">
-                <div class="row">
-
-                    <!-- pagination all -->
-                    <div class="pagination center-block search-pagination" id="desktop-pagination-all">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="desktop-pagination-products">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="desktop-pagination-projects">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="desktop-pagination-others">
-                    </div>
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container-fluid -->
-
-        </div>    <!-- /.container-fluid -->
-
-
-        <!-- mobile simple-search input-->
-        <div class="container container-search-block mobile-container-search-block">
-            <div class="row">
-
-                <div class="col-xs-8 col-sm-8">
-                    <input type="text" maxlength="20" value="" id="simple-search-mobile" name="simplesearch"
-                           placeholder="enter word to search ...">
-                </div>
-
-                <div class="col-xs-4 col-sm-4"> <!-- close and clean button field -->
-
-                    <div class="row">
-                        <div class="container-fluid buttons-clear-close">
-
-                            <div id="close-search-button-mobile" class="col-xs-2 col-sm-2 search-close-button"
-                                 data-toggle="collapse" data-target="#search-block-v2">
-                                <span>close</span>
-                            </div>
-
-                            <div id="reset-input-button" class="col-xs-10 col-sm-10 reset-input-button">
-                                <p>clean</p>
-                            </div>
-
-                        </div>    <!-- /.container-fluid -->
-                    </div>    <!-- /.row -->
-                </div>
-
-            </div>    <!-- /.row -->
-        </div>    <!-- /.container-search-block -->
-
-        <!-- mobile simple-search info results -->
-        <div class="container-fluid container-info-results mobile-container-search-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12">
-                        <p id="mobile-text-results" class="text-instructions uppercase">(minimum 3 characters)</p>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 type-result">
-                        <a id="mobile-text-results-all" class="text-instructions select-type-results active"
-                           href="content-results" data-pagination="#pagination-all"></a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 type-result">
-                        <a id="mobile-text-results-products" class="text-instructions select-type-results"
-                           href="content-results-products" data-pagination="#pagination-products"></a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 type-result">
-                        <a id="mobile-text-results-projects" class="text-instructions select-type-results"
-                           href="content-results-projects" data-pagination="#pagination-projects"></a>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 type-result">
-                        <a id="mobile-text-results-others" class="text-instructions select-type-results"
-                           href="content-results-others" data-pagination="#pagination-others"></a>
-                    </div>
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-        </div>    <!-- /.container-results-mobile -->
-
-
-        <!-- simple search results -->
-        <div id="a-s-results-mobile" class="container-fluid collapsed collapse">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results" id="content-results">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results" id="content-results-products">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results" id="content-results-projects">
-                    </div>    <!-- /.col -->
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results" id="content-results-others">
-                    </div>    <!-- /.col -->
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-
-
-            <div class="container-fluid bottom-pagination">
-                <div class="row">
-
-                    <!-- pagination all -->
-                    <div class="pagination center-block search-pagination" id="pagination-all">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="pagination-products">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="pagination-projects">
-                    </div>
-
-                    <div class="pagination center-block search-pagination" id="pagination-others">
-                    </div>
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-
-        </div>    <!-- /.container-fluid -->
-
-        <div class="container-fluid mobile-container-search-block" style="display: none;">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12" id="mobile-results-list">
-                </div>
-
-            </div>    <!-- /.row -->
-        </div>    <!-- /.container-fluid -->
-
-        <div id="advanced-search-block" class="row collapsed collapse">
-
-            <div class="container firstline">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 selector"> <!-- select field -->
-                        <label for="selector"><span>Series</span></label>
-
-
-                        <select name="series" id="series" placeholder="">
-
-                            <option value="all" selected>All</option>
-
-
-                        </select>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 input-text"> <!-- text field -->
-                        <label for="reference"><span>Reference</span></label>
-                        <input type="text" maxlength="10" value="" id="reference" name="reference" placeholder="">
-                    </div>
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.firstline -->
-
-            <div class="container filters-selectors">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <ul class="nav nav-pills nav-justified">
-
-
-                            <li class="dropdown selector-list">
-                                <a filtername="finish" id="search-submenu_1" href="#"
-                                   class="dropdown-toggle advanced-search-selector" data-toggle="dropdown"
-                                   data-target="#search-submenu-detail_1">Finish<span class="arrowDown"></span></a>
-
-
-                                <div class="dropdownGeneralMenu" id="search-submenu-detail_1">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="dropdown-menu navbar-center" role="menu">
-                                                    <li class="options-list active"><a href="#" ref="all">All</a></li>
-                                                    <li class="options-list"><a href="#" ref="white">White</a></li>
-                                                    <li class="options-list"><a href="#" ref="black">Black</a></li>
-                                                    <li class="options-list"><a href="#" ref="grey">Grey</a></li>
-                                                    <li class="options-list"><a href="#" ref="metal-finishes">Metal
-                                                            Finishes</a></li>
-                                                    <li class="options-list"><a href="#" ref="alabaster">Alabaster</a>
-                                                    </li>
-                                                    <li class="options-list"><a href="#" ref="others">Others</a></li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div> <!-- /.col -->
-                                        </div>    <!-- /.row -->
-                                    </div>    <!-- /.container -->
-                                </div>
-                            </li>
-                            <li class="dropdown selector-list">
-                                <a filtername="designer" id="search-submenu_2" href="#"
-                                   class="dropdown-toggle advanced-search-selector" data-toggle="dropdown"
-                                   data-target="#search-submenu-detail_2">Designer<span class="arrowDown"></span></a>
-
-
-                                <div class="dropdownGeneralMenu" id="search-submenu-detail_2">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="dropdown-menu navbar-center" role="menu">
-                                                    <li class="options-list active"><a href="#" ref="all">All</a></li>
-                                                    <li class="options-list"><a href="#" ref="alex-sanchez">Alex
-                                                            Sánchez</a></li>
-                                                    <li class="options-list"><a href="#" ref="benedito-design">Benedito
-                                                            design</a></li>
-                                                    <li class="options-list"><a href="#" ref="estudi-ribaudi">Estudi
-                                                            Ribaudí</a></li>
-                                                    <li class="options-list"><a href="#" ref="francesc-vilaro">Francesc
-                                                            Vilaró</a></li>
-                                                    <li class="options-list"><a href="#" ref="frank-fernandez">Frank
-                                                            Fernández</a></li>
-                                                    <li class="options-list"><a href="#" ref="gemma-bernal">Gemma
-                                                            Bernal</a></li>
-                                                    <li class="options-list"><a href="#" ref="jba-design">Jba design</a>
-                                                    </li>
-                                                    <li class="options-list"><a href="#" ref="josep-patsi">Josep
-                                                            Patsi</a></li>
-                                                    <li class="options-list"><a href="#" ref="nahtrang-disseny">Nahtrang
-                                                            disseny</a></li>
-                                                    <li class="options-list"><a href="#" ref="wis-design">Wis Design</a>
-                                                    </li>
-                                                    <li class="options-list"><a href="#" ref="yago-sarri">Yago Sarri</a>
-                                                    </li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div> <!-- /.col -->
-                                        </div>    <!-- /.row -->
-                                    </div>    <!-- /.container -->
-                                </div>
-                            </li>
-                            <li class="dropdown selector-list">
-                                <a filtername="ip" id="search-submenu_3" href="#"
-                                   class="dropdown-toggle advanced-search-selector" data-toggle="dropdown"
-                                   data-target="#search-submenu-detail_3">IP<span class="arrowDown"></span></a>
-
-
-                                <div class="dropdownGeneralMenu" id="search-submenu-detail_3">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="dropdown-menu navbar-center" role="menu">
-                                                    <li class="options-list active"><a href="#" ref="all">All</a></li>
-                                                    <li class="options-list"><a href="#" ref="ip20">IP20</a></li>
-                                                    <li class="options-list"><a href="#" ref="ip23">IP23</a></li>
-                                                    <li class="options-list"><a href="#" ref="ip64">IP64</a></li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div> <!-- /.col -->
-                                        </div>    <!-- /.row -->
-                                    </div>    <!-- /.container -->
-                                </div>
-                            </li>
-                            <li class="dropdown selector-list">
-                                <a filtername="cri" id="search-submenu_4" href="#"
-                                   class="dropdown-toggle advanced-search-selector" data-toggle="dropdown"
-                                   data-target="#search-submenu-detail_4">CRI<span class="arrowDown"></span></a>
-
-
-                                <div class="dropdownGeneralMenu" id="search-submenu-detail_4">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="dropdown-menu navbar-center" role="menu">
-                                                    <li class="options-list active"><a href="#" ref="all">All</a></li>
-                                                    <li class="options-list"><a href="#" ref="80">80</a></li>
-                                                    <li class="options-list"><a href="#" ref="90">90</a></li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div> <!-- /.col -->
-                                        </div>    <!-- /.row -->
-                                    </div>    <!-- /.container -->
-                                </div>
-                            </li>
-                            <li class="dropdown selector-list">
-                                <a filtername="ledModel" id="search-submenu_5" href="#"
-                                   class="dropdown-toggle advanced-search-selector" data-toggle="dropdown"
-                                   data-target="#search-submenu-detail_5">Led Model<span class="arrowDown"></span></a>
-
-
-                                <div class="dropdownGeneralMenu" id="search-submenu-detail_5">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="dropdown-menu navbar-center" role="menu">
-                                                    <li class="options-list active"><a href="#" ref="all">All</a></li>
-                                                    <li class="options-list"><a href="#" ref="led">Led</a></li>
-                                                    <li class="options-list"><a href="#" ref="other">Other</a></li>
-                                                </ul>
-                                                <div class="clearfix"></div>
-                                            </div> <!-- /.col -->
-                                        </div>    <!-- /.row -->
-                                    </div>    <!-- /.container -->
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>    <!-- /.row -->
-            </div>    <!-- /.filters-selectors -->
-
-
-            <div id="ajaxautocomplete" style="display: none;"></div>
-
-        </div>    <!-- /#advanced-search-block -->
-
-        <!-- desktop advanced-search-block results -->
-        <div id="a-s-results" class="container-fluid collapsed collapse">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 media-results">
-                    </div>    <!-- /.col -->
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container -->
-
-            <div class="container-fluid bottom-pagination">
-                <div class="row">
-
-                    <!-- pagination all -->
-                    <div class="pagination center-block search-pagination" id="a-s-pagination-all">
-                    </div>
-
-                </div>    <!-- /.row -->
-            </div>    <!-- /.container-fluid -->
-
-
-        </div>    <!-- /.container-fluid #a-s-results-->
-
-    </div>    <!-- /.container-fluid search-block-v2-->
-
-</div>    <!-- /header -->
-
-
-<div id="modalSendEmail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                            class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Send Email Favourites</h4>
-            </div>
-
-            <div class="modal-body">
-                <p>Enter your email address and click "send email" button"</p>
-                <div class="input-group input-group-lg">
-                    <span class="input-group-addon">@</span>
-                    <input id="emailInput" type="text" class="form-control" placeholder="enter email">
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="buttonSendEmail">Send Email</button>
-            </div>
-
-        </div>    <!-- /.modal-content -->
-    </div>    <!-- /.modal-dialog -->
-</div>    <!-- /.modal -->
-
-
-<div class="container-fluid wide-content">
-
-
-    <!-- section 1 component carousel top -->
-    <div id="carrusel" class="carousel slide" data-ride="carousel" data-timer="5000" style="padding-top: 95px;">
-
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#carrusel" data-slide-to="0" class="active"></li>
-            <li data-target="#carrusel" data-slide-to="1"></li>
-            <li data-target="#carrusel" data-slide-to="2"></li>
-        </ol>
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill"
-                     style="background: transparent url('includes/public/img/banner/1.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <div class="fill"
-                     style="background: transparent url('includes/public/img/banner/2.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
-                <div class="carousel-caption">
-                    <h2>Caption 2</h2>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill"
-                     style="background: transparent url('includes/public/img/banner/3.jpg') no-repeat scroll center top / cover ; height:534px; "></div>
-                <div class="carousel-caption">
-                    <h2>Caption 3</h2>
-                </div>
-            </div>
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#section_1" role="button" data-slide="prev" style="top: 447px;">
-            <span class="arrowLeft"></span>
-            <span class="counterItems counterLeft">2 / 5</span>
-        </a>
-        <a class="right carousel-control" href="#section_1" role="button" data-slide="next" style="top: 447px;">
-            <span class="arrowRight"></span>
-            <span class="counterItems counterRight">2 / 5</span>
-        </a>
-
     </div>
+</div>
 
-    <div id="section_2" class="container highlights-new">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+{% block content %}{% endblock %}
 
-                <h2 class="highlightsTitle">Productos</h2>
-
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/1.jpg"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Tnm Dona</a>
-                            </span>
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/2.jpg"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Ttt 2</a>
-                            </span>
-
-                        </div>
-
-                        <!-- mobile content -->
-
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/3.jpg"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/4.jpg"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/5.jpg"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                        <!-- descktop content -->
-                        <div class="item-highlights-new">
-                            <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
-                                <div class="content-image">
-                                    <img class="img-responsive center-block"
-                                         src="includes/public/img/productos/6.png"
-                                         alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                         style="height: 225px;">
-                                </div>
-
-
-                            </a>
-                            <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                        </div>
-
-                    </div>
-
-                </div>    <!-- /row -->
-
-            </div>    <!-- /col -->
-        </div>    <!-- /row -->
-    </div>
-
-</div>    <!-- /.container-fluid page -->
-<!-- sticky footer -->
 <div class="footer">
     <div class="container-fluid contentFooter">
         <div class="container">
 
-            <!-- footer menu -->
+
             <div class="row">
                 <div class="col-md-12 menu-footer">
                     <ul class="nav nav-pills nav-justified">
@@ -900,33 +158,9 @@
 
                     </ul>
                 </div>
-            </div>    <!-- /.row -->
-        </div>    <!-- /.container -->
-    </div>    <!-- /.contentFooter -->
-</div>    <!-- /.footer -->
-
-
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    {% block head %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <title>{% block title %}{% endblock %} - Iluminamos</title>
-    {% endblock %}
-
-</head>
-<body>
-{% block content %}{% endblock %}
-</body>
-</html>
-
-!-->
