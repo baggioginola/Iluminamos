@@ -12,7 +12,8 @@ require_once FRAMEWORK . 'slim/vendor/autoload.php';
 $public_files = array(
     'CSS' => CSS,
     'JS' => JS,
-    'IMG' => IMG
+    'IMG' => IMG,
+    'DOMAIN' => DOMAIN
 );
 
 $app = new \Slim\App;
@@ -44,6 +45,22 @@ $app->get('/', function($request, $response, $args){
 $app->get('/productos/{name}', function ($request, $response, $args) {
     global $public_files;
     return $this->view->render($response, 'products.twig', array('public' => $public_files));
+});
+
+$app->get('/producto/{name}', function ($request, $response, $args) {
+    global $public_files;
+    return $this->view->render($response, 'product.twig', array('public' => $public_files));
+});
+
+
+$app->get('/proyectos', function ($request, $response, $args) {
+    global $public_files;
+    return $this->view->render($response, 'projects.twig', array('public' => $public_files));
+});
+
+$app->get('/quienes-somos', function ($request, $response, $args) {
+    global $public_files;
+    return $this->view->render($response, 'brand.twig', array('public' => $public_files));
 });
 
 

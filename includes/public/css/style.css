@@ -10452,7 +10452,7 @@ h4.modal-title {
 }
 
 .bc-block.greyfinder h3 {
-    background: #b6b6b5
+    background: #5a5e5c
 }
 
 #buttonReset {
@@ -16159,7 +16159,7 @@ input[type=submit][disabled] {
 
     #breadcrumb li .active-page {
         text-transform: uppercase;
-        color: #d8b622
+        color: #2faf9d
     }
 
     #breadcrumb li .nolink-page, #breadcrumb li a {
@@ -16168,7 +16168,7 @@ input[type=submit][disabled] {
     }
 
     #breadcrumb li a:hover {
-        color: #d8b622
+        color: #2faf9d
     }
 
     #internal .pageTitle {
@@ -16756,4 +16756,28 @@ span.product-name a{
 
 span.product-name a:hover{
     color:#2faf9d;
+}
+
+.product_detail
+{
+    font-size: 16px;
+}
+
+.product_detail h3
+{
+    background: #5a5e5c;
+    color: #FFF;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 40px;
+    font-weight: 300;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.project_detail
+{
+    font-size: 14px;
+    text-align: justify;
+    padding-bottom: 60px;
 }

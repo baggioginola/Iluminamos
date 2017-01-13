@@ -17,17 +17,16 @@
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     {% endblock %}
 </head>
-<body id="home" class="col-subcol">
-{{ JS }}
+<body id="{% block body_id  %}{% endblock %}" class="col-subcol">
 <div id="header" class="navbar navbar-default navbar-fixed-top new-header-mobile" role="navigation">
 
     <div class="container logoMenuBlock" itemscope itemtype="https://schema.org/Organization">
         <meta itemprop="name" content="Iluminamos"/>
         <div class="navbar-header">
 
-            <a class="navbar-brand" href="/" itemprop="url">
+            <a class="navbar-brand" href="{{ public.DOMAIN }}" itemprop="url">
                 <img itemprop="logo" alt="Iluminamos" title="Iluminamos"
-                     src="{{ public.IMG }}logo.png" width="245px"/>
+                     src="{{ public.IMG }}logo.png" width="280px"/>
                 <span>Iluminamos</span>
             </a>
 
@@ -66,7 +65,7 @@
                 <div class="nav-bottom">
                     <ul>
                         <li id="limenu_1" style="width:145px;">
-                            <a href="javascript:void(0);">Módulos de LED</a>
+                            <a href="javascript:void(0);">Categorías</a>
                             <div class="dd-area" id="dd-area1" style="display:none;">
                                 <div class="wrapper">
                                     <div class="dd-inner">
@@ -74,30 +73,30 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li><a href=''
+                                                    <li><a href='{{ public.DOMAIN}}productos/test'
                                                            style="font-size:11px;">Chandelier<img
                                                                     src='{{ public.IMG }}productos/7.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href=''
+                                                    <li><a href='{{ public.DOMAIN}}productos/test'
                                                            style="font-size:11px;">Pendant<img
                                                                     src='{{ public.IMG }}productos/8.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href=''
+                                                    <li><a href='{{ public.DOMAIN}}productos/test'
                                                            style="font-size:11px;">Flush Mount<img
                                                                     src='{{ public.IMG }}productos/9.jpg'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li>
-                                                        <a href=''
+                                                        <a href='{{ public.DOMAIN}}productos/test'
                                                            style="font-size:11px;">Wall<img
                                                                     src='{{ public.IMG }}productos/10.jpg'
                                                                     alt='Wall' style="width:116px;"/></a></li>
-                                                    <li><a href='' style="font-size:11px;">Energy
+                                                    <li><a href='{{ public.DOMAIN}}productos/test' style="font-size:11px;">Energy
                                                             Efficient<img
                                                                     src='{{ public.IMG }}productos/11.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
                                                     <li class='no-margin'><a
-                                                                href=''
+                                                                href='{{ public.DOMAIN}}productos/test'
                                                                 style="font-size:11px;">Lamp<img
                                                                     src='{{ public.IMG }}productos/2.jpg'
                                                                     alt='Lamp' style="width:116px;"/></a></li>
@@ -109,15 +108,15 @@
                                 </div>
                             </div>
                         </li>
-                        <li id="limenu_2" style="width:155px;">
-                            <a href="#">PROYECTOS</a>
+                        <li id="limenu_2" style="width:175px;">
+                            <a href="{{ public.DOMAIN }}quienes-somos">¿Quiénes Somos?</a>
                         </li>
-                        <li style="width:70px;"><a href="#">TRADE</a></li>
-                        <li id="limenu_4" style="width:170px;">
+                        <li style="width:115px;"><a href="{{ public.DOMAIN }}proyectos">Proyectos</a></li>
+                        <li id="limenu_4" style="width:115px;">
 
-                            <a href="#">RESOURCES &amp; TOOLS</a>
+                            <a href="#">CONTACTO</a>
                         </li>
-                        <li style="width:109px;"><a href="/contact-us">CONTACT US</a></li>
+                        <li style="width:80px;"><a href="#">BLOG</a></li>
                     </ul>
                 </div>
             </div>
@@ -138,22 +137,16 @@
                 <div class="col-md-12 menu-footer">
                     <ul class="nav nav-pills nav-justified">
 
-                        <li class="active"><a href="/ledsc4/en.html">Home</a></li>
+                        <li class="active"><a href="#">Inicio</a></li>
 
 
-                        <li><a href="/ledsc4/en/leds-c4/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
 
 
-                        <li><a href="/ledsc4/en/leds-c4/terms-and-conditions.html">TERMS OF USE</a></li>
+                        <li><a href="#">Términos de Uso</a></li>
 
 
-                        <li><a href="/ledsc4/en/leds-c4/sitemap.html">Site Map</a></li>
-
-
-                        <li><a href="/ledsc4/en/leds-c4/policy-cookies.html">Policy About Cookies</a></li>
-
-
-                        <li><a href="/ledsc4/en/contact.html">Contact</a></li>
+                        <li><a href="#">Contacto</a></li>
 
 
                     </ul>
