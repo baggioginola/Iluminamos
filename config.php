@@ -23,10 +23,21 @@ define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js/');
 define('IMG', DOMAIN . 'includes/public/img/');
+define('PRODUCT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_productos/');
+define('PROJECT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_proyectos/');
+define('BANNER_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/');
 
 #Database
 define('DBHOST', 'localhost');
 define('DBNAME', 'ilumina_3');
 define('DBUSER', 'root');
 define('DBPASS', '');
+
+#Response codes
+define('STATUS_SUCCESS', 200);
+define('STATUS_FAILURE_CLIENT', 404);
+define('STATUS_FAILURE_INTERNAL', 500);
+
+define('MESSAGE_SUCCESS', 'La transaccion fue exitosa');
+define('MESSAGE_ERROR', 'La transaccion fue fallida, intente mas tarde');
 

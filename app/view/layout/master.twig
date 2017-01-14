@@ -5,14 +5,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{% block title %}{% endblock %} - Iluminamos</title>
-        <link rel="stylesheet" type="text/css" href="{{ public.CSS }}bootstrap.css" media="all">
-        <link rel="stylesheet" type="text/css" href="{{ public.CSS }}style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="{{ settings.CSS }}bootstrap.css" media="all">
+        <link rel="stylesheet" type="text/css" href="{{ settings.CSS }}style.css" media="all">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-        <script src="{{ public.JS }}bootstrap.min.js" type="text/javascript"></script>
+        <script src="{{ settings.JS }}bootstrap.min.js" type="text/javascript"></script>
 
-        <script src="{{ public.JS }}custom/menu.js" type="text/javascript"></script>
+        <script src="{{ settings.JS }}custom/menu.js" type="text/javascript"></script>
 
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     {% endblock %}
@@ -24,9 +24,9 @@
         <meta itemprop="name" content="Iluminamos"/>
         <div class="navbar-header">
 
-            <a class="navbar-brand" href="{{ public.DOMAIN }}" itemprop="url">
+            <a class="navbar-brand" href="{{ settings.DOMAIN }}" itemprop="url">
                 <img itemprop="logo" alt="Iluminamos" title="Iluminamos"
-                     src="{{ public.IMG }}logo.png" width="280px"/>
+                     src="{{ settings.IMG }}logo.png" width="280px"/>
                 <span>Iluminamos</span>
             </a>
 
@@ -73,32 +73,32 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li><a href='{{ public.DOMAIN}}productos/test'
+                                                    <li><a href='{{ settings.DOMAIN}}categoria/1'
                                                            style="font-size:11px;">Chandelier<img
-                                                                    src='{{ public.IMG }}productos/7.jpg'
+                                                                    src='{{ settings.IMG }}productos/7.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href='{{ public.DOMAIN}}productos/test'
+                                                    <li><a href='{{ settings.DOMAIN}}categoria/2'
                                                            style="font-size:11px;">Pendant<img
-                                                                    src='{{ public.IMG }}productos/8.jpg'
+                                                                    src='{{ settings.IMG }}productos/8.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href='{{ public.DOMAIN}}productos/test'
+                                                    <li><a href='{{ settings.DOMAIN}}categoria/3'
                                                            style="font-size:11px;">Flush Mount<img
-                                                                    src='{{ public.IMG }}productos/9.jpg'
+                                                                    src='{{ settings.IMG }}productos/9.jpg'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li>
-                                                        <a href='{{ public.DOMAIN}}productos/test'
+                                                        <a href='{{ settings.DOMAIN}}categoria/4'
                                                            style="font-size:11px;">Wall<img
-                                                                    src='{{ public.IMG }}productos/10.jpg'
+                                                                    src='{{ settings.IMG }}productos/10.jpg'
                                                                     alt='Wall' style="width:116px;"/></a></li>
-                                                    <li><a href='{{ public.DOMAIN}}productos/test' style="font-size:11px;">Energy
+                                                    <li><a href='{{ settings.DOMAIN}}productos/test' style="font-size:11px;">Energy
                                                             Efficient<img
-                                                                    src='{{ public.IMG }}productos/11.jpg'
+                                                                    src='{{ settings.IMG }}productos/11.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
                                                     <li class='no-margin'><a
-                                                                href='{{ public.DOMAIN}}productos/test'
+                                                                href='{{ settings.DOMAIN}}categoria/5'
                                                                 style="font-size:11px;">Lamp<img
-                                                                    src='{{ public.IMG }}productos/2.jpg'
+                                                                    src='{{ settings.IMG }}productos/2.jpg'
                                                                     alt='Lamp' style="width:116px;"/></a></li>
 
                                                 </ul>
@@ -109,9 +109,9 @@
                             </div>
                         </li>
                         <li id="limenu_2" style="width:175px;">
-                            <a href="{{ public.DOMAIN }}quienes-somos">¿Quiénes Somos?</a>
+                            <a href="{{ settings.DOMAIN }}quienes-somos">¿Quiénes Somos?</a>
                         </li>
-                        <li style="width:115px;"><a href="{{ public.DOMAIN }}proyectos">Proyectos</a></li>
+                        <li style="width:115px;"><a href="{{ settings.DOMAIN }}proyectos">Proyectos</a></li>
                         <li id="limenu_4" style="width:115px;">
 
                             <a href="#">CONTACTO</a>

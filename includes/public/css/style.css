@@ -105,7 +105,7 @@ a:active, a:active *, a:focus, a:focus * {
 
 @media (min-width: 1200px) {
     body {
-        margin-bottom: 325px
+        margin-bottom: 150px
     }
 
     .container {
@@ -16143,7 +16143,8 @@ input[type=submit][disabled] {
     }
 
     #breadcrumb {
-        padding-top: 20px
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
     #breadcrumb ol {

@@ -17,7 +17,7 @@ class ProductsModel extends Database
      */
     public static function singleton()
     {
-        if(is_null(self::$object)) {
+        if (is_null(self::$object)) {
             self::$object = new self();
         }
         return self::$object;
@@ -62,7 +62,16 @@ class ProductsModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT * FROM  " . self::$table . " WHERE id_producto = '" . $id . "' ";
+        $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".id_categoria, " . self::$table . ".nombre, 
+        " . self::$table . ".descripcion,
+        " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda, 
+        " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca
+            FROM  " . self::$table . " 
+            INNER JOIN categorias
+             ON " . self::$table . ".id_categoria = categorias.id_categoria
+             INNER JOIN marcas
+             ON " . self::$table . ".id_marca = marcas.id_marca
+            WHERE id_producto = '" . $id . "' and " . self::$table . ".STATUS = true;";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -94,11 +103,11 @@ class ProductsModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT " . self::$table . ".id, " . self::$table . ".nombre, " . self::$table . ".key_nombre, " . self::$table . ".imagenes,
-                    " .self::$table . ".descripcion, " . self::$table . ".especificaciones, " . self::$table . ".precio, categoria.key_nombre as categoria
+        $query = "SELECT " . self::$table . " . id, " . self::$table . " . nombre, " . self::$table . " . key_nombre, " . self::$table . " . imagenes,
+                    " .self::$table . " . descripcion, " . self::$table . " . especificaciones, " . self::$table . " . precio, categoria . key_nombre as categoria
                     FROM " . self::$table . "
-                    INNER JOIN categoria on " . self::$table . ".id_categoria = categoria.id
-                    WHERE producto.key_nombre = '" . $name . "' and producto.active = true and categoria.id = " .$id_category;
+                    INNER JOIN categoria on " . self::$table . " . id_categoria = categoria . id
+                    WHERE producto . key_nombre = '" . $name . "' and producto . active = true and categoria . id = " .$id_category;
 
         if (!$result = $this->query($query)) {
             return false;
@@ -129,12 +138,11 @@ class ProductsModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT " . self::$table . ".nombre, " . self::$table . ".key_nombre as key_nombre, categoria.key_nombre as categoria
+        $query = "SELECT " . self::$table . " . nombre, " . self::$table . " . id_producto
                     FROM " . self::$table . "
-                    INNER JOIN categoria ON " . self::$table . ".id_categoria = categoria.id
-                    WHERE categoria.id = " . $id_category . " AND producto.active = true";
+                    INNER JOIN categorias ON " . self::$table . " . id_categoria = categorias . id_categoria
+                    WHERE categorias . id_categoria = " . $id_category . " AND " . self::$table . " . status = true";
 
-        Logs::singleton()->setLog($query,__METHOD__,__LINE__);
         if (!$result = $this->query($query)) {
             return false;
         }
@@ -145,7 +153,6 @@ class ProductsModel extends Database
             $result_array[] = $row;
         }
 
-        Logs::singleton()->setLog($result_array,__METHOD__,__LINE__);
         return $result_array;
     }
 }

@@ -11,9 +11,11 @@
     <div class="container-fluid wide-content">
         <div class="container" id="breadcrumb">
             <ol>
-                <li><a href="/ledsc4/es.html">Inicio</a></li>
+                <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
                 <li>&gt;</li>
-                <li><span class="active-page">BULB LED</span></li>
+                <li><a href="{{ settings.DOMAIN }}categoria/{{ result.id_categoria }}">{{ result.categoria | convert_encoding('UTF-8', 'ISO-8859-1') }}</a></li>
+                <li>&gt;</li>
+                <li><span class="active-page">{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span></li>
             </ol>
         </div> <!-- end breadcrumb -->
 
@@ -22,7 +24,7 @@
         <div class="container pageTitle">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>BULB LED</h1>
+                    <h1>{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h1>
                 </div>
             </div>    <!-- /row -->
         </div>    <!-- /container -->
@@ -49,10 +51,10 @@
 
                                                 <!-- descktop content -->
                                                 <div class="item-highlights-new">
-                                                    <a href="/ledsc4/es/leds-c4/news/news-detail-29.html">
+                                                    <a href="#">
                                                         <div>
                                                             <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/1.jpg"
+                                                                 src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"
                                                                  alt=""
                                                                  title="">
                                                         </div>
@@ -71,17 +73,25 @@
                                     <!-- column right results -->
                                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h1 class="">$1200.25</h1>
+                                            <h1 class="">$ {{ result.precio }}</h1>
                                             <div class="product_detail">
                                                 <h3>Detalles</h3>
                                                 <div>
                                                     <span>
-                                                        <b>Categoría:</b> Test
+                                                        <b>Categoría:</b> {{ result.categoria }}
                                                         <br>
-                                                        <b>Marca:</b> Test
+                                                        <b>Marca:</b> {{ result.marca }}
                                                         <br>
-                                                        Test test
-
+                                                        <b>Descripción</b>
+                                                        <br>
+                                                        {% autoescape %}
+                                                        {{ result.descripcion | raw }}
+                                                        {% endautoescape %}
+                                                        <br>
+                                                        <b>Detalles Técnicos</b>
+                                                        {% autoescape %}
+                                                        {{ result.detalles_tecnicos | raw}}
+                                                        {% endautoescape %}
                                                     </span>
                                                 </div>
                                             </div>

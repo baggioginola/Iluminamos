@@ -1,5 +1,6 @@
 {% extends "layout/master.twig" %}
 
+
 {% block title %}Productos{% endblock %}
 
 {% block head %}
@@ -11,9 +12,9 @@
     <div class="container-fluid wide-content">
         <div class="container" id="breadcrumb">
             <ol>
-                <li><a href="/ledsc4/es.html">Inicio</a></li>
+                <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
                 <li>&gt;</li>
-                <li><span class="active-page">Productos</span></li>
+                <li><span class="active-page">{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span></li>
             </ol>
         </div> <!-- end breadcrumb -->
 
@@ -22,7 +23,7 @@
         <div class="container pageTitle">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>Productos</h1>
+                    <h1>{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}</h1>
                 </div>
             </div>    <!-- /row -->
         </div>    <!-- /container -->
@@ -62,160 +63,26 @@
                                     <!-- column right results -->
                                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 results-col">
                                         <div class="row highlights-new">
-
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/test">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/1.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Tnm Dona</a>
-                            </span>
-
-
+                                            {% for producto  in result %}
+                                                {#}{ producto.id_producto }#}
+                                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                                    <div class="item-highlights-new">
+                                                        <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
+                                                            <div>
+                                                                <img class="img-responsive center-block"
+                                                                     src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
+                                                                     alt=""
+                                                                     title=""
+                                                                     style="height: 225px;">
+                                                            </div>
+                                                        </a>
+                                                        <span class="product-name">
+                                                            <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}</a>
+                                                        </span>
+                                                    </div>
                                                 </div>
 
-                                            </div>
-
-
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/test">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/2.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Ttt 2</a>
-                            </span>
-
-                                                </div>
-
-                                                <!-- mobile content -->
-
-
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/testl">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/3.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Pulpo 10</a>
-                            </span>
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/test">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/3.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Pulpo 10</a>
-                            </span>
-
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/test">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/3.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Pulpo 10</a>
-                            </span>
-
-
-                                                </div>
-
-                                            </div>
-                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                <!-- item news-events -->
-
-                                                <!-- descktop content -->
-                                                <div class="item-highlights-new">
-                                                    <a href="{{ public.DOMAIN }}producto/test">
-                                                        <div>
-                                                            <img class="img-responsive center-block"
-                                                                 src="{{ public.IMG }}productos/3.jpg"
-                                                                 alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                                                 style="height: 225px;">
-                                                        </div>
-
-
-                                                    </a>
-                                                    <span class="product-name">
-									<a href="{{ public.DOMAIN }}producto/test">Pulpo 10</a>
-                            </span>
-
-
-                                                </div>
-
-                                            </div>
-
-
+                                            {% endfor %}
                                         </div>
 
                                     </div>    <!-- /column right results -->
