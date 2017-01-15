@@ -38,17 +38,30 @@ $app->get('/producto/{id_producto}', function ($request, $response, $args) {
     return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result));
 });
 
-$app->get('/productos/{name}', function ($request, $response, $args) {
-    global $settings;
-    return $this->view->render($response, 'products.twig', array('settings' => $settings));
-});
-
 $app->get('/proyectos', function ($request, $response, $args) {
     global $settings;
-    return $this->view->render($response, 'projects.twig', array('settings' => $settings));
+
+    require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+
+    $result = Projects::singleton()->getAll();
+
+    return $this->view->render($response, 'projects.twig', array('settings' => $settings, 'result' => $result));
+});
+
+$app->get('/proyecto/{id_proyecto}', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'project.twig', array('settings' => $settings));
 });
 
 $app->get('/quienes-somos', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'brand.twig', array('settings' => $settings));
 });
+
+
+/* ----------------------------------- */
+$app->get('/productos/{name}', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'products.twig', array('settings' => $settings));
+});
+

@@ -16743,11 +16743,13 @@ span.product-name {
     text-align: center;
     line-height: 18px;
     margin-top: 5px;
+    height:42px;
+    overflow: hidden;
 }
 
 span.product-name a{
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     color: #000;
     text-align: center;
     line-height: 18px;
