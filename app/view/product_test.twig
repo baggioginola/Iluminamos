@@ -28,7 +28,6 @@
                     <div class="col-md-5 col-md-offset-0"><img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"/></div>
                     <div class="col-md-7">
                         <h2>{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
-                        <h3>Marca: {{ result.marca | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
                         <p>{% autoescape %}
                                 {{ result.descripcion | raw }}
                             {% endautoescape %}

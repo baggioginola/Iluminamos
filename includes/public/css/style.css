@@ -157,11 +157,11 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 .fixed-top #contentWarning-text {
-    border-bottom: 3px solid #d8b622
+    border-bottom: 3px solid #2faf9d
 }
 
 .fixed-bottom #contentWarning-text {
-    border-top: 3px solid #d8b622
+    border-top: 3px solid #2faf9d
 }
 
 #contentWarning-text p {
@@ -181,7 +181,7 @@ a:active, a:active *, a:focus, a:focus * {
     font-size: 12px;
     font-weight: 300;
     text-transform: uppercase;
-    background: #d8b622;
+    background: #2faf9d;
     padding: 4px 24px;
     margin: 17px 0;
     border-radius: 0;
@@ -539,8 +539,8 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 #search-block-v2 .pagination > li.next > a, #search-block-v2 .pagination > li.prev > a {
-    background-color: #d8b622;
-    border-color: #d8b622;
+    background-color: #2faf9d;
+    border-color: #2faf9d;
     color: #fff
 }
 
@@ -678,7 +678,7 @@ a:active, a:active *, a:focus, a:focus * {
     }
 
     #search-block-v2 .bottom-pagination {
-        background: #d8b622;
+        background: #2faf9d;
         position: absolute;
         bottom: -1px;
         width: 100%
@@ -817,7 +817,7 @@ a:active, a:active *, a:focus, a:focus * {
     }
 
     #search-block-v2 .bottom-pagination {
-        background: #d8b622;
+        background: #2faf9d;
         position: absolute;
         bottom: -1px;
         width: 100%
@@ -1075,7 +1075,7 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 #advanced-search-block .container .selector select > option:hover {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     color: #FFF
 }
 
@@ -1133,7 +1133,7 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 #advanced-search-block .nav-pills > li.active > a, #advanced-search-block .nav-pills > li.active > a:focus, #advanced-search-block .nav-pills > li.dropdown > a:hover {
-    color: #d8b622;
+    color: #2faf9d;
     background: 0 0
 }
 
@@ -1232,7 +1232,7 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 #advanced-search-block-v2 .container .selector select > option:hover {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     color: #FFF
 }
 
@@ -1290,7 +1290,7 @@ a:active, a:active *, a:focus, a:focus * {
 }
 
 #advanced-search-block-v2 .nav-pills > li.active > a, #advanced-search-block-v2 .nav-pills > li.active > a:focus, #advanced-search-block-v2 .nav-pills > li.dropdown > a:hover {
-    color: #d8b622;
+    color: #2faf9d;
     background: 0 0
 }
 
@@ -1889,8 +1889,8 @@ span.ui-helper-hidden-accessible {
 }
 
 .secondaryOptions.navbar-nav > li.wishlistButton {
-    background: #d8b622;
-    border: 1px solid #d8b622;
+    background: #2faf9d;
+    border: 1px solid #2faf9d;
     margin-right: 15px
 }
 
@@ -2345,17 +2345,19 @@ span.ui-helper-hidden-accessible {
         background-color: #b6b6b5
     }
 
+    /*
     .open .dropdown-menu li {
         display: block
     }
 
     .open .dropdown-menu li a {
-        color: #FFF;
-        font-size: 25px;
+        color: #000;
+        font-size: 16px;
         font-weight: 400;
         text-transform: uppercase;
         padding: 14px 0
     }
+    */
 
     .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {
         padding: 14px 0
@@ -2389,17 +2391,19 @@ span.ui-helper-hidden-accessible {
         width: auto
     }
 
+    /*
     .open .dropdown-menu li {
         display: block
     }
 
     .open .dropdown-menu li a {
-        color: #FFF;
-        font-size: 25px;
+        color: #000;
+        font-size: 16px;
         font-weight: 400;
         text-transform: uppercase;
         padding: 14px 0
     }
+    */
 
     .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {
         padding: 14px 0
@@ -2432,21 +2436,24 @@ span.ui-helper-hidden-accessible {
         background-color: #b6b6b5
     }
 
+    /*
     .open .dropdown-menu li {
         display: inline-block
     }
 
     .open .dropdown-menu li a {
-        color: #FFF;
+        color: #000;
         font-size: 16px;
         font-weight: 400;
         text-transform: uppercase;
         padding: 14px 0 14px 35px
     }
 
+
     .open .dropdown-menu li:first-child a {
-        padding: 33px 0
+        padding: 14px 0 14px 35px;
     }
+    */
 
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {
         color: #555;
@@ -2471,16 +2478,22 @@ span.ui-helper-hidden-accessible {
         width: 1170px
     }
 
+    /*
     .open .dropdown-menu li {
         display: inline-block
     }
 
     .open .dropdown-menu li a {
-        color: #FFF;
-        font-size: 16px;
+        color: #000;
+        font-size: 14px;
         font-weight: 400;
         text-transform: uppercase;
         padding: 14px 0 14px 40px
+    }
+    */
+
+    .open .dropdown-menu li a:hover {
+        color: #2faf9d;
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {
@@ -2503,6 +2516,7 @@ span.ui-helper-hidden-accessible {
     display: block
 }
 
+/*
 .open .dropdown-menu {
     position: static;
     display: block;
@@ -2526,7 +2540,7 @@ span.ui-helper-hidden-accessible {
     color: #404447;
     background: 0 0
 }
-
+*/
 .modal-content {
     border-radius: 0
 }
@@ -2559,11 +2573,6 @@ h4.modal-title {
     background-color: #b6b6b5;
     border-color: #b6b6b5;
     text-transform: uppercase
-}
-
-.btn-primary:hover {
-    background-color: #d8b622;
-    border-color: #d8b622
 }
 
 .wide-content-warning {
@@ -2618,7 +2627,7 @@ h4.modal-title {
 
 @media (min-width: 768px) and (max-width: 991px) {
     .carousel {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 65px;
         height: 100%;
         padding-top: 132px
@@ -2658,7 +2667,7 @@ h4.modal-title {
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .carousel {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 65px;
         height: 100%;
         padding-top: 132px
@@ -2698,7 +2707,7 @@ h4.modal-title {
 
 @media (min-width: 1200px) {
     .carousel {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 65px;
         height: 100%;
         padding-top: 132px
@@ -2816,7 +2825,7 @@ h4.modal-title {
 }
 
 .carousel .carousel-indicators li.active {
-    background: #d8b622
+    background: #2faf9d
 }
 */
 
@@ -2840,7 +2849,7 @@ h4.modal-title {
 }
 
 .carousel .carousel-indicators-bottom .carousel-indicators-item.active {
-    background: #d8b622
+    background: #2faf9d
 }
 
 #history .carousel .carousel-inner .carousel-caption h2 {
@@ -2867,7 +2876,7 @@ h4.modal-title {
     .carousel .carousel-control {
         width: 56px;
         height: 54px;
-        background: #d8b622;
+        background: #2faf9d;
         top: auto;
         bottom: 60px;
         opacity: 1;
@@ -2883,7 +2892,7 @@ h4.modal-title {
     .carousel .carousel-control {
         width: 56px;
         height: 54px;
-        background: #d8b622;
+        background: #2faf9d;
         top: auto;
         bottom: 60px;
         opacity: 1;
@@ -2895,7 +2904,7 @@ h4.modal-title {
     .carousel .carousel-control {
         width: 56px;
         height: 54px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 500px;
         opacity: 1;
         filter: alpha(opacity=100)
@@ -2906,7 +2915,7 @@ h4.modal-title {
     .carousel .carousel-control {
         width: 56px;
         height: 54px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 500px;
         opacity: 1;
         filter: alpha(opacity=100)
@@ -3302,7 +3311,7 @@ h4.modal-title {
         display: table;
         width: 345px;
         height: 66px;
-        background: #d8b622
+        background: #2faf9d
     }
 
     .highlights-new .item-highlights-new a .content-title h3 {
@@ -3357,7 +3366,7 @@ h4.modal-title {
         display: table;
         width: 293px;
         height: 66px;
-        background: #d8b622
+        background: #2faf9d
     }
 
     .highlights-new .item-highlights-new a .content-title h3 {
@@ -3412,7 +3421,7 @@ h4.modal-title {
         display: table;
         width: 363px;
         height: 66px;
-        background: #d8b622
+        background: #2faf9d
     }
 
     .highlights-new .item-highlights-new a .content-title h3 {
@@ -3610,7 +3619,7 @@ h4.modal-title {
         width: 100%;
         height: 20%;
         top: 80%;
-        background: #d8b622;
+        background: #2faf9d;
         -moz-opacity: .79;
         -khtml-opacity: .79;
         opacity: .79;
@@ -3695,7 +3704,7 @@ h4.modal-title {
         width: 100%;
         height: 20%;
         top: 80%;
-        background: #d8b622;
+        background: #2faf9d;
         -moz-opacity: .79;
         -khtml-opacity: .79;
         opacity: .79;
@@ -3780,7 +3789,7 @@ h4.modal-title {
         width: 100%;
         height: 20%;
         top: 80%;
-        background: #d8b622;
+        background: #2faf9d;
         -moz-opacity: .79;
         -khtml-opacity: .79;
         opacity: .79;
@@ -4254,7 +4263,7 @@ h4.modal-title {
 }
 
 .hl_control ol.hl-indicators li.active, .hl_control ol.hl-indicators li:hover, .hl_control_mobile ol.hl-indicators li.active, .hl_control_mobile ol.hl-indicators li:hover {
-    background-color: #d8b622
+    background-color: #2faf9d
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
@@ -5178,7 +5187,7 @@ h4.modal-title {
     width: 89px;
     height: 51px;
     margin-top: -51px;
-    background-color: #d8b622;
+    background-color: #2faf9d;
     border: none
 }
 
@@ -5580,7 +5589,7 @@ h4.modal-title {
 
     .text p a, .text p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .image .text-footerImage span, .text ul li {
@@ -5649,7 +5658,7 @@ h4.modal-title {
 
     .imageblocks p a, .imageblocks p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .imageblocks ul, .text ol {
@@ -5696,7 +5705,7 @@ h4.modal-title {
     }
 
     .downloadList .downloadItem a:hover {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .downloadList .downloadItem a em {
@@ -5713,7 +5722,7 @@ h4.modal-title {
     }
 
     .text .links ul li {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 22px;
         padding: 0;
         margin: 0 0 2px
@@ -5726,7 +5735,7 @@ h4.modal-title {
 
     .text .links a, .text .links a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 }
 
@@ -5785,7 +5794,7 @@ h4.modal-title {
 
     .text p a, .text p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .image .text-footerImage span, .text ul li {
@@ -5861,7 +5870,7 @@ h4.modal-title {
     }
 
     .downloadList .downloadItem a:hover {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .downloadList .downloadItem a em {
@@ -5877,7 +5886,7 @@ h4.modal-title {
     }
 
     .text .links ul li {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 22px;
         padding: 0;
         margin: 0 0 2px
@@ -5889,7 +5898,7 @@ h4.modal-title {
 
     .text .links a, .text .links a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 }
 
@@ -5939,7 +5948,7 @@ h4.modal-title {
 
     .text p a, .text p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .text ol, .text ul {
@@ -6010,7 +6019,7 @@ h4.modal-title {
     }
 
     .downloadList .downloadItem a:hover {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .downloadList .downloadItem a em {
@@ -6026,7 +6035,7 @@ h4.modal-title {
     }
 
     .text .links ul li {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 22px;
         padding: 0;
         margin: 0 0 2px
@@ -6038,7 +6047,7 @@ h4.modal-title {
 
     .text .links a, .text .links a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 }
 
@@ -6067,6 +6076,7 @@ h4.modal-title {
         margin: 0 0 50px
     }
 
+    /*
     .text {
         margin-bottom: 34px
     }
@@ -6076,6 +6086,7 @@ h4.modal-title {
         margin: 0 0 19px;
         letter-spacing: .05em
     }
+    */
 
     .text ol li, .text p, .text ul li {
         font-size: 22px;
@@ -6092,7 +6103,7 @@ h4.modal-title {
 
     .text p a, .text p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .text ol, .text ul {
@@ -6151,7 +6162,7 @@ h4.modal-title {
 
     .imageblocks p a, .imageblocks p a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 
     .imageblocks ul, .text ol {
@@ -6200,7 +6211,7 @@ h4.modal-title {
     }
 
     .downloadList .downloadItem a:hover {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .downloadList .downloadItem a em {
@@ -6216,7 +6227,7 @@ h4.modal-title {
     }
 
     .text .links ul li {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 22px;
         padding: 0;
         margin: 0 0 2px
@@ -6228,7 +6239,7 @@ h4.modal-title {
 
     .text .links a, .text .links a:hover {
         text-decoration: none;
-        color: #d8b622
+        color: #2faf9d
     }
 }
 
@@ -6473,7 +6484,7 @@ h4.modal-title {
     .productDetail .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: auto;
         top: 434px;
         opacity: 1;
@@ -6491,7 +6502,7 @@ h4.modal-title {
     .productDetail .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 353px;
         margin-top: -32px;
         opacity: 1;
@@ -6509,7 +6520,7 @@ h4.modal-title {
     .productDetail .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 353px;
         margin-top: -32px;
         opacity: 1;
@@ -6531,7 +6542,7 @@ h4.modal-title {
     .productDetail .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 353px;
         margin-top: -32px;
         opacity: 1;
@@ -7688,7 +7699,7 @@ h4.modal-title {
     }
 
     .relatedProducts #relatedProducts_list ol.hl-indicators li.active {
-        background-color: #d8b622
+        background-color: #2faf9d
     }
 }
 
@@ -8433,7 +8444,7 @@ h4.modal-title {
     }
 
     .additionalFinished #additionalFinished_list ol.hl-indicators li.active {
-        background-color: #d8b622
+        background-color: #2faf9d
     }
 }
 
@@ -8911,7 +8922,7 @@ h4.modal-title {
 }
 
 .products-tabs {
-    border-bottom: 8px solid #d8b622;
+    border-bottom: 8px solid #2faf9d;
     margin-bottom: 38px
 }
 
@@ -8922,7 +8933,7 @@ h4.modal-title {
 
 .products-tabs li a {
     border: none;
-    color: #d8b622;
+    color: #2faf9d;
     font-size: 17px;
     font-weight: 400;
     text-align: center;
@@ -8932,11 +8943,11 @@ h4.modal-title {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;
-    border-top: 1px solid #d8b622
+    border-top: 1px solid #2faf9d
 }
 
 .products-tabs li.active a {
-    background: #d8b622;
+    background: #2faf9d;
     border: none;
     color: #000;
     font-size: 22px;
@@ -8946,14 +8957,14 @@ h4.modal-title {
 }
 
 .products-tabs li:first-child a {
-    border-left: 1px solid #d8b622;
+    border-left: 1px solid #2faf9d;
     border-right: 2px solid #FFF;
     margin-right: 1px
 }
 
 .products-tabs li:last-child a {
     border-left: 2px solid #FFF;
-    border-right: 1px solid #d8b622;
+    border-right: 1px solid #2faf9d;
     margin-left: 1px
 }
 
@@ -8964,7 +8975,7 @@ h4.modal-title {
 .nav-tabs.products-tabs > li.active > a, .nav-tabs.products-tabs > li > a:focus, .nav-tabs.products-tabs > li > a:hover {
     color: #FFF;
     cursor: default;
-    background-color: #d8b622;
+    background-color: #2faf9d;
     border: none;
     border-bottom-color: transparent
 }
@@ -9008,7 +9019,7 @@ h4.modal-title {
         display: block;
         width: 100%;
         height: 10%;
-        background: #d8b622;
+        background: #2faf9d;
         padding-left: 0;
         padding-right: 0
     }
@@ -9565,7 +9576,7 @@ h4.modal-title {
     }
 
     .mobileFilterGroupButtons button.buttonYellow {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .mobileFilterGroupButtons button .mobile-only {
@@ -9618,7 +9629,7 @@ h4.modal-title {
         display: block;
         width: 100%;
         height: 10%;
-        background: #d8b622;
+        background: #2faf9d;
         padding-left: 0;
         padding-right: 0
     }
@@ -10174,7 +10185,7 @@ h4.modal-title {
     }
 
     .mobileFilterGroupButtons button.buttonYellow {
-        background: #d8b622
+        background: #2faf9d
     }
 
     .mobileFilterGroupButtons button .mobile-only {
@@ -10199,6 +10210,16 @@ h4.modal-title {
     .bc-block h3 {
         color: #FFF;
         font-size: 16px;
+        font-weight: 300;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 6px 0 6px 44px;
+        margin: 0 0 21px
+    }
+
+    .bc-block h2 {
+        color: #FFF;
+        font-size: 20px;
         font-weight: 300;
         text-align: left;
         text-transform: uppercase;
@@ -10301,6 +10322,15 @@ h4.modal-title {
         margin: 0 0 13px
     }
 
+    .bc-block h2 {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 300;
+        text-align: left;
+        text-transform: uppercase;
+        padding: 6px 0 6px 44px;
+        margin: 0 0 13px
+    }
     #bycatalogue .bc-block ul, .bc-block ul {
         padding: 0;
         margin: 0;
@@ -10385,7 +10415,7 @@ h4.modal-title {
     }
 
     .desktopNewSearch button.buttonYellow {
-        background: #d8b622;
+        background: #2faf9d;
         border: none;
         color: #fff;
         font-size: 16px;
@@ -10455,6 +10485,10 @@ h4.modal-title {
     background: #5a5e5c
 }
 
+.bc-block.greyfinder h2 {
+    background: #5a5e5c
+}
+
 #buttonReset {
     display: none;
     z-index: 2500;
@@ -10466,7 +10500,7 @@ h4.modal-title {
 
 #buttonReset a {
     display: block;
-    background: #d8b622;
+    background: #2faf9d;
     width: 200px;
     position: relative;
     left: 50%;
@@ -10618,7 +10652,7 @@ h4.modal-title {
     padding: 1px 5px 0;
     width: auto;
     height: auto;
-    background: #d8b622;
+    background: #2faf9d;
     position: absolute;
     top: 12px;
     right: 0
@@ -10680,7 +10714,7 @@ h4.modal-title {
 
 .results-col .results-detail.active .center-block .header h3 {
     display: inline-block;
-    color: #d8b622;
+    color: #2faf9d;
     font-size: 32px;
     font-weight: 400;
     text-align: left;
@@ -10719,7 +10753,7 @@ h4.modal-title {
 }
 
 .form-control:focus {
-    border-color: #d8b622;
+    border-color: #2faf9d;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(216, 182, 35, .6);
     outline: 0
 }
@@ -10782,7 +10816,7 @@ h4.modal-title {
 }
 
 .table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     color: #FFF
 }
 
@@ -10802,7 +10836,7 @@ h4.modal-title {
 #result-table-block .table > tbody > tr > td > span, #result-table-block-finder .table > tbody > tr > td > span {
     color: #FFF;
     padding: 1px 5px;
-    background: #d8b622;
+    background: #2faf9d;
     text-transform: uppercase
 }
 
@@ -10845,14 +10879,14 @@ h4.modal-title {
 
 .pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
     color: #FFF;
-    background-color: #d8b622;
-    border-color: #d8b622
+    background-color: #2faf9d;
+    border-color: #2faf9d
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     color: #fff;
-    background-color: #d8b622;
-    border-color: #d8b622
+    background-color: #2faf9d;
+    border-color: #2faf9d
 }
 
 .btn-default {
@@ -10863,14 +10897,15 @@ h4.modal-title {
 
 .btn-default.active, .btn-default:active, .btn-default:focus, .btn-default:hover, .open > .dropdown-toggle.btn-default {
     color: #FFF;
-    background-color: #d8b622;
-    border-color: #d8b622
+    background-color: #2faf9d;
+    border-color: #2faf9d;
 }
 
 .btn-group.dropup.open .dropdown-menu li a {
     padding: 0
 }
 
+/*
 .btn-group.dropup.open > .dropdown-menu {
     display: block;
     position: absolute;
@@ -10880,7 +10915,7 @@ h4.modal-title {
     min-width: 200px;
     text-align: left
 }
-
+*/
 .btn-group.dropup.open .dropdown-menu > li > a {
     display: block;
     padding: 3px 10px;
@@ -11197,7 +11232,7 @@ h4.modal-title {
     .carousel-text .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: auto;
         top: 50%;
         margin-top: -32px;
@@ -11220,7 +11255,7 @@ h4.modal-title {
     .carousel-text .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: auto;
         bottom: 60px;
         opacity: 1;
@@ -11242,7 +11277,7 @@ h4.modal-title {
     .carousel-text .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 45%;
         margin-top: -32px;
         opacity: 1;
@@ -11264,7 +11299,7 @@ h4.modal-title {
     .carousel-text .carousel .carousel-control {
         width: 66px;
         height: 64px;
-        background: #d8b622;
+        background: #2faf9d;
         top: 45%;
         margin-top: -32px;
         opacity: 1;
@@ -11382,7 +11417,7 @@ h4.modal-title {
 }
 
 #experienceOverview .carousel .carousel-inner .carousel-caption .btn-yellow {
-    background: #d8b622;
+    background: #2faf9d;
     color: #fff;
     text-transform: uppercase
 }
@@ -11678,7 +11713,7 @@ h4.modal-title {
 
 .resultsProjects .column-selectors .go-to-selectors a, .resultsProjects .column-selectors .new-search a {
     display: block;
-    background: #d8b622;
+    background: #2faf9d;
     color: #fff;
     font-size: 13px;
     font-weight: 300;
@@ -11832,7 +11867,7 @@ h4.modal-title {
     .resultsProjects .column-selectors .new-search a {
         display: initial;
         text-decoration: none;
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 25px;
         font-weight: 300;
@@ -11981,7 +12016,7 @@ h4.modal-title {
     .resultsProjects .column-selectors .new-search a {
         display: initial;
         text-decoration: none;
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 25px;
         font-weight: 300;
@@ -12152,7 +12187,7 @@ h4.modal-title {
 
 #exp-filter h3 {
     cursor: pointer;
-    background: #d8b622;
+    background: #2faf9d;
     color: #FFF;
     font-size: 14px;
     text-align: center;
@@ -12262,7 +12297,7 @@ h4.modal-title {
 
 #exp-filter .exp-searchButton span {
     display: block;
-    background: #d8b622;
+    background: #2faf9d;
     color: #FFF;
     font-size: 14px;
     text-align: left;
@@ -12909,10 +12944,12 @@ textarea {
     float: right
 }
 
+/*
 .form-checkbox fieldset, select {
     width: 355px;
     float: right
 }
+
 
 select {
     font-size: 19px;
@@ -12928,7 +12965,7 @@ select {
     text-indent: .01px;
     text-overflow: ""
 }
-
+*/
 select::-ms-expand {
     display: none
 }
@@ -13121,7 +13158,7 @@ select option {
 }
 
 .address .itemAddress address a {
-    color: #d8b622
+    color: #2faf9d
 }
 
 .item-contact-image p {
@@ -13784,7 +13821,7 @@ select option {
 }
 
 .catalogues .itemCatalogue p a.yellowlink {
-    color: #d8b622
+    color: #2faf9d
 }
 
 @media (min-width: 0px) and (max-width: 767px) {
@@ -13987,7 +14024,7 @@ select option {
 }
 
 .relatedVideos .itemVideo p a {
-    color: #d8b622;
+    color: #2faf9d;
     text-transform: uppercase
 }
 
@@ -14134,7 +14171,7 @@ select option {
 }
 
 .press .itemPress a {
-    color: #d8b622;
+    color: #2faf9d;
     margin: 0
 }
 
@@ -14296,7 +14333,7 @@ select option {
 .events .itemEvents p.yellowText {
     display: block;
     width: 100%;
-    color: #d8b622;
+    color: #2faf9d;
     font-size: 15px;
     margin: 0 0 10px
 }
@@ -14329,7 +14366,7 @@ select option {
     }
 
     #eventsDetail .backPage a.buttonBack span {
-        background: #d8b622;
+        background: #2faf9d;
         padding: 3px 11px
     }
 }
@@ -14362,7 +14399,7 @@ select option {
     }
 
     #eventsDetail .backPage a.buttonBack span {
-        background: #d8b622;
+        background: #2faf9d;
         padding: 3px 11px
     }
 }
@@ -14390,7 +14427,7 @@ select option {
     }
 
     #eventsDetail .backPage a.buttonBack {
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 12px;
         font-weight: 400;
@@ -14420,7 +14457,7 @@ select option {
     }
 
     #eventsDetail .backPage a.buttonBack {
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 12px;
         font-weight: 400;
@@ -14487,7 +14524,7 @@ select option {
     display: block;
     bottom: 0;
     left: 39px;
-    color: #d8b622;
+    color: #2faf9d;
     font-size: 21px;
     font-weight: 300;
     text-transform: uppercase;
@@ -14557,7 +14594,7 @@ select option {
     }
 
     #newsDetail .backPage a.buttonBack span {
-        background: #d8b622;
+        background: #2faf9d;
         padding: 3px 11px
     }
 
@@ -14596,7 +14633,7 @@ select option {
     }
 
     .newsDetail .newsDescription p a {
-        color: #d8b622
+        color: #2faf9d
     }
 
     .newsDetail .newsDescription .news-link {
@@ -14604,7 +14641,7 @@ select option {
     }
 
     .newsDetail .newsDescription .news-link a {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 21px;
         font-weight: 300;
         text-align: center;
@@ -14642,7 +14679,7 @@ select option {
     }
 
     #newsDetail .backPage a.buttonBack span {
-        background: #d8b622;
+        background: #2faf9d;
         padding: 3px 11px
     }
 
@@ -14681,7 +14718,7 @@ select option {
     }
 
     .newsDetail .newsDescription p a {
-        color: #d8b622
+        color: #2faf9d
     }
 
     .newsDetail .newsDescription .news-link {
@@ -14689,7 +14726,7 @@ select option {
     }
 
     .newsDetail .newsDescription .news-link a {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 21px;
         font-weight: 300;
         text-align: center;
@@ -14718,7 +14755,7 @@ select option {
     }
 
     #newsDetail .backPage a.buttonBack {
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 12px;
         font-weight: 400;
@@ -14761,7 +14798,7 @@ select option {
     }
 
     .newsDetail .newsDescription p a {
-        color: #d8b622
+        color: #2faf9d
     }
 
     .newsDetail .newsDescription .news-link {
@@ -14769,7 +14806,7 @@ select option {
     }
 
     .newsDetail .newsDescription .news-link a {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 21px;
         font-weight: 300;
         padding: 0;
@@ -14796,7 +14833,7 @@ select option {
     }
 
     #newsDetail .backPage a.buttonBack {
-        background: #d8b622;
+        background: #2faf9d;
         color: #fff;
         font-size: 12px;
         font-weight: 400;
@@ -14839,7 +14876,7 @@ select option {
     }
 
     .newsDetail .newsDescription p a {
-        color: #d8b622
+        color: #2faf9d
     }
 
     .newsDetail .newsDescription .news-link {
@@ -14847,7 +14884,7 @@ select option {
     }
 
     .newsDetail .newsDescription .news-link a {
-        color: #d8b622;
+        color: #2faf9d;
         font-size: 21px;
         font-weight: 300;
         padding: 0;
@@ -14889,7 +14926,7 @@ select option {
     }
 
     .inspiration-tabs {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 38px;
         width: 100%;
         text-align: center;
@@ -14913,7 +14950,7 @@ select option {
 
     #collapse-inspiration {
         display: block;
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         padding: 0;
         margin-bottom: 38px
     }
@@ -14980,7 +15017,7 @@ select option {
     }
 
     .inspiration-tabs {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 38px;
         width: 100%;
         text-align: center;
@@ -15004,7 +15041,7 @@ select option {
 
     #collapse-inspiration {
         display: block;
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         padding: 0;
         margin-bottom: 38px
     }
@@ -15060,7 +15097,7 @@ select option {
     }
 
     .inspiration-tabs {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 38px;
         width: 100%
     }
@@ -15117,7 +15154,7 @@ select option {
     }
 
     .inspiration-tabs {
-        border-bottom: 6px solid #d8b622;
+        border-bottom: 6px solid #2faf9d;
         margin-bottom: 38px;
         width: 100%
     }
@@ -15154,7 +15191,7 @@ select option {
 }
 
 .inspiration-tabs li.active a, .inspiration-tabs li.active a:hover {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     color: #FFF
 }
 
@@ -15180,7 +15217,7 @@ select option {
 .inspiration-tabs > li.active > a, .inspiration-tabs > li > a:focus, .inspiration-tabs > li > a:hover {
     color: #FFF;
     cursor: default;
-    background-color: #d8b622;
+    background-color: #2faf9d;
     border: none;
     border-bottom-color: transparent
 }
@@ -15188,7 +15225,7 @@ select option {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
     color: #FFF;
     cursor: default;
-    background-color: #d8b622;
+    background-color: #2faf9d;
     border: none
 }
 
@@ -15221,7 +15258,7 @@ select option {
 }
 
 .inspiration-tabs .open .dropdown-menu li a:hover, .inspiration-tabs .open .dropdown-menu li.active a {
-    background: #d8b622
+    background: #2faf9d
 }
 
 .inspiration-tabs li.dropdown span.arrowDown {
@@ -15318,7 +15355,7 @@ select option {
 
 .lighting-tips .itemLighting .lighting-text a, .lighting-tips .itemLighting .lighting-text a:hover {
     text-decoration: none;
-    color: #d8b622
+    color: #2faf9d
 }
 
 .inspiration .itemLighting .lighting-text ol, .lighting-tips .itemLighting .lighting-text ul {
@@ -15627,7 +15664,7 @@ input[type=submit][disabled] {
 }
 
 .historyItem h3 {
-    color: #d8b622;
+    color: #2faf9d;
     font-size: 100px
 }
 
@@ -15812,7 +15849,7 @@ input[type=submit][disabled] {
 }
 
 .ball_1 {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     top: 0;
     left: 0
 }
@@ -15832,7 +15869,7 @@ input[type=submit][disabled] {
 }
 
 .ball_4 {
-    background-color: #d8b622;
+    background-color: #2faf9d;
     top: 24px;
     left: 24px
 }
@@ -16123,7 +16160,7 @@ input[type=submit][disabled] {
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 400;
-        color: #d8b622
+        color: #2faf9d
     }
 
     #breadcrumb li a {
@@ -16132,7 +16169,7 @@ input[type=submit][disabled] {
     }
 
     #breadcrumb li a:hover {
-        color: #d8b622
+        color: #2faf9d
     }
 }
 
@@ -16408,7 +16445,7 @@ input[type=submit][disabled] {
 }
 
 .dd-inner .left-area {
-    width: 998px;
+    width: 1140px;
     float: left;
 }
 
@@ -16428,7 +16465,7 @@ input[type=submit][disabled] {
     margin-right: 0px;
     margin-bottom: 3px;
     margin-top: 5px;
-    width: 159px;
+    width: 182px;
     height: 155px;
 }
 
@@ -16581,7 +16618,7 @@ input[type=submit][disabled] {
 }
 .wrapper {
     display: block;
-    width: 998px;
+    width: 1140px;
     min-height: 100%;
     padding: 0;
     margin: 0 auto;

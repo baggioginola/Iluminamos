@@ -1,26 +1,26 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mario.cuevas
- * Date: 6/24/2016
- * Time: 4:46 PM
+ * User: mario
+ * Date: 15/ene/2017
+ * Time: 14:54
  */
 
 require_once 'CBaseController.class.inc.php';
-require_once __MODEL__ . 'CCategoriesModel.class.inc.php';
+require_once __MODEL__ . 'CBrandsModel.class.inc.php';
 
-class Categories extends BaseController
+class Brands extends BaseController
 {
     private static $object = null;
 
     private $parameters = array();
     private static $type = 'categorias';
     private $validParameters = array(
-        'id_categoria' => TYPE_INT
+        'id_marca' => TYPE_INT
     );
 
     /**
-     * @return Categories|null
+     * @return Brands|null
      */
     public static function singleton()
     {
@@ -35,7 +35,7 @@ class Categories extends BaseController
      */
     public function getAll()
     {
-        $result = CategoriesModel::singleton()->getAll();
+        $result = BrandsModel::singleton()->getAll();
         return $result;
     }
 
@@ -48,7 +48,7 @@ class Categories extends BaseController
             return false;
         }
 
-        if($result = CategoriesModel::singleton()->getById($this->parameters['id_categoria'])) {
+        if($result = BrandsModel::singleton()->getById($this->parameters['id_marca'])) {
             return $result;
         }
 

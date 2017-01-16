@@ -87,42 +87,6 @@ class ProductsModel extends Database
     }
 
     /**
-     * @param string $name
-     * @param string $id_categoy
-     * @return array|bool|null
-     */
-    public function getByName($name = '', $id_category = '')
-    {
-        if (empty($name) || empty($id_category)) {
-            return false;
-        }
-
-        if (!$this->connect()) {
-            return false;
-        }
-
-        $result_array = array();
-
-        $query = "SELECT " . self::$table . " . id, " . self::$table . " . nombre, " . self::$table . " . key_nombre, " . self::$table . " . imagenes,
-                    " .self::$table . " . descripcion, " . self::$table . " . especificaciones, " . self::$table . " . precio, categoria . key_nombre as categoria
-                    FROM " . self::$table . "
-                    INNER JOIN categoria on " . self::$table . " . id_categoria = categoria . id
-                    WHERE producto . key_nombre = '" . $name . "' and producto . active = true and categoria . id = " .$id_category;
-
-        if (!$result = $this->query($query)) {
-            return false;
-        }
-
-        $this->close_connection();
-
-        while ($row = $this->fetch_assoc($result)) {
-            $result_array = $row;
-        }
-
-        return $result_array;
-    }
-
-    /**
      * @param string $id_category
      * @return array|bool
      */
@@ -141,7 +105,7 @@ class ProductsModel extends Database
         $query = "SELECT " . self::$table . " . nombre, " . self::$table . " . id_producto
                     FROM " . self::$table . "
                     INNER JOIN categorias ON " . self::$table . " . id_categoria = categorias . id_categoria
-                    WHERE categorias . id_categoria = " . $id_category . " AND " . self::$table . " . status = true";
+                    WHERE categorias . id_categoria = " . $id_category . " AND " . self::$table . " . status = true LIMIT 10";
 
         if (!$result = $this->query($query)) {
             return false;

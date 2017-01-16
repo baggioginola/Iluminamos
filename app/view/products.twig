@@ -1,11 +1,14 @@
 {% extends "layout/master.twig" %}
 
 
-{% block title %}Productos{% endblock %}
+{% block title %}{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}{% endblock %}
 
 {% block head %}
     {{ parent() }}
-
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+    <script src="{{ settings.JS }}custom/search.js" type="text/javascript"></script>
 {% endblock %}
 {% block body_id %}productOverview{% endblock %}
 {% block content %}
@@ -14,104 +17,108 @@
             <ol>
                 <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
                 <li>&gt;</li>
-                <li><span class="active-page">{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span></li>
+                <li>
+                    <span class="active-page">{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span>
+                </li>
             </ol>
-        </div> <!-- end breadcrumb -->
+        </div>
 
-
-        <!-- page title -->
         <div class="container pageTitle">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}</h1>
+                    <h1>{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h1>
                 </div>
-            </div>    <!-- /row -->
-        </div>    <!-- /container -->
+            </div>
+        </div>
 
-        <!-- section 1 -->
         <div id="section_1">
 
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                        <!-- Tab panes -->
                         <div class="tab-content">
 
                             <div class="tab-pane active">
                                 <div class="row">
-
-                                    <!-- column left selectors FINDER -->
-                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 selects-col" style="">
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 selects-col">
 
                                         <div class="contentSelectors">
 
                                             <div class="bc-block greyfinder">
                                                 <div class="desktop-sel">
-
-                                                    <h3>Búsqueda</h3>
-
-
-                                                </div> <!-- /desktop-sel -->
-                                            </div>    <!-- /greyfinder -->
-
-                                        </div>    <!-- /contentSelectors -->
-
-                                    </div>    <!-- /column left selectors -->
-
-
-                                    <!-- column right results -->
-                                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 results-col">
-                                        <div class="row highlights-new">
-                                            {% for producto  in result %}
-                                                {#}{ producto.id_producto }#}
-                                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                                                    <div class="item-highlights-new">
-                                                        <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
-                                                            <div>
-                                                                <img class="img-responsive center-block"
-                                                                     src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
-                                                                     alt=""
-                                                                     title=""
-                                                                     style="height: 225px;">
-                                                            </div>
-                                                        </a>
-                                                        <span class="product-name">
-                                                            <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}</a>
-                                                        </span>
-                                                    </div>
+                                                    <h2>Búsqueda</h2>
                                                 </div>
-
-                                            {% endfor %}
+                                            </div>
                                         </div>
+                                        <h3>Categoría </h3>
+                                        <select class="selectpicker" data-live-search="true" title="Todas"
+                                                id="filter_category">
+                                            {% for category  in result_categories %}
+                                                <option value="{{ category.id_categoria }}">{{ category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                            {% endfor %}
+                                        </select>
 
-                                    </div>    <!-- /column right results -->
 
+                                        <hr/>
+                                        <h3>Marca </h3>
+                                        <select class="selectpicker" data-live-search="true" title="Todas"
+                                                id="filter_brand">
+                                            {% for brand  in result_brands %}
+                                                <option value="{{ brand.id_marca }}">{{ brand.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <hr/>
+                                        <h3>Precio</h3>
+                                        <select class="selectpicker" data-live-search="true"
+                                                title="Selecciona el precio" id="filter_price">
+                                            <option value="1">0 - 5,000</option>
+                                            <option value="2">5,000 - 10,000</option>
+                                            <option value="3">10,000 - 20,000</option>
+                                            <option value="4">20,000 - 30,000</option>
+                                            <option value="5">40,000 - 50,000</option>
+                                            <option value="6">60,000 - 70,000</option>
+                                            <option value="7">80,000 - 90,000</option>
+                                            <option value="8">90,000 - 100,000</option>
+                                        </select>
+                                        <hr/>
+                                        <button id="btn_search_products" class="btn btn-default" type="button"
+                                                style="background-color: #2faf9d; border-color: #2faf9d; color: #FFF; float: right;">
+                                            Buscar
+                                        </button>
 
-                                </div>    <!-- /row -->
+                                        <div style="clear: both;"><br></div>
+
+                                        <div role="alert" class="alert alert-danger text-uppercase text-center"
+                                             id="id_message_search" style="display: none;">
+                                            <span><strong>Selecciona</strong> un filtro.</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 results-col" id="product_results">
+                                        {% for producto  in result %}
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+                                                <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
+                                                    <div class="thumbnail"><img
+                                                                src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"/>
+                                                        <div class="caption">
+                                                            <h3 style="font-size: 20px; height: 45px; overflow: hidden; text-align: center;">{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
 
                             </div>
 
 
                         </div>
                     </div>
-                </div>    <!-- /row -->
-            </div>    <!-- /container -->
+                </div>
+            </div>
 
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                        <div id="resultjson"></div>
-
-
-                    </div>
-
-                </div>    <!-- /row -->
-
-            </div>    <!-- /container -->
-
-        </div>    <!-- /.text -->
+        </div>
     </div>
 {% endblock %}

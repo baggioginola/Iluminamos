@@ -1,16 +1,17 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mario.cuevas
- * Date: 6/24/2016
- * Time: 4:50 PM
+ * User: mario
+ * Date: 15/ene/2017
+ * Time: 14:55
  */
+
 require_once CLASSES . 'CDatabase.class.inc.php';
 
-class CategoriesModel extends Database
+class BrandsModel extends Database
 {
     private static $object = null;
-    private static $table = 'categorias';
+    private static $table = 'marcas';
 
     public static function singleton()
     {
@@ -30,7 +31,7 @@ class CategoriesModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE status = true";
+        $query = "SELECT id_marca,nombre FROM " . self::$table . " WHERE status = true";
 
         if (!$result = $this->query($query)) {
             return false;

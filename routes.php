@@ -11,9 +11,7 @@ $app->get('/', function($request, $response, $args){
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
 
     $products = Products::singleton()->getAll();
-    #$products = Products::singleton()->getById();
 
-    #echo '<pre>' . print_r($products, 1) . '</pre>';
     return $this->view->render($response, 'main.twig', array('data' => $products,'nombre' => 'Mario', 'settings' => $settings));
 });
 
@@ -21,10 +19,14 @@ $app->get('/categoria/{id_categoria}', function ($request, $response, $args) {
     global $settings;
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
     require_once __CONTROLLER__ . 'CCategoriesController.class.inc.php';
+    require_once  __CONTROLLER__ . 'CBrandsController.class.inc.php';
+    $result_brands = Brands::singleton()->getAll();
+    $result_categories = Categories::singleton()->getAll();
+
     $result = Products::singleton()->getByCategory($args);
     $result_category = Categories::singleton()->getById($args);
 
-    return $this->view->render($response, 'products.twig', array('settings' => $settings, 'result' => $result, 'result_category' => $result_category));
+    return $this->view->render($response, 'products.twig', array('settings' => $settings, 'result' => $result, 'result_category' => $result_category, 'result_brands' => $result_brands, 'result_categories' => $result_categories));
 });
 
 $app->get('/producto/{id_producto}', function ($request, $response, $args) {
@@ -36,6 +38,17 @@ $app->get('/producto/{id_producto}', function ($request, $response, $args) {
 
     #echo print_r($result, 1);
     return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result));
+});
+
+$app->get('/producto_test/{id_producto}', function ($request, $response, $args) {
+    global $settings;
+
+    require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+
+    $result = Products::singleton()->getById($args);
+
+    #echo print_r($result, 1);
+    return $this->view->render($response, 'product_test.twig', array('settings' => $settings, 'result' => $result));
 });
 
 $app->get('/proyectos', function ($request, $response, $args) {
