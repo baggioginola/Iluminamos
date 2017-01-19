@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>{% block title %}{% endblock %} - Iluminamos</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{{ settings.CSS }}bootstrap.css" media="all">
         <link rel="stylesheet" type="text/css" href="{{ settings.CSS }}style.css" media="all">
 
@@ -18,7 +19,7 @@
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     {% endblock %}
 </head>
-<body id="{% block body_id  %}{% endblock %}" class="col-subcol">
+<body id="{% block body_id %}{% endblock %}" class="col-subcol">
 <div id="header" class="navbar navbar-default navbar-fixed-top new-header-mobile" role="navigation">
 
     <div class="container logoMenuBlock" itemscope itemtype="https://schema.org/Organization">
@@ -62,6 +63,10 @@
                 <a id="pinte" target="_blank" href="https://www.pinterest.com/iluminamos"></a>
             </div>
 
+            <div class="cart">
+                <div  class="cart_img"><img src="{{ settings.IMG }}cart.png" width="28px"/></div>
+                <div class="cart_link"><a href="{{ settings.DOMAIN }}cart" id="cart_productos">{% if total_products == 0 %}VACÍO {% else %}{{ total_products }} PRODUCTO(S){% endif %}</a> | <a href="#" >ACCESO</a></div>
+            </div>
             <div class="nav-area">
                 <div class="nav-bottom">
                     <ul>
@@ -74,33 +79,34 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li><a href='{{ settings.DOMAIN}}categoria/1'
+                                                    <li><a href='{{ settings.DOMAIN }}categoria/1'
                                                            style="font-size:11px;">Empotrar en Techo<img
                                                                     src='{{ settings.PRODUCT_IMG }}626.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href='{{ settings.DOMAIN}}categoria/2'
+                                                    <li><a href='{{ settings.DOMAIN }}categoria/2'
                                                            style="font-size:11px;">Sobreponer en Techo<img
                                                                     src='{{ settings.PRODUCT_IMG }}699.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li><a href='{{ settings.DOMAIN}}categoria/3'
+                                                    <li><a href='{{ settings.DOMAIN }}categoria/3'
                                                            style="font-size:11px;">Arbotantes de sobreponer<img
                                                                     src='{{ settings.PRODUCT_IMG }}645.jpg'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li>
-                                                        <a href='{{ settings.DOMAIN}}categoria/4'
+                                                        <a href='{{ settings.DOMAIN }}categoria/4'
                                                            style="font-size:11px;">Arbotantes de empotrar<img
                                                                     src='{{ settings.PRODUCT_IMG }}711.jpg'
                                                                     alt='Wall' style="width:116px;"/>
                                                         </a>
                                                     </li>
 
-                                                    <li><a href='{{ settings.DOMAIN}}categoria/5' style="font-size:11px;">Lamparas Colgantes
+                                                    <li><a href='{{ settings.DOMAIN }}categoria/5'
+                                                           style="font-size:11px;">Lamparas Colgantes
                                                             <img
                                                                     src='{{ settings.PRODUCT_IMG }}5688.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
                                                     <li class='no-margin'><a
-                                                                href='{{ settings.DOMAIN}}categoria/6'
+                                                                href='{{ settings.DOMAIN }}categoria/6'
                                                                 style="font-size:11px;">Tira LED<img
                                                                     src='{{ settings.PRODUCT_IMG }}1789.jpg'
                                                                     alt='Lamp' style="width:116px;"/></a></li>

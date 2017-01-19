@@ -71,6 +71,15 @@ $app->get('/quienes-somos', function ($request, $response, $args) {
     return $this->view->render($response, 'brand.twig', array('settings' => $settings));
 });
 
+$app->get('/cart', function ($request, $response, $args) {
+    global $settings;
+    require_once __CONTROLLER__ . 'CCartController.class.inc.php';
+    $total_products = Cart::singleton()->getAllProducts();
+
+    $result = Cart::singleton()->getAll();
+
+    return $this->view->render($response, 'cart.twig', array('settings' => $settings, 'result' => $result['result_all'], 'total' => $result['total'], 'total_products' => $total_products));
+});
 
 /* ----------------------------------- */
 $app->get('/productos/{name}', function ($request, $response, $args) {

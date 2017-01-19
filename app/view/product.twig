@@ -1,10 +1,10 @@
 {% extends "layout/master.twig" %}
 
-{% block title %}Producto{% endblock %}
+{% block title %}Producto/{{ result.nombre }}{% endblock %}
 
 {% block head %}
     {{ parent() }}
-
+    <script src="{{ settings.JS }}custom/cart.js" type="text/javascript"></script>
 {% endblock %}
 {% block body_id %}productOverview{% endblock %}
 {% block content %}
@@ -25,7 +25,9 @@
 
             <div class="container">
                 <div class="row product">
-                    <div class="col-md-5 col-md-offset-0"><img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"/></div>
+                    <div class="col-md-5 col-md-offset-0">
+                        <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg" id="bigPic"/>
+                    </div>
                     <div class="col-md-7">
                         <h2>{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
                         <h3>Marca: {{ result.marca | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
@@ -34,7 +36,7 @@
                             {% endautoescape %}
                         </p>
                         <h3>${{ result.precio }}</h3>
-                        <button class="btn btn-primary" type="button">Agregar al carrito</button>
+                        <button class="btn btn-primary add_cart" type="button" id="{{ result.id_producto }}">Agregar al carrito</button>
                     </div>
                 </div>
                 <div class="page-header">

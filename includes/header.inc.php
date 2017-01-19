@@ -9,6 +9,7 @@
 require_once __DIR__ . '/../config.php';
 require_once FRAMEWORK . 'slim/vendor/autoload.php';
 
+session_start();
 $settings = array(
     'CSS' => CSS,
     'JS' => JS,

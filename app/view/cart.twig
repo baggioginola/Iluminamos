@@ -1,0 +1,76 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Cart Resumen{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <script src="{{ settings.JS }}custom/cart.js" type="text/javascript"></script>
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+    <div class="container" id="breadcrumb">
+        <ol>
+            <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+            <li>&gt;</li>
+            <li>
+                Cart
+            </li>
+        </ol>
+    </div> <!-- end breadcrumb -->
+
+    <div id="section_1">
+
+        <div class="container pageTitle">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                    <h1>CARRITO COMPRAS</h1>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th><span style="font-size: 14px; color: #fff;">Producto</span></th>
+                                <th class="text-center"><span style="font-size: 14px; color: #fff;">Precio</span></th>
+                                <th class="text-center"><span style="font-size: 14px; color: #fff;">Cantidad </span>
+                                </th>
+                                <th class="text-center"><span style="font-size: 14px; color: #fff;">Total</span></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for producto in result %}
+                                <tr>
+                                    <td style="width: 50%">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-xs-2 col-md-2 col-lg-2 hidden-xs hidden-md">
+                                                <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"/>
+                                            </div>
+                                            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"><h4>{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h4></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center"><span style="font-size: 14px;">$ {{ producto.precio }}</span></td>
+                                    <td class="text-center"><span style="font-size: 14px;">{{ producto.numero_productos }}</span></td>
+                                    <td class="text-center"><span style="font-size: 14px;">$ {{ producto.precio_total }}</span></td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td class="text-right"><span style="font-size: 16px;">Total</span></td>
+                                <td class="text-center"><span style="font-size: 16px;">$ {{ total }}</span></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>    <!-- /.text -->
+    </div>
+{% endblock %}

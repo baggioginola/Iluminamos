@@ -12,3 +12,11 @@ $app->group('/search', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/cart', function () use($app) {
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__.'CCartController.class.inc.php';
+        $result = Cart::singleton()->add();
+        echo $result;
+    });
+});

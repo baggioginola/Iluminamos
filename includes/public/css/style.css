@@ -2358,7 +2358,6 @@ span.ui-helper-hidden-accessible {
         padding: 14px 0
     }
     */
-
     .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {
         padding: 14px 0
     }
@@ -2404,7 +2403,6 @@ span.ui-helper-hidden-accessible {
         padding: 14px 0
     }
     */
-
     .navbar-nav .open .dropdown-menu .dropdown-header, .navbar-nav .open .dropdown-menu > li > a {
         padding: 14px 0
     }
@@ -2454,7 +2452,6 @@ span.ui-helper-hidden-accessible {
         padding: 14px 0 14px 35px;
     }
     */
-
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {
         color: #555;
         background: 0 0
@@ -2491,7 +2488,6 @@ span.ui-helper-hidden-accessible {
         padding: 14px 0 14px 40px
     }
     */
-
     .open .dropdown-menu li a:hover {
         color: #2faf9d;
     }
@@ -2582,7 +2578,6 @@ h4.modal-title {
 .active, .carousel, .item {
     height: 100%
 }
-
 
 /*
 @media (min-width: 0px) and (max-width: 767px) {
@@ -2763,8 +2758,6 @@ h4.modal-title {
 }
 */
 
-
-
 .carousel .bg-carousel {
     background: #000;
     width: 100%;
@@ -2780,7 +2773,6 @@ h4.modal-title {
     border-bottom: 0;
     margin-bottom: 70px;
 }
-
 
 /*
 .carousel .carousel-indicators {
@@ -2869,7 +2861,6 @@ h4.modal-title {
     -moz-background-size: cover;
     -o-background-size: cover
 }
-
 
 /*
 @media (min-width: 0px) and (max-width: 767px) {
@@ -3031,7 +3022,6 @@ h4.modal-title {
         display: none
     }
 }
-
 
 @media (min-width: 992px) and (max-width: 1199px) {
     #home .arrowsDown {
@@ -6087,7 +6077,6 @@ h4.modal-title {
         letter-spacing: .05em
     }
     */
-
     .text ol li, .text p, .text ul li {
         font-size: 22px;
         letter-spacing: .043em;
@@ -10331,6 +10320,7 @@ h4.modal-title {
         padding: 6px 0 6px 44px;
         margin: 0 0 13px
     }
+
     #bycatalogue .bc-block ul, .bc-block ul {
         padding: 0;
         margin: 0;
@@ -10783,7 +10773,7 @@ h4.modal-title {
 }
 
 .table thead {
-    background: #b6b6b5;
+    background: #000;
     color: #FFF;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -10820,6 +10810,7 @@ h4.modal-title {
     color: #FFF
 }
 
+/*
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     color: #000;
     font-size: 11px;
@@ -10828,7 +10819,11 @@ h4.modal-title {
     padding: 4px 2px;
     border-top: none
 }
+*/
 
+.table > tbody > tr > td{
+    vertical-align: middle;
+}
 #result-table-block .table > tbody > tr > td, #result-table-block-finder .table > tbody > tr > td {
     cursor: pointer
 }
@@ -16417,13 +16412,11 @@ input[type=submit][disabled] {
 
 }
 
-
 .nav-area .nav-bottom li {
     float: left;
     list-style-type: none;
     height: 39px;
 }
-
 
 /************** Sub Menu Start *************************************/
 .dd-area {
@@ -16616,6 +16609,7 @@ input[type=submit][disabled] {
 .dd-inner .dd-resource-area li a:hover {
     color: #f5a23f;
 }
+
 .wrapper {
     display: block;
     width: 1140px;
@@ -16623,6 +16617,7 @@ input[type=submit][disabled] {
     padding: 0;
     margin: 0 auto;
 }
+
 /************** Sub Menu End *************************************/
 
 /***** Header Start *****/
@@ -16722,10 +16717,8 @@ input[type=submit][disabled] {
 
 .nav-area .nav-bottom {
     float: right;
-    margin-top: 15px;
+    margin-top: 10px;
 }
-
-
 
 .nav-area .nav-bottom li a {
     text-transform: uppercase;
@@ -16745,6 +16738,7 @@ input[type=submit][disabled] {
 .nav-area .nav-bottom li.active > a {
     color: #2faf9d;
 }
+
 .nav-area .nav-bottom li:hover > a, .nav-area .nav-bottom li:hover > a span {
     color: #2faf9d;
 }
@@ -16769,9 +16763,9 @@ input[type=submit][disabled] {
 }
 
 /************** Header End *************************************/
-.fill{
-    height:100%;
-    width:100%;
+.fill {
+    height: 100%;
+    width: 100%;
     background-position: center;
 }
 
@@ -16780,11 +16774,11 @@ span.product-name {
     text-align: center;
     line-height: 18px;
     margin-top: 5px;
-    height:42px;
+    height: 42px;
     overflow: hidden;
 }
 
-span.product-name a{
+span.product-name a {
     display: block;
     font-size: 16px;
     color: #000;
@@ -16794,17 +16788,15 @@ span.product-name a{
     text-transform: uppercase;
 }
 
-span.product-name a:hover{
-    color:#2faf9d;
+span.product-name a:hover {
+    color: #2faf9d;
 }
 
-.product_detail
-{
+.product_detail {
     font-size: 16px;
 }
 
-.product_detail h3
-{
+.product_detail h3 {
     background: #5a5e5c;
     color: #FFF;
     padding-top: 8px;
@@ -16815,9 +16807,35 @@ span.product-name a:hover{
     text-transform: uppercase;
 }
 
-.project_detail
-{
+.project_detail {
     font-size: 14px;
     text-align: justify;
     padding-bottom: 60px;
+}
+
+.cart {
+    float: right;
+    font-size: 10px;
+    padding-top: 2px;
+    margin-right: 5px;
+}
+
+.cart .cart_img {
+    float: left;
+}
+
+.cart .cart_link {
+    float: left;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.cart .cart_link a {
+    color: #000;
+    text-decoration: none;
+}
+
+.cart .cart_link a:hover{
+    color: #2faf9d;
+    text-decoration: none;
 }
