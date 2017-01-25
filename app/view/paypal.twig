@@ -1,0 +1,56 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Pagar Paypal{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+    <div class="container" id="breadcrumb">
+        <ol>
+            <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+            <li>&gt;</li>
+            <li>
+                <a href="{{ settiong.DOMAIN }}cart">Cart</a>
+            </li>
+            <li>&gt;</li>
+            <li>
+                <a href="{{ settiong.DOMAIN }}terminos-condiciones">Cart</a>
+            </li>
+            <li>&gt;</li>
+            <li>
+                <span class="active-page">Pagar Paypal</span>
+            </li>
+        </ol>
+    </div> <!-- end breadcrumb -->
+
+    <div id="section_1">
+
+        <div class="container pageTitle">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                    <h1>PAGAR POR PAYPAL</h1>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <img class="img-responsive" src="{{ settings.IMG }}paypal.png" width="150" style="margin: 0 auto;"/>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="padding-top: 25px;">
+                            <a href="{{ settings.DOMAIN }}confirmar-paypal" class="btn btn-info" role="button">Aceptar</a>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 50px;">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <a href="#" class="btn btn-info" role="button">Regresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>    <!-- /.text -->
+    </div>
+{% endblock %}

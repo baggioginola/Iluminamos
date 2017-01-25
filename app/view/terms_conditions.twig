@@ -1,0 +1,66 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Términos y Condiciones{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+    <div class="container" id="breadcrumb">
+        <ol>
+            <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+            <li>&gt;</li>
+            <li>
+                <a href="{{ settiong.DOMAIN }}cart">Cart</a>
+            </li>
+            <li>&gt;</li>
+            <li>
+                <span class="active-page">Términos y Condiciones</span>
+            </li>
+        </ol>
+    </div> <!-- end breadcrumb -->
+
+    <div id="section_1">
+
+        <div class="container pageTitle">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                    <h1>TÉRMINOS Y CONDICIONES</h1>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="font-size:18px; ">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"/>Estoy de acuerdo con los términos y condiciones.
+                                </label>
+                                <a href="#">(Leer)</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                                <button class="btn btn-default btn-lg text-left" type="button">Regresar</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <button class="btn btn-default btn-lg text-left" type="button">Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>    <!-- /.text -->
+    </div>
+{% endblock %}
