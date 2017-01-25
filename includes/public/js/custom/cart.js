@@ -44,7 +44,7 @@ jQuery(document).ready(function () {
             },
             dataType: 'json',
             success: function (response) {
-                jQuery('#cart_productos').html(response.data.total_products + ' Producto(s)');
+                jQuery('#cart_productos').html(response.data.total_products + ' PRODUCTO(S)');
                 console.log(response.data.total_products);
             }
         });

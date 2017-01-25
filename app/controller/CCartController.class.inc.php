@@ -5,8 +5,8 @@
  * Date: 16/ene/2017
  * Time: 21:13
  */
-require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CCartProductsController.class.inc.php';
+require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 
 require_once __MODEL__ . 'CCartModel.class.inc.php';
 

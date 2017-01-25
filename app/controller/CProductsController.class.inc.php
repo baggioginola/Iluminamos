@@ -49,11 +49,17 @@ class Products extends BaseController
      */
     public function getById($parameters)
     {
+        $array = array();
         if (!$this->_setParameters($parameters)) {
             return false;
         }
 
         if ($result = ProductsModel::singleton()->getById($this->parameters['id_producto'])) {
+
+            $price = $this->getPrice($result);
+
+            $total = $price + ($price * $result['iva']);
+            $result['precio'] = number_format($total, 2);
             return $result;
         }
         return false;
@@ -75,22 +81,17 @@ class Products extends BaseController
         return $result;
     }
 
-    /**
-     * @return string
-     */
-    public function getByName()
+    private function getPrice($array = array())
     {
-        if (!$this->_setParameters()) {
-            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        if (!$array) {
+            return false;
         }
 
-        if ($result = ProductsModel::singleton()->getByName($this->parameters['key_nombre'], $this->parameters['id_categoria'])) {
-            return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $result));
-        }
+        $total = $array['precio'] * $array['tipo_cambio'];
+        $total = $total - ($total * ($array['descuento'] / 100));
 
-        return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        return $total;
     }
-
     /**
      * @return bool
      */

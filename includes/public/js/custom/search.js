@@ -33,23 +33,30 @@ jQuery(document).ready(function () {
             success: function (response) {
                 var product_results = jQuery('#product_results');
                 product_results.empty();
-                if(response.status == 200) {
+                product_results.slideUp();
+                if (response.status == 200) {
                     var product_results_array = [];
                     jQuery.each(response.data, function (key, value) {
 
                         product_results_array = [
                             '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
-                            '<a href="',BASE_ROOT + 'producto/' + value.id_producto , '">' +
-                            '<div class="thumbnail"><img src="', PRODUCTS_IMG + value.id_producto + '.jpg' ,'"/>' +
+                            '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '">' +
+                            '<div class="thumbnail"><img src="', PRODUCTS_IMG + value.id_producto + '.jpg', '"/>' +
                             '<div class="caption">' +
-                            '<h3 style="font-size: 20px; height: 45px; overflow: hidden; text-align: center;">',value.nombre,'</h3>' +
+                            '<h3 style="font-size: 20px; height: 45px; overflow: hidden; text-align: center;">', value.nombre, '</h3>' +
                             '</div>' +
                             '</div>' +
                             '</a>' +
                             '</div>'];
                         product_results.append(product_results_array.join(''));
                     });
-
+                    product_results.slideDown();
+                }
+                else {
+                    product_results_array = [
+                        '<h3>NO SE ENCONTRARON RESULTADOS</h3>'];
+                    product_results.append(product_results_array.join(''));
+                    product_results.slideDown();
                 }
             }
         });

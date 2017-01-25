@@ -20,3 +20,19 @@ $app->group('/cart', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/register', function () use($app) {
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__.'CRegisterController.class.inc.php';
+        $result = Register::singleton()->add();
+        echo $result;
+    });
+});
+
+$app->group('/paypal', function () use($app) {
+    $app->post('/pay', function() use($app){
+        require_once __CONTROLLER__. 'CPaypalController.class.inc.php';
+        $result = Paypal::singleton()->pay();
+        echo print_r($result, 1);
+    });
+});

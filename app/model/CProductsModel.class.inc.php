@@ -65,12 +65,15 @@ class ProductsModel extends Database
         $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".id_categoria, " . self::$table . ".nombre, 
         " . self::$table . ".descripcion,
         " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda, 
-        " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca
+        " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
+        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio
             FROM  " . self::$table . " 
             INNER JOIN categorias
              ON " . self::$table . ".id_categoria = categorias.id_categoria
              INNER JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
+             INNER JOIN tipo_cambio
+             ON " . self::$table . ".moneda = tipo_cambio.moneda
             WHERE id_producto = '" . $id . "' and " . self::$table . ".STATUS = true;";
 
         if (!$result = $this->query($query)) {
@@ -92,11 +95,11 @@ class ProductsModel extends Database
      */
     public function getByCategory($id_category = '')
     {
-        if(empty($id_category)) {
+        if (empty($id_category)) {
             return false;
         }
 
-        if(!$this->connect()) {
+        if (!$this->connect()) {
             return false;
         }
 
@@ -113,7 +116,7 @@ class ProductsModel extends Database
 
         $this->close_connection();
 
-        while($row = $this->fetch_assoc($result)) {
+        while ($row = $this->fetch_assoc($result)) {
             $result_array[] = $row;
         }
 
