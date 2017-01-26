@@ -26,7 +26,7 @@ class SearchModel extends Database
     /**
      * @return array|bool
      */
-    public function getProducts($category = null, $brand = null, $price = null)
+    public function getProducts($category = null, $brand = null)
     {
         if (!$this->connect()) {
             return false;
@@ -45,11 +45,14 @@ class SearchModel extends Database
         $result_array = array();
 
         $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
-        " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio 
+        " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
+        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio
         FROM " . self::$products_table . " INNER JOIN categorias
         ON " . self::$products_table . ".id_categoria = categorias.id_categoria 
         INNER JOIN marcas
         ON " . self::$products_table . ".id_marca = marcas.id_marca
+        INNER JOIN tipo_cambio
+        ON " . self::$products_table . ".moneda = tipo_cambio.moneda
         WHERE  1 = 1 " . $filter . " 
         AND " . self::$products_table . ".status = true 
         AND categorias.status = true and marcas.status = true LIMIT 10";

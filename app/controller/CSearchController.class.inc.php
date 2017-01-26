@@ -20,6 +20,20 @@ class Search extends BaseController
         'price' => TYPE_INT
     );
 
+    private $prices = array(
+        1 => array(0 => 0, 1 => 5000),
+        2 => array(0 => 5000, 1 => 10000),
+        3 => array(0 => 10000, 1 => 20000),
+        4 => array(0 => 20000, 1 => 30000),
+        5 => array(0 => 30000, 1 => 40000),
+        6 => array(0 => 40000, 1 => 50000),
+        7 => array(0 => 50000, 1 => 60000),
+        8 => array(0 => 60000, 1 => 70000),
+        9 => array(0 => 70000, 1 => 80000),
+        10 => array(0 => 8000, 1 => 90000),
+        11 => array(0 => 90000, 1 => 100000)
+    );
+
     /**
      * @return null|Search
      */
@@ -53,12 +67,44 @@ class Search extends BaseController
             $price = $this->parameters['price'];
         }
 
-        if (!$result = SearchModel::singleton()->getProducts($category, $brand, $price)) {
+        if (!$result = SearchModel::singleton()->getProducts($category, $brand)) {
             return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
         }
 
-        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result)));
+        $row_array = array();
+        $result_all = array();
+        $i = 0;
 
+        foreach ($result as $key) {
+            foreach ($key as $value => $result) {
+                $row_array[$value] = $result;
+            }
+            if(!is_null($price)) {
+                $total = $this->getPrice($row_array);
+                if(!($total >= $this->prices[$price][0] && $total < $this->prices[$price][1])) {
+                    continue;
+                }
+            }
+            $result_all[$i]['id_producto'] = $row_array['id_producto'];
+            $result_all[$i]['nombre'] = $row_array['nombre'];
+            $i++;
+        }
+
+        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result_all)));
+    }
+
+
+    private function getPrice($array = array())
+    {
+        if (!$array) {
+            return false;
+        }
+
+        $total = $array['precio'] * $array['tipo_cambio'];
+        $total = $total - ($total * ($array['descuento'] / 100));
+        $total = $total + ($total * $array['iva']);
+
+        return $total;
     }
 
     /**
