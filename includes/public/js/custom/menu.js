@@ -9,4 +9,12 @@ jQuery(document).ready(function(){
     jQuery("#limenu_1").mouseleave(function () {
         jQuery('#dd-area1').stop(true, true).delay(0).slideUp('medium');
     });
+
+    jQuery('#limenu_2 a').mouseenter(function () {
+        jQuery('#dd-area2').stop(true, true).delay(0).slideDown('medium');
+    });
+
+    jQuery("#limenu_2").mouseleave(function () {
+        jQuery('#dd-area2').stop(true, true).delay(0).slideUp('medium');
+    });
 });
