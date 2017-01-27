@@ -47,6 +47,36 @@ class ProductsModel extends Database
     }
 
     /**
+     * @return array|bool
+     */
+    public function getRandomAll()
+    {
+        if (!$this->connect()) {
+            return false;
+        }
+        $result_array = array();
+
+        $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".nombre,
+        categorias.id_categoria
+        FROM " . self::$table . "
+        INNER JOIN categorias
+        ON " . self::$table . ".id_categoria = categorias.id_categoria
+        WHERE categorias.id_categoria IN(12, 11, 5, 1, 3, 4)
+        AND  " . self::$table . ".status = true
+        ORDER BY rand() LIMIT 6;";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array[] = $row;
+        }
+
+        return $result_array;
+    }
+
+    /**
      * @param string $id
      * @return array|bool|null
      */
@@ -108,7 +138,7 @@ class ProductsModel extends Database
         $query = "SELECT " . self::$table . " . nombre, " . self::$table . " . id_producto
                     FROM " . self::$table . "
                     INNER JOIN categorias ON " . self::$table . " . id_categoria = categorias . id_categoria
-                    WHERE categorias . id_categoria = " . $id_category . " AND " . self::$table . " . status = true LIMIT 10";
+                    WHERE categorias.id_categoria = " . $id_category . " AND " . self::$table . " . status = true LIMIT 10";
 
         if (!$result = $this->query($query)) {
             return false;

@@ -19,6 +19,11 @@ $app->group('/cart', function () use($app) {
         $result = Cart::singleton()->add();
         echo $result;
     });
+    $app->post('/delete', function() use($app){
+        require_once __CONTROLLER__.'CCartController.class.inc.php';
+        $result = Cart::singleton()->delete();
+        echo $result;
+    });
 });
 
 $app->group('/register', function () use($app) {
@@ -29,18 +34,19 @@ $app->group('/register', function () use($app) {
     });
 });
 
-$app->group('/paypal', function () use($app) {
-    $app->post('/pay', function() use($app){
-        require_once __CONTROLLER__. 'CPaypalController.class.inc.php';
-        $result = Paypal::singleton()->pay();
-        echo print_r($result, 1);
-    });
-});
-
 $app->group('/contact', function () use($app) {
     $app->post('/sendMessage', function() use($app){
         require_once __CONTROLLER__. 'CContactController.class.inc.php';
         $result = Contact::singleton()->sendMessage();
+        echo $result;
+    });
+});
+
+
+$app->group('/login', function () use($app) {
+    $app->post('/authenticate', function() use($app){
+        require_once __CONTROLLER__. 'CLoginController.class.inc.php';
+        $result = Login::singleton()->authenticate();
         echo $result;
     });
 });

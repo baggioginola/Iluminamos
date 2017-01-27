@@ -38,10 +38,16 @@ class Products extends BaseController
     {
         if ($result = ProductsModel::singleton()->getAll()) {
             return $result;
-            #return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $result));
         }
         return false;
-        #return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+    }
+
+    public function getRandomAll()
+    {
+        if ($result = ProductsModel::singleton()->getRandomAll()) {
+            return $result;
+        }
+        return false;
     }
 
     /**

@@ -63,8 +63,6 @@ class Database
 
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
 
-        $log[] = $sql;
-        Logs::singleton()->setLog($log,__METHOD__,__LINE__);
         return self::query($sql);
 
     }

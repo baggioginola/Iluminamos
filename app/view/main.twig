@@ -67,156 +67,36 @@
 
                     <div class="row">
 
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
+                        {% for producto  in result %}
 
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/1.jpg"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="item-highlights-new">
+                                    <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
+                                        <div class="content-image">
+                                            <img class="img-responsive center-block"
+                                                 src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
+                                                 alt="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                                                 title="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                                                 style="height: 225px;">
+                                        </div>
+                                    </a>
                                 <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Tnm Dona</a>
-                            </span>
-
+                                    <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
+                                        {{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}
+                                    </a>
+                                </span>
+                                </div>
 
                             </div>
+                        {% endfor %}
 
-                        </div>
+                    </div>
+                    <!-- /row -->
 
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/2.jpg"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
-                                <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Ttt 2</a>
-                            </span>
-
-                            </div>
-
-                            <!-- mobile content -->
-
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/3.jpg"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
-                                <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/4.jpg"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
-                                <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/5.jpg"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
-                                <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">    <!-- item news-events -->
-
-                            <!-- descktop content -->
-                            <div class="item-highlights-new">
-                                <a href="#">
-                                    <div class="content-image">
-                                        <img class="img-responsive center-block"
-                                             src="includes/public/img/productos/6.png"
-                                             alt="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             title="LEDS-C4 participa en la renovación del Hotel Fairmont Rey Juan Carlos I"
-                                             style="height: 225px;">
-                                    </div>
-
-
-                                </a>
-                                <span class="product-name">
-									<a href="/product/indoor-lighting/pendants/Scepter-10-Light-Pendant/E32779_91BC">Pulpo 10</a>
-                            </span>
-
-
-                            </div>
-
-                        </div>
-
-                    </div>    <!-- /row -->
-
-                </div>    <!-- /col -->
-            </div>    <!-- /row -->
+                </div>
+                <!-- /col -->
+            </div>
+            <!-- /row -->
         </div>
 
     </div>

@@ -39,20 +39,22 @@
                 <span class="icon-bar"></span>
             </button>
 
-
+            <!--
             <a href="#" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search-block-v2">
                 <div class="icon-40x40-search-mobile-black"><span>Search</span></div>
             </a>
+            !-->
 
         </div>
 
         <div id="menuOptions" class="navbar-collapse collapse">
 
+            <!--
             <ul class="nav navbar-nav navbar-right secondaryOptions">
                 <li class="searchButton"><a href="#" class="navbar-toggle collapsed" data-toggle="collapse"
                                             data-target="#search-block-v2">Buscar</a></li>
             </ul>
-
+            !-->
             <div class="social">
                 <a id="twitter" target="_blank" href="https://twitter.com/iluminamos"></a>
 
@@ -67,7 +69,7 @@
                 <div class="cart_img"><img src="{{ settings.IMG }}cart.png" width="28px"/></div>
                 <div class="cart_link"><a href="{{ settings.DOMAIN }}cart"
                                           id="cart_productos">{% if total_products == 0 %}VACÍO {% else %}{{ total_products }} PRODUCTO(S){% endif %}</a>
-                    | <a href="#">ACCESO</a></div>
+                    | <a href="{{ settings.DOMAIN }}login">ACCESO</a></div>
             </div>
             <div class="nav-area">
                 <div class="nav-bottom">
@@ -175,7 +177,7 @@
 
                             <a href="{{ settings.DOMAIN }}contacto">CONTACTO</a>
                         </li>
-                        <li style="width:80px;"><a href="#">BLOG</a></li>
+                        <li style="width:80px;"><a href="http://www.iluminamos.com.mx/blog/" target="_blank">BLOG</a></li>
                     </ul>
                 </div>
             </div>

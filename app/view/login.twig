@@ -1,0 +1,59 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ settings.CSS }}login.css" media="all">
+    <script src="{{ settings.JS }}md5.js" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ settings.JS }}custom/login.js"></script>
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+    <div class="container" id="breadcrumb">
+        <ol>
+            <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+            <li>&gt;</li>
+            <li>
+                <a href="{{ settings.DOMAIN }}cart">Cart</a>
+            </li>
+            <li>&gt;</li>
+            <li>
+                <span class="active-page">Login</span>
+            </li>
+        </ol>
+    </div>
+
+    <div id="section_1">
+
+        <div class="container pageTitle">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                    <h1 style="margin-bottom: 0px;">LOGIN</h1>
+
+                    <div class="row">
+                        <div class="login-card"><img src="{{ settings.IMG }}avatar_2x.png" class="profile-img-card"/>
+
+                            <p class="profile-name-card"></p>
+
+                            <form class="form-signin" id="form_login">
+                                <span class="reauth-email"> </span>
+                                <input type="email" required placeholder="Ingresa E-mail" autofocus class="form-control"
+                                       id="inputEmail" name="e_mail"/>
+                                <input type="password" required placeholder="Ingresa Password" class="form-control"
+                                       id="id_password"/>
+
+                                <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit">Aceptar
+                                </button>
+                            </form>
+                            <a href="{{ settings.DOMAIN }}registro" class="forgot-password">Registrarse</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

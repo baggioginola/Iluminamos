@@ -50,4 +50,25 @@ jQuery(document).ready(function () {
         });
         return false;
     });
+
+    jQuery('.id_delete_cart').click(function () {
+        var id = jQuery(this).attr('id');
+
+        var url = BASE_ROOT + 'cart/delete';
+        jQuery.ajax({
+            url: url,
+            type: "POST",
+            cache: false,
+            data: {
+                id_producto: id
+            },
+            dataType: 'json',
+            success: function (response) {
+                if(response.status == 200) {
+                    window.location = BASE_ROOT + 'cart';
+                }
+            }
+        });
+        return false;
+    });
 });

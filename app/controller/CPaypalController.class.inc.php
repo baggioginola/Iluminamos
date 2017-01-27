@@ -42,11 +42,12 @@ class Paypal extends BaseController
         $this->setUrl();
 
         $session_id = session_id();
-        $session_id = 'icsasgj4jkeripivba3v2b6e13';
         if (!$result = CartModel::singleton()->getBySessionId($session_id)) {
+            #return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
             return false;
         }
         if (!$result_cart = $this->getById($result['id_cart'])) {
+            #return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
             return false;
         }
 
@@ -67,11 +68,11 @@ class Paypal extends BaseController
 
         $this->setQueryString($result_all);
 
-        echo $this->paypal_url . $this->queryString;
+        $data = array();
+        $data['result'] = $this->paypal_url . $this->queryString;
 
-        header('location' . $this->paypal_url . $this->queryString);
-
-        //exit();
+        #return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $data));
+        return $this->paypal_url . $this->queryString;
     }
 
     private function setUrl()

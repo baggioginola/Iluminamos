@@ -99,6 +99,35 @@ class CartModel extends Database
         return $result_array;
     }
 
+
+    public function getByCartIdProductId($cart_id = '', $product_id = '')
+    {
+        if (empty($cart_id) || empty($product_id)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $result_array = array();
+
+        $query = "SELECT id_cart_productos FROM cart_productos WHERE id_cart = '" . $cart_id . "'
+                    AND id_producto = '" . $product_id . "' ";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        $this->close_connection();
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
+        }
+
+        return $result_array;
+    }
+
     public function getById($id = '')
     {
         if (empty($id)) {
@@ -138,4 +167,27 @@ class CartModel extends Database
 
         return $result_array;
     }
+
+    public function delete($id = '')
+    {
+        if (empty($id)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $where = "id_cart_productos = " . $id;
+
+        if (!$result = $this->remove('cart_productos', $where)) {
+            return false;
+        }
+
+        $this->close_connection();
+
+        return true;
+    }
+
+
 }

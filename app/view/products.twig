@@ -103,7 +103,9 @@
 
                                                 <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
                                                     <div class="thumbnail"><img
-                                                                src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"/>
+                                                                src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
+                                                                alt="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                                                                title="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
                                                         <div class="caption">
                                                             <h3 style="font-size: 20px; height: 45px; overflow: hidden; text-align: center;">{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
                                                         </div>

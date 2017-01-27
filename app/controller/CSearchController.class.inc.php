@@ -45,6 +45,9 @@ class Search extends BaseController
         return self::$object;
     }
 
+    /**
+     * @return string
+     */
     public function getProducts()
     {
         if (!$this->_setParameters()) {
@@ -93,7 +96,10 @@ class Search extends BaseController
         return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result_all)));
     }
 
-
+    /**
+     * @param array $array
+     * @return bool
+     */
     private function getPrice($array = array())
     {
         if (!$array) {

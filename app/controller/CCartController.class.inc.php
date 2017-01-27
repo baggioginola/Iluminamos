@@ -42,6 +42,7 @@ class Cart extends BaseController
             return false;
         }
 
+        $row_array = array();
         $total_products = 0;
         foreach ($result_cart as $key) {
             foreach ($key as $value => $result) {
@@ -52,6 +53,7 @@ class Cart extends BaseController
 
         return $total_products;
     }
+
     /**
      * @return string
      */
@@ -132,6 +134,29 @@ class Cart extends BaseController
         $result_total['total_products'] = $total_products;
 
         return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $result_total));
+    }
+
+    public function delete()
+    {
+        if (!$this->_setParameters()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        $session_id = session_id();
+
+        if (!$result = CartModel::singleton()->getBySessionId($session_id)) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        if (!$result_cart = CartModel::singleton()->getByCartIdProductId($result['id_cart'], $this->parameters['id_producto'])) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        if(!CartModel::singleton()->delete($result_cart['id_cart_productos'])) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS));
     }
 
     private function getTotal($array = array())

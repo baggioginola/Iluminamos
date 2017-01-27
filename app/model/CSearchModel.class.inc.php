@@ -24,6 +24,8 @@ class SearchModel extends Database
     }
 
     /**
+     * @param null $category
+     * @param null $brand
      * @return array|bool
      */
     public function getProducts($category = null, $brand = null)
@@ -44,6 +46,7 @@ class SearchModel extends Database
 
         $result_array = array();
 
+        // TODO Remove LIMIT 10
         $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
         marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio

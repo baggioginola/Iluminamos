@@ -4,7 +4,7 @@
 jQuery(document).ready(function () {
 
     jQuery('#reset_button').click(function () {
-        jQuery('#form_register').trigger("reset");
+        jQuery('#form_contact').trigger("reset");
 
         return false;
     });
