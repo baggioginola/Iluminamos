@@ -1,15 +1,15 @@
 <?php
-
 /**
  * Created by PhpStorm.
- * User: mario.cuevas
- * Date: 9/22/2016
- * Time: 5:21 PM
+ * User: mario
+ * Date: 26/ene/2017
+ * Time: 21:58
  */
+
 class Encryption
 {
     private static $object = null;
-
+    private static $salt = '1lum1n4m05';
     public static function singleton()
     {
         if (!isset(self::$object)) {
@@ -28,8 +28,14 @@ class Encryption
         return base64_encode(round(microtime(true) * 1000) . rand());
     }
 
-    public function generateToken()
+    public function generateToken($name = null, $last_name = null)
     {
-        return base64_encode(round(microtime(true) * 1000) . rand());
+        if(is_null($name) || is_null($last_name) ){
+            return false;
+        }
+
+        return base64_encode(self::$salt . $name . $last_name);
     }
+
+
 }

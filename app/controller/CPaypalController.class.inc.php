@@ -61,8 +61,10 @@ class Paypal extends BaseController
             }
             $result_all[$i]['nombre'] = $row_array['nombre'];
             $result_all[$i]['numero_productos'] = $row_array['numero_productos'];
-            $result_all[$i]['precio'] = $this->getPrice($row_array);
-            $result_all[$i]['iva'] = $result_all[$i]['precio'] * $this->iva;
+
+            $price = $this->getPrice($row_array);
+            $result_all[$i]['precio'] = number_format($this->getPrice($row_array), 2);
+            $result_all[$i]['iva'] = number_format(($price * $this->iva), 2);
             $i++;
         }
 
@@ -71,7 +73,6 @@ class Paypal extends BaseController
         $data = array();
         $data['result'] = $this->paypal_url . $this->queryString;
 
-        #return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $data));
         return $this->paypal_url . $this->queryString;
     }
 

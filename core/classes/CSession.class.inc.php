@@ -8,7 +8,7 @@
  */
 
 require_once CLASSES . 'CEncryption.class.inc.php';
-require_once __CONTROLLER__ . 'CUserController.class.inc.php';
+
 
 class Session
 {
@@ -57,17 +57,43 @@ class Session
             return false;
         }
 
-        if (!$result = UserController::singleton()->getByToken($token)) {
+        if (!$this->getArgs()) {
             return false;
         }
 
-        if ($result['token_expiration'] < gmdate('Y-m-d H:i:s')) {
+        list($name, $last_name) = $this->getArgs();
+
+        if (!($token == Encryption::singleton()->generateToken($name, $last_name))) {
             return false;
         }
 
-        return UserController::singleton()->updateToken($result['id'], $result['token']);
+        return true;
     }
 
+    private function getArgs()
+    {
+        if (!isset($_SESSION['name']) || !isset($_SESSION['last_name'])) {
+            return false;
+        }
+
+        return array($_SESSION['name'], $_SESSION['last_name']);
+    }
+
+    public function getName()
+    {
+        if(isset($_SESSION['name'])) {
+            return $_SESSION['name'];
+        }
+        return '';
+    }
+
+    public function getLastName()
+    {
+        if(isset($_SESSION['last_name'])) {
+            return $_SESSION['last_name'];
+        }
+        return '';
+    }
     private function getToken()
     {
         if (!isset($_SESSION['token'])) {

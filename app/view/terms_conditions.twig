@@ -4,6 +4,8 @@
 
 {% block head %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ settings.JS }}custom/terms_conditions.js"></script>
+    <script src="{{ settings.JS }}bootbox.min.js"></script>
 {% endblock %}
 {% block body_id %}productOverview{% endblock %}
 {% block content %}
@@ -33,7 +35,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="font-size:18px; ">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"/>Estoy de acuerdo con los términos y condiciones.
+                                    <input type="checkbox" id="terms_conditions_agree"/>Estoy de acuerdo con los términos y condiciones.
                                 </label>
                                 <a href="#">(Leer)</a>
                             </div>
@@ -54,7 +56,7 @@
 
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <a href="{{ settings.DOMAIN }}pagar-paypal" class="btn btn-info" role="button">Continuar</a>
+                                <a href="#" class="btn btn-info" role="button" id="terms_conditions">Continuar</a>
                             </div>
                         </div>
                     </div>

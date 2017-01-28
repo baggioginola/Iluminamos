@@ -40,19 +40,20 @@ class Login extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
         }
 
-        /*
-        $token = Encryption::singleton()->generateToken();
+        if (!$token = Encryption::singleton()->generateToken($result['nombre'], $result['apellidos'])) {
+            return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
+        }
 
         Session::singleton()->store($token);
 
         Session::singleton()->storeUserInfo($result['nombre'], $result['apellidos']);
-        */
+
         return json_encode($this->getResponse());
     }
 
     public function logout()
     {
-        if(!Session::singleton()->destroy()) {
+        if (!Session::singleton()->destroy()) {
             return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
         }
         return json_encode($this->getResponse());
