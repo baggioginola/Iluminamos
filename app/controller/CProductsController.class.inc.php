@@ -98,6 +98,16 @@ class Products extends BaseController
 
         return $total;
     }
+
+    public function updateLikes($id_product = null)
+    {
+        if (is_null($id_product)) {
+            return false;
+        }
+
+        return ProductsModel::singleton()->updateLikes($id_product);
+    }
+
     /**
      * @return bool
      */

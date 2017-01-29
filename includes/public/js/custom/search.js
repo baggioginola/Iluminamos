@@ -53,6 +53,7 @@ jQuery(document).ready(function () {
                     product_results.slideDown();
                 }
                 else {
+                    bootbox.alert('No se encontraron resultados');
                     product_results_array = [
                         '<h3>NO SE ENCONTRARON RESULTADOS</h3>'];
                     product_results.append(product_results_array.join(''));

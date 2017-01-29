@@ -82,9 +82,9 @@ class Search extends BaseController
             foreach ($key as $value => $result) {
                 $row_array[$value] = $result;
             }
-            if(!is_null($price)) {
+            if (!is_null($price)) {
                 $total = $this->getPrice($row_array);
-                if(!($total >= $this->prices[$price][0] && $total < $this->prices[$price][1])) {
+                if (!($total >= $this->prices[$price][0] && $total < $this->prices[$price][1])) {
                     continue;
                 }
             }
@@ -93,6 +93,9 @@ class Search extends BaseController
             $i++;
         }
 
+        if (!$result_all) {
+            return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
+        }
         return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result_all)));
     }
 

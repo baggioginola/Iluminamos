@@ -56,6 +56,18 @@ class Projects extends BaseController
         return false;
     }
 
+    public function getImagesById()
+    {
+        if(!$this->_setPostParameters()){
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+        if (!$result = ProjectsModel::singleton()->getById($this->parameters['id_proyecto'])) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result)));
+    }
+
     /**
      * @return bool
      */
@@ -76,8 +88,22 @@ class Projects extends BaseController
         return true;
     }
 
-    public function __destruct()
+    /**
+     * @return bool
+     */
+    private function _setPostParameters()
     {
+        if (!isset($_POST) || empty($_POST)) {
+            return false;
+        }
 
+        if (!$this->validateParameters($_POST, $this->validParameters)) {
+            return false;
+        }
+
+        foreach ($_POST as $key => $value) {
+            $this->parameters[$key] = $value;
+        }
+        return true;
     }
 }

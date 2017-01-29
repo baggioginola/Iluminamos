@@ -55,7 +55,7 @@ class Contact extends BaseController
 
         #$this->header .= $this->parameters['email'];
         return true;
-        return mail($this->send_to, $this->subject, $this->parameters['message'], $this->header);
+        #return mail($this->send_to, $this->subject, $this->parameters['message'], $this->header);
     }
 
     private function setMessage()

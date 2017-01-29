@@ -48,4 +48,31 @@ class ProjectsModel extends Database
 
         return $result_array;
     }
+
+    public function getById($id = '')
+    {
+        if (empty($id)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $result_array = array();
+
+        $query = "SELECT id_caso_exito, titulo, subtitulo, contenido,num_imagenes FROM " . self::$table . " WHERE id_caso_exito = '" . $id . "' ";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        $this->close_connection();
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
+        }
+
+        return $result_array;
+    }
 }

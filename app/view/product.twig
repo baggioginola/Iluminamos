@@ -5,6 +5,7 @@
 {% block head %}
     {{ parent() }}
     <script src="{{ settings.JS }}custom/cart.js" type="text/javascript"></script>
+    <script src="{{ settings.JS }}custom/like.js" type="text/javascript"></script>
 {% endblock %}
 {% block body_id %}productOverview{% endblock %}
 {% block content %}
@@ -19,38 +20,56 @@
                 <li>&gt;</li>
                 <li><span class="active-page">{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span></li>
             </ol>
-        </div> <!-- end breadcrumb -->
+        </div>
+        <!-- end breadcrumb -->
 
         <div id="section_1">
 
             <div class="container">
                 <div class="row product">
                     <div class="col-md-5 col-md-offset-0">
-                        <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg" id="bigPic"
+                        <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"
+                             id="bigPic"
                              alt="{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
                              title="{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-7" style="text-align: justify;">
                         <h2>{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
+
                         <h3>Marca: {{ result.marca | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
+
                         <p>{% autoescape %}
-                                {{ result.descripcion | raw }}
+                            {{ result.descripcion | raw }}
                             {% endautoescape %}
                         </p>
+
                         <h3>${{ result.precio }}</h3>
-                        <button class="btn btn-primary add_cart" type="button" id="{{ result.id_producto }}">Agregar al carrito</button>
+
+                        <button class="btn btn-primary add_cart" type="button" id="{{ result.id_producto }}"
+                                style="float:left; margin-top: 5px;">Agregar al carrito
+                        </button>
+                        {% if like == false %}
+                            <div style="float: left; margin-left: 27px; margin-top:8px; cursor: pointer" class="like"
+                                 id="{{ result.id_producto }}"><img
+                                        src="{{ settings.IMG }}favorite_white.png" width="29px"></div>
+                        {% else %}
+                            <div style="float: left; margin-left: 27px; margin-top: 8px;" ><img
+                                        src="{{ settings.IMG }}favorite_black.png" width="29px"></div>
+                        {% endif %}
+
                     </div>
                 </div>
                 <div class="page-header">
                     <h3>Detalles Técnicos</h3></div>
                 <p>{% autoescape %}
-                        {{ result.detalles_tecnicos | raw}}
+                    {{ result.detalles_tecnicos | raw }}
                     {% endautoescape %}
                 </p>
 
 
             </div>
 
-        </div>    <!-- /.text -->
+        </div>
+        <!-- /.text -->
     </div>
 {% endblock %}

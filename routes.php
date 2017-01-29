@@ -49,13 +49,16 @@ $app->get('/producto/{id_producto}', function ($request, $response, $args) {
     global $settings, $total_products;
 
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CLikeController.class.inc.php';
     $result = Products::singleton()->getById($args);
 
     if (!$result) {
         return $response->withStatus(200)->withHeader('Location', DOMAIN);
     }
 
-    return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result, 'total_products' => $total_products));
+    $like = Like::singleton()->getByIdProduct($args['id_producto']);
+
+    return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result, 'total_products' => $total_products, 'like' => $like));
 });
 
 $app->get('/proyectos', function ($request, $response, $args) {

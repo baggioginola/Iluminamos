@@ -152,4 +152,23 @@ class ProductsModel extends Database
 
         return $result_array;
     }
+
+    public function updateLikes($id_product = null)
+    {
+        if (is_null($id_product)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $query = "UPDATE " . self::$table . " SET likes = likes + 1 where id_producto = " . $id_product . ";";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        return true;
+    }
 }

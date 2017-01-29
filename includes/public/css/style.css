@@ -68,7 +68,7 @@ a:active, a:active *, a:focus, a:focus * {
 
 @media (min-width: 0px) and (max-width: 767px) {
     body {
-        margin-bottom: 0
+        margin-bottom: 200px;
     }
 
     #header {
@@ -79,7 +79,7 @@ a:active, a:active *, a:focus, a:focus * {
 
 @media (min-width: 768px) and (max-width: 991px) {
     body {
-        margin-bottom: 0
+        margin-bottom: 180px;
     }
 
     #header {
@@ -90,7 +90,7 @@ a:active, a:active *, a:focus, a:focus * {
 
 @media (min-width: 992px) and (max-width: 1199px) {
     body {
-        margin-bottom: 325px
+        margin-bottom: 150px
     }
 
     #header {
@@ -1448,6 +1448,9 @@ span.ui-helper-hidden-accessible {
         font-size: 18px
     }
 
+    .navbar-brand img{
+        width:205px;
+    }
     .navbar-brand span {
         display: none !important
     }
@@ -1495,7 +1498,7 @@ span.ui-helper-hidden-accessible {
     .new-header-mobile .navbar-brand {
         float: left;
         display: block;
-        width: 246px;
+        width: 215px;
         padding: 0 0 12px;
         font-size: 18px
     }
@@ -1511,7 +1514,8 @@ span.ui-helper-hidden-accessible {
         background-color: transparent;
         background-image: none;
         border: transparent;
-        border-radius: 0
+        border-radius: 0;
+        padding-right: 20px;
     }
 
     .new-header-mobile .navbar-toggle .icon-bar {
@@ -1625,6 +1629,10 @@ span.ui-helper-hidden-accessible {
 
     .navbar-brand span {
         display: none !important
+    }
+
+    .navbar-brand img{
+        width: 280px;
     }
 
     .navbar-toggle {
@@ -1786,6 +1794,10 @@ span.ui-helper-hidden-accessible {
         line-height: 20px
     }
 
+    .navbar-brand img{
+        width: 205px;
+    }
+
     .navbar-brand span {
         display: none !important
     }
@@ -1823,6 +1835,10 @@ span.ui-helper-hidden-accessible {
         line-height: 20px
     }
 
+    .navbar-brand img
+    {
+        width:280px;
+    }
     .navbar-brand span {
         display: none !important
     }
@@ -2363,11 +2379,11 @@ span.ui-helper-hidden-accessible {
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #FFF
+        /*color: #FFF*/
     }
 
     .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
-        max-height: 640px
+        /*max-height: 640px*/
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {
@@ -2408,11 +2424,11 @@ span.ui-helper-hidden-accessible {
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-        color: #FFF
+        /*color: #FFF*/
     }
 
     .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
-        max-height: 640px
+        /*max-height: 640px*/
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover {
@@ -2571,6 +2587,10 @@ h4.modal-title {
     text-transform: uppercase
 }
 
+.modal-footer .btn:hover{
+    background-color: #2faf9d;
+    border-color:#2faf9d;
+}
 .wide-content-warning {
     margin-bottom: 0
 }
@@ -5223,13 +5243,21 @@ h4.modal-title {
 
 @media (min-width: 0px) and (max-width: 767px) {
     .footer {
-        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        background: 0 0
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .footer {
-        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        background: 0 0
     }
 }
 
@@ -8821,7 +8849,7 @@ h4.modal-title {
     }
 
     #productOverview .wide-content {
-        margin-bottom: 80px
+        margin-bottom: 300px
     }
 
     #productOverview .pageTitle {
@@ -8845,7 +8873,7 @@ h4.modal-title {
     }
 
     #productOverview .wide-content {
-        margin-bottom: 80px
+        margin-bottom: 300px
     }
 
     #productOverview .pageTitle {
@@ -13285,6 +13313,10 @@ select option {
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+    #navbar{
+        display:none !important;
+    }
+
     #newsOverview {
         padding-top: 132px
     }
@@ -13333,6 +13365,10 @@ select option {
 }
 
 @media (min-width: 1200px) {
+
+    #navbar{
+        display:none !important;
+    }
     #newsOverview {
         padding-top: 132px
     }
@@ -16840,4 +16876,14 @@ span.product-name a:hover {
 .cart .cart_link a:hover{
     color: #2faf9d;
     text-decoration: none;
+}
+
+.caption img
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.bootbox-body{
+    font-size:16px;
 }

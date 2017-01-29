@@ -42,11 +42,26 @@ $app->group('/contact', function () use($app) {
     });
 });
 
-
 $app->group('/login', function () use($app) {
     $app->post('/authenticate', function() use($app){
         require_once __CONTROLLER__. 'CLoginController.class.inc.php';
         $result = Login::singleton()->authenticate();
+        echo $result;
+    });
+});
+
+$app->group('/like', function () use($app) {
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__. 'CLikeController.class.inc.php';
+        $result = Like::singleton()->add();
+        echo $result;
+    });
+});
+
+$app->group('/projects', function () use($app) {
+    $app->post('/getImages', function() use($app){
+        require_once __CONTROLLER__. 'CProjectsController.class.inc.php';
+        $result = Projects::singleton()->getImagesById();
         echo $result;
     });
 });
