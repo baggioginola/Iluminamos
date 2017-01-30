@@ -73,7 +73,16 @@ $app->get('/proyectos', function ($request, $response, $args) {
 $app->get('/proyecto/{id_proyecto}', function ($request, $response, $args) {
     global $settings, $total_products;
 
-    return $this->view->render($response, 'project.twig', array('settings' => $settings, 'total_products' => $total_products));
+    require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+    $result = Projects::singleton()->getById($args);
+
+    if (!$result) {
+        return $response->withStatus(200)->withHeader('Location', DOMAIN);
+    }
+
+    $result_images = Projects::singleton()->getImagesById($args['id_proyecto']);
+
+    return $this->view->render($response, 'project.twig', array('settings' => $settings, 'total_products' => $total_products, 'result' => $result, 'result_images' => $result_images));
 });
 
 $app->get('/quienes-somos', function ($request, $response, $args) {

@@ -1,6 +1,6 @@
 {% extends "layout/master.twig" %}
 
-{% block title %}Producto/{{ result.nombre }}{% endblock %}
+{% block title %}Producto/{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}{% endblock %}
 
 {% block head %}
     {{ parent() }}

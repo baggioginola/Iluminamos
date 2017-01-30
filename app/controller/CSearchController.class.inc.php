@@ -58,15 +58,15 @@ class Search extends BaseController
         $brand = null;
         $price = null;
 
-        if (isset($this->parameters['category'])) {
+        if (isset($this->parameters['category']) && $this->parameters['category'] != 0) {
             $category = $this->parameters['category'];
         }
 
-        if (isset($this->parameters['brand'])) {
+        if (isset($this->parameters['brand']) && $this->parameters['brand'] != 0) {
             $brand = $this->parameters['brand'];
         }
 
-        if (isset($this->parameters['price'])) {
+        if (isset($this->parameters['price']) && $this->parameters['price'] != 0) {
             $price = $this->parameters['price'];
         }
 

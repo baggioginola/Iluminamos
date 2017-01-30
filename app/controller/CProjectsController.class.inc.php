@@ -56,16 +56,26 @@ class Projects extends BaseController
         return false;
     }
 
-    public function getImagesById()
+    public function getImagesById($id = '')
     {
-        if(!$this->_setPostParameters()){
-            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        if ($id == '') {
+            return false;
         }
-        if (!$result = ProjectsModel::singleton()->getById($this->parameters['id_proyecto'])) {
-            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        if (!$result = ProjectsModel::singleton()->getById($id)) {
+            return false;
         }
 
-        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $this->UTF8Converter($result)));
+        $i = 1;
+        $result_images = array();
+        $extension = '.jpg';
+        for ($i = 1; $i < $result['num_imagenes']; $i++) {
+            if ($i == 1) {
+                $result_images[$i] = PROJECT_IMG . $id . $extension;
+            } else {
+                $result_images[$i] = PROJECT_IMG . $id . '_' . $i . $extension;
+            }
+        }
+        return $result_images;
     }
 
     /**

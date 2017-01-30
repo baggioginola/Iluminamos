@@ -16887,3 +16887,27 @@ span.product-name a:hover {
 .bootbox-body{
     font-size:16px;
 }
+
+@media (min-width: 0px) and (max-width: 767px){
+    .carousel-inner.projects > .item{
+        height:245px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .carousel-inner.projects > .item{
+        height:350px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .carousel-inner.projects > .item{
+        height:400px;
+    }
+}
+@media (min-width: 1200px){
+    .carousel-inner.projects > .item{
+        height:500px;
+    }
+}
+

@@ -9,6 +9,12 @@
 require_once __DIR__ . '/../config.php';
 require_once FRAMEWORK . 'slim/vendor/autoload.php';
 require_once __DIR__ . '/../auth.php';
+
+if (strcasecmp(ENVIRONMENT, 'test') == 0) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
+
 session_start();
 $settings = array(
     'CSS' => CSS,

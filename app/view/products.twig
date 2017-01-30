@@ -53,7 +53,8 @@
                                         </div>
                                         <h3>Categoría </h3>
                                         <select class="selectpicker" data-live-search="true" title="Todas"
-                                                id="filter_category">
+                                                id="filter_category" data-window-padding="[bottom]">
+                                            <option value="0">Todas</option>
                                             {% for category  in result_categories %}
                                                 <option value="{{ category.id_categoria }}">{{ category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
                                             {% endfor %}
@@ -63,7 +64,8 @@
                                         <hr/>
                                         <h3>Marca </h3>
                                         <select class="selectpicker" data-live-search="true" title="Todas"
-                                                id="filter_brand">
+                                                id="filter_brand" data-window-padding="[bottom]">
+                                            <option value="0">Todas</option>
                                             {% for brand  in result_brands %}
                                                 <option value="{{ brand.id_marca }}">{{ brand.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
                                             {% endfor %}
@@ -71,7 +73,8 @@
                                         <hr/>
                                         <h3>Precio</h3>
                                         <select class="selectpicker" data-live-search="true"
-                                                title="Selecciona el precio" id="filter_price">
+                                                title="Selecciona el precio" id="filter_price" data-window-padding="[bottom]">
+                                            <option value="0">Todos</option>
                                             <option value="1">0 - 5,000</option>
                                             <option value="2">5,000 - 10,000</option>
                                             <option value="3">10,000 - 20,000</option>

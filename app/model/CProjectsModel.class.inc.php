@@ -61,7 +61,7 @@ class ProjectsModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id_caso_exito, titulo, subtitulo, contenido,num_imagenes FROM " . self::$table . " WHERE id_caso_exito = '" . $id . "' ";
+        $query = "SELECT id_caso_exito, titulo, subtitulo, contenido, num_imagenes FROM " . self::$table . " WHERE id_caso_exito = '" . $id . "' ";
 
         if (!$result = $this->query($query)) {
             return false;
