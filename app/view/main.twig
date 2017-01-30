@@ -10,6 +10,7 @@
 {% block body_id %}home{% endblock %}
 {% block content %}
     <div class="container-fluid wide-content">
+        <!--
         <div class="carousel slide" data-ride="carousel" id="carousel-1" style="padding-top: 95px;">
             <div class="carousel-inner" role="listbox">
                 <div class="item active"><img src="{{ settings.IMG }}banner/1.jpg" alt="Slide Image"></div>
@@ -26,6 +27,54 @@
                 <li data-target="#carousel-1" data-slide-to="1"></li>
                 <li data-target="#carousel-1" data-slide-to="2"></li>
             </ol>
+        </div>
+        !-->
+        <div id="carrusel" class="carousel slide" data-ride="carousel" data-timer="5000" style="padding-top: 95px;">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carrusel" data-slide-to="0" class="active"></li>
+                <li data-target="#carrusel" data-slide-to="1"></li>
+                <li data-target="#carrusel" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <!-- Set the first background image using inline CSS below. -->
+                    <div class="fill"
+                         style="background: transparent url('includes/public/img/banner/1.jpg') no-repeat scroll center top / cover ;"></div>
+                    <div class="carousel-caption">
+                        <h2>Caption 1</h2>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- Set the second background image using inline CSS below. -->
+                    <div class="fill"
+                         style="background: transparent url('includes/public/img/banner/2.jpg') no-repeat scroll center top / cover ;"></div>
+                    <div class="carousel-caption">
+                        <h2>Caption 2</h2>
+                    </div>
+                </div>
+                <div class="item">
+                    <!-- Set the third background image using inline CSS below. -->
+                    <div class="fill"
+                         style="background: transparent url('includes/public/img/banner/3.jpg') no-repeat scroll center top / cover ;"></div>
+                    <div class="carousel-caption">
+                        <h2>Caption 3</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#section_1" role="button" data-slide="prev" style="top: 447px;">
+                <span class="arrowLeft"></span>
+                <span class="counterItems counterLeft">2 / 5</span>
+            </a>
+            <a class="right carousel-control" href="#section_1" role="button" data-slide="next" style="top: 447px;">
+                <span class="arrowRight"></span>
+                <span class="counterItems counterRight">2 / 5</span>
+            </a>
+
         </div>
         <div id="section_2" class="container highlights-new">
             <div class="row">

@@ -16911,3 +16911,26 @@ span.product-name a:hover {
     }
 }
 
+@media (min-width: 0px) and (max-width:767px){
+    .fill{
+        height:250px;
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px){
+    .fill{
+        height:400px;
+    }
+}
+
+@media (min-width: 992px) and (max-width:1199px){
+    .fill{
+        height:450px;
+    }
+}
+
+@media (min-width: 1200px){
+    .fill{
+        height:534px;
+    }
+}
