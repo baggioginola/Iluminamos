@@ -16504,7 +16504,6 @@ input[type=submit][disabled] {
     margin: 0;
     padding: 0;
     display: inherit;
-    font-family: "SourceSansPro-Light";
     font-size: 13px;
     color: #676465;
     text-transform: capitalize;
@@ -16529,7 +16528,6 @@ input[type=submit][disabled] {
 }
 
 .dd-inner .left-area .browse-link {
-    font-family: "SourceSansPro-Light";
     font-weight: bolder;
     font-size: 13px;
     color: #fff;
@@ -16933,4 +16931,17 @@ span.product-name a:hover {
     .fill{
         height:534px;
     }
+}
+.products_thumbnail{
+    text-decoration: none;
+    color:#000;
+    font-size: 20px;
+    text-align: center;
+}
+
+.products_thumbnail label{
+    font-weight: 400 !important;
+    height: 60px;
+    overflow:hidden;
+    padding: 9px;
 }

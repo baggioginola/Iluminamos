@@ -8,7 +8,7 @@
 
 define('ENVIRONMENT', 'test'); # must be production or test.
 define('__ROOT__', dirname(__FILE__));
-define('PROJECT', 'Github/iluminamos/');
+define('PROJECT', 'Github/iluminamos/panel-control/');
 define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT);
 
 define('FRAMEWORK', __ROOT__ . '/core/framework/');
@@ -19,8 +19,17 @@ define('__VIEW__', __ROOT__ . '/app/view/');
 
 define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 
+define('FONTS', DOMAIN . 'includes/public/fonts/');
 define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js');
+
+define('IMG', DOMAIN . 'includes/public/img/');
+define('PRODUCT_IMG', DOMAIN . 'includes/public/imagenes_productos/');
+define('PROJECT_IMG', DOMAIN . 'includes/public/imagenes_proyectos/');
+define('BANNER_IMG', DOMAIN . 'includes/public/imagenes_banner/');
+
+define('DATATABLE',DOMAIN . 'includes/public/dataTable/');
+define('FILEINPUT',DOMAIN . 'includes/public/bootstrap-fileinput-master/');
 
 #Database
 define('DBHOST', 'localhost');

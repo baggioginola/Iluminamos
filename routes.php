@@ -144,4 +144,3 @@ $app->get('/login', function ($request, $response, $args) {
 
     return $this->view->render($response, 'login.twig', array('settings' => $settings, 'total_products' => $total_products));
 });
-

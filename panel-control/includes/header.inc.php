@@ -9,6 +9,24 @@
 require_once __DIR__ . '/../config.php';
 require_once FRAMEWORK . 'slim/vendor/autoload.php';
 
+
+if (strcasecmp(ENVIRONMENT, 'test') == 0) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
+
+$settings = array(
+    'CSS' => CSS,
+    'JS' => JS,
+    'IMG' => IMG,
+    'DOMAIN' => DOMAIN,
+    'PRODUCT_IMG' => PRODUCT_IMG,
+    'PROJECT_IMG' => PROJECT_IMG,
+    'BANNER_IMG' => BANNER_IMG,
+    'DATATABLE' =>DATATABLE,
+    'FILEINPUT' => FILEINPUT
+);
+
 $app = new \Slim\App;
 
 $container = $app->getContainer();
@@ -21,9 +39,3 @@ $container['view'] = function($container) {
 
     return $view;
 };
-
-$app->get('/', function($request, $response, $args){
-    return $this->view->render($response, 'main.html', array('name' => 'Mario'));
-})->setName(('profile'));
-
-$app->run();

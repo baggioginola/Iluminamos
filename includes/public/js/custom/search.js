@@ -40,11 +40,9 @@ jQuery(document).ready(function () {
 
                         product_results_array = [
                             '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
-                            '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '">' +
+                            '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
                             '<div class="thumbnail"><img src="', PRODUCTS_IMG + value.id_producto + '.jpg', '"/>' +
-                            '<div class="caption">' +
-                            '<h3 style="font-size: 20px; height: 45px; overflow: hidden; text-align: center;">', value.nombre, '</h3>' +
-                            '</div>' +
+                            '<label>', value.nombre, '</label>' +
                             '</div>' +
                             '</a>' +
                             '</div>'];
