@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: mario
  * Date: 03/ene/2017
  * Time: 20:27
  */
-
 class Database
 {
     private $link = null;
@@ -38,7 +38,7 @@ class Database
         return self::query($sql);
     }
 
-    protected function update($data = array(), $id = '', $table = '')
+    protected function update($data = array(), $id = '', $table = '', $key = null)
     {
         if (empty($data) || empty($table) || empty($id)) {
             return false;
@@ -50,7 +50,11 @@ class Database
             return false;
         }
 
-        $sql = 'UPDATE ' . $table . ' SET ' . $updateString . ' WHERE id = "' . $id . '" ;';
+        if (is_null($key)) {
+            $key = 'id';
+        }
+
+        $sql = 'UPDATE ' . $table . ' SET ' . $updateString . ' WHERE ' . $key . ' = "' . $id . '" ;';
 
         return self::query($sql);
     }
@@ -64,7 +68,7 @@ class Database
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
 
         $log[] = $sql;
-        Logs::singleton()->setLog($log,__METHOD__,__LINE__);
+        Logs::singleton()->setLog($log, __METHOD__, __LINE__);
         return self::query($sql);
 
     }
@@ -117,18 +121,17 @@ class Database
         $values = '';
         $counter = 0;
         foreach ($data as $key => $value) {
-            if($counter == sizeof($data) - 1){
+            if ($counter == sizeof($data) - 1) {
                 $columns .= $key;
                 $values .= "'$value'";
-            }
-            else {
+            } else {
                 $columns .= $key . ',';
                 $values .= "'$value'" . ',';
             }
             $counter++;
         }
 
-        if(!empty($columns) && !empty($values)) {
+        if (!empty($columns) && !empty($values)) {
             $addString = '(' . $columns . ') VALUES (' . $values . ')';
         }
 
@@ -139,11 +142,10 @@ class Database
     {
         $updateString = '';
         $counter = 0;
-        foreach($data as $key => $value) {
-            if($counter == sizeof($data) - 1) {
+        foreach ($data as $key => $value) {
+            if ($counter == sizeof($data) - 1) {
                 $updateString .= $key . '="' . $value . '"';
-            }
-            else {
+            } else {
                 $updateString .= $key . ' = "' . $value . '", ';
             }
             $counter++;

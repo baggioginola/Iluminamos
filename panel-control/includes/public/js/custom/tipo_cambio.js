@@ -5,46 +5,45 @@ $(document).ready(function () {
 
     $('#reset_button').click(function () {
         $('#form_global').trigger("reset");
-        $('#submit_type').val('usuarios/add');
+        $('#submit_type').val('tipo_cambio/edit');
         $('#submit_id').val('');
+
         return false;
     });
 
-    var url = 'usuarios/getAll';
-    var columns = [{data: 'nombre'}, {data: 'apellidos'}, {data: 'e_mail'}];
-
+    var url = 'tipo_cambio/getAll';
+    var columns = [{data: 'moneda'},{data:'tipo_cambio'}];
     var table = masterDatatable(url, columns);
 
     $('#datatable tbody').on('click', '#btn_edit', function () {
 
-        var id = table.row($(this).parents('tr')).data().id_usuario;
+        $("#form_alert").slideUp();
+        var id = table.row($(this).parents('tr')).data().id_tipo_cambio;
 
-        var data = {id_usuario: id};
-        var url = 'usuarios/getById';
+        var data = {id_tipo_cambio: id};
+        var url = 'tipo_cambio/getById';
 
-        $('#submit_type').val('usuarios/edit');
-        $('#id_password').val('');
+        $('#submit_type').val('tipo_cambio/edit');
 
         $.post(url, data, function (response, status) {
             if (status == 'success') {
                 $.each(response, function (key, val) {
                     $("input[name=" + key + "]").val(val);
-                    $("select[name=" + key + "]").val(val);
+                    $("textarea[name=" + key + "]").val(val);
                 });
             }
-            $('#id_password').val(response.password);
-            $('#submit_pw').val(response.password);
-            $('#submit_id').val(response.id_usuario);
+
+            $('#submit_id').val(response.id_tipo_cambio);
         }, 'json');
         return false;
     });
 
     $('#datatable tbody').on('click', '#btn_delete', function () {
-        var id = table.row($(this).parents('tr')).data().id_usuario;
+        var id = table.row($(this).parents('tr')).data().id_tipo_cambio;
         bootbox.confirm("Eliminar elemento?", function (result) {
             if (result == true) {
-                var data = {id_usuario: id, status: 0};
-                var url = 'usuarios/delete';
+                var data = {id_tipo_cambio: id, status: 0};
+                var url = 'tipo_cambio/delete';
                 $.post(url, data, function (response, status) {
                     if (status == 'success') {
                         bootbox.alert(response.message);
@@ -57,20 +56,18 @@ $(document).ready(function () {
     });
 
     var form = $('#form_global').submit(function () {
+
         if ($('#id_submit').hasClass('disabled')) {
             return false;
         }
 
-        var pw = $('#id_password').val();
-        if (pw != $('#submit_pw').val()) {
-            pw = hex_md5(pw);
-        }
-
-        var data = $(this).serialize() + '&' + $.param({'password': pw});
         var type = $('#submit_type').val();
-        if (type == 'usuarios/edit') {
+
+        var data = $(this).serialize();
+
+        if (type == 'tipo_cambio/edit') {
             var id = $('#submit_id').val();
-            data = data + '&' + $.param({'id_usuario': id});
+            data = data + '&' + $.param({'id_tipo_cambio': id});
         }
 
         $.ajax({
@@ -79,9 +76,10 @@ $(document).ready(function () {
             cache: false,
             data: data,
             dataType: 'json',
+            async: false,
             success: function (data) {
                 table.ajax.reload();
-                submit_response_general(form, data, 'usuarios/add');
+                submit_response_general(form, data, 'tipo_cambio/edit');
             }
         });
         return false;

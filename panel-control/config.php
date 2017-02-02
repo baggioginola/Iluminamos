@@ -12,6 +12,7 @@ define('PROJECT', 'Github/iluminamos/panel-control/');
 define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT);
 
 define('FRAMEWORK', __ROOT__ . '/core/framework/');
+define('CLASSES', __ROOT__ . '/core/classes/');
 
 define('__CONTROLLER__', __ROOT__ . '/app/controller/');
 define('__MODEL__', __ROOT__ . '/app/model/');
@@ -21,7 +22,7 @@ define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 
 define('FONTS', DOMAIN . 'includes/public/fonts/');
 define('CSS', DOMAIN . 'includes/public/css/');
-define('JS', DOMAIN . 'includes/public/js');
+define('JS', DOMAIN . 'includes/public/js/');
 
 define('IMG', DOMAIN . 'includes/public/img/');
 define('PRODUCT_IMG', DOMAIN . 'includes/public/imagenes_productos/');
@@ -36,4 +37,12 @@ define('DBHOST', 'localhost');
 define('DBNAME', 'ilumina_3');
 define('DBUSER', 'root');
 define('DBPASS', '');
+
+#Response codes
+define('STATUS_SUCCESS', 200);
+define('STATUS_FAILURE_CLIENT', 404);
+define('STATUS_FAILURE_INTERNAL', 500);
+
+define('MESSAGE_SUCCESS', 'La transaccion fue exitosa');
+define('MESSAGE_ERROR', 'La transaccion fue fallida, intente mas tarde');
 

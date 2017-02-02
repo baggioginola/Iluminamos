@@ -21,7 +21,17 @@ $app->get('/categorias', function ($request, $response, $args) {
     return $this->view->render($response, 'categories.twig', array('settings' => $settings));
 });
 
+$app->get('/marcas', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'brands.twig', array('settings' => $settings));
+});
+
 $app->get('/productos', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'products.twig', array('settings' => $settings));
+});
+
+$app->get('/tipo-cambio', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'change.twig', array('settings' => $settings));
 });

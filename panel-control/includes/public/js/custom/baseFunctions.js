@@ -46,6 +46,16 @@ function submit_response(form, data, url) {
     image.fileinput("enable");
 }
 
+
+function submit_response_general(form, data, url) {
+    $('#id_submit').addClass('disabled');
+    $('#submit_pw').val('');
+    $('#submit_type').val(url);
+    $('#submit_id').val('');
+
+    form.trigger("reset");
+    bootbox.alert(data.message);
+}
 /**
  *
  * @param url
