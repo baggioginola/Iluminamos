@@ -179,3 +179,47 @@ $app->group('/tipo_cambio', function () use($app) {
         echo $result;
     });
 });
+
+
+$app->group('/proyectos', function () use($app) {
+    $app->post('/getAll', function() use($app){
+        require_once __CONTROLLER__.'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->getAll()){
+            echo 'Fail';
+        }
+        echo $result;
+
+    });
+
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->add()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/getById', function() use($app){
+        require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->getById()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/edit', function() use($app){
+        require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->edit()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/delete', function() use($app){
+        require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->delete()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+});

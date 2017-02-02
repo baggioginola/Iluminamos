@@ -35,3 +35,8 @@ $app->get('/tipo-cambio', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'change.twig', array('settings' => $settings));
 });
+
+$app->get('/proyectos', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'projects.twig', array('settings' => $settings));
+});

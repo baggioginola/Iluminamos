@@ -15,7 +15,6 @@
         <link href="{{ settings.CSS }}dashboard.css" rel="stylesheet">
         <link href="{{ settings.CSS }}datatable.css" rel="stylesheet">
         <link href="{{ settings.DATATABLE }}Select/css/select.bootstrap.css" rel="stylesheet">
-        <link href="{{ settings.FILEINPUT }}css/fileinput.css" rel="stylesheet">
     {% endblock %}
 
 </head>
@@ -30,6 +29,7 @@
     </div>
 </div>
 
+{% block footer %}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
@@ -39,5 +39,6 @@
 <script type="text/javascript" src="{{ settings.JS }}custom/config.js" ></script>
 <script type="text/javascript" src="{{ settings.JS }}functions.js" ></script>
 <script type="text/javascript" src="{{ settings.JS }}datatable.js"></script>
+{% endblock %}
 </body>
 </html>
