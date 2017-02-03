@@ -130,3 +130,10 @@ function UTF8Converter($array)
 
     return $array;
 }
+
+function dateInput($date, $sign = '-')
+{
+    $array = explode("/", $date);
+
+    return $array[2] . $sign . $array[0] . $sign . $array[1];
+}

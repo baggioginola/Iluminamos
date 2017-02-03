@@ -223,3 +223,30 @@ $app->group('/proyectos', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/imagenes', function () use($app) {
+
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
+        if(!$result = Images::singleton()->add()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/update', function() use($app){
+        require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
+        if(!$result = Images::singleton()->updatePath()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/edit', function() use($app){
+        require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
+        if(!$result = Images::singleton()->edit()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+});

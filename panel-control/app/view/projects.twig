@@ -3,6 +3,7 @@
 {% block head %}
     {{ parent() }}
     <link href="{{ settings.FILEINPUT }}css/fileinput.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 {% endblock %}
 
 {% block content %}
@@ -29,7 +30,7 @@
                 <div class="form-group has-feedback">
                     <label for="id_contenido" class="col-lg-2 control-label">Contenido:</label>
                     <div class="col-lg-10">
-                        <textarea id="id_contenido" name="contenido"></textarea>
+                        <textarea id="id_contenido" autocomplete="off" style="resize:none;" rows="10" cols="50"></textarea>
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
@@ -37,7 +38,7 @@
                     <label for="id_fecha" class="col-lg-2 control-label">Fecha:</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="id_fecha" placeholder="Fecha" required
-                               autocomplete="off" name="fecha">
+                               autocomplete="off" name="fecha" data-provide="datepicker">
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                     </div>
                 </div>
@@ -55,7 +56,8 @@
                         <button type="button" class="btn btn-primary" id="reset_button">Limpiar</button>
                     </div>
                 </div>
-                <input type="hidden" id="submit_type" value="marcas/add"/>
+                <input type="hidden" id="submit_type" value="proyectos/add"/>
+                <input type="hidden" id="upload_images" value="1" />
                 <input type="hidden" id="submit_id"/>
             </form>
         </div>
@@ -86,4 +88,5 @@
     <script type="text/javascript" src="{{ settings.FILEINPUT }}js/plugins/purify.min.js"></script>
     <script type="text/javascript" src="{{ settings.FILEINPUT }}js/locales/es.js"></script>
     <script type="text/javascript" src="{{ settings.FILEINPUT }}js/plugins/canvas-to-blob.js"></script>
+    <script type="text/javascript" src="{{ settings.JS }}tinymce/tinymce.min.js"></script>
 {% endblock %}

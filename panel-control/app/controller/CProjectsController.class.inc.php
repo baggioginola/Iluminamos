@@ -24,7 +24,7 @@ class Projects extends BaseController
         'status' => TYPE_INT,
         'fecha_alta' => TYPE_DATE,
         'fecha_modifica' => TYPE_DATE,
-        'fecha' => TYPE_DATE,
+        'fecha' => TYPE_ALPHA,
         'usuario_alta' => TYPE_INT,
         'usuario_modifica' => TYPE_INT,
         'num_imagenes' => TYPE_INT
@@ -75,9 +75,11 @@ class Projects extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
+
         $this->parameters['status'] = 1;
-        $this->parameters['fecha_alta'] = 'Y-m-d H:i:s';
-        $this->parameters['fecha_modifica'] = 'Y-m-d H:i:s';
+        $this->parameters['fecha_alta'] = date('Y-m-d H:i:s');
+        $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
+
         if (!ProjectsModel::singleton()->add($this->parameters)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -151,9 +153,13 @@ class Projects extends BaseController
         }
 
         foreach ($_POST as $key => $value) {
-            $this->parameters[$key] = $value;
+            if($key == 'fecha'){
+                $this->parameters[$key] = dateInput($value);
+            }
+            else {
+                $this->parameters[$key] = $value;
+            }
         }
-
         return true;
     }
 }

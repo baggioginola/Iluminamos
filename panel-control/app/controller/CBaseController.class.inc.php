@@ -27,6 +27,9 @@ class BaseController
         }
 
         foreach ($parameters as $name => $content) {
+            if($name == 'contenido'){
+                continue;
+            }
             if (!isset($validParameters[$name])) {
                 return false;
             }

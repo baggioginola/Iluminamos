@@ -74,8 +74,8 @@ class UserController extends BaseController
         }
 
         $this->parameters['status'] = 1;
-        $this->parameters['fecha_alta'] = 'Y-m-d H:i:s';
-        $this->parameters['fecha_modifica'] = 'Y-m-d H:i:s';
+        $this->parameters['fecha_alta'] = date('Y-m-d H:i:s');
+        $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
         if (!UserModel::singleton()->add($this->parameters)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -96,7 +96,7 @@ class UserController extends BaseController
 
         unset($this->parameters['id_usuario']);
 
-        $this->parameters['fecha_modifica'] = 'Y-m-d H:i:s';
+        $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
         if (!UserModel::singleton()->edit($this->parameters, $id)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
