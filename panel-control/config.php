@@ -25,9 +25,9 @@ define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js/');
 
 define('IMG', DOMAIN . 'includes/public/img/');
-define('PRODUCT_IMG', DOMAIN . 'includes/public/imagenes_productos/');
-define('PROJECT_IMG', DOMAIN . 'includes/public/imagenes_proyectos/');
-define('BANNER_IMG', DOMAIN . 'includes/public/imagenes_banner/');
+define('PRODUCT_IMG', __ROOT__ . '/includes/public/imagenes_productos/');
+define('PROJECT_IMG', __ROOT__ . '/includes/public/imagenes_proyectos/');
+define('BANNER_IMG', __ROOT__ . '/includes/public/imagenes_banner/');
 
 define('DATATABLE',DOMAIN . 'includes/public/dataTable/');
 define('FILEINPUT',DOMAIN . 'includes/public/bootstrap-fileinput-master/');

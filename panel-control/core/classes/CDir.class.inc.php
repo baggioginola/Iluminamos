@@ -117,21 +117,13 @@ class CDir extends BaseController
         return json_encode($this->getResponse());
     }
 
-    public function edit()
+    public function edit($name = null)
     {
         if (!$this->setDir()) {
             return false;
         }
 
-        if (!$this->setKeyName()) {
-            return false;
-        }
-
-        if (!$this->rename()) {
-            return false;
-        }
-
-        if (!CFile::singleton()->delete($this->getDir())) {
+        if (!CFile::singleton()->delete($this->getDir(), $name)) {
             return false;
         }
 

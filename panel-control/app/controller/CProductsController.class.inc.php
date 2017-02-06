@@ -6,9 +6,9 @@
  * Time: 20:20
  */
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
-require_once __MODEL__ . 'CProjectsModel.class.inc.php';
+require_once __MODEL__ . 'CProductsModel.class.inc.php';
 
-class Projects extends BaseController
+class Products extends BaseController
 {
     private static $object = null;
 
@@ -17,21 +17,24 @@ class Projects extends BaseController
     private $log = array();
 
     private $validParameters = array(
-        'id_caso_exito' => TYPE_INT,
-        'titulo' => TYPE_ALPHA,
-        'subtitulo' => TYPE_ALPHA,
-        'contenido' => TYPE_ALPHA,
+        'id_producto' => TYPE_INT,
+        'nombre' => TYPE_ALPHA,
+        'descripcion' => TYPE_ALPHA,
+        'detalles_tecnicos' => TYPE_ALPHA,
         'status' => TYPE_INT,
         'fecha_alta' => TYPE_DATE,
         'fecha_modifica' => TYPE_DATE,
-        'fecha' => TYPE_ALPHA,
-        'usuario_alta' => TYPE_INT,
-        'usuario_modifica' => TYPE_INT,
-        'num_imagenes' => TYPE_INT
+        'id_categoria' => TYPE_INT,
+        'iva' => TYPE_FLOAT,
+        'codigo_interno' => TYPE_ALPHA,
+        'moneda' => TYPE_ALPHA,
+        'id_marca' => TYPE_INT,
+        'num_imagenes' => TYPE_INT,
+        'precio' => TYPE_FLOAT
     );
 
     /**
-     * @return null|Projects
+     * @return null|Products
      */
     public static function singleton()
     {
@@ -46,7 +49,7 @@ class Projects extends BaseController
      */
     public function getAll()
     {
-        if (!$result = ProjectsModel::singleton()->getAll()) {
+        if (!$result = ProductsModel::singleton()->getAll()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
         return json_encode(UTF8Converter($result));
@@ -57,7 +60,7 @@ class Projects extends BaseController
      */
     public function getLastId()
     {
-        if (!$result = ProjectsModel::singleton()->getLastId()) {
+        if (!$result = ProductsModel::singleton()->getLastId()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
         return json_encode($result);
@@ -72,7 +75,7 @@ class Projects extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
-        $result = ProjectsModel::singleton()->getById($this->parameters['id_caso_exito']);
+        $result = ProductsModel::singleton()->getById($this->parameters['id_producto']);
 
         return json_encode(UTF8Converter($result));
     }
@@ -86,13 +89,12 @@ class Projects extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
-
         $this->parameters['status'] = 1;
         $this->parameters['fecha_alta'] = date('Y-m-d H:i:s');
         $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
 
         $result = array();
-        if (!$result['id'] = ProjectsModel::singleton()->add($this->parameters)) {
+        if (!$result['id'] = ProductsModel::singleton()->add($this->parameters)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -108,12 +110,12 @@ class Projects extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
-        $id = $this->parameters['id_caso_exito'];
+        $id = $this->parameters['id_producto'];
 
-        unset($this->parameters['id_caso_exito']);
+        unset($this->parameters['id_producto']);
 
         $this->parameters['fecha_modifica'] = 'Y-m-d H:i:s';
-        if (!ProjectsModel::singleton()->edit($this->parameters, $id)) {
+        if (!ProductsModel::singleton()->edit($this->parameters, $id)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -129,11 +131,11 @@ class Projects extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
-        $id = $this->parameters['id_caso_exito'];
+        $id = $this->parameters['id_producto'];
 
-        unset($this->parameters['id_caso_exito']);
+        unset($this->parameters['id_producto']);
 
-        if (!ProjectsModel::singleton()->edit($this->parameters, $id)) {
+        if (!ProductsModel::singleton()->edit($this->parameters, $id)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -146,7 +148,7 @@ class Projects extends BaseController
             $this->parameters[$key] = $value;
         }
 
-        $result = ProjectsModel::singleton()->add($this->parameters);
+        $result = ProductsModel::singleton()->add($this->parameters);
 
         return $result;
     }
@@ -165,12 +167,7 @@ class Projects extends BaseController
         }
 
         foreach ($_POST as $key => $value) {
-            if($key == 'fecha'){
-                $this->parameters[$key] = dateInput($value);
-            }
-            else {
-                $this->parameters[$key] = $value;
-            }
+            $this->parameters[$key] = $value;
         }
         return true;
     }

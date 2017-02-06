@@ -6,7 +6,7 @@
  * @param form
  * @param data
  */
-function submit_response(form, data, url) {
+function submit_response(form, data, url, type) {
     $('#id_submit').addClass('disabled');
     $('#submit_pw').val('');
     $('#submit_type').val(url);
@@ -23,9 +23,9 @@ function submit_response(form, data, url) {
 
     image.fileinput({
         uploadUrl: "imagenes/add",
-        allowedFileExtensions: ["jpg", "png"],
-        maxFileCount: 2,
-        minFileCount: 2,
+        allowedFileExtensions: ["jpg"],
+        maxFileCount: 10,
+        minFileCount: 1,
         uploadAsync: false,
         language: "es",
         showUpload: false,
@@ -35,7 +35,11 @@ function submit_response(form, data, url) {
         purifyHtml: true,
         autoReplace: true,
         uploadExtraData: function (previewId, index) {
-            var info = {"type": "categorias", "name": $("#id_nombre").val()};
+            var info = {
+                "type": type,
+                "name": $('#submit_id').val(),
+                'num_imagenes': $('.file-initial-thumbs > div').length + $('.file-live-thumbs > div').length
+            };
             return info;
         }
     }).on('filebatchuploadsuccess', function (event, data) {
@@ -95,8 +99,7 @@ function masterDatatable(url, columns) {
     return (dataTable);
 }
 
-function getImage(root_images, name, i)
-{
+function getImage(root_images, name, i) {
     var extension = '.jpg';
     var url = '';
 

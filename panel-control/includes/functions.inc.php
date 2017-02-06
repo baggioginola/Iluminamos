@@ -113,11 +113,29 @@ function getIndexExtension($file)
 
     $file_name = $array[sizeof($array) - 1];
 
-    $index = explode('-', $file_name);
+    $index = explode('_', $file_name);
 
     $index = $index[sizeof($index) - 1];
 
     return $index;
+}
+
+function getIndex($index_extension)
+{
+    $index = explode('.', $index_extension);
+
+    $index = $index[sizeof($index) - 2];
+
+    return $index;
+}
+
+function getExtension($index_extension)
+{
+    $extension = explode('.', $index_extension);
+
+    $extension = $extension[sizeof($extension) - 1];
+
+    return $extension;
 }
 
 function UTF8Converter($array)

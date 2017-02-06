@@ -1,13 +1,27 @@
 /**
  * Created by mario.cuevas on 7/6/2016.
  */
-$(document).ready(function ()
-{
+$(document).ready(function () {
+    tinymce.init({
+        selector: "textarea#id_descripcion,#id_detalles_tecnicos",
+        menubar: "edit",
+
+        theme: "modern",
+        toolbar: " undo redo |  bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
+        plugins: [
+            "advlist autolink link image lists charmap hr anchor pagebreak spellchecker",
+            "searchreplace visualblocks visualchars  fullscreen insertdatetime  nonbreaking",
+            "save table contextmenu directionality template paste "
+        ]
+
+    });
+    $('#id_fecha').datepicker();
+
     $("#id_imagen").fileinput({
         uploadUrl: "imagenes/add",
-        allowedFileExtensions: ["jpg", "png"],
-        maxFileCount: 6,
-        minFileCount : 2,
+        allowedFileExtensions: ["jpg"],
+        maxFileCount: 10,
+        minFileCount: 1,
         uploadAsync: false,
         language: "es",
         showUpload: false,
@@ -16,11 +30,15 @@ $(document).ready(function ()
         purifyHtml: true,
         autoReplace: true,
         uploadExtraData: function (previewId, index) {
-            var info = {"type": "productos", "name" : $("#id_nombre").val(), "categoria" : $("#id_categoria").val()};
+            var info = {
+                "type": "productos",
+                "name": $('#submit_id').val(),
+                'num_imagenes': $('.file-initial-thumbs > div').length + $('.file-live-thumbs > div').length
+            };
             return info;
         }
-    }).on('filebatchuploadsuccess', function(event, data) {
-        var out = '';
+    }).on('filebatchuploadsuccess', function (event, data) {
+        var success = '';
     }).on('fileloaded', function (event, file, previewId, index, reader) {
         $('#upload_images').val('1');
     });
@@ -29,46 +47,76 @@ $(document).ready(function ()
         $("#id_imagen").fileinput("refresh");
         $('#form_global').trigger("reset");
         $('#submit_type').val('productos/add');
-        $('#submit_id').val('');
 
         return false;
     });
 
     $.post('categorias/getAll', function (response) {
         $.each(response, function (key, val) {
-            $("#id_categoria").append('<option value="'+val.id+'">'+val.nombre+'</option>');
+            $("#id_categoria").append('<option value="'+val.id_categoria+'">'+val.nombre+'</option>');
+        });
+    }, 'json');
+
+    $.post('marcas/getAll', function (response) {
+        $.each(response, function (key, val) {
+            $("#id_marca").append('<option value="'+val.id_marca+'">'+val.nombre+'</option>');
         });
     }, 'json');
 
     var url = 'productos/getAll';
-    var columns = [{data: 'categoria_nombre'}, {data: 'nombre'}];
+    var columns = [{data: 'codigo_interno'}, {data: 'nombre'}, {data: 'precio'}, {data:'iva'}, {data:'moneda'}];
 
     var table = masterDatatable(url, columns);
 
-    $('#datatable tbody').on('click', '#btn_edit', function ()
-    {
-        $("#form_alert").slideUp();
-        var id = table.row($(this).parents('tr')).data().id;
+    var url_last_id = 'productos/getLastId';
 
-        var data = {id: id};
+    $.ajax({
+        url: url_last_id,
+        type: "POST",
+        cache: false,
+        data: {},
+        dataType: 'json',
+        success: function (data) {
+            $('#submit_id').val(parseInt(data.id) + 1);
+        }
+    });
+
+    $('#datatable tbody').on('click', '#btn_edit', function () {
+        $("#form_alert").slideUp();
+        var id = table.row($(this).parents('tr')).data().id_producto;
+
+        var data = {id_producto: id};
         var url = 'productos/getById';
 
         $('#submit_type').val('productos/edit');
 
         $.post(url, data, function (response, status) {
             if (status == 'success') {
-                var IMAGES_PRODUCTS = IMAGES + 'categorias' + '/' + response.categoria_nombre + '/productos/' + response.key_nombre + '/';
+                $.each(response, function (key, val) {
+                    if (key == 'descripcion') {
+                        tinyMCE.get('id_descripcion').setContent(val);
+                    }
+                    if (key == 'detalles_tecnicos') {
+                        tinyMCE.get('id_detalles_tecnicos').setContent(val);
+                    }
+                    $("textarea[name=" + key + "]").val(val);
+                    $("input[name=" + key + "]").val(val);
+                    $("select[name=" + key + "]").val(val);
+                });
                 var images = [];
                 var initialPreviewConfigObj = [];
+                var j = 0;
+                for (var i = 1; i <= response.num_imagenes; i++) {
+                    var dataImage = getImage(IMAGES_PRODUCTS, response.id_producto, i);
+                    if (dataImage.status == 200) {
+                        images[j] = '<img src="' + dataImage.url + '" class="file-preview-image" alt="Desert" title="Desert" style="width:auto; height:100px;">';
 
-                for (var i = 0; i < response.imagenes; i++) {
-                    var dataImage = getImage(IMAGES_PRODUCTS, response.key_nombre, i);
-                    images[i] = '<img src="' + dataImage.url + '" class="file-preview-image" alt="Desert" title="Desert" style="width:auto; height:100px;">';
-
-                    var initialPreviewConfigItem = {};
-                    initialPreviewConfigItem['caption'] = dataImage.name;
-                    initialPreviewConfigItem['key'] = i;
-                    initialPreviewConfigObj.push(initialPreviewConfigItem);
+                        var initialPreviewConfigItem = {};
+                        initialPreviewConfigItem['caption'] = dataImage.name;
+                        initialPreviewConfigItem['key'] = j;
+                        initialPreviewConfigObj.push(initialPreviewConfigItem);
+                        j++;
+                    }
                 }
 
                 $('#id_imagen').fileinput('refresh', {
@@ -82,30 +130,27 @@ $(document).ready(function ()
                     append: true,
                     showUploadedThumbs: false,
                     uploadExtraData: function (previewId, index) {
-                        var info = {"type": "productos", "name": $("#id_nombre").val(), "categoria" : $("#id_categoria").val(), "key_nombre": $('#key_nombre').val()};
+                        var info = {
+                            "type": "productos",
+                            "name": $("#submit_id").val(),
+                            'num_imagenes': $('.file-initial-thumbs > div').length + $('.file-live-thumbs > div').length
+                        };
                         return info;
                     }
                 });
 
-                $.each(response, function (key, val) {
-                    $("textarea[name=" + key + "]").val(val);
-                    $("input[name=" + key + "]").val(val);
-                    $("select[name=" + key + "]").val(val);
-                });
-
                 $('#upload_images').val('0');
             }
-            $('#submit_id').val(response.id);
+            $('#submit_id').val(response.id_producto);
         }, 'json');
         return false;
     });
 
-    $('#datatable tbody').on('click', '#btn_delete', function ()
-    {
-        var id = table.row($(this).parents('tr')).data().id;
+    $('#datatable tbody').on('click', '#btn_delete', function () {
+        var id = table.row($(this).parents('tr')).data().id_producto;
         bootbox.confirm("Eliminar elemento?", function (result) {
             if (result == true) {
-                var data = {id: id, active: 0};
+                var data = {id_producto: id, status: 0};
                 var url = 'productos/delete';
 
                 $.post(url, data, function (response, status) {
@@ -119,35 +164,12 @@ $(document).ready(function ()
         return false;
     });
 
-    var form = $('#form_global').submit(function ()
-    {
+    var form = $('#form_global').submit(function () {
         if ($('#id_submit').hasClass('disabled')) {
             return false;
         }
 
         var type = $('#submit_type').val();
-
-        if (type == 'productos/add') {
-            var url = 'productos/checkDuplicatedName';
-            var data_name = {nombre: $('#id_nombre').val(), id_categoria: $('#id_categoria').val()}
-
-            var checkDuplicated = $.ajax({
-                url: url,
-                type: "POST",
-                cache: false,
-                data: data_name,
-                dataType: 'json',
-                async: false,
-                success: function (data) {
-                    return data;
-                }
-            });
-
-            if (checkDuplicated.responseJSON.status == 200) {
-                submit_response(form, checkDuplicated.responseJSON, 'productos/add');
-                return false;
-            }
-        }
 
         if ($('#id_imagen').fileinput('upload') == null && $('#upload_images').val() == 1) {
             return false;
@@ -162,24 +184,10 @@ $(document).ready(function ()
 
         if (type == 'productos/edit') {
             var id = $('#submit_id').val();
-            data = data + '&' + $.param({'id': id});
-
-            if($('#upload_images').val() == 0) {
-                var info = {"type": "productos", "name": $("#id_nombre").val(), "categoria" : $("#id_categoria").val(), key_nombre: $('#key_nombre').val()};
-                var url_edit = 'dir/update';
-                $.ajax({
-                    url: url_edit,
-                    type: "POST",
-                    cache: false,
-                    data: info,
-                    dataType: 'json',
-                    async: true,
-                    success: function (response) {}
-                });
-            }
+            data = data + '&' + $.param({'id_producto': id});
         }
 
-        data = data + '&' + $.param({'imagenes': fileStack});
+        data = data + '&' + $.param({'num_imagenes': fileStack}) + '&' + $.param({'descripcion': tinyMCE.get('id_descripcion').getContent()}) + '&' + $.param({'detalles_tecnicos': tinyMCE.get('id_detalles_tecnicos').getContent()});
 
         $.ajax({
             url: type,
@@ -188,10 +196,26 @@ $(document).ready(function ()
             data: data,
             dataType: 'json',
             success: function (data) {
-                table.ajax.reload();
-                submit_response(form, data, 'productos/add');
+                if (data.status == 200) {
+                    $.ajax({
+                        url: url_last_id,
+                        type: "POST",
+                        cache: false,
+                        data: {},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#submit_id').val(parseInt(data.id) + 1);
+                        }
+                    });
+                    table.ajax.reload();
+                    submit_response(form, data, 'productos/add', 'productos');
+                }
+                else {
+                    bootbox.alert(data.message);
+                }
             }
-        });
+        })
+        ;
         return false;
     });
 });

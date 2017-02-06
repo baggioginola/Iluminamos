@@ -7,11 +7,11 @@
  */
 require_once CLASSES . 'CDatabase.class.inc.php';
 
-class ProjectsModel extends Database
+class ProductsModel extends Database
 {
     private static $object = null;
-    private static $table = 'casos_exito';
-    private static $key = 'id_caso_exito';
+    private static $table = 'productos';
+    private static $key = 'id_producto';
 
     public static function singleton()
     {
@@ -31,7 +31,19 @@ class ProjectsModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT id_caso_exito,titulo, subtitulo, fecha FROM " . self::$table . " WHERE status = true";
+        $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".id_categoria, " . self::$table . ".nombre,
+        " . self::$table . ".descripcion,
+        " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
+        " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
+        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio
+            FROM  " . self::$table . "
+            INNER JOIN categorias
+             ON " . self::$table . ".id_categoria = categorias.id_categoria
+             INNER JOIN marcas
+             ON " . self::$table . ".id_marca = marcas.id_marca
+             INNER JOIN tipo_cambio
+             ON " . self::$table . ".moneda = tipo_cambio.moneda
+            WHERE " . self::$table . ".STATUS = true;";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -51,7 +63,7 @@ class ProjectsModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT MAX(id_caso_exito) as id FROM " . self::$table . " ";
+        $query = "SELECT MAX(id_producto) as id FROM " . self::$table . " ";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -76,7 +88,19 @@ class ProjectsModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id_caso_exito,titulo, subtitulo, contenido, fecha, num_imagenes FROM " . self::$table . " WHERE id_caso_exito = '" . $id . "' ";
+        $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".id_categoria, " . self::$table . ".nombre,
+        " . self::$table . ".descripcion,
+        " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
+        " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
+        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes
+            FROM  " . self::$table . "
+            INNER JOIN categorias
+             ON " . self::$table . ".id_categoria = categorias.id_categoria
+             INNER JOIN marcas
+             ON " . self::$table . ".id_marca = marcas.id_marca
+             INNER JOIN tipo_cambio
+             ON " . self::$table . ".moneda = tipo_cambio.moneda
+             WHERE id_producto = '" . $id . "' ";
 
         if (!$result = $this->query($query)) {
             return false;

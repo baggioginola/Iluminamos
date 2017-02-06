@@ -27,16 +27,17 @@ class Images extends BaseController
             '5' => array('width' => 350, 'height' => 291)
         ),
         'proyectos' => array('0' => array('width' => 1245, 'height' => 830),
-            '1' => array('width' => 350, 'height' => 291),
-            '2' => array('width' => 350, 'height' => 291),
-            '3' => array('width' => 350, 'height' => 291),
-            '4' => array('width' => 350, 'height' => 291),
-            '5' => array('width' => 350, 'height' => 291)
+            '1' => array('width' => 1245, 'height' => 830),
+            '2' => array('width' => 1245, 'height' => 830),
+            '3' => array('width' => 1245, 'height' => 830),
+            '4' => array('width' => 1245, 'height' => 830),
+            '5' => array('width' => 1245, 'height' => 830)
         )
-
     );
 
     private $num_images;
+    private $tmp_name = 'tmpImage';
+    private $name = '';
 
     /**
      * @return Images|null
@@ -55,6 +56,10 @@ class Images extends BaseController
     public function add()
     {
         if (!CDir::singleton()->setDir()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        if (!$this->setName()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -80,6 +85,19 @@ class Images extends BaseController
         }
 
         $this->num_images = $_REQUEST['num_imagenes'];
+
+        return true;
+    }
+
+    private function setName()
+    {
+        if (!isset($_REQUEST['name']) || empty($_REQUEST['name'])) {
+            return false;
+        }
+
+        $this->name = $_REQUEST['name'];
+
+        return true;
     }
 
     /**
@@ -87,7 +105,11 @@ class Images extends BaseController
      */
     public function edit()
     {
-        if (!CDir::singleton()->edit()) {
+        if (!$this->setName()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        if (!CDir::singleton()->edit($this->name)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -102,6 +124,22 @@ class Images extends BaseController
         return json_encode($this->getResponse());
     }
 
+    public function rename()
+    {
+        if (!isset($_POST) || empty($_POST)) {
+            return false;
+        }
+
+        if (!CDir::singleton()->setDir()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        $name = $_POST['name'];
+
+        CFile::singleton()->rename(CDir::singleton()->getDir(), $name);
+        return json_encode($this->getResponse());
+    }
+
     /**
      * @return bool
      */
@@ -112,6 +150,7 @@ class Images extends BaseController
         }
 
         $dir = CDir::singleton()->getDir();
+
         ini_set('memory_limit', 20000000000);
         foreach ($this->parameters as $parameter => $value) {
             if (!move_uploaded_file($this->parameters[$parameter]['tmp_name'], $dir . $this->parameters[$parameter]['name'])) {
@@ -124,6 +163,7 @@ class Images extends BaseController
         foreach ($this->parameters as $parameter => $value) {
             resizeImage($dir . $this->parameters[$parameter]['name'], $this->sizes[$type][$parameter]['height'], $this->sizes[$type][$parameter]['width'], $this->parameters[$parameter]['extension']);
         }
+
         ini_restore('memory_limit');
 
         return true;
@@ -138,23 +178,28 @@ class Images extends BaseController
             return false;
         }
 
-        $i = 0;
+        $i = 1;
         foreach ($_FILES as $key => $value) {
             foreach ($value as $item => $val) {
                 foreach ($val as $tmp => $name) {
                     if ($item == 'name') {
                         $ext = explode(".", $name);
                         $lastElement = sizeof($ext);
-                        $name = CDir::singleton()->getName() . "-" . $i . "." . strtolower($ext[$lastElement - 1]);
+
+                        if($i == 1){
+                            $name = $this->name . "." . strtolower($ext[$lastElement - 1]);
+                        }
+                        else{
+                            $name = $this->name . "_" . $i . "." . strtolower($ext[$lastElement - 1]);
+                        }
                         $this->parameters[$i]['extension'] = strtolower($ext[$lastElement - 1]);
                     }
                     $this->parameters[$i][$item] = $name;
                     $i++;
                 }
-                $i = 0;
+                $i = 1;
             }
         }
-
         return true;
     }
 }

@@ -222,6 +222,65 @@ $app->group('/proyectos', function () use($app) {
         }
         echo $result;
     });
+
+    $app->post('/getLastId', function() use($app){
+        require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+        if(!$result = Projects::singleton()->getLastId()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+});
+
+$app->group('/productos', function () use($app) {
+    $app->post('/getAll', function() use($app){
+        require_once __CONTROLLER__.'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->getAll()){
+            echo 'Fail';
+        }
+        echo $result;
+
+    });
+
+    $app->post('/add', function() use($app){
+        require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->add()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/getById', function() use($app){
+        require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->getById()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/edit', function() use($app){
+        require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->edit()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/delete', function() use($app){
+        require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->delete()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/getLastId', function() use($app){
+        require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+        if(!$result = Products::singleton()->getLastId()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
 });
 
 $app->group('/imagenes', function () use($app) {
@@ -234,9 +293,9 @@ $app->group('/imagenes', function () use($app) {
         echo $result;
     });
 
-    $app->post('/update', function() use($app){
+    $app->post('/rename', function() use($app){
         require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
-        if(!$result = Images::singleton()->updatePath()) {
+        if(!$result = Images::singleton()->rename()) {
             echo 'Fail';
         }
         echo $result;

@@ -32,13 +32,13 @@ $(document).ready(function () {
         uploadExtraData: function (previewId, index) {
             var info = {
                 "type": "proyectos",
-                "name": $("#id_nombre").val(),
+                "name": $('#submit_id').val(),
                 'num_imagenes': $('.file-initial-thumbs > div').length + $('.file-live-thumbs > div').length
             };
             return info;
         }
     }).on('filebatchuploadsuccess', function (event, data) {
-        var out = '';
+        var success = '';
     }).on('fileloaded', function (event, file, previewId, index, reader) {
         $('#upload_images').val('1');
     });
@@ -47,7 +47,6 @@ $(document).ready(function () {
         $("#id_imagen").fileinput("refresh");
         $('#form_global').trigger("reset");
         $('#submit_type').val('proyectos/add');
-        $('#submit_id').val('');
 
         return false;
     });
@@ -57,6 +56,19 @@ $(document).ready(function () {
     var columns = [{data: 'titulo'}, {data: 'subtitulo'}, {data: 'fecha'}];
 
     var table = masterDatatable(url, columns);
+
+    var url_last_id = 'proyectos/getLastId';
+
+    $.ajax({
+        url: url_last_id,
+        type: "POST",
+        cache: false,
+        data: {},
+        dataType: 'json',
+        success: function (data) {
+            $('#submit_id').val(parseInt(data.id) + 1);
+        }
+    });
 
     $('#datatable tbody').on('click', '#btn_edit', function () {
         $("#form_alert").slideUp();
@@ -79,16 +91,17 @@ $(document).ready(function () {
                 });
                 var images = [];
                 var initialPreviewConfigObj = [];
-
-                for (var i = 1; i < response.num_imagenes; i++) {
+                var j = 0;
+                for (var i = 1; i <= response.num_imagenes; i++) {
                     var dataImage = getImage(IMAGES_PROJECTS, response.id_caso_exito, i);
                     if (dataImage.status == 200) {
-                        images[i] = '<img src="' + dataImage.url + '" class="file-preview-image" alt="Desert" title="Desert" style="width:auto; height:100px;">';
+                        images[j] = '<img src="' + dataImage.url + '" class="file-preview-image" alt="Desert" title="Desert" style="width:auto; height:100px;">';
 
                         var initialPreviewConfigItem = {};
                         initialPreviewConfigItem['caption'] = dataImage.name;
-                        initialPreviewConfigItem['key'] = i;
+                        initialPreviewConfigItem['key'] = j;
                         initialPreviewConfigObj.push(initialPreviewConfigItem);
+                        j++;
                     }
                 }
 
@@ -105,18 +118,16 @@ $(document).ready(function () {
                     uploadExtraData: function (previewId, index) {
                         var info = {
                             "type": "proyectos",
-                            "name": $("#id_nombre").val(),
-                            "categoria": $("#id_categoria").val(),
-                            "key_nombre": $('#key_nombre').val()
+                            "name": $("#submit_id").val(),
+                            'num_imagenes': $('.file-initial-thumbs > div').length + $('.file-live-thumbs > div').length
                         };
                         return info;
                     }
                 });
 
-
                 $('#upload_images').val('0');
             }
-            $('#submit_id').val(response.id);
+            $('#submit_id').val(response.id_caso_exito);
         }, 'json');
         return false;
     });
@@ -160,26 +171,6 @@ $(document).ready(function () {
         if (type == 'proyectos/edit') {
             var id = $('#submit_id').val();
             data = data + '&' + $.param({'id_caso_exito': id});
-
-            if ($('#upload_images').val() == 0) {
-                var info = {
-                    "type": "proyectos",
-                    "name": $("#id_nombre").val(),
-                    "categoria": $("#id_categoria").val(),
-                    key_nombre: $('#key_nombre').val()
-                };
-                var url_edit = 'dir/update';
-                $.ajax({
-                    url: url_edit,
-                    type: "POST",
-                    cache: false,
-                    data: info,
-                    dataType: 'json',
-                    async: true,
-                    success: function (response) {
-                    }
-                });
-            }
         }
 
         data = data + '&' + $.param({'num_imagenes': fileStack}) + '&' + $.param({'contenido': tinyMCE.get('id_contenido').getContent()});
@@ -192,14 +183,25 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 if (data.status == 200) {
+                    $.ajax({
+                        url: url_last_id,
+                        type: "POST",
+                        cache: false,
+                        data: {},
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#submit_id').val(parseInt(data.id) + 1);
+                        }
+                    });
                     table.ajax.reload();
-                    submit_response(form, data, 'proyectos/add');
+                    submit_response(form, data, 'proyectos/add', 'proyectos');
                 }
                 else {
                     bootbox.alert(data.message);
                 }
             }
-        });
+        })
+        ;
         return false;
     });
 });
