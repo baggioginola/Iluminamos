@@ -309,3 +309,22 @@ $app->group('/imagenes', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/reportes', function () use($app) {
+
+    $app->post('/getProductLikes', function() use($app){
+        require_once __CONTROLLER__ . 'CReportsController.class.inc.php';
+        if(!$result = Reports::singleton()->getProductsLikes()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+});
+
+$app->group('/login', function () use($app) {
+    $app->post('/authenticate', function() use($app){
+        require_once __CONTROLLER__. 'CLoginController.class.inc.php';
+        $result = Login::singleton()->authenticate();
+        echo $result;
+    });
+});

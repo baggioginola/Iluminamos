@@ -85,6 +85,10 @@ $(document).ready(function () {
                     if (key == 'contenido') {
                         tinyMCE.get('id_contenido').setContent(val);
                     }
+                    if(key == 'fecha'){
+                        date = val.split('-');
+                        val = date[1] + '/' + date[2] + '/' + date[0];
+                    }
                     $("textarea[name=" + key + "]").val(val);
                     $("input[name=" + key + "]").val(val);
                     $("select[name=" + key + "]").val(val);

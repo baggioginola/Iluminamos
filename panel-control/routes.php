@@ -40,3 +40,13 @@ $app->get('/proyectos', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'projects.twig', array('settings' => $settings));
 });
+
+$app->get('/reportes', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'report.twig', array('settings' => $settings));
+});
+
+$app->get('/login', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'login.twig', array('settings' => $settings));
+});

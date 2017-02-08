@@ -8,7 +8,7 @@
 
 define('ENVIRONMENT', 'test'); # must be production or test.
 define('__ROOT__', dirname(__FILE__));
-define('PROJECT', 'Github/iluminamos/panel-control/');
+define('PROJECT', 'github/iluminamos/panel-control/');
 define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT);
 
 define('FRAMEWORK', __ROOT__ . '/core/framework/');
