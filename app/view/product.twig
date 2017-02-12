@@ -1,6 +1,6 @@
 {% extends "layout/master.twig" %}
 
-{% block title %}Producto/{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1')}}{% endblock %}
+{% block title %}Producto/{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}{% endblock %}
 
 {% block head %}
     {{ parent() }}
@@ -30,11 +30,11 @@
                     <div class="col-md-5 col-md-offset-0">
                         <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"
                              id="bigPic"
-                             alt="{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                             title="{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
+                             alt="{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                             title="{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
                     </div>
                     <div class="col-md-7" style="text-align: justify;">
-                        <h2>{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
+                        <h2>{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
 
                         <h3>Marca: {{ result.marca | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
 
@@ -53,18 +53,21 @@
                                  id="{{ result.id_producto }}"><img
                                         src="{{ settings.IMG }}favorite_white.png" width="29px"></div>
                         {% else %}
-                            <div style="float: left; margin-left: 27px; margin-top: 8px;" ><img
+                            <div style="float: left; margin-left: 27px; margin-top: 8px;"><img
                                         src="{{ settings.IMG }}favorite_black.png" width="29px"></div>
                         {% endif %}
 
                     </div>
                 </div>
+
+                <!--
                 <div class="page-header">
                     <h3>Detalles Técnicos</h3></div>
                 <p>{% autoescape %}
                     {{ result.detalles_tecnicos | raw }}
                     {% endautoescape %}
                 </p>
+                !-->
 
 
             </div>

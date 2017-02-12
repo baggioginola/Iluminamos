@@ -54,9 +54,9 @@ class Login extends BaseController
     public function logout()
     {
         if (!Session::singleton()->destroy()) {
-            return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
+            return false;
         }
-        return json_encode($this->getResponse());
+        return true;
     }
 
     /**

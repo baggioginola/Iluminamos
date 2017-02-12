@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     tinymce.init({
-        selector: "textarea#id_descripcion,#id_detalles_tecnicos",
+        selector: "textarea#id_descripcion",
         menubar: "edit",
 
         theme: "modern",
@@ -64,7 +64,7 @@ $(document).ready(function () {
     }, 'json');
 
     var url = 'productos/getAll';
-    var columns = [{data: 'codigo_interno'}, {data: 'nombre'}, {data: 'precio'}, {data:'iva'}, {data:'moneda'}];
+    var columns = [{data: 'codigo_interno'}, {data: 'precio'}, {data: 'precio_compra'}, {data:'iva'}, {data:'moneda'}];
 
     var table = masterDatatable(url, columns);
 
@@ -95,9 +95,6 @@ $(document).ready(function () {
                 $.each(response, function (key, val) {
                     if (key == 'descripcion') {
                         tinyMCE.get('id_descripcion').setContent(val);
-                    }
-                    if (key == 'detalles_tecnicos') {
-                        tinyMCE.get('id_detalles_tecnicos').setContent(val);
                     }
                     $("textarea[name=" + key + "]").val(val);
                     $("input[name=" + key + "]").val(val);

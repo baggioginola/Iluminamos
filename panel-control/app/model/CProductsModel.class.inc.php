@@ -35,13 +35,13 @@ class ProductsModel extends Database
         " . self::$table . ".descripcion,
         " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
         " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
-        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio
+        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".precio_compra
             FROM  " . self::$table . "
-            INNER JOIN categorias
+            LEFT JOIN categorias
              ON " . self::$table . ".id_categoria = categorias.id_categoria
-             INNER JOIN marcas
+             LEFT JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
-             INNER JOIN tipo_cambio
+             LEFT JOIN tipo_cambio
              ON " . self::$table . ".moneda = tipo_cambio.moneda
             WHERE " . self::$table . ".STATUS = true;";
 
@@ -92,13 +92,14 @@ class ProductsModel extends Database
         " . self::$table . ".descripcion,
         " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
         " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
-        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes
+        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes,
+        " . self::$table . ".precio_compra
             FROM  " . self::$table . "
-            INNER JOIN categorias
+            LEFT JOIN categorias
              ON " . self::$table . ".id_categoria = categorias.id_categoria
-             INNER JOIN marcas
+             LEFT JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
-             INNER JOIN tipo_cambio
+             LEFT JOIN tipo_cambio
              ON " . self::$table . ".moneda = tipo_cambio.moneda
              WHERE id_producto = '" . $id . "' ";
 

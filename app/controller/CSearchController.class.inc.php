@@ -89,7 +89,7 @@ class Search extends BaseController
                 }
             }
             $result_all[$i]['id_producto'] = $row_array['id_producto'];
-            $result_all[$i]['nombre'] = $row_array['nombre'];
+            $result_all[$i]['nombre'] = $row_array['codigo_interno'];
             $i++;
         }
 
@@ -114,6 +114,19 @@ class Search extends BaseController
         $total = $total + ($total * $array['iva']);
 
         return $total;
+    }
+
+    public function getProductsbyQuery($query = null)
+    {
+        if(is_null($query)){
+            return false;
+        }
+
+        if (!$result = SearchModel::singleton()->getProductsByQuery($query)) {
+            return false;
+        }
+
+        return $result;
     }
 
     /**

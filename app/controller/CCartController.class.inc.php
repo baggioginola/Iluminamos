@@ -79,6 +79,7 @@ class Cart extends BaseController
             $total = $total + $this->getTotal($row_array);
             $result_all[$i]['id_producto'] = $row_array['id_producto'];
             $result_all[$i]['nombre'] = $row_array['nombre'];
+            $result_all[$i]['codigo_interno'] = $row_array['codigo_interno'];
             $result_all[$i]['numero_productos'] = $row_array['numero_productos'];
             $result_all[$i]['precio_total'] = number_format($this->getTotal($row_array), 2);
             $result_all[$i]['precio'] = number_format($this->getPrice($row_array), 2);

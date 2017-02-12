@@ -23,6 +23,7 @@ define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 define('FONTS', DOMAIN . 'includes/public/fonts/');
 define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js/');
+define('FILES', __ROOT__ . '/includes/public/files/');
 
 define('IMG', DOMAIN . 'includes/public/img/');
 define('PRODUCT_IMG', __ROOT__ . '/includes/public/imagenes_productos/');

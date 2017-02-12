@@ -143,7 +143,7 @@ class CartModel extends Database
         $query = "SELECT cart_productos.id_cart_productos,cart.id_cart as id_cart,
 		productos.nombre, SUM(precio) as total, COUNT(productos.id_producto) AS numero_productos, 
 		productos.id_producto,iva,
-		tipo_cambio.moneda,marcas.descuento,productos.id_marca, tipo_cambio.tipo_cambio, precio
+		tipo_cambio.moneda,marcas.descuento,productos.id_marca, tipo_cambio.tipo_cambio, precio, productos.codigo_interno
 		FROM  cart inner join cart_productos
 		ON cart.id_cart = cart_productos.id_cart
 		INNER JOIN productos

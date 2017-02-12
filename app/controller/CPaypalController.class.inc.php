@@ -59,7 +59,7 @@ class Paypal extends BaseController
             foreach ($key as $value => $result) {
                 $row_array[$value] = $result;
             }
-            $result_all[$i]['nombre'] = $row_array['nombre'];
+            $result_all[$i]['nombre'] = $row_array['codigo_interno'];
             $result_all[$i]['numero_productos'] = $row_array['numero_productos'];
 
             $price = $this->getPrice($row_array);

@@ -108,9 +108,9 @@
                                                 <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}" class="products_thumbnail">
                                                     <div class="thumbnail"><img
                                                                 src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
-                                                                alt="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                                                                title="{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
-                                                        <label>{{ producto.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</label>
+                                                                alt="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                                                                title="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
+                                                        <label>{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}</label>
                                                     </div>
 
                                                 </a>

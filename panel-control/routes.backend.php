@@ -328,3 +328,11 @@ $app->group('/login', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/files', function () use($app){
+    $app->post('/readXLS', function() use($app){
+        require_once __CONTROLLER__. 'CXLSController.class.inc.php';
+        $result = XLS::singleton()->read();
+        echo $result;
+    });
+});

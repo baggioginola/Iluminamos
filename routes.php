@@ -144,3 +144,23 @@ $app->get('/login', function ($request, $response, $args) {
 
     return $this->view->render($response, 'login.twig', array('settings' => $settings, 'total_products' => $total_products));
 });
+
+$app->get('/buscar', function ($request, $response, $args) {
+    global $settings, $total_products;
+
+    require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CCategoriesController.class.inc.php';
+    require_once __CONTROLLER__ . 'CBrandsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CSearchController.class.inc.php';
+
+    $result_brands = Brands::singleton()->getAll();
+    $result_categories = Categories::singleton()->getAll();
+
+    $result = array();
+    $params = $request->getQueryParams();
+
+    $q = $params['q'];
+    $result = Search::singleton()->getProductsbyQuery($q);
+
+    return $this->view->render($response, 'search.twig', array('settings' => $settings, 'result' => $result, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products, 'q' => $q));
+});

@@ -49,7 +49,7 @@ class SearchModel extends Database
         // TODO Remove LIMIT 10
         $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
-        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio
+        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno
         FROM " . self::$products_table . " INNER JOIN categorias
         ON " . self::$products_table . ".id_categoria = categorias.id_categoria 
         INNER JOIN marcas
@@ -58,6 +58,44 @@ class SearchModel extends Database
         ON " . self::$products_table . ".moneda = tipo_cambio.moneda
         WHERE  1 = 1 " . $filter . " 
         AND " . self::$products_table . ".status = true 
+        AND categorias.status = true and marcas.status = true LIMIT 10";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array[] = $row;
+        }
+
+        return $result_array;
+    }
+
+    public function getProductsByQuery($query = null)
+    {
+        if (is_null($query)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $filter = "AND " . self::$products_table . ".codigo_interno LIKE '%" . $query . "%' ";
+        $result_array = array();
+
+        // TODO Remove LIMIT 10
+        $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
+        " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
+        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno
+        FROM " . self::$products_table . " INNER JOIN categorias
+        ON " . self::$products_table . ".id_categoria = categorias.id_categoria
+        INNER JOIN marcas
+        ON " . self::$products_table . ".id_marca = marcas.id_marca
+        INNER JOIN tipo_cambio
+        ON " . self::$products_table . ".moneda = tipo_cambio.moneda
+        WHERE  1 = 1 " . $filter . "
+        AND " . self::$products_table . ".status = true
         AND categorias.status = true and marcas.status = true LIMIT 10";
 
         if (!$result = $this->query($query)) {

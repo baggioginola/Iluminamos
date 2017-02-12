@@ -30,7 +30,8 @@ class Products extends BaseController
         'moneda' => TYPE_ALPHA,
         'id_marca' => TYPE_INT,
         'num_imagenes' => TYPE_INT,
-        'precio' => TYPE_FLOAT
+        'precio' => TYPE_FLOAT,
+        'precio_compra' => TYPE_FLOAT
     );
 
     /**
@@ -151,6 +152,29 @@ class Products extends BaseController
         $result = ProductsModel::singleton()->add($this->parameters);
 
         return $result;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function addXLS($array = array())
+    {
+        if (!$array) {
+            return false;
+        }
+
+        $array['status'] = 1;
+        $array['fecha_alta'] = date('Y-m-d H:i:s');
+        $array['fecha_modifica'] = date('Y-m-d H:i:s');
+        $array['iva'] = 0.16;
+
+        $result = array();
+        if (!$result['id'] = ProductsModel::singleton()->add($array)) {
+            return false;
+        }
+
+        return $result['id'];
     }
 
     /**

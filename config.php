@@ -23,6 +23,7 @@ define('TWIG_TEMPLATES', __ROOT__ . '/app/view');
 define('CSS', DOMAIN . 'includes/public/css/');
 define('JS', DOMAIN . 'includes/public/js/');
 define('IMG', DOMAIN . 'includes/public/img/');
+
 define('PRODUCT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_productos/');
 define('PROJECT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_proyectos/');
 define('BANNER_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/');

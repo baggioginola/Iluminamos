@@ -19,7 +19,7 @@ jQuery(document).ready(function(){
             success: function (response) {
                 console.log(response);
                 if(response.status == 200){
-                    location.href = BASE_ROOT + 'cart';
+                    location.href = BASE_ROOT;
                 }
                 else {
                     bootbox.alert('Usuario y/o password incorrectos, intente de nuevo');
