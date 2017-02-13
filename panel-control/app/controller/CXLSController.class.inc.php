@@ -25,6 +25,8 @@ class XLS extends BaseController
         'moneda' => 'MONEDA'
     );
 
+    private $param = array();
+
     /**
      * @return null|XLS
      */
@@ -38,6 +40,10 @@ class XLS extends BaseController
 
     public function read()
     {
+        if(!$this->_setParameters()){
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
         $this->setFile();
 
         $this->setReader();
@@ -100,4 +106,23 @@ class XLS extends BaseController
         $this->file = FILES . 'test.xls';
     }
 
+    private function _setParameters()
+    {
+        if (!isset($_FILES) || empty($_FILES)) {
+            return false;
+        }
+
+        echo print_r($_FILES,1);
+
+        /*
+        if (!$this->validateParameters($_POST, $this->validParameters)) {
+            return false;
+        }
+
+        foreach ($_POST as $key => $value) {
+            $this->parameters[$key] = $value;
+        }
+        */
+        return true;
+    }
 }
