@@ -32,7 +32,7 @@ class ReportssModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT nombre,likes FROM productos WHERE status = true ORDER BY likes DESC LIMIT 10;";
+        $query = "SELECT codigo_interno,likes FROM productos WHERE status = true ORDER BY likes DESC LIMIT 10;";
 
         if (!$result = $this->query($query)) {
             return false;

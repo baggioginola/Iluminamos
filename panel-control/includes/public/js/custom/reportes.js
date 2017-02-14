@@ -15,7 +15,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 $.each(data, function (key, val) {
-                    labels.push(val.nombre);
+                    labels.push(val.codigo_interno);
                     likes.push(val.likes);
                 });
                 var chart = {

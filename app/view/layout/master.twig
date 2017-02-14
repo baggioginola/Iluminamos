@@ -45,11 +45,11 @@
             <ul class="nav navbar-nav">
                 <li>
                     <a>
-                        <form id="searchbox" style="overflow: auto;">
-                            <input id="search_query" name="search_query" placeholder="Buscar"
-                                   class="validate[required] ui-autocomplete-input" autocomplete="off" role="textbox"
-                                   aria-autocomplete="list" aria-haspopup="true" type="text" style="width: 85%">
-                            <input src="http://localhost/Github/iluminamos/includes/public/img/search.png" id="id_buscar"
+                        <form id="searchbox" style="overflow: auto;" action="{{ settings.DOMAIN }}buscar">
+                            <input id="search_query" name="q" placeholder="Buscar"
+                                   autocomplete="off"
+                                   type="text" style="width: 85%" {% if q is defined %} value="{{ q }}" {% endif %}>
+                            <input src="{{ settings.IMG }}search.png" id="id_buscar"
                                    style="border:0px" type="image">
                         </form>
                     </a>

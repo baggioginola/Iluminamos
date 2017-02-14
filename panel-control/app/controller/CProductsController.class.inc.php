@@ -168,6 +168,7 @@ class Products extends BaseController
         $array['fecha_alta'] = date('Y-m-d H:i:s');
         $array['fecha_modifica'] = date('Y-m-d H:i:s');
         $array['iva'] = 0.16;
+        $array['num_imagenes'] = 0;
 
         $result = array();
         if (!$result['id'] = ProductsModel::singleton()->add($array)) {

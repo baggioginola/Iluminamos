@@ -16,6 +16,8 @@ class XLS extends BaseController
     private $excelReader = null;
     private $workSheet = null;
     private static $object = null;
+    private $dir = null;
+
 
     private $parameters = array(
         'codigo_interno' => 'CLAVE',
@@ -26,6 +28,11 @@ class XLS extends BaseController
     );
 
     private $param = array();
+
+    private function setDir()
+    {
+        $this->dir = FILES;
+    }
 
     /**
      * @return null|XLS
@@ -40,13 +47,19 @@ class XLS extends BaseController
 
     public function read()
     {
-        if(!$this->_setParameters()){
+        if (!$this->_setParameters()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
-        $this->setFile();
+        $this->setDir();
 
-        $this->setReader();
+        if (!$this->upload()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        if (!$this->setReader()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
 
         $this->loadFile();
 
@@ -59,9 +72,15 @@ class XLS extends BaseController
 
     private function setReader()
     {
+        if ($this->file == '') {
+            return false;
+        }
+
         $inputFileType = PHPExcel_IOFactory::identify($this->file);
         $this->objReader = PHPExcel_IOFactory::createReader($inputFileType);
         $this->objReader->setReadDataOnly(true);
+
+        return true;
     }
 
     private function loadFile()
@@ -101,9 +120,24 @@ class XLS extends BaseController
 
     }
 
-    private function setFile()
+    private function upload()
     {
-        $this->file = FILES . 'test.xls';
+        if (empty($this->param)) {
+            return false;
+        }
+
+        ini_set('memory_limit', 20000000000);
+
+        if (!move_uploaded_file($this->param['files']['tmp_name'][0], $this->dir . $this->param['files']['name'][0])) {
+            return false;
+        }
+        chmod($this->dir . $this->param['files']['name'][0], 0777);
+
+        $this->file = $this->dir . $this->param['files']['name'][0];
+
+        ini_restore('memory_limit');
+
+        return true;
     }
 
     private function _setParameters()
@@ -112,17 +146,10 @@ class XLS extends BaseController
             return false;
         }
 
-        echo print_r($_FILES,1);
-
-        /*
-        if (!$this->validateParameters($_POST, $this->validParameters)) {
-            return false;
+        foreach ($_FILES as $key => $value) {
+            $this->param[$key] = $value;
         }
 
-        foreach ($_POST as $key => $value) {
-            $this->parameters[$key] = $value;
-        }
-        */
         return true;
     }
 }

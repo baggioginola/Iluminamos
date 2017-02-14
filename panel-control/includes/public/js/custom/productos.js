@@ -184,7 +184,7 @@ $(document).ready(function () {
             data = data + '&' + $.param({'id_producto': id});
         }
 
-        data = data + '&' + $.param({'num_imagenes': fileStack}) + '&' + $.param({'descripcion': tinyMCE.get('id_descripcion').getContent()}) + '&' + $.param({'detalles_tecnicos': tinyMCE.get('id_detalles_tecnicos').getContent()});
+        data = data + '&' + $.param({'num_imagenes': fileStack}) + '&' + $.param({'descripcion': tinyMCE.get('id_descripcion').getContent()});
 
         $.ajax({
             url: type,
