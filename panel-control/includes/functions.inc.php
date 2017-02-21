@@ -155,3 +155,31 @@ function dateInput($date, $sign = '-')
 
     return $array[2] . $sign . $array[0] . $sign . $array[1];
 }
+
+function getRegularExpresion($type)
+{
+    switch ($type) {
+        case TYPE_INT:
+            $regex = '/^[\d]{1,14}$/';
+            break;
+        case TYPE_FLOAT:
+            $regex = '/^(\d){1,14}.?(\d){0,14}/';
+            break;
+        case TYPE_ALPHA:
+            $regex = '/^[a-z A-Z .\w-]+/';
+            break;
+        case TYPE_PASSWORD:
+            $regex = '/^[\w\d\W]+/';
+            break;
+        case TYPE_DATETIME:
+            $regex = '/^(20[0-9]{2}-(0[1-9]{1}|1[0-2]{1}))-(0[1-9]{1}|[1-2]{1}[0-9]{1}|3[01]{1}) ([0-1]{1}[0-9]{1}|2[0-3]{1}):[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/';
+            break;
+        case TYPE_DATE:
+            $regex = '/^(20[0-9]{2}-(0[1-9]{1}|1[0-2]{1}))-(0[1-9]{1}|[1-2]{1}[0-9]{1}|3[01]{1})$/';
+            break;
+        default:
+            return false;
+            break;
+    }
+    return $regex;
+}

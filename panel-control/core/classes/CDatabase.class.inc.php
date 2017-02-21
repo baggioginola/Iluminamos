@@ -68,7 +68,6 @@ class Database
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
 
         $log[] = $sql;
-        Logs::singleton()->setLog($log, __METHOD__, __LINE__);
         return self::query($sql);
 
     }
@@ -123,10 +122,12 @@ class Database
         foreach ($data as $key => $value) {
             if ($counter == sizeof($data) - 1) {
                 $columns .= $key;
-                $values .= "'$value'";
+                $val_sanitized = mysqli_real_escape_string($this->link, $value);
+                $values .= "'$val_sanitized'";
             } else {
                 $columns .= $key . ',';
-                $values .= "'$value'" . ',';
+                $val_sanitized = mysqli_real_escape_string($this->link, $value);
+                $values .= "'$val_sanitized'" . ',';
             }
             $counter++;
         }
@@ -144,9 +145,11 @@ class Database
         $counter = 0;
         foreach ($data as $key => $value) {
             if ($counter == sizeof($data) - 1) {
-                $updateString .= $key . '="' . $value . '"';
+                $val_sanitized = mysqli_real_escape_string($this->link, $value);
+                $updateString .= $key . '="' . $val_sanitized . '"';
             } else {
-                $updateString .= $key . ' = "' . $value . '", ';
+                $val_sanitized = mysqli_real_escape_string($this->link, $value);
+                $updateString .= $key . ' = "' . $val_sanitized . '", ';
             }
             $counter++;
         }

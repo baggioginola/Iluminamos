@@ -24,7 +24,9 @@ class XLS extends BaseController
         'descripcion' => 'DESCRIPCION',
         'precio_compra' => 'PRECIO COMPRA',
         'precio' => 'PRECIO 1',
-        'moneda' => 'MONEDA'
+        'moneda' => 'MONEDA',
+        'clave_alterna' => 'CLAVE ALTERNA',
+        'departamento' => 'DEPARTAMENTO'
     );
 
     private $param = array();
@@ -105,19 +107,35 @@ class XLS extends BaseController
                     $title = $this->workSheet[0][$j];
                     if (in_array($title, $this->parameters)) {
                         $array_key = array_search($title, $this->parameters);
-                        $parameters[$array_key] = $name;
+                        if($array_key === 'precio' || $array_key === 'precio_compra'){
+                            if (!preg_match(getRegularExpresion(TYPE_FLOAT),$name)){
+                                $name = 0;
+                            }
+                            $parameters[$array_key] = number_format($name,2,'.','');
+                        }
+                        else {
+                            $parameters[$array_key] = $name;
+                        }
                     }
                 }
                 $j++;
             }
             if ($i != 0 && $parameters) {
-                $id = Products::singleton()->addXLS($parameters);
+                if (isset($parameters['codigo_interno'])) {
+                    if ($result = Products::singleton()->getByCodigoInterno($parameters['codigo_interno'])) {
+                        $parameters['id_producto'] = $result['id_producto'];
+                        Products::singleton()->editXLS($parameters);
+                    } else {
+                        Products::singleton()->addXLS($parameters);
+                    }
+                } else {
+                    Products::singleton()->addXLS($parameters);
+                }
             }
             $j = 0;
             $i++;
             $parameters = array();
         }
-
     }
 
     private function upload()

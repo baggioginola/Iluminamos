@@ -46,7 +46,7 @@ class Login extends BaseController
 
         Session::singleton()->store($token);
 
-        Session::singleton()->storeUserInfo($result['nombre'], $result['apellidos']);
+        Session::singleton()->storeUserInfo($result['nombre'], $result['apellidos'], $result['e_mail'], $result['telefono']);
 
         return json_encode($this->getResponse());
     }

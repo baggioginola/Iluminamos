@@ -1,0 +1,36 @@
+[13-Feb-2017 21:34:46 America/Mexico_City] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Container.php on line 149
+[13-Feb-2017 21:35:08 America/Mexico_City] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Container.php on line 149
+[13-Feb-2017 21:35:56 America/Mexico_City] PHP Parse error:  syntax error, unexpected 'class' (T_CLASS), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Container.php on line 149
+[13-Feb-2017 21:38:37 America/Mexico_City] Slim Application Error:
+Type: Twig_Error_Loader
+Message: Unable to find template &quot;main.html&quot; (looked into: /home/ilumina/public_html/panel_control/app/view).
+File: /home/ilumina/public_html/panel_control/core/framework/slim/vendor/twig/twig/lib/Twig/Loader/Filesystem.php
+Line: 232
+Trace: #0 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(150): Twig_Loader_Filesystem->findTemplate('main.html')
+#1 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/twig/twig/lib/Twig/Environment.php(329): Twig_Loader_Filesystem->getCacheKey('main.html')
+#2 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/twig/twig/lib/Twig/Environment.php(418): Twig_Environment->getTemplateClass('main.html', NULL)
+#3 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/twig-view/src/Twig.php(92): Twig_Environment->loadTemplate('main.html')
+#4 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/twig-view/src/Twig.php(105): Slim\Views\Twig->fetch('main.html', Array)
+#5 /home/ilumina/public_html/panel_control/includes/header.inc.php(26): Slim\Views\Twig->render(Object(Slim\Http\Response), 'main.html', Array)
+#6 [internal function]: Closure->{closure}(Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#7 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(41): call_user_func(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#8 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Route.php(344): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(Slim\Http\Request), Object(Slim\Http\Response), Array)
+#9 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\Route->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#10 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/Route.php(316): Slim\Route->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#11 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/App.php(438): Slim\Route->run(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#12 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/MiddlewareAwareTrait.php(116): Slim\App->__invoke(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#13 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/App.php(332): Slim\App->callMiddlewareStack(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#14 /home/ilumina/public_html/panel_control/core/framework/slim/vendor/slim/slim/Slim/App.php(293): Slim\App->process(Object(Slim\Http\Request), Object(Slim\Http\Response))
+#15 /home/ilumina/public_html/panel_control/includes/header.inc.php(29): Slim\App->run()
+#16 /home/ilumina/public_html/panel_control/index.php(9): require_once('/home/ilumina/p...')
+#17 {main}
+View in rendered output by enabling the "displayErrorDetails" setting.
+
+[13-Feb-2017 21:38:37 America/Mexico_City] PHP Warning:  require_once(/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php): failed to open stream: No such file or directory in /home/ilumina/public_html/panel_control/routes.php on line 8
+[13-Feb-2017 21:38:37 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required '/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ilumina/public_html/panel_control/routes.php on line 8
+[13-Feb-2017 21:42:08 America/Mexico_City] PHP Warning:  require_once(/home/ilumina/public_html/panel_control/core/framework/office/vendor/autoload.php): failed to open stream: No such file or directory in /home/ilumina/public_html/panel_control/includes/header.inc.php on line 12
+[13-Feb-2017 21:42:08 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required '/home/ilumina/public_html/panel_control/core/framework/office/vendor/autoload.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ilumina/public_html/panel_control/includes/header.inc.php on line 12
+[13-Feb-2017 21:51:41 America/Mexico_City] PHP Warning:  require_once(/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php): failed to open stream: No such file or directory in /home/ilumina/public_html/panel_control/auth.php on line 9
+[13-Feb-2017 21:51:41 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required '/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ilumina/public_html/panel_control/auth.php on line 9
+[13-Feb-2017 21:51:44 America/Mexico_City] PHP Warning:  require_once(/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php): failed to open stream: No such file or directory in /home/ilumina/public_html/panel_control/auth.php on line 9
+[13-Feb-2017 21:51:44 America/Mexico_City] PHP Fatal error:  require_once(): Failed opening required '/home/ilumina/public_html/panel_control/core/classes/CSession.class.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/ilumina/public_html/panel_control/auth.php on line 9

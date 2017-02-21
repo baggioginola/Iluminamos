@@ -65,3 +65,11 @@ $app->group('/projects', function () use($app) {
         echo $result;
     });
 });
+
+$app->group('/notification', function () use($app) {
+    $app->post('/charge', function() use($app){
+        require_once __CONTROLLER__. 'CNotification.class.inc.php';
+        Notification::singleton()->charge();
+        http_response_code(200);
+    });
+});

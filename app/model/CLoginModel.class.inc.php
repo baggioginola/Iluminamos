@@ -37,7 +37,7 @@ class LoginModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id_cliente, nombre, apellidos, password FROM " . self::$table . " WHERE e_mail = '" . $data['e_mail'] . "' ";
+        $query = "SELECT id_cliente,e_mail, telefono, nombre, apellidos, password FROM " . self::$table . " WHERE e_mail = '" . $data['e_mail'] . "' ";
 
         if (!$result = $this->query($query)) {
             return false;

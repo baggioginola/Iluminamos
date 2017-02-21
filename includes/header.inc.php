@@ -9,6 +9,7 @@
 require_once __DIR__ . '/../config.php';
 require_once FRAMEWORK . 'slim/vendor/autoload.php';
 require_once __DIR__ . '/../auth.php';
+require_once __DIR__ . '/functions.inc.php';
 
 if (strcasecmp(ENVIRONMENT, 'test') == 0) {
     error_reporting(E_ALL);
@@ -26,7 +27,15 @@ $settings = array(
     'BANNER_IMG' => BANNER_IMG
 );
 
-$app = new \Slim\App;
+$configuration = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
+$c = new \Slim\Container($configuration);
+$app = new \Slim\App($c);
+
+#$app = new \Slim\App;
 
 $container = $app->getContainer();
 

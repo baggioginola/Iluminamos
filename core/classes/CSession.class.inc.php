@@ -27,10 +27,12 @@ class Session
         $_SESSION['token'] = $token;
     }
 
-    public function storeUserInfo($name = '', $last_name = '')
+    public function storeUserInfo($name = '', $last_name = '', $e_mail, $phone)
     {
         $_SESSION['name'] = $name;
         $_SESSION['last_name'] = $last_name;
+        $_SESSION['e_mail'] = $e_mail;
+        $_SESSION['phone'] = $phone;
     }
 
     public function destroy()
@@ -45,6 +47,14 @@ class Session
 
         if (isset($_SESSION['last_name'])) {
             unset($_SESSION['last_name']);
+        }
+
+        if (isset($_SESSION['e_mail'])) {
+            unset($_SESSION['e_mail']);
+        }
+
+        if (isset($_SESSION['phone'])) {
+            unset($_SESSION['phone']);
         }
 
         unset($_SESSION['token']);
@@ -93,6 +103,15 @@ class Session
             return $_SESSION['last_name'];
         }
         return '';
+    }
+
+    public function getCustomerInfo()
+    {
+        if(!isset($_SESSION['name']) || !isset($_SESSION['last_name']) || !isset($_SESSION['e_mail']) || !isset($_SESSION['phone'])){
+            return false;
+        }
+
+        return array('name' => $_SESSION['name'], 'last_name' => $_SESSION['last_name'], 'e_mail' => $_SESSION['e_mail'], 'phone' => $_SESSION['phone']);
     }
     private function getToken()
     {

@@ -93,7 +93,7 @@ class ProductsModel extends Database
         " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
         " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
         marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes,
-        " . self::$table . ".precio_compra
+        " . self::$table . ".precio_compra, " . self::$table . ".clave_alterna, " .self::$table . ".departamento
             FROM  " . self::$table . "
             LEFT JOIN categorias
              ON " . self::$table . ".id_categoria = categorias.id_categoria
@@ -102,6 +102,39 @@ class ProductsModel extends Database
              LEFT JOIN tipo_cambio
              ON " . self::$table . ".moneda = tipo_cambio.moneda
              WHERE id_producto = '" . $id . "' ";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        $this->close_connection();
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
+        }
+
+        return $result_array;
+    }
+
+
+    public function getByCodigoInterno($id = '')
+    {
+        if (empty($id)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $result_array = array();
+
+        $query = "SELECT " . self::$table . ".id_producto, " . self::$table . ".id_categoria, " . self::$table . ".nombre,
+        " . self::$table . ".descripcion,
+        " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
+        " . self::$table . ".codigo_interno
+            FROM  " . self::$table . "
+            WHERE codigo_interno = '" . $id . "' ";
 
         if (!$result = $this->query($query)) {
             return false;

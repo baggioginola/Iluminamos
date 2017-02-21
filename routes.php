@@ -127,7 +127,7 @@ $app->get('/terminos-condiciones', function ($request, $response, $args) {
     return $this->view->render($response, 'terms_conditions.twig', array('settings' => $settings, 'total_products' => $total_products));
 })->add(new CAuth());
 
-$app->get('/pagar-paypal', function ($request, $response, $args) {
+$app->get('/pago', function ($request, $response, $args) {
     global $settings, $total_products;
 
     return $this->view->render($response, 'paypal.twig', array('settings' => $settings, 'total_products' => $total_products));
@@ -163,4 +163,38 @@ $app->get('/buscar', function ($request, $response, $args) {
     $result = Search::singleton()->getProductsbyQuery($q);
 
     return $this->view->render($response, 'search.twig', array('settings' => $settings, 'result' => $result, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products, 'q' => $q));
+});
+
+$app->get('/confirmar-oxxo', function ($request, $response, $args) {
+    global $settings, $total_products;
+
+    require_once __CONTROLLER__ . 'CPaymentOxxoController.class.inc.php';
+    $result = PaymentOxxo::singleton()->charge();
+
+    $order = json_decode($result, true);
+
+    if ($order['status'] == 404) {
+        return $response->withStatus(200)->withHeader('Location', DOMAIN . 'error');
+    }
+
+    if (!isset($order['data']['charges']['data'][0]['payment_method']['reference']) || !isset($order['data']['amount']) || !isset($order['data']['currency'])) {
+        return $response->withStatus(200)->withHeader('Location', DOMAIN . 'error');
+    }
+
+    $reference = $order['data']['charges']['data'][0]['payment_method']['reference'];
+    $amount = number_format($order['data']['amount'] / 100, 2);
+    $currency = $order['data']['currency'];
+
+    return $this->view->render($response, 'receipt_oxxo.twig', array('settings' => $settings, 'total_products' => $total_products, 'reference' => $reference, 'amount' => $amount, 'currency' => $currency));
+
+});
+
+$app->get('/destroy-session', function ($request, $response, $args) {
+    global $settings;
+    Session::singleton()->destroy();
+});
+
+$app->get('/error', function ($request, $response, $args) {
+    global $settings, $total_products;
+    return $this->view->render($response, 'error.twig', array('settings' => $settings, 'total_products' => $total_products));
 });

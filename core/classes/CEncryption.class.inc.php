@@ -36,6 +36,4 @@ class Encryption
 
         return base64_encode(self::$salt . $name . $last_name);
     }
-
-
 }

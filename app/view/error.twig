@@ -1,0 +1,54 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Error{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+        <div class="container" id="breadcrumb">
+            <ol>
+                <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+                <li>&gt;</li>
+                <li>
+                    <a href="{{ settings.DOMAIN }}cart">Cart</a>
+                </li>
+                <li>&gt;</li>
+                <li>
+                    <a href="{{ settings.DOMAIN }}terminos-condiciones">TÉRMINOS Y CONDICIONES</a>
+                </li>
+                <li>&gt;</li>
+                <li>
+                    <a href="{{ settings.DOMAIN }}pagar-paypal">Pagar</a>
+                </li>
+                <li>&gt;</li>
+                <li>
+                    <span class="active-page">Error</span>
+                </li>
+            </ol>
+        </div>
+        <!-- end breadcrumb -->
+
+        <div id="section_1">
+
+            <div class="container pageTitle">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                        <h1>ERROR</h1>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="font-size:18px; ">
+                                <h2>Hubo un error en la transacción, intente mas tarde</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.text -->
+        </div>
+    </div>
+{% endblock %}

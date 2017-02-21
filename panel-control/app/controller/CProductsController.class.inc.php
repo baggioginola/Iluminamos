@@ -31,7 +31,9 @@ class Products extends BaseController
         'id_marca' => TYPE_INT,
         'num_imagenes' => TYPE_INT,
         'precio' => TYPE_FLOAT,
-        'precio_compra' => TYPE_FLOAT
+        'precio_compra' => TYPE_FLOAT,
+        'clave_alterna' => TYPE_ALPHA,
+        'departamento' => TYPE_ALPHA
     );
 
     /**
@@ -115,7 +117,7 @@ class Products extends BaseController
 
         unset($this->parameters['id_producto']);
 
-        $this->parameters['fecha_modifica'] = 'Y-m-d H:i:s';
+        $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
         if (!ProductsModel::singleton()->edit($this->parameters, $id)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -169,6 +171,7 @@ class Products extends BaseController
         $array['fecha_modifica'] = date('Y-m-d H:i:s');
         $array['iva'] = 0.16;
         $array['num_imagenes'] = 0;
+        $array['likes'] = 0;
 
         $result = array();
         if (!$result['id'] = ProductsModel::singleton()->add($array)) {
@@ -176,6 +179,42 @@ class Products extends BaseController
         }
 
         return $result['id'];
+    }
+
+    /**
+     * @return string
+     */
+    public function editXLS($parameters = array())
+    {
+        if (!$parameters) {
+            return false;
+        }
+
+        $id = $parameters['id_producto'];
+        unset($parameters['id_producto']);
+
+        $parameters['status'] = 1;
+        $parameters['fecha_modifica'] = date('Y-m-d H:i:s');
+
+        if (!ProductsModel::singleton()->edit($parameters, $id)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @return string
+     */
+    public function getByCodigoInterno($codigo_interno = null)
+    {
+        if (is_null($codigo_interno)) {
+            return false;
+        }
+
+        $result = ProductsModel::singleton()->getByCodigoInterno($codigo_interno);
+
+        return $result;
     }
 
     /**

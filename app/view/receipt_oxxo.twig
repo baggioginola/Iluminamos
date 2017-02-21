@@ -1,0 +1,83 @@
+{% extends "layout/master.twig" %}
+
+{% block title %}Comproante OXXO{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link href="{{ settings.CSS }}oxxo_receipt.css" media="all" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block body_id %}productOverview{% endblock %}
+{% block content %}
+
+    <div class="container-fluid wide-content">
+        <div class="container" id="breadcrumb">
+            <ol>
+                <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
+                <li>&gt;</li>
+                <li>
+                    <span class="active-page">Comprobante OXXO</span>
+                </li>
+            </ol>
+        </div>
+        <!-- end breadcrumb -->
+
+        <div id="section_1">
+
+            <div class="container pageTitle">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                                <div class="opps">
+                                    <div class="opps-header">
+                                        <div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
+                                        <div class="opps-info">
+                                            <div class="opps-brand"><img src="{{ settings.IMG }}oxxopay_brand.png" alt="OXXOPay"></div>
+                                            <div class="opps-ammount">
+                                                <h3>Monto a pagar</h3>
+
+                                                <h2>$ {{ amount }} <sup>{{ currency }}</sup></h2>
+
+                                                <p>OXXO cobrará una comisión adicional al momento de realizar el
+                                                    pago.</p>
+                                            </div>
+                                        </div>
+                                        <div class="opps-reference">
+                                            <h3>Referencia</h3>
+
+                                            <h1>{{ reference }}</h1>
+                                        </div>
+                                    </div>
+                                    <div class="opps-instructions">
+                                        <h3>Instrucciones</h3>
+                                        <ol>
+                                            <li>Acude a la tienda OXXO más cercana. <a
+                                                        href="https://www.google.com.mx/maps/search/oxxo/"
+                                                        target="_blank">Encuéntrala aquí</a>.
+                                            </li>
+                                            <li style="margin-top: 10px;">Indica en caja que quieres ralizar un pago de <strong>OXXOPay</strong>.
+                                            </li>
+                                            <li style="margin-top: 10px;">Dicta al cajero el número de referencia en esta ficha para que tecleé
+                                                directamete en la pantalla de venta.
+                                            </li>
+                                            <li style="margin-top: 10px;">Realiza el pago correspondiente con dinero en efectivo.</li>
+                                            <li style="margin-top: 10px;">Al confirmar tu pago, el cajero te entregará un comprobante impreso.
+                                                <strong>En el podrás verificar que se haya realizado
+                                                    correctamente.</strong> Conserva este comprobante de pago.
+                                            </li>
+                                        </ol>
+                                        <div class="opps-footnote">Al completar estos pasos recibirás un correo de
+                                            <strong>Iluminamos S.A de C.V.</strong> confirmando tu pago.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.text -->
+        </div>
+    </div>
+{% endblock %}
