@@ -102,16 +102,20 @@ function masterDatatable(url, columns) {
 function getImage(root_images, name, i) {
     var extension = '.jpg';
     var url = '';
+    var return_name = '';
 
     if (i == 1) {
-        url = root_images + name + extension;
+        url = root_images + name;
+        return_name = name;
     }
     else {
-        url = root_images + name + '_' + i + extension;
+        url = root_images + name + '_' + i;
+        return_name = name + '_' + i;
     }
 
+
     var exists = $.ajax({
-        url: url,
+        url: url + extension,
         type: "POST",
         cache: false,
         dataType: 'json',
@@ -119,15 +123,31 @@ function getImage(root_images, name, i) {
     });
 
     if (exists.status != 200) {
+        extension = '.png';
+        var exists_png = $.ajax({
+            url: url + extension,
+            type: "POST",
+            cache: false,
+            dataType: 'json',
+            async: false
+        });
+        if (exists_png.status != 200) {
+            return {
+                status: 404
+            };
+        }
         return {
-            status: 404
+            status: 200,
+            url: url + extension,
+            extension: extension,
+            name: return_name + extension
         };
     }
     return {
         status: 200,
-        url: url,
+        url: url + extension,
         extension: extension,
-        name: name + '_' + i + extension
+        name: return_name + extension
     };
 
 }
