@@ -41,7 +41,7 @@ jQuery(document).ready(function () {
                         product_results_array = [
                             '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
                             '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
-                            '<div class="thumbnail"><img src="', PRODUCTS_IMG + value.id_producto + '.jpg', '"/>' +
+                            '<div class="thumbnail"><img src="', value.url_image , '"/>' +
                             '<label>', value.nombre, '</label>' +
                             '</div>' +
                             '</a>' +

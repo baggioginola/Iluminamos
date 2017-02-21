@@ -68,14 +68,29 @@ class Projects extends BaseController
         $i = 1;
         $result_images = array();
         $extension = '.jpg';
-        for ($i = 1; $i < $result['num_imagenes']; $i++) {
+        for ($i = 1; $i <= $result['num_imagenes']; $i++) {
             if ($i == 1) {
-                $result_images[$i] = PROJECT_IMG . $id . $extension;
+                $result_images[$i] = $this->getProjectImageUrl($id);
             } else {
-                $result_images[$i] = PROJECT_IMG . $id . '_' . $i . $extension;
+                $result_images[$i] = $this->getProjectImageUrl($id . '_' . $i);
             }
         }
         return $result_images;
+    }
+
+    private function getProjectImageUrl($name)
+    {
+        $png = '.png';
+        $jpg = '.jpg';
+        $default_image = 'default_image';
+
+        if (file_exists(PROJECT_IMG_ROOT . $name . $jpg)) {
+            return PROJECT_IMG . $name . $jpg;
+        } else if (file_exists(PROJECT_IMG_ROOT . $name . $png)) {
+            return PROJECT_IMG . $name . $png;
+        } else {
+            return PROJECT_IMG . $default_image . $jpg;
+        }
     }
 
     /**

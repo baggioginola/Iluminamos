@@ -31,6 +31,7 @@ $app->get('/categoria/{id_categoria}', function ($request, $response, $args) {
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
     require_once __CONTROLLER__ . 'CCategoriesController.class.inc.php';
     require_once __CONTROLLER__ . 'CBrandsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
 
     $result_brands = Brands::singleton()->getAll();
     $result_categories = Categories::singleton()->getAll();
@@ -39,10 +40,11 @@ $app->get('/categoria/{id_categoria}', function ($request, $response, $args) {
     if (!$result_category) {
         return $response->withStatus(200)->withHeader('Location', DOMAIN);
     }
-
     $result = Products::singleton()->getByCategory($args);
 
-    return $this->view->render($response, 'products.twig', array('settings' => $settings, 'result' => $result, 'result_category' => $result_category, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products));
+    $result_image = Images::singleton()->getProductsUrl($result);
+
+    return $this->view->render($response, 'products.twig', array('settings' => $settings, 'result' => $result_image, 'result_category' => $result_category, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products));
 });
 
 $app->get('/producto/{id_producto}', function ($request, $response, $args) {
@@ -50,30 +52,37 @@ $app->get('/producto/{id_producto}', function ($request, $response, $args) {
 
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
     require_once __CONTROLLER__ . 'CLikeController.class.inc.php';
+    require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
     $result = Products::singleton()->getById($args);
 
     if (!$result) {
         return $response->withStatus(200)->withHeader('Location', DOMAIN);
     }
 
+    $result_image = Images::singleton()->getProductUrl($result);
     $like = Like::singleton()->getByIdProduct($args['id_producto']);
 
-    return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result, 'total_products' => $total_products, 'like' => $like));
+    return $this->view->render($response, 'product.twig', array('settings' => $settings, 'result' => $result_image, 'total_products' => $total_products, 'like' => $like));
 });
 
 $app->get('/proyectos', function ($request, $response, $args) {
     global $settings, $total_products;
 
     require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
+
     $result = Projects::singleton()->getAll();
 
-    return $this->view->render($response, 'projects.twig', array('settings' => $settings, 'result' => $result, 'total_products' => $total_products));
+    $result_image = Images::singleton()->getProjectsUrl($result);
+    return $this->view->render($response, 'projects.twig', array('settings' => $settings, 'result' => $result_image, 'total_products' => $total_products));
 });
 
 $app->get('/proyecto/{id_proyecto}', function ($request, $response, $args) {
     global $settings, $total_products;
 
     require_once __CONTROLLER__ . 'CProjectsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
+
     $result = Projects::singleton()->getById($args);
 
     if (!$result) {
@@ -152,6 +161,7 @@ $app->get('/buscar', function ($request, $response, $args) {
     require_once __CONTROLLER__ . 'CCategoriesController.class.inc.php';
     require_once __CONTROLLER__ . 'CBrandsController.class.inc.php';
     require_once __CONTROLLER__ . 'CSearchController.class.inc.php';
+    require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
 
     $result_brands = Brands::singleton()->getAll();
     $result_categories = Categories::singleton()->getAll();
@@ -161,8 +171,9 @@ $app->get('/buscar', function ($request, $response, $args) {
 
     $q = $params['q'];
     $result = Search::singleton()->getProductsbyQuery($q);
+    $result_image = Images::singleton()->getProductsUrl($result);
 
-    return $this->view->render($response, 'search.twig', array('settings' => $settings, 'result' => $result, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products, 'q' => $q));
+    return $this->view->render($response, 'search.twig', array('settings' => $settings, 'result' => $result_image, 'result_brands' => $result_brands, 'result_categories' => $result_categories, 'total_products' => $total_products, 'q' => $q));
 });
 
 $app->get('/confirmar-oxxo', function ($request, $response, $args) {

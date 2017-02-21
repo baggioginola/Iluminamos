@@ -6,6 +6,7 @@
  * Time: 18:58
  */
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
+require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
 require_once __MODEL__ . 'CSearchModel.class.inc.php';
 
 class Search extends BaseController
@@ -88,8 +89,10 @@ class Search extends BaseController
                     continue;
                 }
             }
-            $result_all[$i]['id_producto'] = $row_array['id_producto'];
-            $result_all[$i]['nombre'] = $row_array['codigo_interno'];
+            $row_array_image = Images::singleton()->getProductUrl($row_array);
+            $result_all[$i]['id_producto'] = $row_array_image['id_producto'];
+            $result_all[$i]['nombre'] = $row_array_image['codigo_interno'];
+            $result_all[$i]['url_image'] = $row_array_image['url_image'];
             $i++;
         }
 

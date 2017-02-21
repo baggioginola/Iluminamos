@@ -7,7 +7,7 @@
  */
 require_once __CONTROLLER__ . 'CCartProductsController.class.inc.php';
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
-
+require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
 require_once __MODEL__ . 'CCartModel.class.inc.php';
 
 class Cart extends BaseController
@@ -76,6 +76,7 @@ class Cart extends BaseController
             foreach ($key as $value => $result) {
                 $row_array[$value] = $result;
             }
+            $row_array_image = Images::singleton()->getProductUrl($row_array);
             $total = $total + $this->getTotal($row_array);
             $result_all[$i]['id_producto'] = $row_array['id_producto'];
             $result_all[$i]['nombre'] = $row_array['nombre'];
@@ -83,6 +84,7 @@ class Cart extends BaseController
             $result_all[$i]['numero_productos'] = $row_array['numero_productos'];
             $result_all[$i]['precio_total'] = number_format($this->getTotal($row_array), 2);
             $result_all[$i]['precio'] = number_format($this->getPrice($row_array), 2);
+            $result_all[$i]['url_image'] = $row_array_image['url_image'];
             $i++;
         }
 

@@ -110,7 +110,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                                 <a href="{{ settings.DOMAIN }}proyecto/{{ proyecto.id_caso_exito }}">
                                                     <div class="thumbnail"><img
-                                                                src="{{ settings.PROJECT_IMG }}{{ proyecto.id_caso_exito }}.jpg"
+                                                                src="{{ proyecto.url_image }}"
                                                                 alt="{{ proyecto.titulo | convert_encoding('UTF-8', 'ISO-8859-1') }}"
                                                                 title="{{ proyecto.titulo | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
 

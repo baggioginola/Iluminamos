@@ -8,7 +8,7 @@
 
 define('ENVIRONMENT', 'test'); # must be production or test.
 define('__ROOT__', dirname(__FILE__));
-define('PROJECT', 'Github/iluminamos/');
+define('PROJECT', 'Github/Iluminamos/');
 define('DOMAIN', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT);
 
 define('FRAMEWORK', __ROOT__ . '/core/framework/');
@@ -27,6 +27,10 @@ define('IMG', DOMAIN . 'includes/public/img/');
 define('PRODUCT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_productos/');
 define('PROJECT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_proyectos/');
 define('BANNER_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/');
+
+define('PRODUCT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_productos/');
+define('PROJECT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_proyectos/');
+define('BANNER_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/');
 
 #Database
 define('DBHOST', 'localhost');

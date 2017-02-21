@@ -47,7 +47,7 @@ class SearchModel extends Database
         $result_array = array();
 
         // TODO Remove LIMIT 10
-        $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
+        $query = "SELECT " . self::$products_table . ".id_producto,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
         marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno
         FROM " . self::$products_table . " INNER JOIN categorias
