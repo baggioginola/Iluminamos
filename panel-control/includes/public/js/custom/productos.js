@@ -38,7 +38,7 @@ $(document).ready(function () {
             return info;
         }
     }).on('filebatchuploadsuccess', function (event, data) {
-        var success = '';
+        bootbox.alert('Las imágenes se han subido correctamente');
     }).on('fileloaded', function (event, file, previewId, index, reader) {
         $('#upload_images').val('1');
     });
