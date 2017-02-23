@@ -9,7 +9,7 @@
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CCartProductsController.class.inc.php';
 require_once __MODEL__ . 'CCartModel.class.inc.php';
-
+require_once __MODEL__ . 'CPaymentOxxoModel.class.inc.php';
 
 require_once FRAMEWORK . 'conekta-php-master/lib/Conekta.php';
 
@@ -83,6 +83,31 @@ class PaymentOxxo extends BaseController
         }
 
         return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $order));
+    }
+
+    public function saveTransaction($reference_code = null)
+    {
+        if (is_null($reference_code)) {
+            return false;
+        }
+
+        $session_id = session_id();
+        if (!$result = CartModel::singleton()->getBySessionId($session_id)) {
+            return false;
+        }
+
+
+        if (!$user_info = Session::singleton()->getCustomerInfo()) {
+            return false;
+        }
+
+        $result['reference_code'] = $reference_code;
+        $result['email'] = $user_info['e_mail'];
+
+        if (!PaymentOxxoModel::singleton()->add($result)) {
+            return false;
+        }
+        return true;
     }
 
     private function setLineItems($array = array())

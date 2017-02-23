@@ -7,6 +7,7 @@
  */
 
 require_once 'CBaseController.class.inc.php';
+require_once __CONTROLLER__ . 'CBannerController.class.inc.php';
 require_once CLASSES . 'CDir.class.inc.php';
 require_once CLASSES . 'CFile.class.inc.php';
 
@@ -32,12 +33,27 @@ class Images extends BaseController
             '3' => array('width' => 1245, 'height' => 830),
             '4' => array('width' => 1245, 'height' => 830),
             '5' => array('width' => 1245, 'height' => 830)
+        ),
+        'banner_big' => array('0' => array('width' => 1200, 'height' => 900),
+            '1' => array('width' => 1200, 'height' => 900),
+            '2' => array('width' => 1200, 'height' => 900),
+            '3' => array('width' => 1200, 'height' => 900),
+            '4' => array('width' => 1200, 'height' => 900),
+            '5' => array('width' => 1200, 'height' => 900)
+        ),
+        'banner_top' => array('0' => array('width' => 1200, 'height' => 600),
+            '1' => array('width' => 1200, 'height' => 600),
+            '2' => array('width' => 1200, 'height' => 600),
+            '3' => array('width' => 1200, 'height' => 600),
+            '4' => array('width' => 1200, 'height' => 600),
+            '5' => array('width' => 1200, 'height' => 600)
         )
     );
 
     private $num_images;
     private $tmp_name = 'tmpImage';
     private $name = '';
+    private $id;
 
     /**
      * @return Images|null
@@ -67,6 +83,15 @@ class Images extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
+        if ($this->getName() == 'banner') {
+            if (!$this->setId()) {
+                return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+            }
+            if (!Banner::singleton()->edit($this->getId(), $this->getNumImages())) {
+                return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+            }
+        }
+
         if (!$this->_setParameters()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -89,6 +114,11 @@ class Images extends BaseController
         return true;
     }
 
+    private function getNumImages()
+    {
+        return $this->num_images;
+    }
+
     private function setName()
     {
         if (!isset($_REQUEST['name']) || empty($_REQUEST['name'])) {
@@ -98,6 +128,27 @@ class Images extends BaseController
         $this->name = $_REQUEST['name'];
 
         return true;
+    }
+
+    private function setId()
+    {
+        if (!isset($_REQUEST['id']) || empty($_REQUEST['id'])) {
+            return false;
+        }
+
+        $this->id = $_REQUEST['id'];
+
+        return true;
+    }
+
+    private function getId()
+    {
+        return $this->id;
+    }
+
+    private function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -186,10 +237,9 @@ class Images extends BaseController
                         $ext = explode(".", $name);
                         $lastElement = sizeof($ext);
 
-                        if($i == 1){
+                        if ($i == 1) {
                             $name = $this->name . "." . strtolower($ext[$lastElement - 1]);
-                        }
-                        else{
+                        } else {
                             $name = $this->name . "_" . $i . "." . strtolower($ext[$lastElement - 1]);
                         }
                         $this->parameters[$i]['extension'] = strtolower($ext[$lastElement - 1]);

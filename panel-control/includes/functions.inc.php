@@ -56,10 +56,10 @@ function resizeImage($path, $height, $width, $extension)
     imagecopy($tmp2, $tmp, $distancia_x, $distancia_y, 0, 0, $ancho_final, $alto_final);
 
     if ($extension == 'jpg') {
-        $calidad = 80;
+        $calidad = 95;
         imagejpeg($tmp2, $path, $calidad);
     } else {
-        $calidad = 8;
+        $calidad = 9;
         imagepng($tmp2, $path, $calidad, PNG_ALL_FILTERS);
     }
 }

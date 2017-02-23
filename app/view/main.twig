@@ -10,58 +10,111 @@
 {% block body_id %}home{% endblock %}
 {% block content %}
     <div class="container-fluid wide-content">
-        <div id="carrusel" class="carousel slide" data-ride="carousel" data-timer="5000" style="padding-top: 95px;">
-            <ol class="carousel-indicators">
-                <li data-target="#carrusel" data-slide-to="0" class="active"></li>
-                <li data-target="#carrusel" data-slide-to="1"></li>
-                <li data-target="#carrusel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" style="width: 50%; float: left; margin-bottom: 60px;">
-                <div class="item active">
-                    <div class="fill"
-                         style="background: transparent url('includes/public/img/banner/big/1.jpg') no-repeat scroll center top / cover ;"></div>
-                    <div class="carousel-caption">
-                        <h2>CAPTION 1</h2>
+        <div>
+            <div id="carrusel-a" class="carousel slide" data-ride="carousel" data-timer="5000"
+                 style="padding-top: 95px;">
+                <ol class="carousel-indicators">
+                    <li data-target="#carrusel-a" data-slide-to="0" class="active"></li>
+                    <li data-target="#carrusel-a" data-slide-to="1"></li>
+                    <li data-target="#carrusel-a" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" style="width: 50%; float: left; margin-bottom: 60px;">
+                    <div class="item active">
+                        <div class="fill"
+                             style="background: transparent url('includes/public/img/banner/big/1.jpg') no-repeat scroll center top / cover ;"></div>
+                        <!--
+                        <div class="carousel-caption">
+                            <h2>CAPTION 1</h2>
+                        </div>
+                        !-->
+                    </div>
+                    <div class="item">
+                        <div class="fill"
+                             style="background: transparent url('includes/public/img/banner/big/2.jpg') no-repeat scroll center top / cover ;"></div>
+
+                    </div>
+                    <div class="item">
+                        <div class="fill"
+                             style="background: transparent url('includes/public/img/banner/big/3.jpg') no-repeat scroll center top / cover ;"></div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="fill"
-                         style="background: transparent url('includes/public/img/banner/big/2.jpg') no-repeat scroll center top / cover ;"></div>
-                    <div class="carousel-caption">
-                        <h2>CAPTION 2</h2>
-                    </div>
+                <div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i
+                                class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+                    <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><i
+                                class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
                 </div>
-                <div class="item">
-                    <div class="fill"
-                         style="background: transparent url('includes/public/img/banner/big/3.jpg') no-repeat scroll center top / cover ;"></div>
-                    <div class="carousel-caption">
-                        <h2>CAPTION 3</h2>
-                    </div>
-                </div>
-            </div>
-            <div><a class="left carousel-control" href="#carousel-1" role="button" data-slide="prev"><i
-                            class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
-                <a class="right carousel-control" href="#carousel-1" role="button" data-slide="next"><i
-                            class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
             </div>
 
             <div class="banner-right">
                 <div class="banner-right-top">
                     <div class="banner-right-top-box">
+                        <div id="carrusel-c" class="carousel slide" data-ride="carousel" data-timer="2000"
+                             style="">
+                            <!--
+                            <ol class="carousel-indicators_bottom">
+                                <li data-target="#carrusel-b" data-slide-to="0" class="active"></li>
+                                <li data-target="#carrusel-b" data-slide-to="1"></li>
+                                <li data-target="#carrusel-b" data-slide-to="2"></li>
+                            </ol>
+                            !-->
+                            <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
+                                <div class="item active">
+                                    <div class="fill_bottom"
+                                         style="background: transparent url('includes/public/img/banner/birot/1.png') no-repeat scroll center top / cover ;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill_bottom"
+                                         style="background: transparent url('includes/public/img/banner/birot/2.png') no-repeat scroll center top / cover ;"></div>
+                                </div>
+                                <div class="item">
+                                    <div class="fill_bottom"
+                                         style="background: transparent url('includes/public/img/banner/birot/3.png') no-repeat scroll center top / cover ;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
                         <p class="banner-right-top-text">
                             <br>
                             <a href="#">TITLE<br>
                                 <span>DESCRIPTION</span></a></p>
+                                !-->
                     </div>
                 </div>
                 <div class="banner-right-bottom">
+                    <div id="carrusel-b" class="carousel slide" data-ride="carousel" data-timer="1000"
+                         style="">
+                        <!--
+                        <ol class="carousel-indicators_bottom">
+                            <li data-target="#carrusel-b" data-slide-to="0" class="active"></li>
+                            <li data-target="#carrusel-b" data-slide-to="1"></li>
+                            <li data-target="#carrusel-b" data-slide-to="2"></li>
+                        </ol>
+                        !-->
+                        <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
+                            <div class="item active">
+                                <div class="fill_bottom"
+                                     style="background: transparent url('includes/public/img/banner/big/1.jpg') no-repeat scroll center top / cover ;"></div>
+                            </div>
+                            <div class="item">
+                                <div class="fill_bottom"
+                                     style="background: transparent url('includes/public/img/banner/big/2.jpg') no-repeat scroll center top / cover ;"></div>
+                            </div>
+                            <div class="item">
+                                <div class="fill_bottom"
+                                     style="background: transparent url('includes/public/img/banner/big/3.jpg') no-repeat scroll center top / cover ;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
                     <div class="banner-right-bottom-box">
                         <p class="banner-right-bottom-text">
                             <a href="#"><span>FEATURED</span> TITLE<br>
                             </a></p>
                     </div>
+                    !-->
                 </div>
             </div>
+
         </div>
         <div id="section_2" class="container highlights-new">
             <div class="row">

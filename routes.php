@@ -196,8 +196,9 @@ $app->get('/confirmar-oxxo', function ($request, $response, $args) {
     $amount = number_format($order['data']['amount'] / 100, 2);
     $currency = $order['data']['currency'];
 
-    return $this->view->render($response, 'receipt_oxxo.twig', array('settings' => $settings, 'total_products' => $total_products, 'reference' => $reference, 'amount' => $amount, 'currency' => $currency));
+    PaymentOxxo::singleton()->saveTransaction($reference);
 
+    return $this->view->render($response, 'receipt_oxxo.twig', array('settings' => $settings, 'total_products' => $total_products, 'reference' => $reference, 'amount' => $amount, 'currency' => $currency));
 });
 
 $app->get('/destroy-session', function ($request, $response, $args) {

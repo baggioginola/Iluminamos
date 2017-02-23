@@ -6,13 +6,15 @@
  * Time: 18:01
  */
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
+require_once __CONTROLLER__ . 'CNotificationOxxoController.class.inc.php';
 
 class Notification extends BaseController
 {
     private static $object = null;
     private $header = 'From:  Sitio Web <informes@iluminamos.com.mx>';
     private $subject = 'Notificación de Pago';
-    private $send_to = 'informes@iluminamos.com.mx';
+    private $send_to = 'mariocuevas88@gmail.com';
+
     /**
      * @return Notification|null
      */
@@ -29,11 +31,16 @@ class Notification extends BaseController
         $body = @file_get_contents('php://input');
         $data = json_decode($body, true);
 
-        if ($data['type'] == 'charge.paid'){
-            if(isset($data['data']['object']['payment_method']['reference'])){
+        if ($data['type'] == 'charge.paid') {
+
+
+            if (isset($data['data']['object']['payment_method']['reference'])) {
+                if ($result = NotificationOxxo::singleton()->getTransaction($data['data']['object']['payment_method']['reference'])) {
+                    $msg_cart = "Data: " . print_r($result, 1);
+                    mail("mariocuevas88@gmail.com", "Webhook Charge", $msg_cart, $this->header);
+                }
                 $msg = "Se ha pagado una orden de compra con el siguiente número de Referencia de OXXO: " . $data['data']['object']['payment_method']['reference'];
-            }
-            else{
+            } else {
                 $msg = "Se ha pagado una orden de compra por medio de OXXO, favor de revisar.";
             }
             $msg_hook = "Data: " . print_r($data, 1);

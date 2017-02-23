@@ -2794,7 +2794,7 @@ h4.modal-title {
 
 .carousel {
     border-bottom: 0;
-    margin-bottom: 70px;
+    /*margin-bottom: 70px;*/
 }
 
 /*
@@ -16810,6 +16810,12 @@ input[type=submit][disabled] {
     background-position: center;
 }
 
+    .fill_bottom {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+}
+
 span.product-name {
     display: block;
     text-align: center;
@@ -16918,6 +16924,9 @@ span.product-name a:hover {
     .fill {
         height: 250px;
     }
+    .fill_bottom{
+        height: 122px;
+    }
     .banner-right-top {
         height: 123px;
     }
@@ -16944,6 +16953,9 @@ span.product-name a:hover {
 @media (min-width: 768px) and (max-width: 991px) {
     .fill {
         height: 400px;
+    }
+    .fill_bottom{
+        height: 197px;
     }
     .banner-right-top {
         height: 198px;
@@ -16972,6 +16984,9 @@ span.product-name a:hover {
     .fill {
         height: 450px;
     }
+    .fill_bottom{
+        height: 222px;
+    }
     .banner-right-top {
         height: 223px;
     }
@@ -16998,6 +17013,9 @@ span.product-name a:hover {
 @media (min-width: 1200px) {
     .fill {
         height: 600px;
+    }
+    .fill_bottom{
+        height: 297px;
     }
     .banner-right-top {
         height: 298px;
@@ -17088,7 +17106,7 @@ span.product-name a:hover {
 .banner-right-bottom {
     width: 100%;
     margin-top: 5px;
-    background: url(../img/banner/banner_bottom_right.jpg) 50% 50% / cover no-repeat;
+    /*background: url(../img/banner/banner_bottom_right.jpg) 50% 50% / cover no-repeat;*/
     position: relative;
 }
 
@@ -17162,6 +17180,61 @@ span.product-name a:hover {
     }
 }
 
+
+
+.carousel-indicators_bottom{
+    position: absolute;
+    left: 25%;
+    z-index: 15;
+    width: 60%;
+    padding-left: 0;
+    margin-left: -30%;
+    text-align: center;
+    list-style: none;
+}
+.carousel-indicators_bottom li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+.carousel-indicators_bottom .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #fff;
+}
+@media (min-width: 0px) and (max-width: 767px) {
+    .carousel-indicators_bottom{
+        top:320px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .carousel-indicators_bottom{
+        top: 450px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .carousel-indicators_bottom{
+        top:505px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-indicators_bottom{
+        top: 200px;
+    }
+}
+
+
 .navbar-nav li{
     font-size: 15px;
 }
@@ -17205,4 +17278,19 @@ input#id_buscar {
     background-repeat: no-repeat;
     padding-right: 0px;
     float: right;
+}
+
+.carousel-inner > .item_bottom {
+    position: relative;
+    display: none;
+    -webkit-transition: .6s ease-in-out left;
+    -o-transition: .6s ease-in-out left;
+    transition: .6s ease-in-out left;
+}
+
+.carousel-inner > .active_bottom{
+    display: block;
+}
+.carousel-inner > .active_bottom {
+    left: 0;
 }
