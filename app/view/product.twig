@@ -1,6 +1,6 @@
 {% extends "layout/master.twig" %}
 
-{% block title %}Producto/{{ result.nombre}}{% endblock %}
+{% block title %}{{ result.codigo_interno}} - Iluminamos{% endblock %}
 
 {% block head %}
     {{ parent() }}
@@ -18,7 +18,7 @@
                     <a href="{{ settings.DOMAIN }}categoria/{{ result.id_categoria }}">{{ result.categoria}}</a>
                 </li>
                 <li>&gt;</li>
-                <li><span class="active-page">{{ result.nombre}}</span></li>
+                <li><span class="active-page">{{ result.codigo_interno}}</span></li>
             </ol>
         </div>
         <!-- end breadcrumb -->
@@ -28,7 +28,7 @@
             <div class="container">
                 <div class="row product">
                     <div class="col-md-5 col-md-offset-0">
-                        <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"
+                        <img class="img-responsive" src="{{ result.url_image }}"
                              id="bigPic"
                              alt="{{ result.codigo_interno}}"
                              title="{{ result.codigo_interno}}"/>

@@ -77,7 +77,11 @@ abstract class Resource extends Object
     {
         $requestor = new Requestor();
         $url = self::classUrl($class);
-        $response = $requestor->request('post', $url, $params);
+        try {
+            $response = $requestor->request('post', $url, $params);
+        }catch (\Exception $e){
+            return $e;
+        }
         $instance = new $class();
         $instance->loadFromArray($response);
 

@@ -59,23 +59,24 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Interior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ settings.DOMAIN }}categoria/12">Lámparas de mesa</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/11">Lámparas de pie</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/5">Lámparas colgantes</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/1">Lámparas empotradas a techo</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/3">Arbotantes</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/1">Lámparas de mesa</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/2">Lámparas de pie</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/3">Lámparas colgantes</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/4">Lámparas empotradas a techo</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/6">Arbotantes</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/13">Tiras LED</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Exterior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ settings.DOMAIN }}categoria/1">Lámparas empotradas a techo</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/4">Arbotantes</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/17">Lámparas empotradas a piso</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/28">Alumbrado público</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/5">Lámparas empotradas a techo</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/7">Arbotantes</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/8">Lámparas empotradas a piso</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/9">Alumbrado público</a></li>
                         <li><a href="{{ settings.DOMAIN }}categoria/10">Focos LED</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/6">Tiras LED</a></li>
+                        <li><a href="{{ settings.DOMAIN }}categoria/11">Tiras LED</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ settings.DOMAIN }}quienes-somos">¿Quiénes somos?</a></li>
@@ -93,8 +94,9 @@
             <div class="searchButton">
                 <form id="searchbox" action="{{ settings.DOMAIN }}buscar">
                     <input id="search_query" name="q" placeholder="Buscar"
-                            autocomplete="off" required="required" type="text" {% if q is defined %} value="{{ q }}" {% endif %} >
-                    <input src="{{ settings.IMG }}search.png" id="id_buscar" style="border:0px" type="image"  >
+                           autocomplete="off" required="required"
+                           type="text" {% if q is defined %} value="{{ q }}" {% endif %} >
+                    <input src="{{ settings.IMG }}search.png" id="id_buscar" style="border:0px" type="image">
                 </form>
             </div>
             <div class="social">
@@ -126,33 +128,40 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li style="width: 200px;"><a
-                                                                href='{{ settings.DOMAIN }}categoria/12'
+                                                    <li style="width: 180px;"><a
+                                                                href='{{ settings.DOMAIN }}categoria/1'
                                                                 style="font-size:12px;">Lámparas de Mesa<img
-                                                                    src='{{ settings.IMG }}productos/1.jpg'
+                                                                    src='{{ settings.IMG }}categorias/1.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li style="width: 215px;"><a
-                                                                href='{{ settings.DOMAIN }}categoria/11'
+                                                    <li style="width: 175px;"><a
+                                                                href='{{ settings.DOMAIN }}categoria/2'
                                                                 style="font-size:12px;">Lámparas de pie<img
-                                                                    src='{{ settings.IMG }}productos/2.jpg'
+                                                                    src='{{ settings.IMG }}categorias/2.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li style="width:225px;"><a href='{{ settings.DOMAIN }}categoria/5'
+                                                    <li style="width:200px;"><a href='{{ settings.DOMAIN }}categoria/3'
                                                                                 style="font-size:12px;">Lámparas
                                                             colgantes<img
                                                                     src='{{ settings.IMG }}productos/3.jpg'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
-                                                    <li style="width: 275px;">
-                                                        <a href='{{ settings.DOMAIN }}categoria/1'
+                                                    <li style="width: 270px;">
+                                                        <a href='{{ settings.DOMAIN }}categoria/4'
                                                            style="font-size:12px;">Lámparas empotradas a techo<img
-                                                                    src='{{ settings.IMG }}productos/4.jpg'
+                                                                    src='{{ settings.IMG }}categorias/4.jpg'
                                                                     alt='Wall' style="width:116px;"/>
                                                         </a>
                                                     </li>
 
-                                                    <li class="no-margin"><a href='{{ settings.DOMAIN }}categoria/3'
+                                                    <li style="width: 145px;"><a href='{{ settings.DOMAIN }}categoria/6'
                                                                              style="font-size:12px;">Arbotantes
                                                             <img
-                                                                    src='{{ settings.IMG }}productos/7.jpg'
+                                                                    src='{{ settings.IMG }}categorias/6.png'
+                                                                    alt='Energy Efficient' style="width:116px;"/></a>
+                                                    </li>
+
+                                                    <li class="no-margin" style="width: 115px;"><a href='{{ settings.DOMAIN }}categoria/13'
+                                                                             style="font-size:12px;">Tira LED
+                                                            <img
+                                                                    src='{{ settings.IMG }}categorias/13.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
 
@@ -173,24 +182,24 @@
                                             <div id="ctl00_Main_ucHeaderContent_DesktopIndoorCategorySubMenu"
                                                  style="float: left;">
                                                 <ul>
-                                                    <li style="width:228px;"><a href='{{ settings.DOMAIN }}categoria/1'
+                                                    <li style="width:228px;"><a href='{{ settings.DOMAIN }}categoria/5'
                                                                                 style="font-size:12px;">Lámparas
                                                             empotradas a techo<img
-                                                                    src='{{ settings.IMG }}productos/8.jpg'
+                                                                    src='{{ settings.IMG }}categorias/5.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
-                                                    <li style="width: 160px;"><a href='{{ settings.DOMAIN }}categoria/4'
+                                                    <li style="width: 160px;"><a href='{{ settings.DOMAIN }}categoria/7'
                                                                                  style="font-size:12px;">Arbotantes<img
-                                                                    src='{{ settings.IMG }}productos/9.jpg'
+                                                                    src='{{ settings.IMG }}categorias/7.jpg'
                                                                     alt='' style="width:116px;"/></a></li>
                                                     <li style="width: 235px;"><a
-                                                                href='{{ settings.DOMAIN }}categoria/17'
+                                                                href='{{ settings.DOMAIN }}categoria/8'
                                                                 style="font-size:12px;">Lámparas empotradas a piso<img
-                                                                    src='{{ settings.IMG }}productos/10.jpg'
+                                                                    src='{{ settings.IMG }}categorias/8.png'
                                                                     alt='Flush Mount' style="width:116px;"/></a></li>
                                                     <li style="width: 190px;">
-                                                        <a href='{{ settings.DOMAIN }}categoria/28'
+                                                        <a href='{{ settings.DOMAIN }}categoria/9'
                                                            style="font-size:12px;">Alumbrado público<img
-                                                                    src='{{ settings.IMG }}productos/11.jpg'
+                                                                    src='{{ settings.IMG }}categorias/9.jpg'
                                                                     alt='Wall' style="width:116px;"/>
                                                         </a>
                                                     </li>
@@ -199,15 +208,15 @@
                                                                 href='{{ settings.DOMAIN }}categoria/10'
                                                                 style="font-size:12px;">Focos LED
                                                             <img
-                                                                    src='{{ settings.IMG }}productos/1.jpg'
+                                                                    src='{{ settings.IMG }}categorias/10.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
 
                                                     <li class="no-margin" style="width: 135px;"><a
-                                                                href='{{ settings.DOMAIN }}categoria/6'
+                                                                href='{{ settings.DOMAIN }}categoria/11'
                                                                 style="font-size:12px;">Tiras LED
                                                             <img
-                                                                    src='{{ settings.IMG }}productos/2.jpg'
+                                                                    src='{{ settings.IMG }}categorias/11.jpg'
                                                                     alt='Energy Efficient' style="width:116px;"/></a>
                                                     </li>
 

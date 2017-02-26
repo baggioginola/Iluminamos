@@ -68,7 +68,7 @@ class PaymentOxxo extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
         }
 
-        try {
+        try{
             $order = \Conekta\Order::create(
                 array(
                     "line_items" => $this->line_items,

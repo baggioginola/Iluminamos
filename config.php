@@ -32,6 +32,11 @@ define('PRODUCT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_p
 define('PROJECT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_proyectos/');
 define('BANNER_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/');
 
+define('BANNER_BIG_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_big/');
+define('BANNER_TOP_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_top/');
+define('BANNER_BIG_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/banner_big/');
+define('BANNER_TOP_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/banner_top/');
+
 #Database
 define('DBHOST', 'localhost');
 define('DBNAME', 'ilumina_3');

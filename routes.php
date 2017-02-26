@@ -20,10 +20,17 @@ $settings['LAST_NAME'] = $last_name;
 $app->get('/', function ($request, $response, $args) {
     global $settings, $total_products;
     require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
+    require_once __CONTROLLER__ . 'CBannerController.class.inc.php';
 
     $result = Products::singleton()->getRandomAll();
 
-    return $this->view->render($response, 'main.twig', array('result' => $result, 'settings' => $settings, 'total_products' => $total_products));
+    $result_image = Images::singleton()->getProductsUrl($result);
+
+    $banner_main = Banner::singleton()->getMain();
+
+    $banner_top = Banner::singleton()->getTop();
+
+    return $this->view->render($response, 'main.twig', array('result' => $result_image, 'settings' => $settings, 'total_products' => $total_products, 'banner_top' => $banner_top, 'banner_main' => $banner_main));
 });
 
 $app->get('/categoria/{id_categoria}', function ($request, $response, $args) {
@@ -185,7 +192,7 @@ $app->get('/confirmar-oxxo', function ($request, $response, $args) {
     $order = json_decode($result, true);
 
     if ($order['status'] == 404) {
-        return $response->withStatus(200)->withHeader('Location', DOMAIN . 'error');
+        return $response->withStatus(404)->withHeader('Location', DOMAIN . 'error');
     }
 
     if (!isset($order['data']['charges']['data'][0]['payment_method']['reference']) || !isset($order['data']['amount']) || !isset($order['data']['currency'])) {

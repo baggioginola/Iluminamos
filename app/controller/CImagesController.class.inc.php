@@ -36,7 +36,7 @@ class Images extends BaseController
         $png = '.png';
         $jpg = '.jpg';
 
-        if(empty($result)){
+        if (empty($result)) {
             return $result;
         }
         foreach ($result as $key => $value) {
@@ -56,7 +56,7 @@ class Images extends BaseController
         $png = '.png';
         $jpg = '.jpg';
 
-        if(empty($result)){
+        if (empty($result)) {
             return $result;
         }
 
@@ -75,7 +75,7 @@ class Images extends BaseController
         $png = '.png';
         $jpg = '.jpg';
 
-        if(empty($result)){
+        if (empty($result)) {
             return $result;
         }
         foreach ($result as $key => $value) {
@@ -95,7 +95,7 @@ class Images extends BaseController
         $png = '.png';
         $jpg = '.jpg';
 
-        if(empty($result)){
+        if (empty($result)) {
             return $result;
         }
 
@@ -107,5 +107,73 @@ class Images extends BaseController
             $result['url_image'] = PROJECT_IMG . $this->default_image . $jpg;
         }
         return $result;
+    }
+
+    public function getBannerTopUrl($num_imagenes = 0)
+    {
+        $png = '.png';
+        $jpg = '.jpg';
+
+        $array = array();
+        if ($num_imagenes == 0) {
+            $array[] = BANNER_TOP_IMG . $this->default_image . $jpg;
+            return $array;
+        }
+
+        for ($i = 1; $i <= $num_imagenes; $i++) {
+            if ($i == 1) {
+                if (file_exists(BANNER_TOP_IMG_ROOT . 'banner' . $jpg)) {
+                    $array[] = BANNER_TOP_IMG . 'banner' . $jpg;
+                } else if (file_exists(BANNER_TOP_IMG_ROOT . 'banner' . $png)) {
+                    $array[] = BANNER_TOP_IMG . 'banner' . $png;
+                } else {
+                    $array[] = BANNER_BIG_IMG . $this->default_image . $jpg;
+                }
+            } else {
+                if (file_exists(BANNER_TOP_IMG_ROOT . 'banner_' . $i . $jpg)) {
+                    $array[] = BANNER_TOP_IMG . 'banner_' . $i . $jpg;
+                } else if (file_exists(BANNER_TOP_IMG_ROOT . 'banner_' . $i . $png)) {
+                    $array[] = BANNER_TOP_IMG . 'banner_' . $i . $png;
+                } else {
+                    $array[] = BANNER_TOP_IMG . $this->default_image . $jpg;
+                }
+            }
+        }
+
+        return $array;
+    }
+
+    public function getBannerMainUrl($num_imagenes = 0)
+    {
+        $png = '.png';
+        $jpg = '.jpg';
+
+        $array = array();
+        if ($num_imagenes == 0) {
+            $array[] = BANNER_BIG_IMG . $this->default_image . $jpg;
+            return $array;
+        }
+
+        for ($i = 1; $i <= $num_imagenes; $i++) {
+            if ($i == 1) {
+                if (file_exists(BANNER_BIG_IMG_ROOT . 'banner' . $jpg)) {
+                    $array[] = BANNER_BIG_IMG . 'banner' . $jpg;
+                } else if (file_exists(BANNER_BIG_IMG_ROOT . 'banner' . $png)) {
+                    $array[] = BANNER_BIG_IMG . 'banner' . $png;
+                } else {
+                    $array[] = BANNER_BIG_IMG . $this->default_image . $jpg;
+                }
+            } else {
+                if (file_exists(BANNER_BIG_IMG_ROOT . 'banner_' . $i . $jpg)) {
+                    $array[] = BANNER_BIG_IMG . 'banner_' . $i . $jpg;
+                } else if (file_exists(BANNER_BIG_IMG_ROOT . 'banner_' . $i . $png)) {
+                    $array[] = BANNER_BIG_IMG . 'banner_' . $i . $png;
+                } else {
+                    $array[] = BANNER_BIG_IMG . $this->default_image . $jpg;
+                }
+            }
+        }
+
+        return $array;
     }
 }
