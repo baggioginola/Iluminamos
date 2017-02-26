@@ -110,7 +110,7 @@
                 <div class="cart_img"><img src="{{ settings.IMG }}cart.png" width="28px"/></div>
                 <div class="cart_link"><a href="{{ settings.DOMAIN }}cart"
                                           id="cart_productos">{% if total_products == 0 %}VACÍO {% else %}{{ total_products }} PRODUCTO(S){% endif %}</a>
-                    | {% if settings.NAME != '' %}BIENVENIDO: {{ settings.NAME|upper|convert_encoding('UTF-8', 'ISO-8859-1') }} {{ settings.LAST_NAME|upper|convert_encoding('UTF-8', 'ISO-8859-1') }} {% else %}
+                    | {% if settings.NAME != '' %}BIENVENIDO: {{ settings.NAME|upper }} {{ settings.LAST_NAME|upper }} {% else %}
                         <a href="{{ settings.DOMAIN }}login">ACCESO</a>{% endif %}</div>
             </div>
             <div class="nav-area">

@@ -56,7 +56,7 @@
                                                 id="filter_category" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for category  in result_categories %}
-                                                <option value="{{ category.id_categoria }}">{{ category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                                <option value="{{ category.id_categoria }}">{{ category.nombre}}</option>
                                             {% endfor %}
                                         </select>
 
@@ -67,7 +67,7 @@
                                                 id="filter_brand" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for brand  in result_brands %}
-                                                <option value="{{ brand.id_marca }}">{{ brand.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                                <option value="{{ brand.id_marca }}">{{ brand.nombre}}</option>
                                             {% endfor %}
                                         </select>
                                         <hr/>
@@ -113,9 +113,9 @@
                                                        class="products_thumbnail">
                                                         <div class="thumbnail"><img
                                                                     src="{{ producto.url_image }}"
-                                                                    alt="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                                                                    title="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
-                                                            <label>{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}</label>
+                                                                    alt="{{ producto.codigo_interno}}"
+                                                                    title="{{ producto.codigo_interno}}"/>
+                                                            <label>{{ producto.codigo_interno}}</label>
                                                         </div>
 
                                                     </a>

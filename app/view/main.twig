@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="banner-right-bottom">
-                    <div id="carrusel-b" class="carousel slide" data-ride="carousel" data-timer="1000"
+                    <div id="carrusel-b" class="carousel slide" data-ride="carousel" data-timer="500"
                          style="">
                         <!--
                         <ol class="carousel-indicators_bottom">
@@ -93,16 +93,14 @@
                         <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
                             <div class="item active">
                                 <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/banner/big/1.jpg') no-repeat scroll center top / cover ;"></div>
+                                     style="background: transparent url('includes/public/img/logos/birot.jpg') no-repeat scroll center top / cover ;"></div>
                             </div>
+
                             <div class="item">
                                 <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/banner/big/2.jpg') no-repeat scroll center top / cover ;"></div>
+                                     style="background: transparent url('includes/public/img/logos/louis_poulsen.jpg') no-repeat scroll center top / cover ;"></div>
                             </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/banner/big/3.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
+
                         </div>
                     </div>
                     <!--
@@ -132,14 +130,14 @@
                                         <div class="content-image">
                                             <img class="img-responsive center-block"
                                                  src="{{ settings.PRODUCT_IMG }}{{ producto.id_producto }}.jpg"
-                                                 alt="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                                                 title="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
+                                                 alt="{{ producto.codigo_interno }}"
+                                                 title="{{ producto.codigo_interno}}"
                                                  style="height: 225px;">
                                         </div>
                                     </a>
                                 <span class="product-name">
                                     <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
-                                        {{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}
+                                        {{ producto.codigo_interno}}
                                     </a>
                                 </span>
                                 </div>

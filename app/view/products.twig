@@ -1,7 +1,7 @@
 {% extends "layout/master.twig" %}
 
 
-{% block title %}{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}{% endblock %}
+{% block title %}{{ result_category.nombre}}{% endblock %}
 
 {% block head %}
     {{ parent() }}
@@ -19,7 +19,7 @@
                 <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
                 <li>&gt;</li>
                 <li>
-                    <span class="active-page">{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span>
+                    <span class="active-page">{{ result_category.nombre}}</span>
                 </li>
             </ol>
         </div>
@@ -27,7 +27,7 @@
         <div class="container pageTitle">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <h1>{{ result_category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</h1>
+                    <h1>{{ result_category.nombre}}</h1>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                                                 id="filter_category" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for category  in result_categories %}
-                                                <option value="{{ category.id_categoria }}">{{ category.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                                <option value="{{ category.id_categoria }}">{{ category.nombre}}</option>
                                             {% endfor %}
                                         </select>
 
@@ -67,7 +67,7 @@
                                                 id="filter_brand" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for brand  in result_brands %}
-                                                <option value="{{ brand.id_marca }}">{{ brand.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</option>
+                                                <option value="{{ brand.id_marca }}">{{ brand.nombre}}</option>
                                             {% endfor %}
                                         </select>
                                         <hr/>
@@ -108,9 +108,9 @@
                                                 <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}" class="products_thumbnail">
                                                     <div class="thumbnail"><img
                                                                 src="{{ producto.url_image }}"
-                                                                alt="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                                                                title="{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
-                                                        <label>{{ producto.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}</label>
+                                                                alt="{{ producto.codigo_interno}}"
+                                                                title="{{ producto.codigo_interno}}"/>
+                                                        <label>{{ producto.codigo_interno}}</label>
                                                     </div>
 
                                                 </a>

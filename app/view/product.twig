@@ -1,6 +1,6 @@
 {% extends "layout/master.twig" %}
 
-{% block title %}Producto/{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}{% endblock %}
+{% block title %}Producto/{{ result.nombre}}{% endblock %}
 
 {% block head %}
     {{ parent() }}
@@ -15,10 +15,10 @@
                 <li><a href="{{ settings.DOMAIN }}">Inicio</a></li>
                 <li>&gt;</li>
                 <li>
-                    <a href="{{ settings.DOMAIN }}categoria/{{ result.id_categoria }}">{{ result.categoria | convert_encoding('UTF-8', 'ISO-8859-1') }}</a>
+                    <a href="{{ settings.DOMAIN }}categoria/{{ result.id_categoria }}">{{ result.categoria}}</a>
                 </li>
                 <li>&gt;</li>
-                <li><span class="active-page">{{ result.nombre | convert_encoding('UTF-8', 'ISO-8859-1') }}</span></li>
+                <li><span class="active-page">{{ result.nombre}}</span></li>
             </ol>
         </div>
         <!-- end breadcrumb -->
@@ -28,15 +28,15 @@
             <div class="container">
                 <div class="row product">
                     <div class="col-md-5 col-md-offset-0">
-                        <img class="img-responsive" src="{{ result.url_image }}"
+                        <img class="img-responsive" src="{{ settings.PRODUCT_IMG }}{{ result.id_producto }}.jpg"
                              id="bigPic"
-                             alt="{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"
-                             title="{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}"/>
+                             alt="{{ result.codigo_interno}}"
+                             title="{{ result.codigo_interno}}"/>
                     </div>
                     <div class="col-md-7" style="text-align: justify;">
-                        <h2>{{ result.codigo_interno | convert_encoding('UTF-8', 'ISO-8859-1') }}</h2>
+                        <h2>{{ result.codigo_interno}}</h2>
 
-                        <h3>Marca: {{ result.marca | convert_encoding('UTF-8', 'ISO-8859-1') }}</h3>
+                        <h3>Marca: {{ result.marca}}</h3>
 
                         <p>{% autoescape %}
                             {{ result.descripcion | raw }}
