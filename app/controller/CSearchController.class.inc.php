@@ -8,6 +8,7 @@
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CImagesController.class.inc.php';
 require_once __MODEL__ . 'CSearchModel.class.inc.php';
+require_once __CONTROLLER__ . 'CLikeController.class.inc.php';
 
 class Search extends BaseController
 {
@@ -75,6 +76,10 @@ class Search extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_CLIENT, MESSAGE_ERROR));
         }
 
+        foreach ($result as $key => $value) {
+            $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
+        }
+
         $row_array = array();
         $result_all = array();
         $i = 0;
@@ -93,6 +98,7 @@ class Search extends BaseController
             $result_all[$i]['id_producto'] = $row_array_image['id_producto'];
             $result_all[$i]['nombre'] = $row_array_image['codigo_interno'];
             $result_all[$i]['url_image'] = $row_array_image['url_image'];
+            $result_all[$i]['like'] = $row_array_image['like'];
             $i++;
         }
 
@@ -127,6 +133,10 @@ class Search extends BaseController
 
         if (!$result = SearchModel::singleton()->getProductsByQuery($query)) {
             return false;
+        }
+
+        foreach ($result as $key => $value) {
+            $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
         }
 
         return $result;

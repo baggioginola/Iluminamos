@@ -71,6 +71,7 @@ class Like extends BaseController
         }
 
         $session_id = session_id();
+
         if (!$result = LikeModel::singleton()->getBySessionId($session_id)) {
             return false;
         }
@@ -78,6 +79,7 @@ class Like extends BaseController
         if (!LikesProducts::singleton()->getByIdProduct($result['id'], $id_product)) {
             return false;
         }
+
         return true;
     }
 

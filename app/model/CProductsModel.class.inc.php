@@ -174,4 +174,23 @@ class ProductsModel extends Database
 
         return true;
     }
+
+    public function updateSales($id_product = null, $value = null)
+    {
+        if (is_null($id_product) || is_null($value)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $query = "UPDATE " . self::$table . " SET ventas = ventas + " . $value . " WHERE id_producto = " . $id_product . ";";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -27,7 +27,7 @@ class BaseController
         }
 
         foreach ($parameters as $name => $content) {
-            if($name == 'contenido' || $name == 'descripcion' || $name == 'detalles_tecnicos'){
+            if($name == 'contenido' || $name == 'descripcion' || $name == 'detalles_tecnicos' || $name == 'clave_alterna'){
                 continue;
             }
             if (!isset($validParameters[$name])) {

@@ -38,14 +38,38 @@ jQuery(document).ready(function () {
                     var product_results_array = [];
                     jQuery.each(response.data, function (key, value) {
 
-                        product_results_array = [
-                            '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
-                            '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
-                            '<div class="thumbnail"><img src="', value.url_image , '"/>' +
-                            '<label>', value.nombre, '</label>' +
-                            '</div>' +
-                            '</a>' +
-                            '</div>'];
+                        console.log(value.like);
+                        if (value.like == false) {
+                            product_results_array = [
+                                '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
+                                '<div class="thumbnail">' +
+                                '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
+                                '<img src="', value.url_image, '"/>' +
+                                '<label>', value.nombre, '</label>' +
+                                '</a>' +
+                                '<div>' +
+                                '<div style="cursor: pointer; text-align: center; padding-bottom: 10px;" class="like" id="', value.id_producto, '">' +
+                                '<img src="', BASE_ROOT + 'includes/public/img/favorite_white.png" width="29px">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'];
+                        }
+                        else {
+                            product_results_array = [
+                                '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">' +
+                                '<div class="thumbnail">' +
+                                '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
+                                '<img src="', value.url_image, '"/>' +
+                                '<label>', value.nombre, '</label>' +
+                                '</a>' +
+                                '<div>' +
+                                '<div style="text-align: center; padding-bottom: 10px;">' +
+                                '<img src="', BASE_ROOT + 'includes/public/img/favorite_black.png" width="29px">' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'];
+                        }
+
                         product_results.append(product_results_array.join(''));
                     });
                     product_results.slideDown();

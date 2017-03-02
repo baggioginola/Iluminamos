@@ -56,7 +56,7 @@
                                                 id="filter_category" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for category  in result_categories %}
-                                                <option value="{{ category.id_categoria }}">{{ category.nombre}}</option>
+                                                <option value="{{ category.id_categoria }}">{{ category.nombre }}</option>
                                             {% endfor %}
                                         </select>
 
@@ -67,7 +67,7 @@
                                                 id="filter_brand" data-window-padding="[bottom]">
                                             <option value="0">Todas</option>
                                             {% for brand  in result_brands %}
-                                                <option value="{{ brand.id_marca }}">{{ brand.nombre}}</option>
+                                                <option value="{{ brand.id_marca }}">{{ brand.nombre }}</option>
                                             {% endfor %}
                                         </select>
                                         <hr/>
@@ -109,16 +109,33 @@
                                             {% for producto  in result %}
                                                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
 
-                                                    <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}"
-                                                       class="products_thumbnail">
-                                                        <div class="thumbnail"><img
-                                                                    src="{{ producto.url_image }}"
-                                                                    alt="{{ producto.codigo_interno}}"
-                                                                    title="{{ producto.codigo_interno}}"/>
-                                                            <label>{{ producto.codigo_interno}}</label>
-                                                        </div>
 
-                                                    </a>
+                                                    <div class="thumbnail">
+                                                        <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}"
+                                                           class="products_thumbnail">
+                                                            <img
+                                                                    src="{{ producto.url_image }}"
+                                                                    alt="{{ producto.codigo_interno }}"
+                                                                    title="{{ producto.codigo_interno }}"/>
+                                                            <label>{{ producto.codigo_interno }}</label>
+                                                        </a>
+
+
+                                                        <div>
+                                                            {% if producto.like == false %}
+                                                                <div style="cursor: pointer; text-align: center; padding-bottom: 10px;"
+                                                                     class="like"
+                                                                     id="{{ producto.id_producto }}"><img
+                                                                            src="{{ settings.IMG }}favorite_white.png"
+                                                                            width="29px"></div>
+                                                            {% else %}
+                                                                <div style="text-align: center; padding-bottom: 10px;">
+                                                                    <img
+                                                                            src="{{ settings.IMG }}favorite_black.png"
+                                                                            width="29px"></div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             {% endfor %}
                                         {% endif %}

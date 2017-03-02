@@ -10,6 +10,7 @@ require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CCartProductsController.class.inc.php';
 require_once __MODEL__ . 'CCartModel.class.inc.php';
 require_once __MODEL__ . 'CPaymentOxxoModel.class.inc.php';
+require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
 
 class NotificationOxxo extends BaseController
 {
@@ -38,6 +39,13 @@ class NotificationOxxo extends BaseController
 
         if (!$result = CartModel::singleton()->getById($result_transaction['id_cart'])) {
             return false;
+        }
+
+        foreach($result as $key){
+            $id_producto = $key['id_producto'];
+            $numero_productos = $key['numero_productos'];
+
+            Products::singleton()->updateSales($id_producto, $numero_productos);
         }
 
         return array('result_transaction' => $result_transaction, 'result_cart' => $result);

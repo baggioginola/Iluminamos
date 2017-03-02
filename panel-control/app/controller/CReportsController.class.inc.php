@@ -17,7 +17,7 @@ class Reports extends BaseController
     private $log = array();
 
     private $validParameters = array(
-
+        'id_cliente' => TYPE_INT
     );
 
     /**
@@ -36,13 +36,47 @@ class Reports extends BaseController
      */
     public function getProductsLikes()
     {
-        if (!$result = ReportssModel::singleton()->getProductLikes()) {
+        if (!$result = ReportsModel::singleton()->getProductLikes()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
         return json_encode(UTF8Converter($result));
     }
 
+    /**
+     * @return string
+     */
+    public function getProductsSales()
+    {
+        if (!$result = ReportsModel::singleton()->getProductSales()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+        return json_encode(UTF8Converter($result));
+    }
 
+    /**
+     * @return string
+     */
+    public function getCustomers()
+    {
+        if (!$result = ReportsModel::singleton()->getCustomers()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+        return json_encode(UTF8Converter($result));
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomerById()
+    {
+        if (!$this->_setParameters()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+
+        $result = ReportsModel::singleton()->getCustomerById($this->parameters['id_cliente']);
+
+        return json_encode(UTF8Converter($result));
+    }
     /**
      * @return bool
      */

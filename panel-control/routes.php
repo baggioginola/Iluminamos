@@ -48,9 +48,14 @@ $app->get('/proyectos', function ($request, $response, $args) {
     return $this->view->render($response, 'projects.twig', array('settings' => $settings));
 })->add(new CAuth());
 
-$app->get('/reportes', function ($request, $response, $args) {
+$app->get('/reporte-likes', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'report.twig', array('settings' => $settings));
+})->add(new CAuth());
+
+$app->get('/reporte-ventas', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'report_sales.twig', array('settings' => $settings));
 })->add(new CAuth());
 
 $app->get('/archivos', function ($request, $response, $args) {
@@ -72,6 +77,11 @@ $app->get('/banner-top', function ($request, $response, $args) {
 $app->get('/login', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'login.twig', array('settings' => $settings));
+});
+
+$app->get('/clientes-registrados', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'customers.twig', array('settings' => $settings));
 });
 
 $app->get('/logout', function ($request, $response, $args) {

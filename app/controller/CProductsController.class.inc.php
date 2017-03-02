@@ -7,6 +7,8 @@
  */
 
 require_once 'CBaseController.class.inc.php';
+require_once 'CLikeController.class.inc.php';
+
 require_once __MODEL__ . 'CProductsModel.class.inc.php';
 
 class Products extends BaseController
@@ -82,6 +84,10 @@ class Products extends BaseController
 
         if (!$result = ProductsModel::singleton()->getByCategory($this->parameters['id_categoria'])) {
             return false;
+        }
+
+        foreach ($result as $key => $value) {
+            $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
         }
 
         return $result;

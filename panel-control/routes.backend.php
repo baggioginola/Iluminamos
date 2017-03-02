@@ -319,6 +319,30 @@ $app->group('/reportes', function () use($app) {
         }
         echo $result;
     });
+
+    $app->post('/getProductSales', function() use($app){
+        require_once __CONTROLLER__ . 'CReportsController.class.inc.php';
+        if(!$result = Reports::singleton()->getProductsSales()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/getCustomers', function() use($app){
+        require_once __CONTROLLER__ . 'CReportsController.class.inc.php';
+        if(!$result = Reports::singleton()->getCustomers()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
+
+    $app->post('/getCustomerById', function() use($app){
+        require_once __CONTROLLER__ . 'CReportsController.class.inc.php';
+        if(!$result = Reports::singleton()->getCustomerById()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
 });
 
 $app->group('/login', function () use($app) {

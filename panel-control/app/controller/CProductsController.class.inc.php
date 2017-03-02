@@ -217,6 +217,15 @@ class Products extends BaseController
         return $result;
     }
 
+    public function updateSales($id_product = null, $value = null)
+    {
+        if (is_null($id_product) || is_null($value)) {
+            return false;
+        }
+
+        return ProductsModel::singleton()->updateSales($id_product, $value);
+    }
+
     /**
      * @return bool
      */

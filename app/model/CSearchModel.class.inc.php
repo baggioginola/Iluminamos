@@ -81,13 +81,15 @@ class SearchModel extends Database
             return false;
         }
 
-        $filter = "AND " . self::$products_table . ".codigo_interno LIKE '%" . $query . "%' ";
+        $filter = "AND (" . self::$products_table . ".codigo_interno LIKE '%" . $query . "%' OR categorias.nombre LIKE '%" . $query . "%'
+        OR marcas.nombre LIKE '%" . $query . "%') ";
         $result_array = array();
 
         // TODO Remove LIMIT 10
         $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
-        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno
+        marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno,
+        categorias.nombre as categoria, marcas.nombre as marca
         FROM " . self::$products_table . " INNER JOIN categorias
         ON " . self::$products_table . ".id_categoria = categorias.id_categoria
         INNER JOIN marcas

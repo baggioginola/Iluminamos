@@ -64,7 +64,7 @@ $(document).ready(function () {
     }, 'json');
 
     var url = 'productos/getAll';
-    var columns = [{data: 'codigo_interno'}, {data: 'precio'}, {data: 'precio_compra'}, {data:'iva'}, {data:'moneda'}];
+    var columns = [{data: 'marca'},{data: 'codigo_interno'}, {data: 'precio'}, {data: 'precio_compra'}, {data:'iva'}, {data:'moneda'}];
 
     var table = masterDatatable(url, columns);
 
