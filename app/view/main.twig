@@ -126,7 +126,31 @@
                         !-->
 
                         <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
-                            <div class="item active">
+                            {% set i = 0 %}
+                            {% for banner in banner_brands %}
+
+                                {% if i == 0 %}
+                                    <div class="item active">
+                                        <div class="fill_bottom"
+                                             style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                        <!--
+                                        <div class="carousel-caption">
+                                            <h2>CAPTION 1</h2>
+                                        </div>
+                                        !-->
+                                    </div>
+                                {% else %}
+                                    <div class="item">
+                                        <div class="fill_bottom"
+                                             style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+
+                                    </div>
+                                {% endif %}
+                                {% set i = i + 1 %}
+                            {% endfor %}
+
+                            <!--
+                            <div class="item">
                                 <div class="fill_bottom"
                                      style="background: transparent url('includes/public/img/logos/birot.jpg') no-repeat scroll center top / cover ;"></div>
                             </div>
@@ -211,6 +235,7 @@
                                 <div class="fill_bottom"
                                      style="background: transparent url('includes/public/img/logos/tecnolite.jpg') no-repeat scroll center top / cover ;"></div>
                             </div>
+                            !-->
                         </div>
 
                         <div style="width: 100%; position: relative;">

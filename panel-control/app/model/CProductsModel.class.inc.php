@@ -42,7 +42,7 @@ class ProductsModel extends Database
              LEFT JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
              LEFT JOIN tipo_cambio
-             ON " . self::$table . ".moneda = tipo_cambio.moneda
+             ON " . self::$table . ".moneda = tipo_cambio.id_tipo_cambio
             WHERE " . self::$table . ".STATUS = true;";
 
         if (!$result = $this->query($query)) {
@@ -92,7 +92,7 @@ class ProductsModel extends Database
         " . self::$table . ".descripcion,
         " . self::$table . ".detalles_tecnicos, " . self::$table . ".precio, " . self::$table . ".moneda,
         " . self::$table . ".codigo_interno, categorias.nombre as categoria, marcas.nombre as marca,
-        marcas.descuento,iva, tipo_cambio.moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes,
+        marcas.descuento,iva, " . self::$table . ".moneda, tipo_cambio.tipo_cambio, " . self::$table . ".id_marca, num_imagenes,
         " . self::$table . ".precio_compra, " . self::$table . ".clave_alterna, " .self::$table . ".departamento
             FROM  " . self::$table . "
             LEFT JOIN categorias
@@ -100,7 +100,7 @@ class ProductsModel extends Database
              LEFT JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
              LEFT JOIN tipo_cambio
-             ON " . self::$table . ".moneda = tipo_cambio.moneda
+             ON " . self::$table . ".moneda = tipo_cambio.id_tipo_cambio
              WHERE id_producto = '" . $id . "' ";
 
         if (!$result = $this->query($query)) {

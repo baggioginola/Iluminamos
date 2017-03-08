@@ -32,6 +32,7 @@ define('BANNER_IMG', __ROOT__ . '/includes/public/imagenes_banner/');
 
 define('BANNER_BIG_IMG', __ROOT__ . '/includes/public/imagenes_banner/banner_big/');
 define('BANNER_TOP_IMG', __ROOT__ . '/includes/public/imagenes_banner/banner_top/');
+define('BANNER_BRANDS_IMG', __ROOT__ . '/includes/public/imagenes_banner/banner_brands/');
 
 define('DATATABLE',DOMAIN . 'includes/public/dataTable/');
 define('FILEINPUT',DOMAIN . 'includes/public/bootstrap-fileinput-master/');

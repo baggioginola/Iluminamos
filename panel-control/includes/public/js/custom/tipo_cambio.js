@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $('#reset_button').click(function () {
         $('#form_global').trigger("reset");
-        $('#submit_type').val('tipo_cambio/edit');
+        $('#submit_type').val('tipo_cambio/add');
         $('#submit_id').val('');
 
         return false;
@@ -79,7 +79,7 @@ $(document).ready(function () {
             async: false,
             success: function (data) {
                 table.ajax.reload();
-                submit_response_general(form, data, 'tipo_cambio/edit');
+                submit_response_general(form, data, 'tipo_cambio/add');
             }
         });
         return false;

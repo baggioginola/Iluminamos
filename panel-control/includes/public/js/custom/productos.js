@@ -63,6 +63,12 @@ $(document).ready(function () {
         });
     }, 'json');
 
+    $.post('tipo_cambio/getAll', function (response) {
+        $.each(response, function (key, val) {
+            $("#id_moneda").append('<option value="'+val.id_tipo_cambio+'">'+val.moneda+'</option>');
+        });
+    }, 'json');
+
     var url = 'productos/getAll';
     var columns = [{data: 'marca'},{data: 'codigo_interno'}, {data: 'precio'}, {data: 'precio_compra'}, {data:'iva'}, {data:'moneda'}];
 

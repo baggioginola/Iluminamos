@@ -123,7 +123,7 @@ class PaypalModel extends Database
 		INNER JOIN marcas
 		ON marcas.id_marca = productos.id_marca
 		INNER JOIN tipo_cambio
-		ON productos.moneda = tipo_cambio.moneda
+		ON productos.moneda = tipo_cambio.id_tipo_cambio
 		WHERE 1=1 AND cart.id_cart ='" . $id . "'
 		GROUP BY id_producto;";
 

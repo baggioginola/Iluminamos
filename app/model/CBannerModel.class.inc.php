@@ -63,4 +63,24 @@ class BannerModel extends Database
 
         return $result_array;
     }
+
+    public function getBrands()
+    {
+        if (!$this->connect()) {
+            return false;
+        }
+        $result_array = array();
+
+        $query = "SELECT id_banner_inicio,numero_imagenes FROM " . self::$table . " WHERE id_banner_inicio = 3";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
+        }
+
+        return $result_array;
+    }
 }

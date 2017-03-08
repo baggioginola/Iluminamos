@@ -41,6 +41,7 @@ class NotificationOxxo extends BaseController
             return false;
         }
 
+
         foreach($result as $key){
             $id_producto = $key['id_producto'];
             $numero_productos = $key['numero_productos'];

@@ -48,4 +48,13 @@ class Banner extends BaseController
 
         return $result_images;
     }
+
+    public function getBrands()
+    {
+        $result = BannerModel::singleton()->getBrands();
+
+        $result_images = Images::singleton()->getBannerBrandsUrl($result['numero_imagenes']);
+
+        return $result_images;
+    }
 }

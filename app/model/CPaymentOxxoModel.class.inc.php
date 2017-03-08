@@ -60,7 +60,7 @@ class PaymentOxxoModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id, reference_code, id_cart, email FROM " . self::$table . " WHERE reference_code = '" . $reference_code . "' ";
+        $query = "SELECT id, reference_code, id_cart, email FROM " . self::$table . " WHERE reference_code = '" . $reference_code . "' ORDER BY id DESC ";
 
         if (!$result = $this->query($query)) {
             return false;

@@ -155,6 +155,9 @@ class CDir extends BaseController
             case 'banner_top':
                 $this->dir = BANNER_TOP_IMG;
                 break;
+            case 'banner_brands':
+                $this->dir = BANNER_BRANDS_IMG;
+                break;
             default: return false;
             break;
 

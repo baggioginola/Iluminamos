@@ -30,7 +30,9 @@ $app->get('/', function ($request, $response, $args) {
 
     $banner_top = Banner::singleton()->getTop();
 
-    return $this->view->render($response, 'main.twig', array('result' => $result_image, 'settings' => $settings, 'total_products' => $total_products, 'banner_top' => $banner_top, 'banner_main' => $banner_main));
+    $banner_brands = Banner::singleton()->getBrands();
+
+    return $this->view->render($response, 'main.twig', array('result' => $result_image, 'settings' => $settings, 'total_products' => $total_products, 'banner_top' => $banner_top, 'banner_main' => $banner_main, 'banner_brands' => $banner_brands));
 });
 
 $app->get('/categoria/{id_categoria}', function ($request, $response, $args) {

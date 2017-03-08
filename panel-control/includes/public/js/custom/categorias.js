@@ -13,7 +13,6 @@ $(document).ready(function () {
 
     var url = 'categorias/getAll';
     var columns = [{data: 'nombre'}];
-
     var table = masterDatatable(url, columns);
 
     $('#datatable tbody').on('click', '#btn_edit', function () {

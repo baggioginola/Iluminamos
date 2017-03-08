@@ -33,12 +33,12 @@ class Notification extends BaseController
 
         if ($data['type'] == 'charge.paid') {
 
-
             if (isset($data['data']['object']['payment_method']['reference'])) {
+                mail("mariocuevas88@gmail.com", "Webhook Charge Oxxo 1", print_r($data,1), $this->header);
                 if ($result = NotificationOxxo::singleton()->getTransaction($data['data']['object']['payment_method']['reference'])) {
                     $msg_cart = "Data: " . print_r($result, 1);
                     $msg_confirm = "Se ha registrado su pago correctamente, gracias.";
-                    mail("mariocuevas88@gmail.com", "Webhook Charge", $msg_cart, $this->header);
+                    mail("mariocuevas88@gmail.com", "Webhook Charge Oxxo", $msg_cart, $this->header);
                     #mail($result['result_transaction']['email'], "Pago a través de OXXO", $msg_confirm, $this->header);
                 }
                 $msg = "Se ha pagado una orden de compra con el siguiente número de Referencia de OXXO: " . $data['data']['object']['payment_method']['reference'];

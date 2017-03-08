@@ -34,8 +34,11 @@ define('BANNER_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_ba
 
 define('BANNER_BIG_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_big/');
 define('BANNER_TOP_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_top/');
+define('BANNER_BRANDS_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_brands/');
+
 define('BANNER_BIG_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/banner_big/');
 define('BANNER_TOP_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/banner_top/');
+define('BANNER_BRANDS_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/banner_brands/');
 
 #Database
 define('DBHOST', 'localhost');

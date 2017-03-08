@@ -123,6 +123,8 @@ class PaymentOxxo extends BaseController
             $line_items_array['name'] = $key['codigo_interno'];
             $line_items_array['unit_price'] = getPrice($key) * 100;
             $line_items_array['quantity'] = $key['numero_productos'];
+            $line_items_array['brand'] = $key['marca'];
+            $line_items_array['tags'] = array($key['categoria']);
 
             $this->line_items[] = $line_items_array;
         }

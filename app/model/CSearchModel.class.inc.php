@@ -55,7 +55,7 @@ class SearchModel extends Database
         INNER JOIN marcas
         ON " . self::$products_table . ".id_marca = marcas.id_marca
         INNER JOIN tipo_cambio
-        ON " . self::$products_table . ".moneda = tipo_cambio.moneda
+        ON " . self::$products_table . ".moneda = tipo_cambio.id_tipo_cambio
         WHERE  1 = 1 " . $filter . " 
         AND " . self::$products_table . ".status = true 
         AND categorias.status = true and marcas.status = true LIMIT 10";
@@ -95,7 +95,7 @@ class SearchModel extends Database
         INNER JOIN marcas
         ON " . self::$products_table . ".id_marca = marcas.id_marca
         INNER JOIN tipo_cambio
-        ON " . self::$products_table . ".moneda = tipo_cambio.moneda
+        ON " . self::$products_table . ".moneda = tipo_cambio.id_tipo_cambio
         WHERE  1 = 1 " . $filter . "
         AND " . self::$products_table . ".status = true
         AND categorias.status = true and marcas.status = true LIMIT 10";

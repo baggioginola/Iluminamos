@@ -104,7 +104,7 @@ class ProductsModel extends Database
              INNER JOIN marcas
              ON " . self::$table . ".id_marca = marcas.id_marca
              INNER JOIN tipo_cambio
-             ON " . self::$table . ".moneda = tipo_cambio.moneda
+             ON " . self::$table . ".moneda = tipo_cambio.id_tipo_cambio
             WHERE id_producto = '" . $id . "' and " . self::$table . ".STATUS = true
             AND " . self::$table . ".num_imagenes > 0;";
 

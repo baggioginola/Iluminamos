@@ -176,4 +176,38 @@ class Images extends BaseController
 
         return $array;
     }
+
+    public function getBannerBrandsUrl($num_imagenes = 0)
+    {
+        $png = '.png';
+        $jpg = '.jpg';
+
+        $array = array();
+        if ($num_imagenes == 0) {
+            $array[] = BANNER_BRANDS_IMG . $this->default_image . $jpg;
+            return $array;
+        }
+
+        for ($i = 1; $i <= $num_imagenes; $i++) {
+            if ($i == 1) {
+                if (file_exists(BANNER_BRANDS_IMG_ROOT . 'banner' . $jpg)) {
+                    $array[] = BANNER_BRANDS_IMG . 'banner' . $jpg;
+                } else if (file_exists(BANNER_BRANDS_IMG_ROOT . 'banner' . $png)) {
+                    $array[] = BANNER_BRANDS_IMG . 'banner' . $png;
+                } else {
+                    $array[] = BANNER_BRANDS_IMG . $this->default_image . $jpg;
+                }
+            } else {
+                if (file_exists(BANNER_BRANDS_IMG_ROOT . 'banner_' . $i . $jpg)) {
+                    $array[] = BANNER_BRANDS_IMG . 'banner_' . $i . $jpg;
+                } else if (file_exists(BANNER_BRANDS_IMG_ROOT . 'banner_' . $i . $png)) {
+                    $array[] = BANNER_BRANDS_IMG . 'banner_' . $i . $png;
+                } else {
+                    $array[] = BANNER_BRANDS_IMG . $this->default_image . $jpg;
+                }
+            }
+        }
+
+        return $array;
+    }
 }

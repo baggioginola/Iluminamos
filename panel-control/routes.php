@@ -74,6 +74,11 @@ $app->get('/banner-top', function ($request, $response, $args) {
     return $this->view->render($response, 'banner_top.twig', array('settings' => $settings));
 })->add(new CAuth());
 
+$app->get('/banner-marcas', function ($request, $response, $args) {
+    global $settings;
+    return $this->view->render($response, 'banner_brands.twig', array('settings' => $settings));
+})->add(new CAuth());
+
 $app->get('/login', function ($request, $response, $args) {
     global $settings;
     return $this->view->render($response, 'login.twig', array('settings' => $settings));
