@@ -64,6 +64,20 @@ class Brands extends BaseController
     /**
      * @return string
      */
+    public function getByName($name = null)
+    {
+        if(is_null($name)){
+            return false;
+        }
+
+        $result = BrandsModel::singleton()->getByName($name);
+
+        return $result;
+    }
+
+    /**
+     * @return string
+     */
     public function add()
     {
         if (!$this->_setParameters()) {

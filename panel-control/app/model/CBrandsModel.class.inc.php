@@ -71,6 +71,39 @@ class BrandsModel extends Database
         return $result_array;
     }
 
+    public function getByName($name = '')
+    {
+        if (empty($name)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $result_array = array();
+
+        $name = stripExcessWhitespace(sanitizeVariable(trim($name)));
+
+        $array_name = UTF8Converter(array($name));
+
+        echo print_r($array_name,1);
+        $query = "SELECT id_marca,nombre,descuento FROM " . self::$table . " WHERE nombre LIKE '%" . $array_name[0] . "%';";
+
+        echo $query . "\n";
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
+        }
+
+        $this->close_connection();
+
+        return $result_array;
+    }
+
     /**
      * @param array $data
      * @return bool|int|string

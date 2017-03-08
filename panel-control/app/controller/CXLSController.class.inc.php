@@ -8,7 +8,7 @@
 
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
-
+require_once __CONTROLLER__ . 'CBrandsController.class.inc.php';
 class XLS extends BaseController
 {
     private $file = '';
@@ -115,6 +115,11 @@ class XLS extends BaseController
                         }
                         else {
                             $parameters[$array_key] = $name;
+                        }
+                        if($array_key === 'departamento'){
+                            if($result = Brands::singleton()->getByName($name)){
+                                echo "marca: " . $result['id_marca'] . "\n";
+                            }
                         }
                     }
                 }
