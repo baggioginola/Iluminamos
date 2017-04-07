@@ -95,9 +95,7 @@ function masterDatatable(url, columns) {
             "infoEmpty": "No hay datos disponibles",
             "infoFiltered": "(filtered from _MAX_ total records)"
         },
-        "pagingType": "full_numbers",
-        "lengthChange": false,
-        "pageLength": 50
+        "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
     });
     return (dataTable);
 }

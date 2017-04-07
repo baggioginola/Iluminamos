@@ -46,7 +46,6 @@ class SearchModel extends Database
 
         $result_array = array();
 
-        // TODO Remove LIMIT 10
         $query = "SELECT " . self::$products_table . ".id_producto,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
         marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno
@@ -58,7 +57,7 @@ class SearchModel extends Database
         ON " . self::$products_table . ".moneda = tipo_cambio.id_tipo_cambio
         WHERE  1 = 1 " . $filter . " 
         AND " . self::$products_table . ".status = true 
-        AND categorias.status = true and marcas.status = true LIMIT 10";
+        AND categorias.status = true and marcas.status = true";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -85,7 +84,6 @@ class SearchModel extends Database
         OR marcas.nombre LIKE '%" . $query . "%') ";
         $result_array = array();
 
-        // TODO Remove LIMIT 10
         $query = "SELECT " . self::$products_table . ".id_producto, " . self::$products_table . ".nombre,
         " . self::$products_table . ".id_categoria, " . self::$products_table . ".id_marca, precio,
         marcas.descuento,iva,tipo_cambio.moneda,tipo_cambio.tipo_cambio, " . self::$products_table . ".codigo_interno,
@@ -98,7 +96,7 @@ class SearchModel extends Database
         ON " . self::$products_table . ".moneda = tipo_cambio.id_tipo_cambio
         WHERE  1 = 1 " . $filter . "
         AND " . self::$products_table . ".status = true
-        AND categorias.status = true and marcas.status = true LIMIT 10";
+        AND categorias.status = true and marcas.status = true";
 
         if (!$result = $this->query($query)) {
             return false;
