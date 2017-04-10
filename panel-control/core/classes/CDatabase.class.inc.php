@@ -156,4 +156,13 @@ class Database
 
         return $updateString;
     }
+
+    public function escapeValue($value = null)
+    {
+        if (is_null($value)) {
+            return false;
+        }
+
+        return mysqli_real_escape_string($this->link, $value);
+    }
 }

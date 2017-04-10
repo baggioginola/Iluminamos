@@ -141,7 +141,7 @@ class ProductsModel extends Database
                     FROM " . self::$table . "
                     INNER JOIN categorias ON " . self::$table . " . id_categoria = categorias . id_categoria
                     WHERE categorias.id_categoria = " . $id_category . " AND " . self::$table . " . status = true
-                    AND " . self::$table . ".num_imagenes > 0 LIMIT 10";
+                    AND " . self::$table . ".num_imagenes > 0";
 
         if (!$result = $this->query($query)) {
             return false;

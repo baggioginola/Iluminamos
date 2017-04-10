@@ -9,6 +9,7 @@
 require_once __CONTROLLER__ . 'CBaseController.class.inc.php';
 require_once __CONTROLLER__ . 'CProductsController.class.inc.php';
 require_once __CONTROLLER__ . 'CBrandsController.class.inc.php';
+
 class XLS extends BaseController
 {
     private $file = '';
@@ -107,19 +108,18 @@ class XLS extends BaseController
                     $title = $this->workSheet[0][$j];
                     if (in_array($title, $this->parameters)) {
                         $array_key = array_search($title, $this->parameters);
-                        if($array_key === 'precio' || $array_key === 'precio_compra'){
-                            if (!preg_match(getRegularExpresion(TYPE_FLOAT),$name)){
+                        if ($array_key === 'precio' || $array_key === 'precio_compra') {
+                            if (!preg_match(getRegularExpresion(TYPE_FLOAT), $name)) {
                                 $name = 0;
                             }
-                            $parameters[$array_key] = number_format($name,2,'.','');
-                        }
-                        else {
-                            $parameters[$array_key] = $name;
-                        }
-                        if($array_key === 'departamento'){
-                            if($result = Brands::singleton()->getByName($name)){
-                                echo "marca: " . $result['id_marca'] . "\n";
+                            $parameters[$array_key] = number_format($name, 2, '.', '');
+                        } else if ($array_key === 'departamento') {
+                            if ($result = Brands::singleton()->getByName($name)) {
+                                $parameters['id_marca'] = $result['id_marca'];
                             }
+                            $parameters[$array_key] = $name;
+                        } else {
+                            $parameters[$array_key] = $name;
                         }
                     }
                 }

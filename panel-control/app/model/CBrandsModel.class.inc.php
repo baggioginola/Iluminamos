@@ -83,14 +83,10 @@ class BrandsModel extends Database
 
         $result_array = array();
 
-        $name = stripExcessWhitespace(sanitizeVariable(trim($name)));
+        #$name = utf8_decode($name);
 
-        $array_name = UTF8Converter(array($name));
+        $query = 'SELECT id_marca,nombre,descuento FROM ' . self::$table . ' WHERE nombre LIKE "%' . $name . '%";';
 
-        echo print_r($array_name,1);
-        $query = "SELECT id_marca,nombre,descuento FROM " . self::$table . " WHERE nombre LIKE '%" . $array_name[0] . "%';";
-
-        echo $query . "\n";
         if (!$result = $this->query($query)) {
             return false;
         }
