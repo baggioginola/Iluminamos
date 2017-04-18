@@ -23,7 +23,7 @@ function submit_response(form, data, url, type) {
 
     image.fileinput({
         uploadUrl: "imagenes/add",
-        allowedFileExtensions: ["jpg"],
+        allowedFileExtensions: ["jpg", "png"],
         maxFileCount: 10,
         minFileCount: 1,
         uploadAsync: false,
