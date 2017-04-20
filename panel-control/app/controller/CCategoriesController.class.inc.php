@@ -21,7 +21,8 @@ class Categories extends BaseController
         'nombre' => TYPE_ALPHA,
         'status' => TYPE_INT,
         'fecha_alta' => TYPE_DATE,
-        'fecha_modifica' => TYPE_DATE
+        'fecha_modifica' => TYPE_DATE,
+        'id_categoria_padre' => TYPE_INT
     );
 
     /**
@@ -44,6 +45,17 @@ class Categories extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
         return json_encode(UTF8Converter($result));
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastId()
+    {
+        if (!$result = CategoriesModel::singleton()->getLastId()) {
+            return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
+        }
+        return json_encode($result);
     }
 
     /**

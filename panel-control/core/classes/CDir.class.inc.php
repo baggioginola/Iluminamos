@@ -146,6 +146,9 @@ class CDir extends BaseController
             case 'productos':
                 $this->dir = PRODUCT_IMG;
                 break;
+            case 'categorias':
+                $this->dir = CATEGORY_IMG;
+                break;
             case 'banner':
                 $this->dir = BANNER_IMG;
                 break;

@@ -6,6 +6,7 @@ var BASE_ROOT = location.origin = location.protocol + "//" + location.host + '/'
 
 var IMAGES = BASE_ROOT + 'panel-control/includes/public/img/';
 var IMAGES_PRODUCTS = BASE_ROOT + 'includes/public/imagenes_productos/';
+var IMAGES_CATEGORIES = BASE_ROOT + 'includes/public/imagenes_categorias/';
 var IMAGES_PROJECTS = BASE_ROOT + 'includes/public/imagenes_proyectos/';
 var IMAGES_BANNER = BASE_ROOT + 'includes/public/imagenes_banner/';
 

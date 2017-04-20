@@ -16442,7 +16442,7 @@ input[type=submit][disabled] {
 /************** Sub Menu Start *************************************/
 .dd-area {
     width: 100%;
-    height: 170px;
+    height: 180px;
     /*background: #f0f0f0;*/
     background: #ffffff;
     text-align: left;
@@ -16479,8 +16479,8 @@ input[type=submit][disabled] {
     margin-right: 0px;
     margin-bottom: 3px;
     margin-top: 5px;
-    width: 182px;
-    height: 155px;
+    width: 180px;
+    height: 175px;
 }
 
 .dd-inner .left-area li a {
@@ -17470,4 +17470,13 @@ input#id_buscar {
     .carousel-control.right_bottom{
         top: 140px;
     }
+}
+
+label.menu{
+    width: 95%;
+    overflow: hidden;
+    height: 50px;
+    line-height: 15px;
+    padding-top: 15px;
+    font-weight: normal;
 }

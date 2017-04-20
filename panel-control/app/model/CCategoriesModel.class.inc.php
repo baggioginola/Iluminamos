@@ -31,7 +31,12 @@ class CategoriesModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE status = true";
+        $query = "SELECT id_categoria,categorias.nombre, categoria_padre.nombre as tipo FROM "
+            . self::$table .
+            " LEFT JOIN categoria_padre
+            ON categorias.id_categoria_padre = categoria_padre.id_categoria_padre
+            WHERE categorias.status = true
+            ORDER BY categorias.nombre ASC";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -39,6 +44,26 @@ class CategoriesModel extends Database
 
         while ($row = $this->fetch_assoc($result)) {
             $result_array[] = $row;
+        }
+
+        return $result_array;
+    }
+
+    public function getLastId()
+    {
+        if (!$this->connect()) {
+            return false;
+        }
+        $result_array = array();
+
+        $query = "SELECT MAX(id_categoria) as id FROM " . self::$table . " ";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array = $row;
         }
 
         return $result_array;
@@ -56,7 +81,7 @@ class CategoriesModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE id_categoria = '" . $id . "' ";
+        $query = "SELECT id_categoria,nombre,id_categoria_padre FROM " . self::$table . " WHERE id_categoria = '" . $id . "' ";
 
         if (!$result = $this->query($query)) {
             return false;

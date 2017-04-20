@@ -92,6 +92,14 @@ $app->group('/categorias', function () use($app) {
         }
         echo $result;
     });
+
+    $app->post('/getLastId', function() use($app){
+        require_once __CONTROLLER__ . 'CCategoriesController.class.inc.php';
+        if(!$result = Categories::singleton()->getLastId()) {
+            echo 'Fail';
+        }
+        echo $result;
+    });
 });
 
 $app->group('/marcas', function () use($app) {

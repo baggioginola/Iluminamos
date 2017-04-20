@@ -124,6 +124,7 @@ $(document).ready(function () {
 
                 $('#id_imagen').fileinput('refresh', {
                     uploadUrl: "imagenes/edit",
+                    allowedFileExtensions: ["jpg", "png"],
                     initialPreview: images,
                     initialPreviewFileType: 'image',
                     initialPreviewShowDelete: false,

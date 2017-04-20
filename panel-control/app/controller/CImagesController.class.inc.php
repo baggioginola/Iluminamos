@@ -18,8 +18,8 @@ class Images extends BaseController
     private $parameters = array();
 
     private $sizes = array(
-        'categorias' => array('0' => array('width' => 285, 'height' => 210),
-            '1' => array('width' => 350, 'height' => 291)),
+        'categorias' => array('0' => array('width' => 115, 'height' => 95),
+            '1' => array('width' => 115, 'height' => 95)),
         'productos' => array('0' => array('width' => 640, 'height' => 530),
             '1' => array('width' => 640, 'height' => 530),
             '2' => array('width' => 640, 'height' => 530),
