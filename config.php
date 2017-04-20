@@ -27,10 +27,12 @@ define('IMG', DOMAIN . 'includes/public/img/');
 define('PRODUCT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_productos/');
 define('PROJECT_IMG', DOMAIN . 'panel-control/includes/public/imagenes_proyectos/');
 define('BANNER_IMG', DOMAIN . 'panel-control/includes/public/imagenes_banner/');
+define('CATEGORY_IMG', DOMAIN . 'panel-control/includes/public/imagenes_categorias/');
 
 define('PRODUCT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_productos/');
 define('PROJECT_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_proyectos/');
 define('BANNER_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/');
+define('CATEGORY_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_categorias/');
 
 define('BANNER_BIG_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_big/');
 define('BANNER_TOP_IMG_ROOT', __ROOT__ . '/panel-control/includes/public/imagenes_banner/banner_top/');

@@ -132,6 +132,14 @@
                                                     <div class="divIzquierda"></div>
                                                     <div class="thumbs_list">
                                                         <ul>
+                                                            {% for int  in result_img_categories_int %}
+                                                                <li><a
+                                                                            href='{{ settings.DOMAIN }}categoria/{{ int.id_categoria }}'
+                                                                            style="font-size:12px;"><label class="menu">{{ int.nombre }}</label>
+                                                                        <img
+                                                                                src='{{ int.url_image }}'
+                                                                                alt='' style="width:116px;"/></a></li>
+                                                            {% endfor %}
                                                             <li><a
                                                                         href='{{ settings.DOMAIN }}categoria/1'
                                                                         style="font-size:12px;"><label class="menu">Lámparas
@@ -213,6 +221,14 @@
                                                     <div class="divIzquierda_exterior"></div>
                                                     <div class="thumbs_list_exterior">
                                                         <ul>
+                                                            {% for ext  in result_img_categories_ext %}
+                                                                <li><a
+                                                                            href='{{ settings.DOMAIN }}categoria/{{ ext.id_categoria }}'
+                                                                            style="font-size:12px;"><label class="menu">{{ ext.nombre }}</label>
+                                                                        <img
+                                                                                src='{{ ext.url_image }}'
+                                                                                alt='' style="width:116px;"/></a></li>
+                                                            {% endfor %}
                                                             <li><a href='{{ settings.DOMAIN }}categoria/5'
                                                                    style="font-size:12px;"><label class="menu">Lámparas
                                                                         empotradas a techo</label><img

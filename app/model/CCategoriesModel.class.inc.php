@@ -69,4 +69,31 @@ class CategoriesModel extends Database
 
         return $result_array;
     }
+
+    public function getCategoriesById($id = null)
+    {
+        if (is_null($id)) {
+            return false;
+        }
+
+        if (!$this->connect()) {
+            return false;
+        }
+
+        $result_array = array();
+
+        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE id_categoria_padre = '" . $id . "' ";
+
+        if (!$result = $this->query($query)) {
+            return false;
+        }
+
+        $this->close_connection();
+
+        while ($row = $this->fetch_assoc($result)) {
+            $result_array[] = $row;
+        }
+
+        return $result_array;
+    }
 }

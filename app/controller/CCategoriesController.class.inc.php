@@ -39,6 +39,19 @@ class Categories extends BaseController
         return $result;
     }
 
+    public function getCategoriesById($id = null)
+    {
+        if (is_null($id)) {
+            return false;
+        }
+
+        if ($result = CategoriesModel::singleton()->getCategoriesById($id)) {
+            return $result;
+        }
+
+        return false;
+    }
+
     /**
      * @return string
      */
@@ -48,7 +61,7 @@ class Categories extends BaseController
             return false;
         }
 
-        if($result = CategoriesModel::singleton()->getById($this->parameters['id_categoria'])) {
+        if ($result = CategoriesModel::singleton()->getById($this->parameters['id_categoria'])) {
             return $result;
         }
 

@@ -210,4 +210,27 @@ class Images extends BaseController
 
         return $array;
     }
+
+    /**
+     * @return string
+     */
+    public function getCategoriesUrl($result)
+    {
+        $png = '.png';
+        $jpg = '.jpg';
+
+        if (empty($result)) {
+            return $result;
+        }
+        foreach ($result as $key => $value) {
+            if (file_exists(CATEGORY_IMG_ROOT . $value['id_categoria'] . $jpg)) {
+                $result[$key]['url_image'] = CATEGORY_IMG . $value['id_categoria'] . $jpg;
+            } else if (file_exists(CATEGORY_IMG_ROOT . $value['id_categoria'] . $png)) {
+                $result[$key]['url_image'] = CATEGORY_IMG . $value['id_categoria'] . $png;
+            } else {
+                $result[$key]['url_image'] = CATEGORY_IMG . $this->default_image . $jpg;
+            }
+        }
+        return $result;
+    }
 }
