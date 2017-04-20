@@ -16632,7 +16632,7 @@ input[type=submit][disabled] {
 
 .wrapper {
     display: block;
-    width: 1140px;
+    width: 1160px;
     min-height: 100%;
     padding: 0;
     margin: 0 auto;
@@ -17479,4 +17479,54 @@ label.menu{
     line-height: 15px;
     padding-top: 15px;
     font-weight: normal;
+}
+
+#views_block {
+    width: 1160px;
+}
+
+.divIzquierda {
+    background: url("../img/flechaIzquierda.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: left;
+    height: 105px;
+    width: 16px;
+}
+
+.divDerecha {
+    width: 16px;
+    height: 105px;
+    float: left;
+    cursor: pointer;
+    background: url("../img/flechaDerecha.png") center no-repeat;
+}
+
+.divIzquierda_exterior {
+    background: url("../img/flechaIzquierda.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: left;
+    height: 105px;
+    width: 16px;
+}
+
+.divDerecha_exterior {
+    width: 16px;
+    height: 105px;
+    float: left;
+    cursor: pointer;
+    background: url("../img/flechaDerecha.png") center no-repeat;
+}
+
+.thumbs_list{
+    overflow: hidden;
+    float: left;
+    width: 1120px;
+    height: 180px;
+}
+
+.thumbs_list_exterior{
+    overflow: hidden;
+    float: left;
+    width: 1120px;
+    height: 180px;
 }
