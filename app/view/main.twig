@@ -32,7 +32,7 @@
                         {% if i == 0 %}
                             <div class="item active">
                                 <div class="fill"
-                                     style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                     style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
                                 <!--
                                 <div class="carousel-caption">
                                     <h2>CAPTION 1</h2>
@@ -42,7 +42,7 @@
                         {% else %}
                             <div class="item">
                                 <div class="fill"
-                                     style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                     style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
 
                             </div>
                         {% endif %}
@@ -82,7 +82,7 @@
                                     {% if i == 0 %}
                                         <div class="item active">
                                             <div class="fill_bottom"
-                                                 style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                                 style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
                                             <!--
                                             <div class="carousel-caption">
                                                 <h2>CAPTION 1</h2>
@@ -92,7 +92,7 @@
                                     {% else %}
                                         <div class="item">
                                             <div class="fill_bottom"
-                                                 style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                                 style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
 
                                         </div>
                                     {% endif %}
@@ -100,10 +100,14 @@
                                 {% endfor %}
                             </div>
                             <div style="width: 100%; position: relative;">
-                                <a class="left carousel-control right_top" data-target="#carrusel-c" role="button" data-slide="prev"><i
-                                            class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
-                                <a class="right carousel-control right_top" data-target="#carrusel-c" role="button" data-slide="next"><i
-                                            class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+                                <a class="left carousel-control right_top" data-target="#carrusel-c" role="button"
+                                   data-slide="prev"><i
+                                            class="glyphicon glyphicon-chevron-left"></i><span
+                                            class="sr-only">Previous</span></a>
+                                <a class="right carousel-control right_top" data-target="#carrusel-c" role="button"
+                                   data-slide="next"><i
+                                            class="glyphicon glyphicon-chevron-right"></i><span
+                                            class="sr-only">Next</span></a>
                             </div>
                         </div>
                         <!--
@@ -132,7 +136,7 @@
                                 {% if i == 0 %}
                                     <div class="item active">
                                         <div class="fill_bottom"
-                                             style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                             style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
                                         <!--
                                         <div class="carousel-caption">
                                             <h2>CAPTION 1</h2>
@@ -142,7 +146,7 @@
                                 {% else %}
                                     <div class="item">
                                         <div class="fill_bottom"
-                                             style="background: transparent url('{{ banner }}') no-repeat scroll center top / cover ;"></div>
+                                             style="background-image: url('{{ banner }}'); background-repeat: no-repeat; background-size:100% auto"></div>
 
                                     </div>
                                 {% endif %}
@@ -239,9 +243,12 @@
                         </div>
 
                         <div style="width: 100%; position: relative;">
-                            <a class="left carousel-control right_bottom" data-target="#carrusel-b" role="button" data-slide="prev"><i
-                                        class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
-                            <a class="right carousel-control right_bottom" data-target="#carrusel-b" role="button" data-slide="next"><i
+                            <a class="left carousel-control right_bottom" data-target="#carrusel-b" role="button"
+                               data-slide="prev"><i
+                                        class="glyphicon glyphicon-chevron-left"></i><span
+                                        class="sr-only">Previous</span></a>
+                            <a class="right carousel-control right_bottom" data-target="#carrusel-b" role="button"
+                               data-slide="next"><i
                                         class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
                         </div>
                     </div>
@@ -277,7 +284,7 @@
                                                  style="height: 225px;">
                                         </div>
                                     </a>
-                                <span class="product-name">
+                                    <span class="product-name">
                                     <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
                                         {{ producto.codigo_interno }}
                                     </a>
