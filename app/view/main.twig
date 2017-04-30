@@ -5,14 +5,15 @@
 {% block head %}
     {{ parent() }}
     <script src="includes/public/js/custom/camera.js" type="text/javascript"></script>
+
+    <script src="includes/public/js/custom/banner.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block body_id %}home{% endblock %}
 {% block content %}
     <div class="container-fluid wide-content">
         <div>
-            <div id="carrusel-a" class="carousel slide" data-ride="carousel" data-timer="5000"
-                 style="padding-top: 95px;">
+            <div id="carrusel-a" class="carousel slide" data-ride="carousel" data-timer="5000">
                 <ol class="carousel-indicators">
                     {% set i = 0 %}
                     {% for banner  in banner_main %}
@@ -49,7 +50,7 @@
                         {% set i = i + 1 %}
                     {% endfor %}
                 </div>
-                <div style="width: 50%; position: relative;">
+                <div style="width: 50%; position: absolute; top: 75%">
                     <a class="left carousel-control" data-target="#carrusel-a" role="button" data-slide="prev"><i
                                 class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
                     <a class="right carousel-control" data-target="#carrusel-a" role="button" data-slide="next"><i
@@ -75,7 +76,7 @@
                                 {% endfor %}
                             </ol>
 
-                            <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
+                            <div class="carousel-inner" style="float: left;">
                                 {% set i = 0 %}
                                 {% for banner in banner_top %}
 
@@ -129,7 +130,7 @@
                         </ol>
                         !-->
 
-                        <div class="carousel-inner" style="float: left; margin-bottom: 60px;">
+                        <div class="carousel-inner" style="float: left;">
                             {% set i = 0 %}
                             {% for banner in banner_brands %}
 
@@ -153,93 +154,6 @@
                                 {% set i = i + 1 %}
                             {% endfor %}
 
-                            <!--
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/birot.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/louis_poulsen.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/2luz.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/astro.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/brilliant.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/construlita.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/E2.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/eglo.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/estevez.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/illux.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/ilumileds.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/laiting.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/lampslite.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/leds_c4.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/magg.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/metalarte.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/metalspot.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/molto_luce.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/phillips.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/taller_negro.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            <div class="item">
-                                <div class="fill_bottom"
-                                     style="background: transparent url('includes/public/img/logos/tecnolite.jpg') no-repeat scroll center top / cover ;"></div>
-                            </div>
-                            !-->
                         </div>
 
                         <div style="width: 100%; position: relative;">

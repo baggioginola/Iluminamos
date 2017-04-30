@@ -27,12 +27,12 @@ class Images extends BaseController
             '4' => array('width' => 640, 'height' => 530),
             '5' => array('width' => 640, 'height' => 530)
         ),
-        'proyectos' => array('0' => array('width' => 1245, 'height' => 830),
-            '1' => array('width' => 1245, 'height' => 830),
-            '2' => array('width' => 1245, 'height' => 830),
-            '3' => array('width' => 1245, 'height' => 830),
-            '4' => array('width' => 1245, 'height' => 830),
-            '5' => array('width' => 1245, 'height' => 830)
+        'proyectos' => array('0' => array('width' => 1200, 'height' => 900),
+            '1' => array('width' => 1200, 'height' => 900),
+            '2' => array('width' => 1200, 'height' => 900),
+            '3' => array('width' => 1200, 'height' => 900),
+            '4' => array('width' => 1200, 'height' => 900),
+            '5' => array('width' => 1200, 'height' => 900)
         ),
         'banner_big' => array('0' => array('width' => 1200, 'height' => 900),
             '1' => array('width' => 1200, 'height' => 900),

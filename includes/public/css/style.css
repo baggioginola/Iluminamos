@@ -75,6 +75,10 @@ a:active, a:active *, a:focus, a:focus * {
         padding-top: 0;
         margin-bottom: 0
     }
+
+    #carrusel-a{
+        padding-top:78px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -85,6 +89,10 @@ a:active, a:active *, a:focus, a:focus * {
     #header {
         padding-top: 0;
         margin-bottom: 0
+    }
+
+    #carrusel-a{
+        padding-top:130px;
     }
 }
 
@@ -100,6 +108,14 @@ a:active, a:active *, a:focus, a:focus * {
         -webkit-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2);
         -moz-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2);
         box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2)
+    }
+
+    #home .container {
+        width: 990px
+    }
+
+    #carrusel-a{
+        padding-top:120px;
     }
 }
 
@@ -123,6 +139,10 @@ a:active, a:active *, a:focus, a:focus * {
         -webkit-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2);
         -moz-box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2);
         box-shadow: 0 3px 3px 0 rgba(50, 50, 50, .2)
+    }
+
+    #carrusel-a{
+        padding-top:95px;
     }
 }
 
@@ -16912,9 +16932,7 @@ span.product-name a:hover {
     .banner-right-bottom{
         height:122px;
     }
-    .banner-right{
-        height: 250px;
-    }
+
     .banner-right-top-box p {
         font-size: 25px;
     }
@@ -16942,9 +16960,7 @@ span.product-name a:hover {
     .banner-right-bottom{
         height:197px;
     }
-    .banner-right{
-        height: 400px;
-    }
+
     .banner-right-top-box p {
         font-size: 40px;
     }
@@ -16972,9 +16988,7 @@ span.product-name a:hover {
     .banner-right-bottom{
         height:222px;
     }
-    .banner-right{
-        height: 450px;
-    }
+
     .banner-right-top-box p {
         font-size: 56px;
     }
@@ -17002,9 +17016,7 @@ span.product-name a:hover {
     .banner-right-bottom{
         height:297px;
     }
-    .banner-right{
-        height: 600px;
-    }
+
     .banner-right-top-box p {
         font-size: 56px;
     }
@@ -17088,7 +17100,7 @@ span.product-name a:hover {
 
 .banner-right-bottom {
     width: 100%;
-    margin-top: 5px;
+    margin-top: 2%;
     /*background: url(../img/banner/banner_bottom_right.jpg) 50% 50% / cover no-repeat;*/
     position: relative;
 }
@@ -17141,25 +17153,26 @@ span.product-name a:hover {
 
 @media (min-width: 0px) and (max-width: 767px) {
     .carousel-indicators{
-        top:320px;
+        top:275px;
+        display: none;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
     .carousel-indicators{
-        top: 450px;
+        top: 400px;
     }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .carousel-indicators{
-        top:505px;
+        top:450px;
     }
 }
 
 @media (min-width: 1200px) {
     .carousel-indicators{
-        top: 650px;
+        top: 520px;
     }
 }
 
@@ -17205,24 +17218,27 @@ span.product-name a:hover {
     text-align: center;
     list-style: none;
 }
+
+
 @media (min-width: 0px) and (max-width: 767px) {
     .carousel-indicators.right_top{
-        top: 100px;
+        top: 70px;
+        display: none;
     }
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .carousel-indicators.right_top{
-        top: 165px;
+        top: 130px;
     }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
     .carousel-indicators.right_top{
-        top: 190px;
+        top: 170px;
     }
 }
 @media (min-width: 1200px) {
     .carousel-indicators.right_top{
-        top: 270px;
+        top: 210px;
     }
 }
 
