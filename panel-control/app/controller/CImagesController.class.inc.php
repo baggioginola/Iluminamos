@@ -104,9 +104,9 @@ class Images extends BaseController
     public function add()
     {
         if (!CDir::singleton()->setDir()) {
+            LogsController::store();
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
-
         if (!$this->setName()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -132,6 +132,7 @@ class Images extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
+        LogsController::store();
         return json_encode($this->getResponse());
     }
 
@@ -142,7 +143,7 @@ class Images extends BaseController
         }
 
         $this->num_images = $_REQUEST['num_imagenes'];
-
+        Debugger::add('setNumImages', $this->num_images, false, __LINE__, __METHOD__);
         return true;
     }
 
@@ -158,7 +159,7 @@ class Images extends BaseController
         }
 
         $this->name = $_REQUEST['name'];
-
+        Debugger::add('setName', $this->name, false, __LINE__, __METHOD__);
         return true;
     }
 
@@ -169,17 +170,19 @@ class Images extends BaseController
         }
 
         $this->id = $_REQUEST['id'];
-
+        Debugger::add('setId', $this->id, false, __LINE__, __METHOD__);
         return true;
     }
 
     private function getId()
     {
+        Debugger::add('getId', $this->id, false, __LINE__, __METHOD__);
         return $this->id;
     }
 
     private function getName()
     {
+        Debugger::add('getName', $this->name, false, __LINE__, __METHOD__);
         return $this->name;
     }
 
@@ -191,7 +194,6 @@ class Images extends BaseController
         if (!$this->setName()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
-
         if (!CDir::singleton()->setDir()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -209,7 +211,7 @@ class Images extends BaseController
         if (!$this->upload()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
-
+        LogsController::store();
         return json_encode($this->getResponse());
     }
 
@@ -240,7 +242,7 @@ class Images extends BaseController
 
         $dir = CDir::singleton()->getDir();
 
-        ini_set('memory_limit', 20000000000);
+        ini_set('memory_limit', -1);
         foreach ($this->parameters as $parameter => $value) {
             if (!move_uploaded_file($this->parameters[$parameter]['tmp_name'], $dir . $this->parameters[$parameter]['name'])) {
                 return false;
@@ -249,6 +251,7 @@ class Images extends BaseController
         }
 
         $type = CDir::singleton()->_getType();
+        Debugger::add('upload', $type, false, __LINE__, __METHOD__);
         foreach ($this->parameters as $parameter => $value) {
             resizeImage($dir . $this->parameters[$parameter]['name'], $this->sizes[$type][$parameter]['height'], $this->sizes[$type][$parameter]['width'], $this->parameters[$parameter]['extension']);
         }
@@ -288,6 +291,8 @@ class Images extends BaseController
                 $i = 1;
             }
         }
+
+        Debugger::add('setParameters', $this->parameters, true, __LINE__, __METHOD__);
         return true;
     }
 }

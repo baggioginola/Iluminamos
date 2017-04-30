@@ -12,6 +12,10 @@ require_once FRAMEWORK . 'slim/vendor/autoload.php';
 require_once FRAMEWORK . 'office/vendor/autoload.php';
 require_once __DIR__ . '/../auth.php';
 
+require_once CLASSES . 'CDebugger.class.inc.php';
+require_once CLASSES . 'CErrorHandler.class.inc.php';
+require_once __CONTROLLER__ . 'CLogsController.class.inc.php';
+
 if (strcasecmp(ENVIRONMENT, 'test') == 0) {
     error_reporting(E_ALL);
     ini_set('display_errors', 1);

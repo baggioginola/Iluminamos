@@ -198,6 +198,7 @@ class CDir extends BaseController
         }
 
         $this->type = trim($_REQUEST['type']);
+        Debugger::add('setType', $this->type, false, __LINE__, __METHOD__);
         return true;
     }
 

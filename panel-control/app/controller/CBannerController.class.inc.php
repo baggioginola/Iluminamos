@@ -40,6 +40,8 @@ class Banner extends BaseController
             return false;
         }
 
+        Debugger::add('edit', $id, false, __LINE__, __METHOD__);
+        Debugger::add('edit', $num_imagenes, false, __LINE__, __METHOD__);
         $array = array();
         $array['numero_imagenes'] = $num_imagenes;
 

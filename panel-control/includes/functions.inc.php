@@ -7,6 +7,8 @@
  */
 function resizeImage($path, $height, $width, $extension)
 {
+    Debugger::add('resizeImage', $path, false, __LINE__, __METHOD__);
+    ini_set('memory_limit',-1);
     if ($extension == 'jpg') {
         $img_original = imagecreatefromjpeg($path);
     } else if ($extension == 'png') {
@@ -62,6 +64,8 @@ function resizeImage($path, $height, $width, $extension)
         $calidad = 9;
         imagepng($tmp2, $path, $calidad, PNG_ALL_FILTERS);
     }
+
+    Debugger::add('resizeImage final', $path, false, __LINE__, __METHOD__);
 }
 
 /**
