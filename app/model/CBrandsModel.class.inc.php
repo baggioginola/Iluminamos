@@ -31,7 +31,8 @@ class BrandsModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT id_marca,nombre FROM " . self::$table . " WHERE status = true";
+        $query = "SELECT id_marca,nombre FROM " . self::$table . " WHERE status = true
+                    ORDER BY nombre ASC";
 
         if (!$result = $this->query($query)) {
             return false;

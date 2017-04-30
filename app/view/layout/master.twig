@@ -59,24 +59,18 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Interior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ settings.DOMAIN }}categoria/1">Lámparas de mesa</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/2">Lámparas de pie</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/3">Lámparas colgantes</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/4">Lámparas empotradas a techo</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/6">Arbotantes</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/13">Tiras LED</a></li>
+                        {% for int  in result_img_categories_int %}
+                            <li><a href="{{ settings.DOMAIN }}categoria/{{ int.id_categoria }}">{{ int.nombre }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Exterior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ settings.DOMAIN }}categoria/5">Lámparas empotradas a techo</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/7">Arbotantes</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/8">Lámparas empotradas a piso</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/9">Alumbrado público</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/10">Focos LED</a></li>
-                        <li><a href="{{ settings.DOMAIN }}categoria/11">Tiras LED</a></li>
+                        {% for ext  in result_img_categories_ext %}
+                            <li><a href="{{ settings.DOMAIN }}categoria/{{ ext.id_categoria }}">{{ ext.nombre }}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li><a href="{{ settings.DOMAIN }}quienes-somos">¿Quiénes somos?</a></li>
@@ -140,63 +134,6 @@
                                                                                 src='{{ int.url_image }}'
                                                                                 alt='' style="width:116px;"/></a></li>
                                                             {% endfor %}
-                                                            <li><a
-                                                                        href='{{ settings.DOMAIN }}categoria/1'
-                                                                        style="font-size:12px;"><label class="menu">Lámparas
-                                                                        de
-                                                                        Mesa</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/1.jpg'
-                                                                            alt='' style="width:116px;"/></a></li>
-                                                            <li><a
-                                                                        href='{{ settings.DOMAIN }}categoria/2'
-                                                                        style="font-size:12px;"><label class="menu">Lámparas
-                                                                        de
-                                                                        pie</label> <img
-                                                                            src='{{ settings.IMG }}categorias/2.jpg'
-                                                                            alt='' style="width:116px;"/></a></li>
-                                                            <li><a href='{{ settings.DOMAIN }}categoria/3'
-                                                                   style="font-size:12px;"><label class="menu">Lámparas
-                                                                        colgantes</label><img
-                                                                            src='{{ settings.IMG }}productos/3.jpg'
-                                                                            alt='Flush Mount' style="width:116px;"/></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href='{{ settings.DOMAIN }}categoria/4'
-                                                                   style="font-size:12px;"><label class="menu">Lámparas
-                                                                        empotradas a techo</label> <img
-                                                                            src='{{ settings.IMG }}categorias/4.jpg'
-                                                                            alt='Wall' style="width:116px;"/>
-                                                                </a>
-                                                            </li>
-
-                                                            <li><a href='{{ settings.DOMAIN }}categoria/6'
-                                                                   style="font-size:12px;"><label
-                                                                            class="menu">Arbotantes</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/6.png'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
-
-                                                            <li><a href='{{ settings.DOMAIN }}categoria/6'
-                                                                   style="font-size:12px;"><label
-                                                                            class="menu">Arbotantes</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/6.png'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
-
-                                                            <li class="no-margin"><a
-                                                                        href='{{ settings.DOMAIN }}categoria/13'
-                                                                        style="font-size:12px;"><label class="menu">Tira
-                                                                        LED</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/13.jpg'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
 
                                                         </ul>
                                                     </div>
@@ -229,60 +166,6 @@
                                                                                 src='{{ ext.url_image }}'
                                                                                 alt='' style="width:116px;"/></a></li>
                                                             {% endfor %}
-                                                            <li><a href='{{ settings.DOMAIN }}categoria/5'
-                                                                   style="font-size:12px;"><label class="menu">Lámparas
-                                                                        empotradas a techo</label><img
-                                                                            src='{{ settings.IMG }}categorias/5.jpg'
-                                                                            alt='' style="width:116px;"/></a></li>
-                                                            <li><a href='{{ settings.DOMAIN }}categoria/7'
-                                                                   style="font-size:12px;"><label
-                                                                            class="menu">Arbotantes</label><img
-                                                                            src='{{ settings.IMG }}categorias/7.jpg'
-                                                                            alt='' style="width:116px;"/></a></li>
-                                                            <li><a
-                                                                        href='{{ settings.DOMAIN }}categoria/8'
-                                                                        style="font-size:12px;"><label class="menu">Lámparas
-                                                                        empotradas a piso</label><img
-                                                                            src='{{ settings.IMG }}categorias/8.png'
-                                                                            alt='Flush Mount' style="width:116px;"/></a>
-                                                            </li>
-                                                            <li>
-                                                                <a href='{{ settings.DOMAIN }}categoria/9'
-                                                                   style="font-size:12px;"><label class="menu">Alumbrado
-                                                                        público</label><img
-                                                                            src='{{ settings.IMG }}categorias/9.jpg'
-                                                                            alt='Wall' style="width:116px;"/>
-                                                                </a>
-                                                            </li>
-
-                                                            <li><a
-                                                                        href='{{ settings.DOMAIN }}categoria/10'
-                                                                        style="font-size:12px;"><label class="menu">Focos
-                                                                        LED</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/10.jpg'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
-                                                            <li><a
-                                                                        href='{{ settings.DOMAIN }}categoria/10'
-                                                                        style="font-size:12px;"><label class="menu">Focos
-                                                                        LED</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/10.jpg'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
-
-                                                            <li class="no-margin"><a
-                                                                        href='{{ settings.DOMAIN }}categoria/11'
-                                                                        style="font-size:12px;"><label class="menu">Tiras
-                                                                        LED</label>
-                                                                    <img
-                                                                            src='{{ settings.IMG }}categorias/11.jpg'
-                                                                            alt='Energy Efficient'
-                                                                            style="width:116px;"/></a>
-                                                            </li>
 
                                                         </ul>
                                                     </div>

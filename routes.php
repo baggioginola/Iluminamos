@@ -19,8 +19,8 @@ $last_name = Session::singleton()->getLastName();
 $settings['NAME'] = $name;
 $settings['LAST_NAME'] = $last_name;
 
-$result_categories_ext = Categories::singleton()->getCategoriesById(1);
-$result_categories_int = Categories::singleton()->getCategoriesById(2);
+$result_categories_ext = Categories::singleton()->getCategoriesById(2);
+$result_categories_int = Categories::singleton()->getCategoriesById(1);
 
 $result_img_categories_ext = Images::singleton()->getCategoriesUrl($result_categories_ext);
 $result_img_categories_int = Images::singleton()->getCategoriesUrl($result_categories_int);

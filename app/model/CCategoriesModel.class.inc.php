@@ -14,7 +14,7 @@ class CategoriesModel extends Database
 
     public static function singleton()
     {
-        if(is_null(self::$object)) {
+        if (is_null(self::$object)) {
             self::$object = new self();
         }
         return self::$object;
@@ -30,7 +30,8 @@ class CategoriesModel extends Database
         }
         $result_array = array();
 
-        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE status = true";
+        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE status = true
+                    ORDER BY nombre ASC";
 
         if (!$result = $this->query($query)) {
             return false;
@@ -82,7 +83,8 @@ class CategoriesModel extends Database
 
         $result_array = array();
 
-        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE id_categoria_padre = '" . $id . "' ";
+        $query = "SELECT id_categoria,nombre FROM " . self::$table . " WHERE id_categoria_padre = '" . $id . "'
+                    ORDER BY nombre asc";
 
         if (!$result = $this->query($query)) {
             return false;
