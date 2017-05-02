@@ -103,7 +103,9 @@ class Images extends BaseController
      */
     public function add()
     {
+        Debugger::add('request', $_REQUEST, true, __LINE__, __METHOD__);
         if (!CDir::singleton()->setDir()) {
+            Debugger::add('setDir', 'No Dir', false, __LINE__, __METHOD__);
             LogsController::store();
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
@@ -191,6 +193,7 @@ class Images extends BaseController
      */
     public function edit()
     {
+        Debugger::add('request', $_REQUEST, true, __LINE__, __METHOD__);
         if (!$this->setName()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }

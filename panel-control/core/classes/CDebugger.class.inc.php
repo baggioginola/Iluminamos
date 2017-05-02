@@ -64,5 +64,10 @@ class Debugger
                 self::$debug['__cookie'][strtolower($key)] = $value;
             }
         }
+        if (isset($_SESSION)) {
+            foreach ($_SESSION as $key => $value) {
+                self::$debug['__session'][strtolower($key)] = $value;
+            }
+        }
     }
 }
