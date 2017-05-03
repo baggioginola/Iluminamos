@@ -23,6 +23,10 @@ jQuery(document).ready(function () {
             return false;
         }
 
+        var category = jQuery('#filter_category option:selected').text();
+        var brand = jQuery('#filter_brand option:selected').text();
+
+        $('.category_name').html(category + ' / ' + brand);
         jQuery.ajax({
             url: url,
             type: "POST",
