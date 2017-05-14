@@ -15,7 +15,6 @@ $(document).ready(function () {
         ]
 
     });
-    $('#id_fecha').datepicker();
 
     $("#id_imagen").fileinput({
         uploadUrl: "imagenes/add",
@@ -53,7 +52,7 @@ $(document).ready(function () {
 
 
     var url = 'proyectos/getAll';
-    var columns = [{data: 'titulo'}, {data: 'subtitulo'}, {data: 'fecha'}];
+    var columns = [{data: 'titulo'}, {data: 'subtitulo'}];
 
     var table = masterDatatable(url, columns);
 
@@ -84,10 +83,6 @@ $(document).ready(function () {
                 $.each(response, function (key, val) {
                     if (key == 'contenido') {
                         tinyMCE.get('id_contenido').setContent(val);
-                    }
-                    if(key == 'fecha'){
-                        date = val.split('-');
-                        val = date[1] + '/' + date[2] + '/' + date[0];
                     }
                     $("textarea[name=" + key + "]").val(val);
                     $("input[name=" + key + "]").val(val);
