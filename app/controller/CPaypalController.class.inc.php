@@ -63,15 +63,19 @@ class Paypal extends BaseController
             $result_all[$i]['numero_productos'] = $row_array['numero_productos'];
 
             $price = $this->getPrice($row_array);
-            $result_all[$i]['precio'] = number_format($this->getPrice($row_array), 2);
-            $result_all[$i]['iva'] = number_format(($price * $this->iva), 2);
+            $result_all[$i]['precio'] = number_format($this->getPrice($row_array), 2, '.', '');
+            $result_all[$i]['iva'] = number_format(($price * $this->iva), 2, '.', '');
             $i++;
         }
 
         $this->setQueryString($result_all);
 
+        Debugger::add('queryString', $this->queryString, true, __LINE__, __METHOD__);
+
         $data = array();
         $data['result'] = $this->paypal_url . $this->queryString;
+
+        LogsController::store();
 
         return $this->paypal_url . $this->queryString;
     }

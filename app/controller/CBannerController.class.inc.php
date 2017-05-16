@@ -57,4 +57,19 @@ class Banner extends BaseController
 
         return $result_images;
     }
+
+    public function getAll()
+    {
+        $result_main = BannerModel::singleton()->getMain();
+        $result_top = BannerModel::singleton()->getTop();
+        $result_brands = BannerModel::singleton()->getBrands();
+
+
+        $result = array();
+        $result['main'] = Images::singleton()->getBannerMainUrl($result_main['numero_imagenes']);
+        $result['top'] = Images::singleton()->getBannerTopUrl($result_top['numero_imagenes']);
+        $result['brands'] = Images::singleton()->getBannerBrandsUrl($result_brands['numero_imagenes']);
+
+        return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $result));
+    }
 }

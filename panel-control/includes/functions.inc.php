@@ -71,12 +71,14 @@
 
 function resizeImage($path, $h, $w, $extension)
 {
-    $crop = false;
+    $crop = true;
 
     list($width, $height) = getimagesize($path);
 
-    $r = $width / $height;
-    if ($crop) {
+    //$r = $width / $height;
+
+
+    /*if ($crop) {
         if ($width > $height) {
             $width = ceil($width-($width*abs($r-$w/$h)));
         } else {
@@ -94,6 +96,25 @@ function resizeImage($path, $h, $w, $extension)
         }
     }
 
+    */
+
+    // resize
+    if($crop){
+        if($width < $w or $height < $h) return "Picture is too small!";
+        $ratio = max($w/$width, $h/$height);
+        $height = $h / $ratio;
+        $x = ($width - $w / $ratio) / 2;
+        $width = $w / $ratio;
+    }
+    else{
+        if($width < $w and $height < $h) return "Picture is too small!";
+        $ratio = min($w/$width, $h/$height);
+        $w = $width * $ratio;
+        $h = $height * $ratio;
+        $x = 0;
+    }
+
+
     if ($extension == 'jpg') {
         $src = imagecreatefromjpeg($path);
     } else if ($extension == 'png') {
@@ -101,8 +122,10 @@ function resizeImage($path, $h, $w, $extension)
     } else {
         $src = imagecreatefromjpeg($path);
     }
+
+
     #$src = imagecreatefromjpeg($path);
-    $dst = imagecreatetruecolor($newwidth, $newheight);
+    $dst = imagecreatetruecolor($w, $h);
     imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
     $tmp2 = imagecreatetruecolor($w, $h);
