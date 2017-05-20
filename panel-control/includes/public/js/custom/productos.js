@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     $("#id_imagen").fileinput({
         uploadUrl: "imagenes/add",
-        allowedFileExtensions: ["jpg", "png"],
+        allowedFileExtensions: ["jpg", "png", "jpeg"],
         maxFileCount: 1,
         minFileCount: 1,
         uploadAsync: false,
@@ -124,7 +124,7 @@ $(document).ready(function () {
 
                 $('#id_imagen').fileinput('refresh', {
                     uploadUrl: "imagenes/edit",
-                    allowedFileExtensions: ["jpg", "png"],
+                    allowedFileExtensions: ["jpg", "png", "jpeg"],
                     initialPreview: images,
                     initialPreviewFileType: 'image',
                     initialPreviewShowDelete: false,

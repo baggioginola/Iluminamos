@@ -281,12 +281,17 @@ class Images extends BaseController
                         $ext = explode(".", $name);
                         $lastElement = sizeof($ext);
 
-                        if ($i == 1) {
-                            $name = $this->name . "." . strtolower($ext[$lastElement - 1]);
-                        } else {
-                            $name = $this->name . "_" . $i . "." . strtolower($ext[$lastElement - 1]);
+                        $extension = strtolower($ext[$lastElement - 1]);
+                        if ($extension == 'jpeg') {
+                            $extension = 'jpg';
                         }
-                        $this->parameters[$i]['extension'] = strtolower($ext[$lastElement - 1]);
+
+                        if ($i == 1) {
+                            $name = $this->name . "." . $extension;
+                        } else {
+                            $name = $this->name . "_" . $i . "." . $extension;
+                        }
+                        $this->parameters[$i]['extension'] = $extension;
                     }
                     $this->parameters[$i][$item] = $name;
                     $i++;

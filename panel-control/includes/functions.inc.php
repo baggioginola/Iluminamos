@@ -5,7 +5,7 @@
  * Date: 31/ene/2017
  * Time: 20:31
  */
-/*function resizeImage($path, $height, $width, $extension)
+function resizeImage($path, $height, $width, $extension)
 {
     Debugger::add('resizeImage', $path, false, __LINE__, __METHOD__);
     ini_set('memory_limit',-1);
@@ -66,91 +66,6 @@
     }
 
     Debugger::add('resizeImage final', $path, false, __LINE__, __METHOD__);
-}
-*/
-
-function resizeImage($path, $h, $w, $extension)
-{
-    $crop = true;
-
-    list($width, $height) = getimagesize($path);
-
-    //$r = $width / $height;
-
-
-    /*if ($crop) {
-        if ($width > $height) {
-            $width = ceil($width-($width*abs($r-$w/$h)));
-        } else {
-            $height = ceil($height-($height*abs($r-$w/$h)));
-        }
-        $newwidth = $w;
-        $newheight = $h;
-    } else {
-        if ($w/$h > $r) {
-            $newwidth = $h*$r;
-            $newheight = $h;
-        } else {
-            $newheight = $w/$r;
-            $newwidth = $w;
-        }
-    }
-
-    */
-
-    // resize
-    if($crop){
-        if($width < $w or $height < $h) return "Picture is too small!";
-        $ratio = max($w/$width, $h/$height);
-        $height = $h / $ratio;
-        $x = ($width - $w / $ratio) / 2;
-        $width = $w / $ratio;
-    }
-    else{
-        if($width < $w and $height < $h) return "Picture is too small!";
-        $ratio = min($w/$width, $h/$height);
-        $w = $width * $ratio;
-        $h = $height * $ratio;
-        $x = 0;
-    }
-
-
-    if ($extension == 'jpg') {
-        $src = imagecreatefromjpeg($path);
-    } else if ($extension == 'png') {
-        $src = imagecreatefrompng($path);
-    } else {
-        $src = imagecreatefromjpeg($path);
-    }
-
-
-    #$src = imagecreatefromjpeg($path);
-    $dst = imagecreatetruecolor($w, $h);
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-    $tmp2 = imagecreatetruecolor($w, $h);
-
-    if ($extension == 'jpg') {
-        $color = imagecolorallocate($tmp2, 255, 255, 255);
-        imagefill($tmp2, 0, 0, $color);
-    } else {
-        $color = imagecolorallocate($tmp2, 0, 0, 0);
-        imagecolortransparent($tmp2, $color);
-    }
-
-    $distancia_x = round(($w - $newwidth) / 2);
-    $distancia_y = round(($h - $newheight) / 2);
-
-    imagecopy($tmp2, $dst, $distancia_x, $distancia_y, 0, 0, $newwidth, $newheight);
-
-    if ($extension == 'jpg') {
-        $calidad = 100;
-        imagejpeg($tmp2, $path, $calidad);
-    } else {
-        $calidad = 9;
-        imagepng($tmp2, $path, $calidad, PNG_ALL_FILTERS);
-    }
-    //return $dst;
 }
 
 /**
