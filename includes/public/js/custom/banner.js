@@ -8,7 +8,36 @@ jQuery(document).ready(function () {
     window.onresize = function () {
         banner(1200, 900, 'fill');
         banner(1200, 445, 'fill_bottom');
-    }
+    };
+
+    var url = BASE_ROOT + 'banner/load';
+
+    jQuery.ajax({
+        url: url,
+        type: "POST",
+        cache: false,
+        data: {},
+        dataType: 'json',
+        async: false,
+        success: function (response) {
+            console.log(response);
+            if (response.status === 200) {
+                jQuery.each(response.data.main, function (key, value) {
+                    var img = new Image();
+                    img.src = value;
+                });
+                jQuery.each(response.data.brands, function (key, value) {
+                    var img = new Image();
+                    img.src = value;
+                });
+                jQuery.each(response.data.top, function (key, value) {
+                    var img = new Image();
+                    img.src = value;
+                });
+            }
+        }
+    });
+    return false;
 });
 
 function banner(width_ratio, height_ratio, _class) {
@@ -34,4 +63,15 @@ function carousel(height) {
     var top = height * ratio;
 
     jQuery('.carousel-indicators').css('top', top + 'px');
+}
+
+function preload(imageArray, index) {
+    index = index || 0;
+    if (imageArray && imageArray.length > index) {
+        var img = new Image();
+        img.onload = function () {
+            preload(imageArray, index);
+        };
+        img.src = images[index]['serving_url'];
+    }
 }
