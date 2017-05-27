@@ -199,10 +199,12 @@
                                         </div>
                                     </a>
                                     <span class="product-name">
-                                    <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
-                                        {{ producto.codigo_interno }}
-                                    </a>
-                                </span>
+                                        <a href="{{ settings.DOMAIN }}producto/{{ producto.id_producto }}">
+                                            {{ producto.codigo_interno }}
+                                            <br>
+                                            ${{ producto.precio }}
+                                        </a>
+                                    </span>
                                 </div>
 
                             </div>

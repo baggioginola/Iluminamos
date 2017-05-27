@@ -50,6 +50,7 @@ jQuery(document).ready(function () {
                                 '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
                                 '<img src="', value.url_image, '"/>' +
                                 '<label>', value.nombre, '</label>' +
+                                '<label style="font-weight: bold; height: 45px;">$', value.precio, '</label>' +
                                 '</a>' +
                                 '<div>' +
                                 '<div style="cursor: pointer; text-align: center; padding-bottom: 10px;" class="like" id="', value.id_producto, '">' +
@@ -65,6 +66,7 @@ jQuery(document).ready(function () {
                                 '<a href="', BASE_ROOT + 'producto/' + value.id_producto, '" class="products_thumbnail">' +
                                 '<img src="', value.url_image, '"/>' +
                                 '<label>', value.nombre, '</label>' +
+                                '<label style="font-weight: bold; height: 45px;">$', value.precio, '</label>' +
                                 '</a>' +
                                 '<div>' +
                                 '<div style="text-align: center; padding-bottom: 10px;">' +

@@ -78,6 +78,8 @@ class Search extends BaseController
 
         foreach ($result as $key => $value) {
             $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
+
+            $result[$key]['precio'] = $this->getPrice($value);
         }
 
         $row_array = array();
@@ -89,7 +91,9 @@ class Search extends BaseController
                 $row_array[$value] = $result;
             }
             if (!is_null($price)) {
-                $total = $this->getPrice($row_array);
+                $total = $row_array['precio'];
+
+                #echo $total . "\n";
                 if (!($total >= $this->prices[$price][0] && $total < $this->prices[$price][1])) {
                     continue;
                 }
@@ -99,6 +103,8 @@ class Search extends BaseController
             $result_all[$i]['nombre'] = $row_array_image['codigo_interno'];
             $result_all[$i]['url_image'] = $row_array_image['url_image'];
             $result_all[$i]['like'] = $row_array_image['like'];
+            $result_all[$i]['precio'] = number_format($row_array_image['precio'], 2);
+
             $i++;
         }
 
@@ -127,7 +133,7 @@ class Search extends BaseController
 
     public function getProductsbyQuery($query = null)
     {
-        if(is_null($query)){
+        if (is_null($query)) {
             return false;
         }
 
@@ -137,6 +143,9 @@ class Search extends BaseController
 
         foreach ($result as $key => $value) {
             $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
+
+            $price = $this->getPrice($value);
+            $result[$key]['precio'] = number_format($price, 2);
         }
 
         return $result;

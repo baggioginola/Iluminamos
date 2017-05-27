@@ -1469,7 +1469,7 @@ span.ui-helper-hidden-accessible {
     }
 
     .navbar-brand img {
-        width: 205px;
+        width: 255px;
     }
 
     .navbar-brand span {
@@ -1543,8 +1543,8 @@ span.ui-helper-hidden-accessible {
     .new-header-mobile .navbar-toggle .icon-bar {
         display: block;
         border-radius: 0;
-        width: 25px;
-        height: 5px
+        width: 22px;
+        height: 4px
     }
 
     .new-header-mobile.navbar-default .navbar-toggle .icon-bar {

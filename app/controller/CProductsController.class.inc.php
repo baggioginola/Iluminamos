@@ -47,6 +47,13 @@ class Products extends BaseController
     public function getRandomAll()
     {
         if ($result = ProductsModel::singleton()->getRandomAll()) {
+
+            foreach ($result as $key => $value) {
+                $price = $this->getPrice($value);
+                $total = $price + ($price * $value['iva']);
+                $result[$key]['precio'] = number_format($total, 2);
+            }
+            
             return $result;
         }
         return false;
@@ -88,6 +95,10 @@ class Products extends BaseController
 
         foreach ($result as $key => $value) {
             $result[$key]['like'] = Like::singleton()->getByIdProduct($value['id_producto']);
+
+            $price = $this->getPrice($value);
+            $total = $price + ($price * $value['iva']);
+            $result[$key]['precio'] = number_format($total, 2);
         }
 
         return $result;
