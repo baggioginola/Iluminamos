@@ -13,9 +13,6 @@ class CLogsModel extends Database
     private static $object = null;
     private static $table = 'logs';
 
-    /**
-     * @return CLogsModel|null
-     */
     public static function singleton()
     {
         if (is_null(self::$object)) {

@@ -91,7 +91,7 @@ class UserController extends BaseController
         if (!$this->_setParameters()) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
-
+        
         $id = $this->parameters['id_usuario'];
 
         unset($this->parameters['id_usuario']);

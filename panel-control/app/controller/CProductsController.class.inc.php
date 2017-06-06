@@ -27,7 +27,7 @@ class Products extends BaseController
         'id_categoria' => TYPE_INT,
         'iva' => TYPE_FLOAT,
         'codigo_interno' => TYPE_ALPHA,
-        'moneda' => TYPE_ALPHA,
+        'moneda' => TYPE_INT,
         'id_marca' => TYPE_INT,
         'num_imagenes' => TYPE_INT,
         'precio' => TYPE_FLOAT,
@@ -89,6 +89,7 @@ class Products extends BaseController
     public function add()
     {
         if (!$this->_setParameters()) {
+            LogsController::store();
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -101,6 +102,7 @@ class Products extends BaseController
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
+        LogsController::store();
         return json_encode($this->getResponse(STATUS_SUCCESS, MESSAGE_SUCCESS, $result));
     }
 
@@ -110,6 +112,7 @@ class Products extends BaseController
     public function edit()
     {
         if (!$this->_setParameters()) {
+            LogsController::store();
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
 
@@ -118,10 +121,11 @@ class Products extends BaseController
         unset($this->parameters['id_producto']);
 
         $this->parameters['fecha_modifica'] = date('Y-m-d H:i:s');
+        Debugger::add('parameters class', $this->parameters, true, __LINE__, __METHOD__);
         if (!ProductsModel::singleton()->edit($this->parameters, $id)) {
             return json_encode($this->getResponse(STATUS_FAILURE_INTERNAL, MESSAGE_ERROR));
         }
-
+        LogsController::store();
         return json_encode($this->getResponse());
     }
 
@@ -235,6 +239,7 @@ class Products extends BaseController
             return false;
         }
 
+        Debugger::add('parameters', $_POST, true, __LINE__, __METHOD__);
         if (!$this->validateParameters($_POST, $this->validParameters)) {
             return false;
         }

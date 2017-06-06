@@ -74,6 +74,7 @@ class Brands extends BaseController
 
         return $result;
     }
+
     /**
      * @return string
      */

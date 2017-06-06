@@ -27,7 +27,7 @@ class BaseController
         }
 
         foreach ($parameters as $name => $content) {
-            if($name == 'contenido' || $name == 'descripcion' || $name == 'detalles_tecnicos' || $name == 'clave_alterna'){
+            if($name == 'contenido' || $name == 'descripcion' || $name == 'detalles_tecnicos' || $name == 'clave_alterna' || $name == 'codigo_interno'){
                 continue;
             }
             if (!isset($validParameters[$name])) {
@@ -39,6 +39,8 @@ class BaseController
                     return false;
                 }
             } else if (!preg_match($this->getRegularExpresion($validParameters[$name]), $content)) {
+                Debugger::add('preg_match', $name, false, __LINE__, __METHOD__);
+                Debugger::add('preg_match', $content, false, __LINE__, __METHOD__);
                 return false;
             }
         }
