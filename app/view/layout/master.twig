@@ -60,7 +60,8 @@
                        aria-expanded="false">Interior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {% for int  in result_img_categories_int %}
-                            <li><a href="{{ settings.DOMAIN }}categoria/{{ int.id_categoria }}">{{ int.nombre }}</a></li>
+                            <li><a href="{{ settings.DOMAIN }}categoria/{{ int.id_categoria }}">{{ int.nombre }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -69,7 +70,8 @@
                        aria-expanded="false">Exterior<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         {% for ext  in result_img_categories_ext %}
-                            <li><a href="{{ settings.DOMAIN }}categoria/{{ ext.id_categoria }}">{{ ext.nombre }}</a></li>
+                            <li><a href="{{ settings.DOMAIN }}categoria/{{ ext.id_categoria }}">{{ ext.nombre }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </li>
@@ -125,7 +127,8 @@
                                                             {% for int  in result_img_categories_int %}
                                                                 <li><a
                                                                             href='{{ settings.DOMAIN }}categoria/{{ int.id_categoria }}'
-                                                                            style="font-size:12px;"><label class="menu">{{ int.nombre }}</label>
+                                                                            style="font-size:12px;"><label
+                                                                                class="menu">{{ int.nombre }}</label>
                                                                         <img
                                                                                 src='{{ int.url_image }}'
                                                                                 alt='' style="width:116px;"/></a></li>
@@ -157,7 +160,8 @@
                                                             {% for ext  in result_img_categories_ext %}
                                                                 <li><a
                                                                             href='{{ settings.DOMAIN }}categoria/{{ ext.id_categoria }}'
-                                                                            style="font-size:12px;"><label class="menu">{{ ext.nombre }}</label>
+                                                                            style="font-size:12px;"><label
+                                                                                class="menu">{{ ext.nombre }}</label>
                                                                         <img
                                                                                 src='{{ ext.url_image }}'
                                                                                 alt='' style="width:116px;"/></a></li>
@@ -209,7 +213,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 10px;">
-                    <legend style="color: #FFFFFF;"><span class="glyphicon glyphicon-globe" style="font-size:65%; padding-right:10px;"></span>Dirección</legend>
+                    <legend style="color: #FFFFFF;"><span class="glyphicon glyphicon-globe"
+                                                          style="font-size:65%; padding-right:10px;"></span>Dirección
+                    </legend>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <form>
                             <address style="color: #FFF;">
@@ -234,6 +240,12 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="container" style="text-align: center; font-size: 20px; color: #fff; padding-top: 25px; font-weight: bold;">
+            <div class="row">
+                <p>&#169;<span id="copyright-year"></span> <a href="http://vmedia.mx" style="color:#fff;">VMedia Comunicación</a>
+                </p>
             </div>
         </div>
     </div>
